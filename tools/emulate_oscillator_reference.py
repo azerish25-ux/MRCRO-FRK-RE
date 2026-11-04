@@ -19,6 +19,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("processor", type=Path)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--matrix", action="store_true")
     args = parser.parse_args()
     output = args.output.resolve()
     if output.drive.upper() != "D:":
@@ -59,30 +60,51 @@ def main():
         if machine.reg_read(UC_X86_REG_RIP) != sentinel:
             raise RuntimeError("routine did not return within its emulation budget")
 
-    invoke(0x18032FE50, engine, allocator)
-    machine.mem_write(parameters, struct.pack("<ifffff", 2, 69.0, 0.3, 0.4, 0.5, 1.0))
-    blocks = []
-    for index in range(4):
-        invoke(0x18032FEF0, engine, parameters, out, aux, (32, heap + 7 * 4096))
-        out_bytes = bytes(machine.mem_read(out, 128))
-        aux_bytes = bytes(machine.mem_read(aux, 128))
-        blocks.append({"block_index": index,
-                       "out_bits": list(struct.unpack("<32I", out_bytes)),
-                       "aux_bits": list(struct.unpack("<32I", aux_bytes))})
+    settings = [("base", (69.0, 0.3, 0.4, 0.5))]
+    if args.matrix:
+        settings += [("low", (24.0, 0.0, 0.0, 0.0)),
+                     ("high", (108.0, 1.0, 1.0, 1.0)),
+                     ("center", (60.0, 0.5, 0.5, 0.5)),
+                     ("sync", (72.0, 0.9, 0.2, 0.7)),
+                     ("detune", (48.0, 0.2, 0.8, 0.1)),
+                     ("shape", (69.0, 0.6, 0.55, 0.33)),
+                     ("upper", (120.0, 0.8, 0.1, 0.95))]
+    sequences = [(name, [values] * 4) for name, values in settings]
+    if args.matrix:
+        sequences.append(("parameter_changes", [settings[i][1] for i in (0, 0, 4, 4, 5, 5, 2, 2)]))
+    scenarios = []
+    for name, sequence in sequences:
+        machine.mem_write(engine, bytes(256))
+        machine.mem_write(engine, struct.pack("<Q", 0x180540CF0))
+        machine.mem_write(allocator, struct.pack("<QQQ", temp, 128, 128))
+        machine.mem_write(temp, bytes(128))
+        machine.mem_write(out, bytes(128))
+        machine.mem_write(aux, bytes(128))
+        invoke(0x18032FE50, engine, allocator)
+        blocks = []
+        for index, values in enumerate(sequence):
+            parameter_bytes = struct.pack("<4f", *values)
+            machine.mem_write(parameters, struct.pack("<i", 2) + parameter_bytes + struct.pack("<f", 1.0))
+            invoke(0x18032FEF0, engine, parameters, out, aux, (32, heap + 7 * 4096))
+            blocks.append({"block_index": index,
+                           "parameter_bits_note_timbre_morph_harmonics": list(struct.unpack("<4I", parameter_bytes)),
+                           "out_bits": list(struct.unpack("<32I", machine.mem_read(out, 128))),
+                           "aux_bits": list(struct.unpack("<32I", machine.mem_read(aux, 128)))})
+        scenarios.append({"name": name, "blocks": blocks})
     result = {"processor_sha256": digest, "unicorn_version": __version__,
               "method": "bounded emulation of original Init/Render and original tables",
               "init_address": "0x18032fe50", "render_address": "0x18032fef0",
-              "parameters": {"trigger": 2, "note": 69.0, "timbre": 0.3,
-                             "morph": 0.4, "harmonics": 0.5, "accent": 1.0},
-              "frames_per_block": 32, "blocks": blocks,
-              "limitations": ["one engine input and four blocks only",
+              "trigger": 2, "accent": 1.0,
+              "frames_per_block": 32, "scenarios": scenarios,
+              "limitations": ["selected parameter cases and state changes only",
                               "not live sound or a complete instrument render",
                               "wrapper pitch/rate/parameter routing remains unverified"]}
     with output.open("x", encoding="utf-8") as stream:
         json.dump(result, stream, indent=2)
         stream.write("\n")
-    print(json.dumps({"blocks": len(blocks), "samples": len(blocks) * 32,
-                      "first_samples": struct.unpack("<8f", machine.mem_read(out, 32))}, indent=2))
+    total_blocks = sum(len(scenario["blocks"]) for scenario in scenarios)
+    print(json.dumps({"scenarios": len(scenarios), "blocks": total_blocks,
+                      "samples": total_blocks * 32}, indent=2))
 
 
 if __name__ == "__main__":
