@@ -3,6 +3,8 @@
 Outputs are local evidence. Audio is saved as float32 NumPy arrays; the WAV is
 only a listening copy. Repeatability is measured, never assumed.
 Requires the D:-local reference Python with pedalboard 0.9.26 and NumPy.
+Historical offline-host workflow: subsequent sound checks in this project use
+the user's already-open synth, as directed after the initial host experiment.
 """
 import argparse
 import hashlib

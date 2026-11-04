@@ -12,6 +12,8 @@ unproven until all feature and equivalence requirements are independently verifi
 - All project-controlled downloads, temporary files, caches and analysis databases
   must remain under android-port on D:. Never change the installed binaries.
 - Android builds and emulators run on GitHub Actions, never this local PC.
+- Further live sound observations use the already-open MiniFreak V, per the
+  user's updated instruction. Do not instantiate another synth for sound captures.
 - Use morluto/rea for artifact analysis. Keep evidence identity and limitations.
 - Commit and push project work. Keep proprietary installed binaries/assets and
   sensitive local evidence out of the public repository.
@@ -20,10 +22,10 @@ unproven until all feature and equivalence requirements are independently verifi
 1. COMPLETE: establish repository, D: environment, artifact identities, REA.
 2. IN PROGRESS: inventory parameters, UI definitions, resources, preset formats.
 3. IN PROGRESS: map native engine and construct deterministic reference capture host.
-4. PENDING: reconstruct and verify each DSP subsystem against reference renders.
+4. IN PROGRESS: reconstruct and verify each DSP subsystem against reference renders.
 5. PENDING: reproduce preset/state and complete instrument behavior.
 6. PENDING: implement faithful Android UI, interactions, audio and MIDI.
-7. PENDING: remote Android builds/emulator tests and complete parity audit.
+7. IN PROGRESS: remote Android builds/emulator tests; full-app parity audit pending.
 
 ## Acceptance evidence
 - Exact version and hashes for every reference executable/resource set.
@@ -60,7 +62,12 @@ unproven until all feature and equivalence requirements are independently verifi
   RESOLVED: pin local reference environment to NumPy 1.26.4; live loopback succeeded.
 - Embedded Python excludes the script directory from sys.path. RESOLVED for the
   emulation helper by inserting its explicit local tools directory.
+- Initial Android CI had no sdkmanager on PATH. RESOLVED with pinned remote
+  Java/SDK setup. Its v3 default requested the removed 'tools' package; explicitly
+  selecting platform-tools fixed that. NDK and emulator tests now pass remotely.
+- A stale sky screenshot ID rejected one view-navigation attempt before input.
+  RESOLVED by re-observing the same app before retrying. Final view restored Home.
 
 ## Next Step
-Publish extended analysis evidence/tools, then validate the first reconstructed
-pitch helper against emulated original-instruction vectors and on remote Android.
+Reconstruct VAnalog against the bounded original-routine numeric traces, expand
+coverage across parameters/state changes, and retain full instrument/UI scope.

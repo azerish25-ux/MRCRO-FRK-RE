@@ -2,7 +2,10 @@
 
 Evidence-driven reconstruction of an installed Arturia MiniFreak V for Android.
 The target is full sound, UI, interaction, preset and behavioral parity.
-This is an early investigation: no Android instrument or parity claim exists yet.
+This is an early reconstruction: no complete Android instrument exists yet.
+The first portable pitch helper matches 661 original-instruction reference cases
+bit for bit on a GitHub-hosted Android x86_64 emulator. Android arm64 also builds;
+arm64 execution and full-instrument equivalence remain unverified.
 
 Reference installation reports Windows version **5.1.1.4933efd** (product 5.1).
 No original source code is available. The project uses
@@ -14,6 +17,7 @@ No original source code is available. The project uses
   live under the installation's `android-port` directory on D:.
 - Dot-source `scripts/Enter-ProjectEnvironment.ps1` before analysis commands.
 - Android builds and emulator tests run on GitHub Actions, not the local PC.
+- Further live sound observations use the user's already-open MiniFreak V.
 - Original executable/plugin binaries, factory assets and detailed local evidence
   are not included in this public repository.
 - `task_plan.md`, `findings.md` and `progress.md` record scope, evidence and work.
@@ -33,3 +37,11 @@ project directory, follows no child directory links, refuses evidence overwrites
 and executes no installed instrument code. Any unread files or XML parse errors
 remain explicit in the report. Metadata is a starting point for investigation;
 it does not establish sound or interaction equivalence.
+
+## Verified native work
+
+See [the portable core](core/README.md) for exact scope and attribution.
+[The Android verification run](https://github.com/azerish25-ux/MRCRO-FRK-RE/actions/runs/41786305161)
+cross-compiled arm64-v8a and x86_64, booted Android API 35 on GitHub Actions, and
+reported `661 checked, 0 mismatches` for the x86_64 pitch helper.
+This is numerical helper parity, not full synth or audio parity.

@@ -21,13 +21,17 @@ remotely, with no local Android installation.
 ## Task 1: Verified pitch helper
 - [x] Recover the original helper's pseudocode and file identity.
 - [x] Generate independent finite-input vectors from original x64 instructions.
-- [ ] Verify upstream pitch-table bytes match the installed table bytes.
-- [ ] Create core/include/mfrk/pitch.hpp, core/src/pitch.cpp and attribution.
-- [ ] First write core/tests/pitch_test.cpp using fixed input/output bit pairs.
-- [ ] Confirm the missing implementation fails in remote native CI.
-- [ ] Implement exact table/clamp/float operations and confirm native CI passes.
-- [ ] Cross-compile the test for Android and execute it on an Actions emulator.
-- [ ] Review results, update the parity ledger and publish the verified change.
+- [x] Verify upstream pitch-table bytes match the installed table bytes.
+- [x] Create core/include/mfrk/pitch.hpp, core/src/pitch.cpp and attribution.
+- [x] First write core/tests/pitch_test.cpp using fixed input/output bit pairs.
+- [x] Confirm the missing implementation fails in remote native CI.
+- [x] Implement exact table/clamp/float operations and confirm native CI passes.
+- [x] Cross-compile the test for Android and execute it on an Actions emulator.
+- [x] Review results, update the parity ledger and publish the verified change.
+
+Verification: Actions run 41786305161, commit fcc41cf83f548af83cce5a99517c3497b2236a8f.
+Android x86_64: 661 original-instruction cases, zero bit mismatches.
+Android arm64: cross-compile only; runtime verification pending.
 
 ## Subsequent work
 Recover parameter routing, oscillator implementations, wrappers, modulation,
