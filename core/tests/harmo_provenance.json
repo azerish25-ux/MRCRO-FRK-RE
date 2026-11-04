@@ -1,0 +1,88 @@
+{
+  "processor_sha256": "bd036dfa6a0afcfef733c29c73b1b3df969f2c86ca860b0fa535d4492fa8fb74",
+  "source_method": "Unchanged original constructor/prepare/helper/raw/decoder/actual scaled-wrapper instructions, identity-checked ProcessorReference. Independently written Python and C++ candidates never supply golden values.",
+  "fixture": {
+    "schema": "HARMO002, unchangedv2recordlayout; expandedoriginalv3coverage",
+    "cases": 13,
+    "blocks": 1852,
+    "raw_samples": 59264,
+    "bytes": 9563765,
+    "fixture_sha256": "a2c14161873dd6ea965b2d7b44ef792a9c1de23a8ef8fb07b79c986703a1d082",
+    "largest_frequency_valid_CVTT64_phase_increment": 103079206715392.0,
+    "largest_valid_frequency_bits": "0x56bb7fff",
+    "first_invalid_next_frequency_bits": "0x56bb8000",
+    "admitted_frequency_domain": "All finite positivefloatHz under maskedFPdefault; exactCVTTindefinite values modeled. Zero/negative/nonfinite not admitted.",
+    "admitted_phase_domain": "All finitefloatphase; exactCVTT64indefinite returnlowword0 when scaledfloat outside[-2^63,2^63); no clamping.",
+    "metadata_read_bound": "BitWidth(CVTT32bitpattern)0..32; offsetsread+0..128,shifts+40..168,each4bytes, allwithinaux16544bytes. Consumedbands forpositiveactivecount haveindex<=9.",
+    "expected_origin": "Originalinstructions/importmodels; no candidateexpectedoutputs."
+  },
+  "lossless_packing": {
+    "schema": "HARMOR01",
+    "canonical_schema": "HARMO002",
+    "canonical_bytes": 9563765,
+    "packed_bytes": 3905684,
+    "canonical_sha256": "a2c14161873dd6ea965b2d7b44ef792a9c1de23a8ef8fb07b79c986703a1d082",
+    "packed_sha256": "584f37d975aea26b84250b53e41060cb8dbad4dd59ac25959ec27f7bf0c9c93c",
+    "canonical_crc32": 2902848995,
+    "byte_identical_roundtrip": true,
+    "policy": "Unchanged canonical originalgold bytes; zero/literal packets max128 reused from repo tools/pack_superwave_vectors.py, framing/size/CRC verified. No candidate outputs."
+  },
+  "source": {
+    "processor_path": "D:\\MAIN SOFTWARE\\Synths\\MFRK\\main synth\\MiniFreak V\\MiniFreak V\\resources\\x64\\minifreakvProcessor.dll",
+    "processor_sha256": "bd036dfa6a0afcfef733c29c73b1b3df969f2c86ca860b0fa535d4492fa8fb74",
+    "source_kind": "MatchedPE static objdump and unchanged original instruction execution in Unicorn; exact named import models; no live audio.",
+    "routines": {
+      "constructor": "0x1802e9ea0",
+      "prepare": "0x1802c3610",
+      "reset_smoothers": "0x1802c3770",
+      "initialize": "0x1802c37b0",
+      "frequency": "0x1802c3410",
+      "phase": "0x1802c33f0",
+      "trigger": "0x1802c3420",
+      "bind": "0x1802c3430",
+      "raw": "0x1802c35a0",
+      "scaled_primary": "0x1802cdd30",
+      "scaled_alias": "0x1802c3470",
+      "render": "0x180335c30",
+      "clear": "0x180334870",
+      "coefficient_controls": "0x180336440",
+      "pitch": "0x180336870",
+      "harmonic": "0x180336a80",
+      "delay": "0x180337070",
+      "decoder": "0x1802c9cf0"
+    },
+    "reuse": [
+      "../oscillator-model-agent/harmo-candidate/constructor-objdump.txt",
+      "../harmo-table-agent/HANDOFF.md",
+      "../ucrt-sinf-agent/HANDOFF.md"
+    ]
+  },
+  "counts": {
+    "profiles": 13,
+    "blocks": 1852,
+    "raw_samples": 59264,
+    "scaled_samples": 59264,
+    "prepared_bytes": 785248,
+    "after_bytes": 785248,
+    "delay_words": 3792896,
+    "normalizers": 8,
+    "auxiliary_bytes": 16544,
+    "lifecycle_commands": 36
+  },
+  "repository_fixture": "core/tests/harmo_vectors.bin",
+  "lifecycle_fixture": {
+    "path": "core/tests/harmo_lifecycle_vectors.bin",
+    "sha256": "b569f604fddd4bc8de09d11646e68139f5e84b2b506544d5e4165dc0c93d6e0e"
+  },
+  "admission": "Explicit zero preconstructor arena/null opaque context/zero owned optional2048short delay then source literal writes+Init. Not claimed factory defaults. All finite positive Hz; finite phase/gain; nearest, masked FP exceptions, FTZ/DAZ off. Shared immutable tables outlive engine. Canonical native address labels remain private value words, never dereferenced.",
+  "discarded_math": "Original336440 calls exp2f, but result is not consumed by full integer harmonic/delay kernels. Source-register proof and16 full-record return perturbations agree. No host exp2 approximation substituted. Separate source-derived exp2 implementation matched196609 direct original checks; fenv/errno side effects excluded from sound/state API.",
+  "source_candidate_hashes": {
+    "harmo.hpp": "f7ae782ef2050142131cbd6a2d7b5e9318c0b6e4a0454960bc662f94ca67dc5a",
+    "harmo_test_v2.cpp": "4306793806b81360f5bb3005208322fa7c1f5964274d1223d8eee50afc9c93dc",
+    "scalar_v1.py": "59c889237761fae3baf1e5b668559ae076525504b8ae5d7235a968a61b65c16f",
+    "probe_original_v1.py": "540846a0330ab39b9b1c2fa31ac19e1a96d07bc13b1ff56c618aa5ff12680944",
+    "extend_frequency_v3.py": "6724184dab0da591d92f41e437437a793b58b2c90688a7dd5046a433c577cb52",
+    "original-harmo-probes-v3.json": "98c8b667ea59457824856f3c895ef57ee4c4bd6ac66e948f0c3a2bfa72a54080"
+  },
+  "remaining": "Full Voice/Dual/modulation/FX/UI/host graph; arbitrary preconstructor arenas/external context and buffer aliasing; other FP environment behavior. Linux/Android target validation pending at initial integration."
+}
