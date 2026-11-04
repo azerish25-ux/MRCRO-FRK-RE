@@ -212,13 +212,14 @@ class VariableShapeOscillator {
         high_ = false;
       }
     
-      next_sample += ComputeNaiveSample(
-          slave_phase_,
-          pw,
-          slope_up,
-          slope_down,
-          triangle_amount,
-          square_amount);
+      // Installed engine accumulates the BLEP correction before the final saw
+      // term (0x1803303e0); grouping the naive sample first changes float bits.
+      const float square = slave_phase_ < pw ? 0.0f : 1.0f;
+      const float triangle = slave_phase_ < pw
+          ? slave_phase_ * slope_up
+          : 1.0f - (slave_phase_ - pw) * slope_down;
+      const float saw = (square - slave_phase_) * square_amount + slave_phase_;
+      next_sample = (next_sample + (triangle - saw) * triangle_amount) + saw;
       previous_pw_ = pw;
       
       if (output_phase) {

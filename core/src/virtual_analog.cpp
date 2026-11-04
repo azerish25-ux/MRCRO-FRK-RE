@@ -37,9 +37,6 @@
 
 #include <algorithm>
 #include <array>
-#include <bit>
-#include <cstdint>
-#include <cstdio>
 
 namespace mfrk {
 
@@ -109,15 +106,6 @@ void VirtualAnalog::render(const VirtualAnalogParameters& parameters,
     for (std::size_t index = 0; index < output.size(); ++index) {
         const float square_level = square_mix.Next();
         const float saw_level = saw_mix.Next();
-        // Temporary branch-only diagnostics for the two remaining exact mismatches.
-        if (index == 15 && parameters.note >= 108.0f) {
-            std::printf("trace note %.9g: square %08x saw %08x square_gain %08x saw_gain %08x\n",
-                        static_cast<double>(parameters.note),
-                        std::bit_cast<std::uint32_t>(impl_->temporary[index]),
-                        std::bit_cast<std::uint32_t>(output[index]),
-                        std::bit_cast<std::uint32_t>(square_level),
-                        std::bit_cast<std::uint32_t>(saw_level));
-        }
         output[index] = square_level * impl_->temporary[index] + saw_level * output[index];
     }
 }
