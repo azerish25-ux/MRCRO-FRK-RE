@@ -30,7 +30,7 @@
     },
     {
       "path": "plaits/dsp/oscillator/variable_shape_oscillator.h",
-      "sha256": "4ef5b13ae8024f6a749b1db94cb575973a31594b3a6fdf3b04259c9d1164c514",
+      "sha256": "414199cc7c86620c3fe629c801657dc7eabe28964465f28fa5a22795b00bd9d5",
       "upstream_sha256": "f863369f7ae2047b544d43d9350a3b7d436277293402dc253c12862454bbb9ee"
     },
     {
@@ -47,7 +47,7 @@
     },
     {
       "path": "plaits/dsp/oscillator/variable_shape_oscillator.h",
-      "reason": "Preserve installed BLEP/naive-wave accumulation grouping recovered at 0x1803303e0"
+      "reason": "Preserve installed wrap BLEP multiplication order recovered at 0x1803303e0; naive-sample grouping retained after comparison"
     }
   ]
 }

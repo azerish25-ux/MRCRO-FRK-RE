@@ -200,7 +200,9 @@ class VariableShapeOscillator {
           triangle_step *= triangle_amount;
 
           this_sample -= (1.0f - triangle_amount) * stmlib::ThisBlepSample(t);
-          next_sample -= (1.0f - triangle_amount) * stmlib::NextBlepSample(t);
+          // Installed wrap correction multiplies the level before squaring t.
+          const float remaining = 1.0f - t;
+          next_sample -= (1.0f - triangle_amount) * remaining * remaining * -0.5f;
           this_sample += triangle_step * stmlib::ThisIntegratedBlepSample(t);
           next_sample += triangle_step * stmlib::NextIntegratedBlepSample(t);
           high_ = false;
@@ -212,14 +214,13 @@ class VariableShapeOscillator {
         high_ = false;
       }
     
-      // Installed engine accumulates the BLEP correction before the final saw
-      // term (0x1803303e0); grouping the naive sample first changes float bits.
-      const float square = slave_phase_ < pw ? 0.0f : 1.0f;
-      const float triangle = slave_phase_ < pw
-          ? slave_phase_ * slope_up
-          : 1.0f - (slave_phase_ - pw) * slope_down;
-      const float saw = (square - slave_phase_) * square_amount + slave_phase_;
-      next_sample = (next_sample + (triangle - saw) * triangle_amount) + saw;
+      next_sample += ComputeNaiveSample(
+          slave_phase_,
+          pw,
+          slope_up,
+          slope_down,
+          triangle_amount,
+          square_amount);
       previous_pw_ = pw;
       
       if (output_phase) {
