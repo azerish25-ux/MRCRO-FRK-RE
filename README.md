@@ -81,3 +81,8 @@ complete envelopes/voices and the Android application remain unfinished.
 now pass7,032 original state records and3,600 curve bytes on Android. Complete
 voice scheduling, remaining engines/effects/presets and the Android UI/app remain
 unfinished; the full1:1 objective stays active.
+
+[FIR resources, selector and fade checks](https://github.com/azerish25-ux/MRCRO-FRK-RE/actions/runs/41821648527/attempts/2)
+also pass on Android, including settled FIR filter composition and the original
+fallback behavior. Deferred transitions, complete voice/FX/MIDI/preset behavior
+and the actual Android UI/app remain unfinished.

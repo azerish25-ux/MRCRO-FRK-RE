@@ -76,6 +76,17 @@
   device-level validation. No full instrument or APK completion is claimed.
 
 ## Live analysis handles (revalidate before reuse)
+- Numeric FIR/bypass/fallback/selector/fade/resource stage integrated d71cb685...
+  Android41821648527 attempt2 passed all12 checks and new original references.
+  First attempt failed old adb-pull; no code/numerical change was needed to retry.
+- Filter wrapper handoff now complete locally with108indexedREA records; wave_tables
+  closed ownedREA and is doing a final setter-conversion probe without newREA.
+- ui_resources owns liveREA58961 under envelope-agent/integration-001/rea and is
+  tracing FX inputgain/fullvoice wiring. Do not borrow this handle.
+- oscillator_models owns new independent oscillator-bank/model investigation;
+  vcf_review completed localHOME scene handoff and numeric resource review.
+- Full deferred controller, remaining DSP models/effects/state, Android audio/MIDI
+  and faithful UI/app still required. No APK or completion claim.
 - Main ADSR integratedb80b5bfef4ea1eb07d6be44df97de7043528630a; Android41817910133
   passes8,032commands/7,032records/3,600bytes plus all earlier checks. Both ABIs
   compiled, x86_64 executed. Required constructor prewarm fix reviewed/resolved.

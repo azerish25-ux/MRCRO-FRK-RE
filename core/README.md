@@ -1,7 +1,7 @@
 # Portable instrument core
 
-The core contains a recovered pitch helper, raw VAnalog engine, stateful 2x
-interpolator, VAnalog control update and VAnalog output-stage composition.
+The core contains reconstructed oscillator, control, filter, resampling and main
+ADSR components. Exact scopes and original-reference checks are recorded below.
 It is not a complete instrument engine or an Android app.
 
 `normalized_pitch_frequency` follows the original x64 helper at `0x18032e950`
@@ -195,3 +195,33 @@ to the2,283,246-byte canonical data; provenance/hashes are in
 `core/tests/adsr_fixture_manifest.json`. Generators are `generate_adsr_vectors.py`
 and `compact_adsr_vectors.py` under tools. Full caller/clock/gate wiring and the
 cyclic envelope still need integration and instrument-wide validation.
+
+## FIR resources, adaptive selection and fades
+
+`FilterResource` owns independent audio/modulation resamplers and startup-sized
+buffers; it processes an externally owned raw49 filter. `OversampledVcf49` now
+uses that resource for either original IIR or FIR profiles. `FirResampler`
+preserves source taps, phase packing, four-lane float accumulation/reduction,
+gain, histories and reset. No processing method allocates.
+
+All selector outputs are represented: factor1 copies directly; factor3 IIR uses
+the original missing-key zero-gain one-section fallback; factor3 FIR uses the
+original single tap and gain3. Other profiles preserve their original coefficients.
+`select_filter_factor` implements the original threshold/shift rules.
+`FilterFade` preserves the32-sample vector grouping/clamping, including61-block
+0→1/1→0 transitions at96kHz with0.02-second configured time.
+
+[Android41821648527, attempt2](https://github.com/azerish25-ux/MRCRO-FRK-RE/actions/runs/41821648527/attempts/2)
+passed all12 native checks and all prior Android references, plus:
+- 11,040 FIR upsampled and2,400 downsampled values.
+- 1,440 IIR fallback upsampled values,480 downsampled and15 paired state blocks.
+- 8,320 fade values and112 adaptive selector cases.
+- 2,880 actual settled FIR-wrapper outputs and block-end PRNG states across all
+  six factors and three output modes, with native control/noise/reset changes.
+
+Both Android ABIs compiled; runtime was API35 x86_64. Independent review verified
+tap bits, arithmetic/history/reset, capacity handling, fixture regeneration and
+settled composition. Fixture SHA256:
+`c8ee189f26447620750fee7519577cd30c16f4c899a521ecbb48c5878ca92c82`.
+This does not implement the deferred worker/controller, arbitrary state-command
+replay, full voice/FX graph or Android application/UI.

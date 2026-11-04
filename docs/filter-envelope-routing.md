@@ -160,9 +160,53 @@ is integrated yet.
 Adaptive factor selection can produce3. Original missing-key IIR fallback for3
 has zero gain, one zero-coefficient section and latency0; it must not be replaced
 with a generic3x filter. Factor1 skips resampler creation and copies directly.
-These later cases and the separate FIR path are outside the current2/4/6/8
-portable IIR scope. Local filter-agent files retain the exact selector/factory
-and transition evidence.
+The numeric portable resource now includes bypass1, fallback3 and FIR profiles.
+The deferred controller itself remains unimplemented. Local filter-agent files
+retain the exact selector/factory and transition evidence.
+
+## Latest numeric resources and constructor contract
+
+`FilterResource`, FIR profiles, factor1/3 handling, adaptive selector and vector
+fade are integrated at d71cb6853f6745de50001ad4d92c2bdf6aa53166.
+[Android41821648527 attempt2](https://github.com/azerish25-ux/MRCRO-FRK-RE/actions/runs/41821648527/attempts/2)
+passed11,040 FIR up/2,400 down values,1,440 fallback up/480 down/15 state pairs,
+8,320 fade values,112 selector cases and2,880 settled FIR-wrapper outputs/seeds.
+All earlier checks passed; both ABIs built, x86_64 executed.
+
+The full original Dual constructor enables adaptive selection, overriding the
+wrapper-only constructor default. Cold constructor has ready=true but no manager
+or resource; public Init is required before audio. It synchronously constructs
+the default resource and drains completion to ready/gain1. Default selected2 at
+48kHz becomes internal96kHz; adaptive selection at96kHz gives1/internal96kHz.
+First-prepare configuration changes have distinct context+50 branches, retained
+in the original cold-start probes. Do not assume a zero-output unready state for
+an uninitialized constructor or infer semantic names for that context flag.
+
+FIR fixed resources and both input streams are independently verified, including
+the original source-tap fallback3. Cross-kernel deferred transitions, arbitrary
+captured state-command replay and OS worker timing remain unverified.
+
+## Voice integration updates
+
+Actual public registration function249a30 yields224 parameter entries with
+IDs17..240. For its controller block, word offset is2*(ID-17), then controls
+shift left2 into the ushort domain. This is one registration family, not proof
+that these are every GUI/feedback parameter.
+
+The two ADSR/cyclic copies are oscillator-note lanes used by paraphonic policy.
+Gate row=copy*6+voice; para policy selects one oscillator lane, normal policy
+dispatches both oscillator gates. Original144 dispatch cases and256 injected
+oscillator-output samples establish routing/order boundaries. Per-call control
+uses ADSR public output from the prior block: gate/control2ccb50 runs before
+2cccc0 prepares and steps both lanes once, then audio renders.
+
+Correction to gain interpretation: target engine+a5ff8+0x34*i is resonance
+compensation,0.61886376-normalizedResonance*0.27087665, not directly VCA/ADSR.
+The filter's second audio input is oscillator-derived FM sidechain, not VCA.
+Positive Vca_Mod is exported as native feedback IDs414..420, then MiniFreakResampled
+process2f3760 forwards envelope/panning controls into its8-input/2-output FX graph.
+Exact FX input-gain/ramp and full routing are still being recovered. Main synth
+constructor targets48kHz; default MNF2x gives96kHz/32=3000 control ticks.
 
 Full allocator/event scheduling, modulation, remaining oscillators, effects,
 sequencer, state/preset behavior, Android audio/MIDI/UI and instrument-wide

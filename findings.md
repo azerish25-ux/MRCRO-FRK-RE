@@ -351,3 +351,29 @@
   do not substitute invented3x coefficients. Separate FIR/resource paths remain.
 - UI HOME runtime scene recovery started from source defaults/conditions/styles;
   no actual Android renderer/app/APK or complete UI parity yet.
+
+## Complete numeric resources, not yet deferred controller
+- Integrated d71cb6853f6745de50001ad4d92c2bdf6aa53166 after independent review.
+  Added original FIR profiles/phase/history math, shared fixed-resource chain,
+  adaptive selector,32-frame four-lane fade and factor1/3 IIR handling.
+- Red41821285169 rejected silent FIR with11,109 mismatches; other checks passed.
+  Android41821648527 attempt1 stopped at preexisting table adb-pull before new
+  checks. Unchanged failed-job retry attempt2 passed all12 tests/both ABI builds
+  and x86_64 execution, including all prior table hashes and DSP references.
+- New exact checks:11,040 FIR up/2,400down;1,440 fallback up/480down/15states;
+  8,320fade/112selector;2,880actual FIR-wrapper outputs and90 PRNG end-states.
+- New fixture149,432bytes SHA256
+  c8ee189f26447620750fee7519577cd30c16f4c899a521ecbb48c5878ca92c82.
+- Full lifecycle handoff: local/evidence/filter-agent/FILTER_WRAPPER_HANDOFF.md,
+ 108indexedREA records, constructor/default/cold/pending/factory/transition traces.
+  Public Init required; constructor-ready alone hasNULL resource. Full Dual
+  adaptiveTRUE overrides wrapper-onlyFALSE. Pending normalized controls reset
+  withOLD records before latest-value replay, no extra reset after replay.
+- Outer gain source is resonance compensation, not VCA. Actual VCA exports to
+  MiniFreakResampled→FX mixer; second filter audio input is oscillator FM.
+  Main synth target48k/defaultMNF96k gives3000 control ticks persecond.
+- HOME candidate source scene1639declarations/1583rects,226visible/1221hidden/
+  192unknown,287explicitdefaults among384boundIDs. Local renderer handoff under
+  ui-resource-agent/runtime-home. Static candidate, not verified Android/runtime UI.
+- Further oscillator-model bank mapping/reconstruction started independently under
+  oscillator-model-agent. Remaining full instrument/application objective active.
