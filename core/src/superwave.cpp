@@ -145,7 +145,7 @@ namespace mfrk {
 
     void SuperWave::render_raw(std::span<float, 32> out) noexcept {
         const auto& choice = state_.tables[0];
-        std::fill(out.begin(), out.end(), 0.0f);
+        render_superwave32(state_, tables_.lookup(static_cast<mfrk::BasicWaveform>(choice.family), choice.band), out);
     }
 
     void SuperWave::render_scaled(std::span<float, 32> out) noexcept {
