@@ -48,3 +48,22 @@ rounding, feedback buffers, filter/FX/LFO/envelope curves, ADSR dragging, sequen
 quantization/zoom, double-click/default reset, sample pickers/drop, macro editor and
 initialization ordering. Compare original state sequences and appropriately scaled
 captures; existing bounded JPEG baselines alone cannot prove lossless pixel parity.
+
+
+## Remote Android comparison foundation
+
+Run [41860166281](https://github.com/azerish25-ux/MRCRO-FRK-RE/actions/runs/41860166281)
+built and installed actual app/test APKs, passed lint and all five native-window
+screenshot checks on API35 x86_64. The source-controlled project acquires715
+hash-verified original resources remotely and packages only its three required
+assets. Four assigned states produce distinct images; repeated factory values
+produce identical pixels. Actual first-draw synchronization, window focus and
+first-use immersive tutorial setup prevent obscured/empty captures.
+
+This covers three filter knobs in a test-only app with no synth engine or
+launcher flow. RasterConvention explicitly records candidate interpretations;
+they are not accepted as native equivalence. Exact native SoftKnob properties,
+paint geometry and SliderComposer magnetic/gesture behavior are being traced in
+the matched installed wrapper. Full Home/Advanced/Sequencer and all interactions
+remain required. The user requires the same UI/UX, including tiny details;
+a stylistic approximation is not an acceptance criterion.

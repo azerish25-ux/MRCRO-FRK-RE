@@ -2,7 +2,9 @@
 
 ## Objective
 Reconstruct the installed MiniFreak V as an Android app with verified 1:1 sound,
-UI, UX and functionality. No original source code is available. Completion is
+UI, UX and functionality. Exact original appearance, layout, controls and
+interactions are required; a stylistic approximation does not meet acceptance.
+No original source code is available. Completion is
 unproven until all feature and equivalence requirements are independently verified.
 
 ## Constraints
@@ -27,7 +29,8 @@ unproven until all feature and equivalence requirements are independently verifi
 3. IN PROGRESS: map native engine and construct deterministic reference capture host.
 4. IN PROGRESS: reconstruct and verify each DSP subsystem against reference renders.
 5. PENDING: reproduce preset/state and complete instrument behavior.
-6. PENDING: implement faithful Android UI, interactions, audio and MIDI.
+6. IN PROGRESS: exact Android UI reconstruction; comparison APK foundation only.
+   Native widget raster/gesture recovery, complete screens, audio and MIDI remain.
 7. IN PROGRESS: remote Android builds/emulator tests; full-app parity audit pending.
 
 ## Acceptance evidence

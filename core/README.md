@@ -294,3 +294,24 @@ rounding modes are outside this scoped reference contract.
 These component matches do not establish complete instrument equivalence.
 Remaining engines, actual voice scheduling, full effects, modulation, presets,
 sequencer and Android audio/UI integration remain active work.
+
+
+## Bass oscillator
+
+`Bass` implements native32-frame96kHz Bass (Osc1 selector11/Osc2 selector12),
+including nonlinear control smoothing/folding, exact float grouping and xorshift
+jitter after sample0 and16. The phase setter changes only the stored seed;
+trigger applies it only when admitted gate state permits. Initialize clears the
+three target controls and preserves phases, smoothing and PRNG. Muted scaled
+render still advances raw state. Input words/dirty flags are explicit because
+the original constructor leaves them unwritten.
+
+Run [41859731514](https://github.com/azerish25-ux/MRCRO-FRK-RE/actions/runs/41859731514)
+passes all19 host checks and Android API35 x86_64 original-vector checks. Bass
+passes776fixtures/14,400samples plus full semantic state comparisons. Both ABIs
+compile; arm64 runtime remains pending. Independent review regenerated original
+fixtures byte-identically, verified source/hash/math/lifecycle and rejected seven
+meaningful mutants and ten malformed fixture variants. No table dependency or
+host math substitution is introduced. Finite state and representable phase
+float-to-signed32 conversions are required. Full voice/oscillator scheduling
+remains separate work.

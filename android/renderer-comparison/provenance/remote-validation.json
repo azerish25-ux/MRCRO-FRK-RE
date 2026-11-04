@@ -1,0 +1,347 @@
+{
+  "run": "https://github.com/azerish25-ux/MRCRO-FRK-RE/actions/runs/41860166281",
+  "commit": "d9ee9e62f7c3928ed98cdfc1a0bd7575d6f8f172",
+  "job_id": 126679459770,
+  "artifact_id": 13338878977,
+  "artifact_zip_sha256": "2c7906ba44ab94eba58dc7348d741fa3257b159c9eb36ea41285cd60ff080f23",
+  "build": "assembleDebug, assembleDebugAndroidTest, lintDebug passed on remote GitHub Actions",
+  "runtime": "API35 x86_64 remote emulator; no local Android execution",
+  "original_resources_verified": 715,
+  "selected_packaged_vendor_assets": 3,
+  "report": {
+    "passed": true,
+    "cases": [
+      {
+        "raster_convention": "source-constrained-skia-candidate-v1",
+        "source_crop": [
+          1815.6,
+          535,
+          560,
+          205
+        ],
+        "source_evidence_status": "declaration-derived comparison candidate; native raster/flex/gesture parity unverified",
+        "logical_to_pixel_scale": 3.4285707473754883,
+        "assignments": [
+          {
+            "parameter": "Vcf_Cutoff",
+            "normalized": 0,
+            "indicator_position": 0,
+            "source_id": "screens/synth.xml#397",
+            "source_bounds": [
+              1861.8500000000001,
+              552,
+              125,
+              125
+            ],
+            "center_text": ""
+          },
+          {
+            "parameter": "Vcf_Resonance",
+            "normalized": 0,
+            "indicator_position": 0,
+            "source_id": "screens/synth.xml#404",
+            "source_bounds": [
+              2033.1000000000001,
+              552,
+              125,
+              125
+            ],
+            "center_text": ""
+          },
+          {
+            "parameter": "Vcf_EnvAmount",
+            "normalized": 0,
+            "indicator_position": 0,
+            "source_id": "screens/synth.xml#411",
+            "source_bounds": [
+              2204.3500000000004,
+              552,
+              125,
+              125
+            ],
+            "center_text": ""
+          }
+        ],
+        "drawn_frames": 2,
+        "value_mapping": "explicit normalized endpoints/center; arbitrary native magnetic mapping unverified",
+        "gesture_dispatch": "not implemented in comparison harness",
+        "window_focused": true,
+        "scenario": "minimum",
+        "crop_argb_sha256": "5d310833704bfc3f25459369ec60a6c5c77167b98118ff0b27c2c94d6e1296ff",
+        "capture_pixels": [
+          0,
+          188,
+          1920,
+          704
+        ],
+        "pixel_oracle": "none: original native raster is not verified"
+      },
+      {
+        "raster_convention": "source-constrained-skia-candidate-v1",
+        "source_crop": [
+          1815.6,
+          535,
+          560,
+          205
+        ],
+        "source_evidence_status": "declaration-derived comparison candidate; native raster/flex/gesture parity unverified",
+        "logical_to_pixel_scale": 3.4285707473754883,
+        "assignments": [
+          {
+            "parameter": "Vcf_Cutoff",
+            "normalized": 0.5,
+            "indicator_position": 0.5,
+            "source_id": "screens/synth.xml#397",
+            "source_bounds": [
+              1861.8500000000001,
+              552,
+              125,
+              125
+            ],
+            "center_text": ""
+          },
+          {
+            "parameter": "Vcf_Resonance",
+            "normalized": 0.5,
+            "indicator_position": 0.5,
+            "source_id": "screens/synth.xml#404",
+            "source_bounds": [
+              2033.1000000000001,
+              552,
+              125,
+              125
+            ],
+            "center_text": ""
+          },
+          {
+            "parameter": "Vcf_EnvAmount",
+            "normalized": 0.5,
+            "indicator_position": 0.5,
+            "source_id": "screens/synth.xml#411",
+            "source_bounds": [
+              2204.3500000000004,
+              552,
+              125,
+              125
+            ],
+            "center_text": ""
+          }
+        ],
+        "drawn_frames": 3,
+        "value_mapping": "explicit normalized endpoints/center; arbitrary native magnetic mapping unverified",
+        "gesture_dispatch": "not implemented in comparison harness",
+        "window_focused": true,
+        "scenario": "center",
+        "crop_argb_sha256": "5cbf26491f1eda86bbce854d08ad6e0926d7e34e848be53f2ff6b97e528f510a",
+        "capture_pixels": [
+          0,
+          188,
+          1920,
+          704
+        ],
+        "pixel_oracle": "none: original native raster is not verified"
+      },
+      {
+        "raster_convention": "source-constrained-skia-candidate-v1",
+        "source_crop": [
+          1815.6,
+          535,
+          560,
+          205
+        ],
+        "source_evidence_status": "declaration-derived comparison candidate; native raster/flex/gesture parity unverified",
+        "logical_to_pixel_scale": 3.4285707473754883,
+        "assignments": [
+          {
+            "parameter": "Vcf_Cutoff",
+            "normalized": 1,
+            "indicator_position": 1,
+            "source_id": "screens/synth.xml#397",
+            "source_bounds": [
+              1861.8500000000001,
+              552,
+              125,
+              125
+            ],
+            "center_text": ""
+          },
+          {
+            "parameter": "Vcf_Resonance",
+            "normalized": 0,
+            "indicator_position": 0,
+            "source_id": "screens/synth.xml#404",
+            "source_bounds": [
+              2033.1000000000001,
+              552,
+              125,
+              125
+            ],
+            "center_text": ""
+          },
+          {
+            "parameter": "Vcf_EnvAmount",
+            "normalized": 0.5,
+            "indicator_position": 0.5,
+            "source_id": "screens/synth.xml#411",
+            "source_bounds": [
+              2204.3500000000004,
+              552,
+              125,
+              125
+            ],
+            "center_text": ""
+          }
+        ],
+        "drawn_frames": 4,
+        "value_mapping": "explicit normalized endpoints/center; arbitrary native magnetic mapping unverified",
+        "gesture_dispatch": "not implemented in comparison harness",
+        "window_focused": true,
+        "scenario": "factory-default",
+        "crop_argb_sha256": "4d13464b9cd52ea5486e0573fd614fa951ff4e349af1736730d51c86b334d690",
+        "capture_pixels": [
+          0,
+          188,
+          1920,
+          704
+        ],
+        "pixel_oracle": "none: original native raster is not verified"
+      },
+      {
+        "raster_convention": "source-constrained-skia-candidate-v1",
+        "source_crop": [
+          1815.6,
+          535,
+          560,
+          205
+        ],
+        "source_evidence_status": "declaration-derived comparison candidate; native raster/flex/gesture parity unverified",
+        "logical_to_pixel_scale": 3.4285707473754883,
+        "assignments": [
+          {
+            "parameter": "Vcf_Cutoff",
+            "normalized": 1,
+            "indicator_position": 1,
+            "source_id": "screens/synth.xml#397",
+            "source_bounds": [
+              1861.8500000000001,
+              552,
+              125,
+              125
+            ],
+            "center_text": ""
+          },
+          {
+            "parameter": "Vcf_Resonance",
+            "normalized": 1,
+            "indicator_position": 1,
+            "source_id": "screens/synth.xml#404",
+            "source_bounds": [
+              2033.1000000000001,
+              552,
+              125,
+              125
+            ],
+            "center_text": ""
+          },
+          {
+            "parameter": "Vcf_EnvAmount",
+            "normalized": 1,
+            "indicator_position": 1,
+            "source_id": "screens/synth.xml#411",
+            "source_bounds": [
+              2204.3500000000004,
+              552,
+              125,
+              125
+            ],
+            "center_text": ""
+          }
+        ],
+        "drawn_frames": 5,
+        "value_mapping": "explicit normalized endpoints/center; arbitrary native magnetic mapping unverified",
+        "gesture_dispatch": "not implemented in comparison harness",
+        "window_focused": true,
+        "scenario": "maximum",
+        "crop_argb_sha256": "97cda5408e97eab768ea326d060f7ce3761bd7c33c6ed8eae154c26dfdfa83d5",
+        "capture_pixels": [
+          0,
+          188,
+          1920,
+          704
+        ],
+        "pixel_oracle": "none: original native raster is not verified"
+      },
+      {
+        "raster_convention": "source-constrained-skia-candidate-v1",
+        "source_crop": [
+          1815.6,
+          535,
+          560,
+          205
+        ],
+        "source_evidence_status": "declaration-derived comparison candidate; native raster/flex/gesture parity unverified",
+        "logical_to_pixel_scale": 3.4285707473754883,
+        "assignments": [
+          {
+            "parameter": "Vcf_Cutoff",
+            "normalized": 1,
+            "indicator_position": 1,
+            "source_id": "screens/synth.xml#397",
+            "source_bounds": [
+              1861.8500000000001,
+              552,
+              125,
+              125
+            ],
+            "center_text": ""
+          },
+          {
+            "parameter": "Vcf_Resonance",
+            "normalized": 0,
+            "indicator_position": 0,
+            "source_id": "screens/synth.xml#404",
+            "source_bounds": [
+              2033.1000000000001,
+              552,
+              125,
+              125
+            ],
+            "center_text": ""
+          },
+          {
+            "parameter": "Vcf_EnvAmount",
+            "normalized": 0.5,
+            "indicator_position": 0.5,
+            "source_id": "screens/synth.xml#411",
+            "source_bounds": [
+              2204.3500000000004,
+              552,
+              125,
+              125
+            ],
+            "center_text": ""
+          }
+        ],
+        "drawn_frames": 6,
+        "value_mapping": "explicit normalized endpoints/center; arbitrary native magnetic mapping unverified",
+        "gesture_dispatch": "not implemented in comparison harness",
+        "window_focused": true,
+        "scenario": "factory-repeat",
+        "crop_argb_sha256": "4d13464b9cd52ea5486e0573fd614fa951ff4e349af1736730d51c86b334d690",
+        "capture_pixels": [
+          0,
+          188,
+          1920,
+          704
+        ],
+        "pixel_oracle": "none: original native raster is not verified"
+      }
+    ],
+    "assertions": "required asset hashes, native draw, assignments, crop bounds, distinct positions, repeat stability"
+  },
+  "apks": {
+    "app/build/outputs/apk/debug/app-debug.apk": "387d56700064e0bca97a5b3f6c3544013ecd0481d05bf52aa26d50190edd23dc",
+    "app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk": "cbb27c6e262ce71777b37ac7726219b2bc938f7c0b2c78b4bd425028f0313fcb"
+  },
+  "scope": "Three-knob renderer comparison harness only. Original raster parity, touch gestures, complete instrument and audio app are not verified."
+}

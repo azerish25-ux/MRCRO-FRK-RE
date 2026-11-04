@@ -414,3 +414,16 @@
 - Next actual graph work: NotePath candidate integration-002/cpp-notepath in
   progress; Bass candidate ready; full Harmo investigation active with closed
   table dependencies. All generated project material remains on D.
+
+- Bass merged main5e9c4481 after independent review and run41859731514:19native
+  checks/all Android x86_64 references pass,776Bassfixtures14400samples exact.
+- Android comparison merged50d5b486 after run41860166281:APKs+lint andfive
+  actual screenshot cases pass, allfocus true, fourdistinct andexactrepeat.
+  Source-controlled project isthree-knobtestonly; full app/UI parity NOTdone.
+  Artifacts/hash report retained locally and provenance/remote-validation.json.
+- Exact UIUX objective reiterated. Native SoftKnob rendering/gesture RE active
+  atnative-ui-source, actualsource/RTTI/function ranges found. Old wrapper
+  CLI73850 died on benignsessionquery, emptyreservedrequest preserved; allits
+  processesclosed. Worker ownsfreshisolatedclient; originalinstalledbinaryintact.
+- Harmo fullcandidate and NotePath candidate are under independent development;
+  neither is repository-integrated or Android-verified yet. Continuefullgraph.

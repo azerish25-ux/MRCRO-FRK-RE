@@ -2,7 +2,7 @@
   ".gitignore": "f8e6951cd4c7a2bbdf04b3da53aeecac0cabb13c825fa7d7172823b6c76773bc",
   "build.gradle": "8ebf0602839be8fd4c06f07a93e45da6b4a04444fa1b38df8b9def9c1b5c8032",
   "gradle.properties": "fd3dc84bf51d174859c61ea75231586e0a93de9bbad80da4e5e783ff5e730d09",
-  "README.md": "18cd0f9a5c89eb338ff3026536f870c6390a4c502f1470ee0d502698bc8c6303",
+  "README.md": "cba79c341c14f85316cdddd6c252d494c2e894cd6dab14811892b43f4fccf8e0",
   "settings.gradle": "eeed077ca602a1720476b8a8a09b71d01900c7221f68dc43882b95add95a9efd",
   "app/build.gradle": "2823e56499c8b872983c21f4bef6b7bc7221ca6edb1d52c418c45d8aa5247b29",
   "provenance/raster-assumptions.json": "74c52efad15d125d3ffcf5866b0d3bedeed205aff879e6c83df84efbfce02a97",
@@ -22,5 +22,6 @@
   "app/src/main/java/com/mfrk/renderercomparison/SilverSoftKnob.java": "c438266a70c35c9065aecceed238e8dc65749b113c47ad6f6d3bb358b83c30fd",
   "app/src/main/java/com/mfrk/renderercomparison/SourceScene.java": "c39ad75c43a9b1f70c060b83655995138d2014992476bd18e5860fb41afbcecb",
   "app/src/androidTest/java/com/mfrk/renderercomparison/ComparisonInstrumentation.java": "3d5402a612b4dac8167c579bd46e004a1f1c7c8c7dea4eece01d2566d757c8ad",
-  "../../.github/workflows/android-renderer-comparison.yml": "bb36ccc9033c3120962ef1f41c5b3fc15a2b797911fc98ecd80615bce295ef2f"
+  "../../.github/workflows/android-renderer-comparison.yml": "bb36ccc9033c3120962ef1f41c5b3fc15a2b797911fc98ecd80615bce295ef2f",
+  "provenance/remote-validation.json": "bfa56daa54772602636fef696eb12e9c44fe2f5e165206241b9b070894cbcec4"
 }
