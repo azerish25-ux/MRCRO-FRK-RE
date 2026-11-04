@@ -56,10 +56,30 @@
 - Traced Basic Waves control, rendering, pitch/table selection and initializers.
   Its image tables are initially zero; table-generation recovery is required
   before meaningful Basic Waves numeric waveform references can be established.
+- Continued: independent waveform-table investigation recovered all 34 populated
+  mathematical tables. Scoped live reads, original-instruction initialization and
+  scalar formulas agreed byte-for-byte for 17,408 unique shorts. Sources/evidence
+  stay under ../local/evidence/wave-table-agent. No live synth was changed.
+- Portable table generation passed all 128 bank byte-hash checks in Android run
+  41800863961; integrated b36de66e68dcd1d3b79722e49d6fe73781144d38.
+- Raw Basic Waves implementation passed 1,280 original-instruction outputs and
+  all previous checks in Android run 41805177708; reviewed/integrated
+  e71bd2f3315965bb75bcf85a043e8bbef3c73210. arm64 builds only, not execution.
+- Independent smoother analysis verified 24,576 getter outputs and the original
+  constructor/recompute coefficient difference. Original finite-input behavior
+  was preserved rather than introducing tolerant settling or recomputed defaults.
+- UI resource investigation decoded all 640 physical-wheel PNG frames, resolved
+  MACRO_NB=4 and mapped 22,580 declarations/both skins. Local report/maps are in
+  ../local/evidence/ui-resource-agent; source-based summary is docs/ui-reconstruction.md.
+- Remaining: full voice envelopes/filters/allocator and routing, remaining models,
+  FX/sequencer/preset compatibility, actual Android application/UI/audio/MIDI and
+  device-level validation. No full instrument or APK completion is claimed.
 
 ## Live analysis handles (revalidate before reuse)
-- Persistent processor client exec session 78124; REA server and imported processor
-  revalidated. Current responses: ../local/evidence/session-dsp-002.
+- Processor client exec session 78124 is now terminal: exited1 on a late read-only
+  assembly request. Cause unconfirmed; after a five-second retry/check, D: reads
+  and original processor hash were healthy. Do not reuse this terminal handle.
+  Retained responses: ../local/evidence/session-dsp-002.
   Old session 2309 is terminal; its responses remain in ../local/evidence/session-dsp.
   Latest new-session export: ../local/evidence/processor-evidence-007.bundle.json.
   Earlier full symbol inventory: ../local/evidence/processor-evidence-003.bundle.json.

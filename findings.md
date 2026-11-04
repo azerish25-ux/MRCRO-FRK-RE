@@ -215,3 +215,57 @@
 - The aggregate writes 0x3ee6e979 at Basic Waves instance level offset +0x28 and
   0x3f8ccccd at both VAnalog instance level offsets +0x28. These are observed
   initialization writes, not proof of final preset/GUI output levels.
+
+## Resolved Basic Waves table initialization and verified raw engine
+- Independent scoped reads of the already-open matched processor captured 128
+  bank pointers and 34 unique 512-short tables. All pointers matched the original
+  static array after rebasing; every table was read twice with equal bytes.
+  Private identity/ranges/hashes: local/evidence/wave-table-agent/live-tables.json.
+- Original initializer instruction emulation with explicitly modeled sin/memset
+  imports matched all 17,408 unique shorts. Independent scalar formulas also
+  matched. The import model was checked against live bytes rather than assumed.
+- Default sine uses sin(2*i*0.006135923151542565), then *32767, *0.8, +0.5 and
+  truncation. Fourier variants sum ascending harmonics, then *26213.600000000002,
+  +0.5 and truncation. Negative rounding is intentionally asymmetric.
+- Saw coefficients are reciprocal n times signed 2/pi; square uses 4/(pi*n) for
+  odd n; triangle uses reciprocal n*n times alternating 8/pi^2 for odd n.
+  Exact constants, harmonic caps, routing and provenance are in the agent's
+  FINDINGS.md, bank-formula-map.json and portable-formula-verification.json.
+- Portable production code mathematically generates tables; no live table snapshots
+  are shipped. Hash fixtures preserve independent original expectations.
+- Red run 41800434464 rejected zero-filled tables in all 128 banks. Green run
+  41800863961 at b36de66e68dcd1d3b79722e49d6fe73781144d38 matched all 128 byte
+  hashes after Android x86_64 generation, with earlier checks and both ABI builds.
+- Original Basic Waves method traces were then generated with populated verified
+  table inputs. They execute original constructor, pitch/phase, reset, control
+  prepare and raw-render instructions, with explicit fixture initialization.
+- Red run 41804549537 rejected the silent implementation on 1,279/1,280 samples.
+  Green run 41805177708 at e71bd2f3315965bb75bcf85a043e8bbef3c73210 matched all
+  1,280 samples on Android API35 x86_64. Cases include frequency changes, phase
+  wrap, dirty preservation, warm controls, word overflow and reverse frequency.
+  All earlier checks and table hashes passed. Reviewed and integrated on main.
+- Power-of-two probes of original setters confirmed scale bits 0x472ec33e for
+  main increment, 0x46aec33e for sub increment, and 0x4f800000 for phase seed.
+  Evidence: local/evidence/basic-wave-constant-probes.json.
+- Shared SRL/LPF finite-input equations matched 24,576 original getter outputs.
+  Preserve SRL ctor step0x3bda740e: recomputing defaults gives0x3bda740d.
+  LPF coefficient0x3d064870 and relative threshold semantics are preserved. Reset
+  sets target/current without recomputing threshold. Settled means exact equality;
+  do not snap stagnant values by introducing an epsilon comparison.
+- Limits: sampled raw processing and mathematical tables, not complete voices,
+  factory scheduling, all inputs, presets, actual Android app or arm64 execution.
+
+## Expanded original UI evidence
+- Local report/maps: local/evidence/ui-resource-agent. Seventeen source documents,
+  22,580 expanded declarations, 699 hashed 100% drawable/font assets, both skins.
+  MACRO_NB=4 resolves selected loops; conditions/actions remain declarative.
+- All five ASTR wheel containers decoded to 640 original PNG byte slices. CRCs,
+  zlib payload sizes, dimensions and output hashes passed without re-encoding.
+- Visible synth knobs use procedural gradients/styles, not the legacy numbered
+  image knob families. Native rendering and gesture behavior still need work.
+- Declared skin differences include keyboard ranges and counterintuitive bindings:
+  mf37 uses KeyboardNote49, MIDI48..84; mf49 uses KeyboardNote37, MIDI36..84.
+  GUI-loaded expressions write MiniFreakDualVCF_Mode from the skin constant.
+- Source-based implementation constraints are summarized in docs/ui-reconstruction.md.
+  No completed Android renderer, live mf49 screenshot or lossless pixel equivalence
+  is established by these maps or bounded JPEG baselines.

@@ -17,8 +17,12 @@ is in ../local/evidence/wave-table-agent. This establishes tables, not synth aud
 remote-only Android SDK/emulators, no new live synth instances.
 
 - [x] Revalidate independent table and bank-map evidence.
-- [ ] Confirm zero-filled generated tables fail all bank checks remotely.
-- [ ] Implement recovered mathematical generation and verify exact byte hashes.
-- [ ] Run Android emulator checks and review/integrate.
+- [x] Confirm zero-filled generated tables fail all bank checks remotely.
+- [x] Implement recovered mathematical generation and verify exact byte hashes.
+- [x] Run Android emulator checks and review/integrate.
 - [ ] Initialize original Basic Waves numeric references and port its processing,
   then continue all remaining instrument and Android UI requirements.
+
+Verified b36de66e68dcd1d3b79722e49d6fe73781144d38, run 41800863961:
+all 128 bank selections match original byte SHA-256 values after Android x86_64
+generation. Previous checks and both Android ABI builds passed.

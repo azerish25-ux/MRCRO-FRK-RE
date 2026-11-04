@@ -77,3 +77,29 @@ passed all earlier checks plus 64 original control-state updates and 1,280 origi
 output-wrapper samples with zero mismatches. Both Android ABIs built; execution
 was on Android API 35 x86_64. GUI/MIDI scheduling, complete initialization,
 voice/filter/effect routing, presets and the Android UI remain unverified.
+
+## Basic Waves tables and raw engine
+
+`BasicWaveTables` constructs 34 immutable mathematical tables and preserves the
+original 128 bank selections. It uses ascending double-precision harmonic sums,
+original coefficients and asymmetric +0.5/truncation. It ships no copied table
+snapshots. Original live table bytes, original initializer emulation and independent
+formulas agreed for all 17,408 unique signed-short values before implementation.
+
+[Run 41800863961](https://github.com/azerish25-ux/MRCRO-FRK-RE/actions/runs/41800863961)
+verified generated Android table bytes against all 128 independent SHA-256 bank
+references. Construction is startup work, not an audio callback operation.
+
+`BasicWaves` follows original pitch/table selection, phase seeding, reset, control
+prepare and raw rendering. It preserves uint32 phase wrap, signed-short delta and
+coefficient wrap, int64 pair accumulation and float conversion order. Its private
+SRL/LPF state uses stored constructor coefficients rather than recomputing defaults.
+Settled checks remain exact, including LPF float stagnation behavior.
+
+[Run 41805177708](https://github.com/azerish25-ux/MRCRO-FRK-RE/actions/runs/41805177708)
+passed 1,280 original-instruction output samples with zero bit mismatches on Android
+API35 x86_64, including pitch changes, phase wrap, dirty preservation, initialized
+controls, word overflow and negative frequency. All earlier checks and Android
+arm64/x86_64 builds passed. arm64 execution and full voice/patch/application parity
+remain unverified. Method ordering and initialization in tests are explicit fixture
+conditions, not a claim about the complete original host scheduler.

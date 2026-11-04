@@ -55,3 +55,9 @@ zero bit mismatches. The complete instrument, Android UI and APK are pending.
 also verified stateful interpolation, VAnalog control flags and trigger latch,
 and VAnalog output-level processing against original instructions. These are
 scoped component checks; the full 1:1 port remains in progress.
+
+[Basic Waves checks](https://github.com/azerish25-ux/MRCRO-FRK-RE/actions/runs/41805177708)
+now also pass 1,280 raw output samples and every generated table-bank byte hash.
+The original UI resource/skin/asset findings are summarized in
+[UI reconstruction evidence](docs/ui-reconstruction.md); no Android UI or APK is
+claimed complete.

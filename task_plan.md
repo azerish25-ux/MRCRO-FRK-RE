@@ -76,9 +76,12 @@ unproven until all feature and equivalence requirements are independently verifi
   Original wrap-correction multiplication order resolved the remaining two.
 - A PowerShell foreach pipeline metadata query required wrapping its results in
   @(...); corrected before execution of the intended read-only checks.
+- A late REA client read ended with exit1 before a reply; its cause is unconfirmed.
+  After five seconds, D: reads/hash checks succeeded. Complete exports remain;
+  start a fresh owned CLI client only when further provider queries are needed.
 
 ## Next Step
-Recover Basic Waves table initialization and complete parameter/state setup,
-then build meaningful original-instruction references and port that engine.
-Continue all other engines, filters, effects, voices, presets and the full
-Android UI; VAnalog component checks are not completion of the instrument.
+Recover voice/envelope/filter routing for a complete original voice path, then
+integrate Android audio/UI from the recovered scene specification. Continue every
+remaining engine, effect, sequencer and preset/state requirement. The verified
+Basic Waves/VAnalog components are not completion of the instrument.

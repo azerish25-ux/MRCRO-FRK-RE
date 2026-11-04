@@ -18,7 +18,12 @@ getter outputs. Explicit fixture initialization does not prove factory schedulin
 live sound only from the existing open synth.
 
 - [x] Recover initialized table inputs and non-silent original traces.
-- [ ] Confirm a silent implementation fails remote reference checks.
-- [ ] Implement original finite-input operations and investigate mismatches.
-- [ ] Verify Android emulator output and review/integrate.
+- [x] Confirm a silent implementation fails remote reference checks.
+- [x] Implement original finite-input operations and investigate mismatches.
+- [x] Verify Android emulator output and review/integrate.
 - [ ] Continue all instrument and Android application requirements.
+
+Verified e71bd2f3315965bb75bcf85a043e8bbef3c73210, run 41805177708:
+1,280 raw original-instruction samples with zero bit mismatches on Android API35
+x86_64. Earlier tests, all bank hashes and arm64/x86_64 builds passed. This does
+not establish arm64 execution, every input, complete voices, presets or Android UI.
