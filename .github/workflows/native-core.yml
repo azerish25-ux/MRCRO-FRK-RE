@@ -149,5 +149,22 @@ jobs:
             adb push build-x86_64/mfrk_notepath_actor_tests /data/local/tmp/mfrk_notepath_actor_tests
             adb shell chmod 755 /data/local/tmp/mfrk_notepath_actor_tests
             adb shell /data/local/tmp/mfrk_notepath_actor_tests
+            adb push build-x86_64/mfrk_waveshaper_tests /data/local/tmp/mfrk_waveshaper_tests
+            adb push core/tests/waveshaper_vectors.bin /data/local/tmp/waveshaper_vectors.bin
+            adb shell chmod 755 /data/local/tmp/mfrk_waveshaper_tests
+            adb shell /data/local/tmp/mfrk_waveshaper_tests /data/local/tmp/waveshaper_vectors.bin
+            adb push build-x86_64/mfrk_waveshaper_lifecycle_tests /data/local/tmp/mfrk_waveshaper_lifecycle_tests
+            adb push core/tests/waveshaper_lifecycle_vectors.bin /data/local/tmp/waveshaper_lifecycle_vectors.bin
+            adb shell chmod 755 /data/local/tmp/mfrk_waveshaper_lifecycle_tests
+            adb shell /data/local/tmp/mfrk_waveshaper_lifecycle_tests /data/local/tmp/waveshaper_lifecycle_vectors.bin
+            adb push build-x86_64/mfrk_waveshaper_failure_tests /data/local/tmp/mfrk_waveshaper_failure_tests
+            adb shell chmod 755 /data/local/tmp/mfrk_waveshaper_failure_tests
+            adb shell /data/local/tmp/mfrk_waveshaper_failure_tests
+            adb push build-x86_64/mfrk_waveshaper_guard_tests /data/local/tmp/mfrk_waveshaper_guard_tests
+            adb shell chmod 755 /data/local/tmp/mfrk_waveshaper_guard_tests
+            adb shell /data/local/tmp/mfrk_waveshaper_guard_tests
+            adb push build-x86_64/mfrk_waveshaper_admission_tests /data/local/tmp/mfrk_waveshaper_admission_tests
+            adb shell chmod 755 /data/local/tmp/mfrk_waveshaper_admission_tests
+            adb shell /data/local/tmp/mfrk_waveshaper_admission_tests
       - name: Compare generated Android table bytes
         run: python3 tools/check_basic_wave_tables.py --dump build-x86_64/basic-wave-tables.bin --expected core/tests/basic_wave_table_hashes.json

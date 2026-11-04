@@ -1,0 +1,16 @@
+#include "waveshaper_fixture_reader.hpp"
+#include "waveshaper_test_access.hpp"
+#include <fstream>
+#include <iostream>
+#include <stdexcept>
+#include <vector>
+using namespace mfrk::waveshaper;
+
+void preflight(Reader r){if(r.read<std::array<char,8>>()!=std::array<char,8>{'W','S','H','P','L','0','0','1'})throw std::runtime_error("magic");if(r.read<std::uint32_t>()!=320)throw std::runtime_error("commands");for(int i=0;i<320;++i){const auto kind=r.read<std::uint8_t>();if(kind>12||kind==11)throw std::runtime_error("opcode");const auto args=r.read<std::array<std::uint32_t,3>>();if((kind==3||kind==8)&&args[0]>1)throw std::runtime_error("boolean");if(kind==6||kind==7)for(auto x:args)if(x>65535)throw std::runtime_error("word width");r.read<std::array<std::uint8_t,432>>();const auto result=r.read<std::uint32_t>();if(kind==9&&result>255)throw std::runtime_error("result width");if(kind!=9&&kind!=12&&result)throw std::runtime_error("void result");const auto output=r.read<std::uint8_t>();if(output!=(kind==10?32:0))throw std::runtime_error("output framing");if(output)r.read<std::array<std::uint32_t,32>>();}r.end();r.identity(144396,4029067870u);}
+
+int main(int argc,char**argv)try{if(argc!=2)return 2;Reader r(argv[1]);preflight(r);if(r.read<std::array<char,8>>()!=std::array<char,8>{'W','S','H','P','L','0','0','1'})return 2;const auto count=r.read<std::uint32_t>();if(!count||count>10000)return 2;Tables tables;auto e=Engine::admitted_zero_arena(tables);std::uint64_t bytes=0,errors=0,output=0;
+ for(unsigned i=0;i<count;++i){const auto kind=r.read<std::uint8_t>();const auto args=r.read<std::array<std::uint32_t,3>>();TestAccess::load(e,r.read<std::array<std::uint8_t,216>>());const auto expected=r.read<std::array<std::uint8_t,216>>();const auto result=r.read<std::uint32_t>();const auto nout=r.read<std::uint8_t>();if(nout!=(kind==10?32:0))return 2;std::array<float,32> out{};std::uint32_t actual_result=0;
+  switch(kind){case 0:e.reset();break;case 1:e.set_phase(F(args[0]));break;case 2:e.set_pitch(F(args[0]),F(args[1]));break;case 3:if(args[0]>1)return 2;e.trigger(args[0]!=0);break;case 4:e.bind_buffer(std::uint64_t{args[0]}|(std::uint64_t{args[1]}<<32),std::bit_cast<std::int32_t>(args[2]));break;case 5:e.initialize();break;case 6:case 7:{for(auto x:args)if(x>65535)return 2;std::array<std::uint16_t,3>w={static_cast<std::uint16_t>(args[0]),static_cast<std::uint16_t>(args[1]),static_cast<std::uint16_t>(args[2])};if(kind==6)e.refresh_controls(w);else e.fetch_and_initialize(w);break;}case 8:if(args[0]>1)return 2;e.prepare(args[0]!=0);break;case 9:actual_result=e.interface_flag();break;case 10:if(e.try_render_scaled(out)!=RenderStatus::ok)throw std::runtime_error("render admission");break;case 12:actual_result=std::bit_cast<std::uint32_t>(TestAccess::frequency(tables,F(args[0])));break;default:return 2;}
+  const auto& got=TestAccess::state(e);for(unsigned j=0;j<216;++j){++bytes;errors+=got[j]!=expected[j];}errors+=actual_result!=result;for(unsigned j=0;j<nout;++j){++output;errors+=std::bit_cast<std::uint32_t>(out[j])!=r.read<std::uint32_t>();}
+ }r.end();std::cout<<"{\"commands\":"<<count<<",\"state_bytes\":"<<bytes<<",\"output_words\":"<<output<<",\"mismatches\":"<<errors<<"}\n";return errors?1:0;
+}catch(const std::exception&e){std::cerr<<e.what()<<"\n";return 2;}

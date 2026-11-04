@@ -1,0 +1,500 @@
+{
+  "schema": 1,
+  "processor_sha256": "bd036dfa6a0afcfef733c29c73b1b3df969f2c86ca860b0fa535d4492fa8fb74",
+  "approved_baseline_sha256": "df379de3070c366f9c7f4f1bf87363c486ab0cdec4947f01aa54e08585b47854",
+  "text_policy": "CRLF to LF in C++ and documentation only; packed and canonical fixtures unchanged",
+  "original_records": {
+    "source-index-v1.json": {
+      "processor_sha256": "bd036dfa6a0afcfef733c29c73b1b3df969f2c86ca860b0fa535d4492fa8fb74",
+      "processor_path": "D:\\MAIN SOFTWARE\\Synths\\MFRK\\main synth\\MiniFreak V\\MiniFreak V\\resources\\x64\\minifreakvProcessor.dll",
+      "constructor_fragment": [
+        "0x1802e7283",
+        "0x1802e7349"
+      ],
+      "object_offsets": [
+        "0xda0",
+        "0xe78"
+      ],
+      "interface_adjustment": "0xc8",
+      "object_bytes": 216,
+      "constructor_written_bytes": 52,
+      "primary_vtable": "0x180547200",
+      "interface_vtable": "0x1805451f8",
+      "inner_vtable": "0x1805415c0",
+      "functions": {
+        "primary_init": "0x1802c5260",
+        "primary_prepare": "0x1802c51c0",
+        "pitch_xmm2": "0x1802c4f70",
+        "gate": "0x1802c17c0",
+        "reset_wrapper": "0x1802c1ac0",
+        "phase_noop": "0x1802a3390",
+        "raw": "0x1802c5100",
+        "scaled": "0x1802c4fe0",
+        "inner_init": "0x18032f230",
+        "inner_render": "0x18032f260",
+        "oscillator": "0x18032f630",
+        "frequency": "0x18032e950",
+        "linear_upsample": "0x1802c9e60",
+        "slot_prepare": "0x1802cdad0",
+        "slot_pitch_clamp": [
+          "0x1802cdcb8",
+          "0x1802cdcc5"
+        ],
+        "child_pitch_forward": "0x1802cdd0d"
+      },
+      "tables": [
+        {
+          "name": "coarse",
+          "address": "0x18046c3a0",
+          "count": 256,
+          "sha256": "0dfd8bc6ea9e667907a4ef4d300369e6ea55bfb047130926627cbf03c1dcb54e"
+        },
+        {
+          "name": "fine",
+          "address": "0x18046c7b0",
+          "count": 256,
+          "sha256": "ce9d87899dbdc1e5b59a1cd3b26107334c55d50aef782242944eb83d7c401cc6"
+        },
+        {
+          "name": "fold",
+          "address": "0x18046dfd0",
+          "count": 516,
+          "sha256": "05bd34e547bfdf1793b8489b1b823d8ddf20bb43312ff8d1ea25cf48263c63de"
+        },
+        {
+          "name": "shape0",
+          "address": "0x18046fae0",
+          "count": 257,
+          "sha256": "c888d5fecb172e6b6f69ce0758cafd52d695f01a20a386d268a86f529e6d1fad"
+        },
+        {
+          "name": "shape1",
+          "address": "0x18046f8d0",
+          "count": 257,
+          "sha256": "690f211edb48dccb2f63c4984d846f025480681fefd3cb818d05ac5ed77206f5"
+        },
+        {
+          "name": "shape2",
+          "address": "0x1804882f0",
+          "count": 257,
+          "sha256": "15b7802c6fdf3904aaca0de20d8098237845e89fe81bf22b9c34333df6511ffe"
+        },
+        {
+          "name": "shape3",
+          "address": "0x18046ec30",
+          "count": 257,
+          "sha256": "d6a4aede5046fc0b7ed713b7b17aa39d532774207bc4be8fb991c0230f0904bf"
+        },
+        {
+          "name": "shape4",
+          "address": "0x18046ea20",
+          "count": 257,
+          "sha256": "e99c626a37be3ed3c4111cdef0d80ecbd7267771afb5bfd9f834b0432b34f909"
+        }
+      ],
+      "source_kind": "Original PE/static assembly + unchanged original instructions in Unicorn. Mathematical producer crosscheck with pinned officialMIT source; no live synthesis."
+    },
+    "constructor-preservation-v1.json": {
+      "method": "Unchanged original aggregate inlinectorfragment2e7283..7349, RSIaggregate/R14callercontext/RDI0 explicit; bothsourceobjectslots testedzero/A5. OriginalInit2c5260 executesinnerInit32f230+ResetNoop. Notwholeaggregate/runtimefactoryevidence.",
+      "source_sha256": "bd036dfa6a0afcfef733c29c73b1b3df969f2c86ca860b0fa535d4492fa8fb74",
+      "profiles": [
+        {
+          "fill": 0,
+          "side": 0,
+          "context_token": "0x4000051b0",
+          "constructor": "007254800100000000000000000000000000000000000000b0510000040000000000dc43c92f963b9a99793f000000000000000000000000c01554800100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000f8515480010000000000000000000000",
+          "written_mask": "010101010101010100000000000000000000000000000000010101010101010101010101010101010101010100000000010101000000000001010101010101010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010101010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001010101010101010100000000000000",
+          "written_bytes": 52,
+          "initialized": "007254800100000000000000000000000000000000000000b0510000040000000000dc43c92f963b9a99793f000000000000000000000000c015548001000000000000000000000000000000000000000000003f000000000000803f00000000010000006f12833a0000003f00000000000000000000000000000000000000000000000000000000000000000000000000000000ffff4f3f000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000f8515480010000000000000000000000"
+        },
+        {
+          "fill": 0,
+          "side": 1,
+          "context_token": "0x4000051b0",
+          "constructor": "007254800100000000000000000000000000000000000000b0510000040000000000dc43c92f963b9a99793f000000000000000000000000c01554800100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000f8515480010000000000000000000000",
+          "written_mask": "010101010101010100000000000000000000000000000000010101010101010101010101010101010101010100000000010101000000000001010101010101010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010101010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001010101010101010100000000000000",
+          "written_bytes": 52,
+          "initialized": "007254800100000000000000000000000000000000000000b0510000040000000000dc43c92f963b9a99793f000000000000000000000000c015548001000000000000000000000000000000000000000000003f000000000000803f00000000010000006f12833a0000003f00000000000000000000000000000000000000000000000000000000000000000000000000000000ffff4f3f000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000f8515480010000000000000000000000"
+        },
+        {
+          "fill": 165,
+          "side": 0,
+          "context_token": "0x4000051b0",
+          "constructor": "0072548001000000a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5b0510000040000000000dc43c92f963b9a99793fa5a5a5a5000000a5a5a5a5a5c015548001000000a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a500000000a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5f85154800100000000a5a5a5a5a5a5a5",
+          "written_mask": "010101010101010100000000000000000000000000000000010101010101010101010101010101010101010100000000010101000000000001010101010101010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010101010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001010101010101010100000000000000",
+          "written_bytes": 52,
+          "initialized": "0072548001000000a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5b0510000040000000000dc43c92f963b9a99793fa5a5a5a5000000a5a5a5a5a5c015548001000000a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a50000003f000000000000803f0000000001a5a5a56f12833a0000003f00000000000000000000000000000000a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5ffff4f3fa5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5ffffffffa5a5a5a5ffffffffa5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5f85154800100000000a5a5a5a5a5a5a5"
+        },
+        {
+          "fill": 165,
+          "side": 1,
+          "context_token": "0x4000051b0",
+          "constructor": "0072548001000000a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5b0510000040000000000dc43c92f963b9a99793fa5a5a5a5000000a5a5a5a5a5c015548001000000a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a500000000a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5f85154800100000000a5a5a5a5a5a5a5",
+          "written_mask": "010101010101010100000000000000000000000000000000010101010101010101010101010101010101010100000000010101000000000001010101010101010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010101010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001010101010101010100000000000000",
+          "written_bytes": 52,
+          "initialized": "0072548001000000a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5b0510000040000000000dc43c92f963b9a99793fa5a5a5a5000000a5a5a5a5a5c015548001000000a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a50000003f000000000000803f0000000001a5a5a56f12833a0000003f00000000000000000000000000000000a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5ffff4f3fa5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5ffffffffa5a5a5a5ffffffffa5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5f85154800100000000a5a5a5a5a5a5a5"
+        }
+      ]
+    },
+    "constants-v1.json": {
+      "constants": {
+        "0x18055f80c": {
+          "bits": 3239051264,
+          "value": -9
+        },
+        "0x18055f830": {
+          "bits": 3271557120,
+          "value": -128
+        },
+        "0x18055a35c": {
+          "bits": 1123942400,
+          "value": 127
+        },
+        "0x18055a360": {
+          "bits": 1124073472,
+          "value": 128
+        },
+        "0x18055a3a0": {
+          "bits": 1132462080,
+          "value": 256
+        },
+        "0x180558760": {
+          "bits": 966143945,
+          "value": 0.0002864583220798522
+        },
+        "0x180559ec0": {
+          "bits": 1055286886,
+          "value": 0.44999998807907104
+        },
+        "0x180559ec8": {
+          "bits": 1055622431,
+          "value": 0.46000000834465027
+        },
+        "0x180559ee8": {
+          "bits": 1056964608,
+          "value": 0.5
+        },
+        "0x180559ff4": {
+          "bits": 1065353216,
+          "value": 1
+        },
+        "0x18055a178": {
+          "bits": 1077936128,
+          "value": 3
+        },
+        "0x180559ce0": {
+          "bits": 1023410176,
+          "value": 0.03125
+        },
+        "0x18055a130": {
+          "bits": 1074301065,
+          "value": 2.133333444595337
+        },
+        "0x18055a28c": {
+          "bits": 1101958051,
+          "value": 21.81818199157715
+        },
+        "0x18055a1d8": {
+          "bits": 1087468638,
+          "value": 6.545454978942871
+        },
+        "0x180559d9c": {
+          "bits": 1035611788,
+          "value": 0.09090909361839294
+        },
+        "0x18055a194": {
+          "bits": 1082130013,
+          "value": 3.9999001026153564
+        },
+        "0x18055a3dc": {
+          "bits": 1140850688,
+          "value": 512
+        },
+        "0x180554b04": {
+          "bits": 897988541,
+          "value": 9.999999974752427e-7
+        },
+        "0x180559e38": {
+          "bits": 1048576000,
+          "value": 0.25
+        },
+        "0x180559e14": {
+          "bits": 1044381696,
+          "value": 0.1875
+        },
+        "0x180559e88": {
+          "bits": 1052770304,
+          "value": 0.375
+        },
+        "0x180559d58": {
+          "bits": 1031798784,
+          "value": 0.0625
+        },
+        "0x180559cc4": {
+          "bits": 1022739087,
+          "value": 0.029999999329447746
+        }
+      },
+      "shaper_pointers": [
+        "0x18046fae0",
+        "0x18046f8d0",
+        "0x1804882f0",
+        "0x18046ec30",
+        "0x18046ea20",
+        "0x18046ea20",
+        "0xc1400000c1400000",
+        "0xc13d70a4c1400000"
+      ]
+    },
+    "packed-fixtures.json": {
+      "schema": "WSPK0001;LEu32size/CRC,zero/literalmax128packets",
+      "records": [
+        {
+          "file": "waveshaper_vectors.bin",
+          "packed_bytes": 988971,
+          "packed_sha256": "954347523feef556765dbabbed959283478c2de0e40a223d8006a4c39546424f",
+          "canonical_file": "original-fixtures-v2.bin",
+          "canonical_bytes": 1353730,
+          "canonical_sha256": "8badb67258aa2dd9b16790d33f4bce40315c7e4aab2f2906099fbdde5674cfcb",
+          "canonical_crc32": 1146221373,
+          "roundtrip_byte_identical": true
+        },
+        {
+          "file": "waveshaper_lifecycle_vectors.bin",
+          "packed_bytes": 82715,
+          "packed_sha256": "a93ce551c972293e39866e916a873b7ad363bf597dd8c3e66702be976f1fd6b1",
+          "canonical_file": "original-lifecycle-fixtures-v1.bin",
+          "canonical_bytes": 144396,
+          "canonical_sha256": "d7051ec06e8c742ce69a26fe1ba1f8e2553406dbb4ed0910216c629ff1158745",
+          "canonical_crc32": 4029067870,
+          "roundtrip_byte_identical": true
+        }
+      ],
+      "policy": "Every canonical original byte retained; no altered expected values or coverage reduction. Existing repo pack_superwave_vectors algorithm reused."
+    },
+    "primary-math-source-index.json": {
+      "commit": "f4cfa7697095a28d292bff758beb51deb49b5a86",
+      "files": [
+        {
+          "url": "https://raw.githubusercontent.com/pichenettes/eurorack/f4cfa7697095a28d292bff758beb51deb49b5a86/plaits/resources/lookup_tables.py",
+          "file": "primary-lookup_tables.py",
+          "sha256": "1c471c9ab1fc4fab491bdee4f2d332e82d5b728df520179207e42aae08c8610c"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/pichenettes/eurorack/f4cfa7697095a28d292bff758beb51deb49b5a86/plaits/dsp/engine/waveshaping_engine.cc",
+          "file": "primary-waveshaping_engine.cc",
+          "sha256": "ee7b7ef6a7746f17d2e8eaf4e73a7ad4c0dd8122190cecc43ac3750e770ce546"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/pichenettes/eurorack/f4cfa7697095a28d292bff758beb51deb49b5a86/plaits/resources/resources.py",
+          "file": "primary-resources.py",
+          "sha256": "451fc7f62d8d68ee9c0cbfcc36cc2a09eba48289ed4f198c8ccc18da946ff46f"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/pichenettes/eurorack/f4cfa7697095a28d292bff758beb51deb49b5a86/plaits/dsp/engine/engine.h",
+          "file": "primary-engine.h",
+          "sha256": "c31fa0ad1585c4fff9451d844dab4bfaff1823dc677cebf182957827518a43ef"
+        }
+      ],
+      "boundary": "Mathematical producer crosscheck only. Shipped Arturia engine is recovered independently; upstream current engine is not substituted."
+    },
+    "adaptation-body-map.json": {
+      "baseline_header_sha256": "df379de3070c366f9c7f4f1bf87363c486ab0cdec4947f01aa54e08585b47854",
+      "functions": [
+        {
+          "function": "Tables::Tables() noexcept",
+          "body_sha256": "6af1b9981f4d92548f2950c7b8ebd4f963b2484799a9daf816682e60a8b32ad8",
+          "same_body": true
+        },
+        {
+          "function": "float Tables::frequency(float note) const noexcept",
+          "body_sha256": "b5b7d1fcc99bf7070486334bce54b4daec4b19477048340fc9e4291d5ace9e03",
+          "same_body": true
+        },
+        {
+          "function": "std::int32_t Engine::cvtt32(float x) noexcept",
+          "body_sha256": "e6441711ae9ce09c495620858bc66ee8eebe4ac2acc59dffd94e3e6d21d5e172",
+          "same_body": true
+        },
+        {
+          "function": "Engine::Engine(const Tables& tables,ZeroArenaTag) noexcept:tables_(tables)",
+          "body_sha256": "71d9125c5e0265bc366d430aa6ecd483cd6e837eb1eca3ddf4652f4ea378366f",
+          "same_body": true
+        },
+        {
+          "function": "void Engine::construct() noexcept",
+          "body_sha256": "2c8e92dcfeff881f4da79d45817bdf80db2d325654881370896d8843027c63fb",
+          "same_body": true
+        },
+        {
+          "function": "float Engine::integrated(float u,bool negative) noexcept",
+          "body_sha256": "3973bfde1ccdcd0de9d0408e2f7c95a0f23d21a9771da0b51e7c5e88b5b71382",
+          "same_body": true
+        },
+        {
+          "function": "void Engine::oscillator(float frequency,float pw) noexcept",
+          "body_sha256": "c045a8c18983c77c546523faedc4d25bd94750ea12fb7b326951178c119cd1af",
+          "same_body": true
+        },
+        {
+          "function": "RenderStatus Engine::core() noexcept",
+          "body_sha256": "bdcf2b459567e1eecfcff782ba8c6fb3a0202a5e4b4e9b376e9b4d11317792ec",
+          "same_body": true
+        },
+        {
+          "function": "Engine Engine::admitted_zero_arena(const Tables& tables) noexcept",
+          "body_sha256": "b1c99243775a736b19f67b5cd7b6a826536988b4d52f65fa6be8516a0eadcf1f",
+          "same_body": true
+        },
+        {
+          "function": "void Engine::initialize() noexcept",
+          "body_sha256": "f71b0886b4e11148581d7f2950928f19faab45d54ad7bf2971b3236b45f27c9a",
+          "same_body": true
+        },
+        {
+          "function": "void Engine::reset() noexcept",
+          "body_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "same_body": true
+        },
+        {
+          "function": "void Engine::set_phase(float) noexcept",
+          "body_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "same_body": true
+        },
+        {
+          "function": "void Engine::set_pitch(float /*unused_frequency*/,float pitch_argument) noexcept",
+          "body_sha256": "dbd3938db255aa5ac1ca2650fc4abd12a2b364c8730d98520fe078ed9b8dca95",
+          "same_body": true
+        },
+        {
+          "function": "void Engine::trigger(bool gate) noexcept",
+          "body_sha256": "fabf7a77876523cceb70e62e4b5241740d46a177bb359c1cba0b0ba56edd9c60",
+          "same_body": true
+        },
+        {
+          "function": "void Engine::bind_buffer(std::uint64_t opaque_token,std::int32_t count) noexcept",
+          "body_sha256": "00f8ec179f920bb1d42d6a5b39728169a4f0594b2029d133f0adc0ea68bae616",
+          "same_body": true
+        },
+        {
+          "function": "void Engine::refresh_controls(std::array<std::uint16_t,3> words) noexcept",
+          "body_sha256": "fd8f778bf3f7f10011e0bae8b4e3e9ca3369f281c466fef4f34b45bc90e05218",
+          "same_body": true
+        },
+        {
+          "function": "void Engine::fetch_and_initialize(std::array<std::uint16_t,3> words) noexcept",
+          "body_sha256": "0dc976d5b30b7baa51de5eff5e22024cb5b189998f6bc8e87fb58d19efe5a929",
+          "same_body": true
+        },
+        {
+          "function": "std::uint8_t Engine::interface_flag() const noexcept",
+          "body_sha256": "6abdfec6fdc67724314a2ac0a0f1082d724669161b39657774038dc61657992e",
+          "same_body": true
+        },
+        {
+          "function": "void Engine::set_controls(std::array<std::uint16_t,3> words,std::array<std::uint8_t,3> dirty) noexcept",
+          "body_sha256": "47e0bdb5186ca1f46ff4683f8df77c905ef31bd31b803c20160a324262c2c0b7",
+          "same_body": true
+        },
+        {
+          "function": "void Engine::prepare(bool interface_clear_dirty) noexcept",
+          "body_sha256": "0a7b4f2478a04d2e74a80b5c9bc9cbd0257c036e1f33fcb1852971caf3527df2",
+          "same_body": true
+        },
+        {
+          "function": "RenderStatus Engine::try_render_raw(std::array<float,32>& output) noexcept",
+          "body_sha256": "d0081ff5d758404ba6d5ce4c20768c6e6a76a4cfbe30aafb0a5b5c209545411a",
+          "same_body": true
+        },
+        {
+          "function": "RenderStatus Engine::try_render_scaled(std::array<float,32>& output) noexcept",
+          "body_sha256": "462bd05dd4338fb11ec95d7d9ee5353a4c86d9e534031de04f7662edd746763f",
+          "same_body": true
+        },
+        {
+          "function": "RenderStatus Engine::try_process(const Input& input,std::array<float,32>& output) noexcept",
+          "body_sha256": "4028738134ee5b1b10a3552352f9a458ad005fa6fc776443197ae267617e2e4d",
+          "same_body": true
+        },
+        {
+          "function": "bool Engine::try_set_control_word(unsigned index,std::uint16_t value) noexcept",
+          "body_sha256": "ac54b45ed0d020d72016a3dbd147b4b147f800ba64a79325c53d50def7a217f3",
+          "same_body": true
+        },
+        {
+          "function": "bool Engine::try_set_control_dirty(unsigned index,std::uint8_t value) noexcept",
+          "body_sha256": "08c4b39b394312d93eb2d79d5dd77325dff40ba5ad1dbd7e1b48a6cc502fb82d",
+          "same_body": true
+        }
+      ],
+      "count": 25,
+      "adaptation": "Namespace mfrk::waveshaper; Tables made private with Engine/TestAccess friends; function definitions moved to.cpp; F private, CVTT private static; all bodies retained exactly. Input level default retains originalfloat bits."
+    }
+  },
+  "repository_files": {
+    "core/include/mfrk/waveshaper.hpp": {
+      "bytes": 3874,
+      "sha256": "7ac0d9affddcbb8fb32814ef224fe78cfc45bdc65568e7f8d4b3d764531de8c6"
+    },
+    "core/src/waveshaper.cpp": {
+      "bytes": 10115,
+      "sha256": "c7e1db09f34416a480a045e8881bb7173ce5d4ed9468cfa5609aece84ea750b8"
+    },
+    "core/tests/waveshaper_test.cpp": {
+      "bytes": 5249,
+      "sha256": "553770da81a2c3873029c51d0307ac5a87fffbba1c453b8e82ccf3a06e950ac3"
+    },
+    "core/tests/waveshaper_test_access.hpp": {
+      "bytes": 1312,
+      "sha256": "740012e5bdd33ea4349fa9fe971d896c47a34f567d0abdaf0cebcae210663e87"
+    },
+    "core/tests/waveshaper_fixture_reader.hpp": {
+      "bytes": 3161,
+      "sha256": "f348670ad72f27a9055c875adf91107871129403162bbb390c67ed5619ad11e9"
+    },
+    "core/tests/waveshaper_allocation_probe.hpp": {
+      "bytes": 125,
+      "sha256": "810d231c7f76f3033f10f756a9a214bbd95ad888d55aae54e7eaeaa68ec8e34f"
+    },
+    "core/tests/waveshaper_allocation_probe.cpp": {
+      "bytes": 837,
+      "sha256": "ab6634ad31f0953eccfb75306f07048009d3691fad07032c447b9a461bed804d"
+    },
+    "core/tests/waveshaper_lifecycle_test.cpp": {
+      "bytes": 3294,
+      "sha256": "33c307a3f58bd594ad3441fbf99514f8b34ed460cbfa82f65f3b52ed7680bd84"
+    },
+    "core/tests/waveshaper_failure_test.cpp": {
+      "bytes": 2102,
+      "sha256": "fa177aa0d9e17524cdfa326cec7558ea9c9926d2a977012da0deced731719681"
+    },
+    "core/tests/waveshaper_guard_test.cpp": {
+      "bytes": 3437,
+      "sha256": "67db289ea50f845aa0c3961f5c17e3110229ea2d27971a4d838ad4a2794c6567"
+    },
+    "core/tests/waveshaper_admission_test.cpp": {
+      "bytes": 426,
+      "sha256": "e705b094ee378beb1a43cea43a8d6f3943f9d2324b38c9513a749d624d7c6949"
+    },
+    "core/tests/waveshaper_vectors.bin": {
+      "bytes": 988971,
+      "sha256": "954347523feef556765dbabbed959283478c2de0e40a223d8006a4c39546424f"
+    },
+    "core/tests/waveshaper_lifecycle_vectors.bin": {
+      "bytes": 82715,
+      "sha256": "a93ce551c972293e39866e916a873b7ad363bf597dd8c3e66702be976f1fd6b1"
+    },
+    "docs/waveshaper/LICENSE_LOOKUP_TABLES.txt": {
+      "bytes": 1174,
+      "sha256": "a06ea01d60fd7fd7b98f396c097178af11d69faea7784087a18ad0bc2addfb73"
+    },
+    "docs/waveshaper/ADMISSION.md": {
+      "bytes": 4341,
+      "sha256": "ce17f53f97abe9f12c58f5863d3a4f1c9ed54c9ef21613765831c7d3637227bc"
+    },
+    "docs/waveshaper/PRODUCTION_HANDOFF.md": {
+      "bytes": 5089,
+      "sha256": "934133b3655fc59d35ce8b59d2f5dc7d21947a6f12af7e35819d5d89f8099276"
+    }
+  }
+}

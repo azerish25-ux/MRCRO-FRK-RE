@@ -353,3 +353,20 @@ and adapter review, regenerated immutable gold, five mutants/no-op and23 malform
 fixtures support this scope. Both Android ABIs compile; arm64 execution remains
 pending. Host MIDI decoding, scheduling and the concrete voice/audio owner remain
 separate required integration work.
+
+## Bounded Waveshaper integration
+
+`mfrk::waveshaper::Engine` recovers the Type5 32-frame engine with immutable
+mathematical tables, original preparation/gate behavior, 16-to-32 upsampling
+and output scaling. [Admission](../docs/waveshaper/ADMISSION.md) requires an
+explicit zero arena and initialization; routed phase/reset are native no-ops.
+Release-active status failures roll back state and output outside the original
+defined lookup domain; they do not claim equivalent native fault audio.
+
+The integrated Release host suite passes29 checks. Waveshaper compares1612
+blocks,51584 raw and scaled samples, all2313 table values and320 lifecycle
+commands exactly, with zero ordinary render allocations. Failure/rollback,
+39 additional guard checks and API admission are separate tests. Original
+source/reference provenance and packed immutable gold accompany the tests.
+Remote Linux/Android validation and independent production-adapter review are
+pending; the surrounding oscillator/voice/preset/audio graph remains required.
