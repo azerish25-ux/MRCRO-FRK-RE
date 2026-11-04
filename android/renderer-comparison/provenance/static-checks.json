@@ -1,0 +1,9 @@
+{
+  "static_checks": "passed",
+  "java_files": 6,
+  "source_controls": 3,
+  "selected_vendor_assets": 3,
+  "vendor_binary_assets_in_source": 0,
+  "android_compile_run": "not attempted locally; GitHub Actions required",
+  "scope": "source consistency/XML/Python parsing/Java delimiters only, not Java or Android compilation"
+}

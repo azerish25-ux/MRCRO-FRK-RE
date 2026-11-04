@@ -1,0 +1,93 @@
+{
+  "status": "source-constrained comparison renderer; not original raster parity",
+  "known_source_inputs": [
+    "exact XML source IDs and style inheritance",
+    "three125x125 logical knob rectangles and125x40 label rectangles",
+    "source silver gradient endpoints/colors and angle attribute2.4",
+    "source ring/center/indicator/shadow scalar attributes",
+    "exact font binary hashes and original100% background hash",
+    "explicit factory subset cutoff1/resonance0/envelope0.5"
+  ],
+  "unverified_interpretations": [
+    {
+      "area": "angle",
+      "candidate": "angle2.4 is a symmetric half sweep in radians about12oclock",
+      "location": "RasterConvention.halfSweepDegrees/indicatorDegrees"
+    },
+    {
+      "area": "dimensions",
+      "candidate": "thickness fractions multiply declared diameter; center-size scales outer radius",
+      "location": "RasterConvention/SilverSoftKnob"
+    },
+    {
+      "area": "ring gradient",
+      "candidate": "radial background\u2192silver\u2192foreground stops0/center-size/1",
+      "location": "SilverSoftKnob constructor"
+    },
+    {
+      "area": "center outline",
+      "candidate": "linear gradient; source angle-0.1 interpreted as radians fromeast",
+      "location": "RasterConvention.gradientAngle"
+    },
+    {
+      "area": "ring outline3D",
+      "candidate": "source white-alpha outline is drawn; native3D lighting kernel is not reconstructed",
+      "location": "SilverSoftKnob.draw"
+    },
+    {
+      "area": "shadow",
+      "candidate": "Skia software shadow blur=ring thickness; yoffset=diameter/source factor12",
+      "location": "RasterConvention.shadowYOffset/SilverSoftKnob.draw"
+    },
+    {
+      "area": "indicator",
+      "candidate": "round-capped line using source start/width/thickness as radial fractions",
+      "location": "SilverSoftKnob.draw"
+    },
+    {
+      "area": "labels",
+      "candidate": "centered in declared rectangles using Android FontMetrics; native baseline and AA unverified",
+      "location": "RendererComparisonView.onDraw"
+    },
+    {
+      "area": "background",
+      "candidate": "original100% background stretched to declared logical background bounds and clipped to explicit crop",
+      "location": "RendererComparisonView.onDraw"
+    },
+    {
+      "area": "parameter mapping",
+      "candidate": "explicit normalized endpoints/center map directly to indicator positions; arbitrary magnetic-zone inverse/gestures not implemented",
+      "location": "RendererComparisonView"
+    },
+    {
+      "area": "center value text",
+      "candidate": "empty in non-hover screenshots; optional caller-supplied text uses exact InterExtraLight; no guessed native formatter",
+      "location": "SilverSoftKnob.draw"
+    },
+    {
+      "area": "feedback",
+      "candidate": "no live modulation buffer or invented feedback curve; source feedback attributes retained only",
+      "location": "filter-slice.json"
+    },
+    {
+      "area": "rounding/scale",
+      "candidate": "floating logical geometry and fit-center viewport; native flex rounding/DPI/asset-scale selection unverified",
+      "location": "RendererComparisonView.onSizeChanged"
+    },
+    {
+      "area": "raster",
+      "candidate": "explicit software Canvas/Skia; color-space/shader/font raster equivalence to native unverified",
+      "location": "RendererComparisonView constructor"
+    }
+  ],
+  "excluded": [
+    "filterscreen curve",
+    "DSP/audio",
+    "full instrument launcher",
+    "stateful original gestures",
+    "full HOME/Advanced/Sequencer scene",
+    "runtime-preset default inference"
+  ],
+  "remote_tests": "smoke/metamorphic screenshots only; no native-pixel golden assertion",
+  "canvas_warning_text": false
+}

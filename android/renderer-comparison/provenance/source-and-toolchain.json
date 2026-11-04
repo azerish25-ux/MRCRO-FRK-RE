@@ -1,0 +1,41 @@
+{
+  "source_scene_sha256": "25c5098b664b141ad5dc2169f1a689ef1b1502479d77c810519d6d99d578edec",
+  "gui_source_scope": "mf37 HOME lower three filter knobs; original XML source IDs retained in filter-slice.json",
+  "asset_acquisition_manifest_sha256": "72e550a24fa22065b1f8c0590a4fe8c2bd6f74ad98248bba0b12ea5f59a18dd9",
+  "no_vendor_binary_assets_in_project": true,
+  "toolchain": {
+    "AGP": "8.7.3",
+    "Gradle": "8.9",
+    "JDK": "17",
+    "compileSDK": 35,
+    "targetSDK": 35,
+    "minSDK": 26,
+    "buildTools": "35.0.0"
+  },
+  "official_sources": [
+    "https://developer.android.com/build/releases/agp-8-7-0-release-notes",
+    "https://docs.gradle.org/current/userguide/compatibility.html",
+    "https://services.gradle.org/distributions/gradle-8.9-bin.zip.sha256"
+  ],
+  "build_execution": "GitHub Actions only; no local Android SDK or build attempted",
+  "Gradle_distribution": {
+    "url": "https://services.gradle.org/distributions/gradle-8.9-bin.zip",
+    "sha256": "d725d707bfabd4dfdc958c624003b3c80accc03f7037b5122c4b1d0ef15cecab"
+  },
+  "actions": {
+    "checkout": "d23441a48e516b6c34aea4fa41551a30e30af803",
+    "setup-java": "b6effb05e454b25005698d916606bdc6ffcbf961",
+    "setup-android": "9fc6c4e9069bf8d3d10b2204b1fb8f6ef7065407",
+    "android-emulator-runner": "a421e43855164a8197daf9d8d40fe71c6996bb0d",
+    "upload-artifact": "ea165f8d65b6e75b540449e92b4886f43607fa02"
+  },
+  "integration": {
+    "project": "android/renderer-comparison",
+    "workflow": ".github/workflows/android-renderer-comparison.yml",
+    "emulator_pin": "peeled commit, not annotated tag object",
+    "source_binary_assets": false,
+    "native_pixel_parity": "not yet verified",
+    "source_encoding": "UTF-8 without BOM, LF; generated vendor payload bytes are never normalized beyond explicit hash-verified manifest rules"
+  },
+  "original_captured_acquisition_manifest_sha256": "eccce0e23a39141f600b33a6597038222a15d9863a70671c4000ca27d7e98dc1"
+}

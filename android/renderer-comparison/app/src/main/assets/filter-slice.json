@@ -1,0 +1,296 @@
+{
+  "schema": 1,
+  "crop": [
+    1815.6,
+    535,
+    560,
+    205
+  ],
+  "background": {
+    "asset": "vendor/bitmap/bmp/100%/backgrounds/synth_BG.png",
+    "bounds": [
+      0,
+      -413,
+      3200,
+      1878
+    ]
+  },
+  "base_color": "2e3236",
+  "knobs": [
+    {
+      "title": "Analog Filter Cutoff",
+      "parameter": "Vcf_Cutoff",
+      "source_id": "screens/synth.xml#397",
+      "bounds": [
+        1861.8500000000001,
+        552.0,
+        125,
+        125
+      ],
+      "style": {
+        "x": "0",
+        "y": "0",
+        "w": "125",
+        "h": "125",
+        "view": "softknob",
+        "bg-color": "1b1b1b",
+        "fg-color": "1b1b1b",
+        "center-color": "212224",
+        "radius": "1",
+        "angle": "2.4",
+        "ring-thickness": "0.04",
+        "center-size": "0.69",
+        "ring-rounded-corners": "1",
+        "text-color": "grey",
+        "font": "Inter-ExtraLight.ttf",
+        "fontsize": "65",
+        "shadow-color": "000000",
+        "center-shadow": "1",
+        "shadow-offset-x-factor": "0",
+        "shadow-offset-y-factor": "12",
+        "center-value-text-display": "1",
+        "display-mapping": "1",
+        "rounded-center-value": "1",
+        "center-value-color": "f3f3f3",
+        "center-value-start": "0.02",
+        "center-value-width": "0.5",
+        "center-value-thickness": "0.07",
+        "center-outline": "0.08",
+        "center-outline-gradient": "1",
+        "ring-outline-thickness": "0.04",
+        "ring-outline-3D": "1",
+        "ring-outline-color": "33ffffff",
+        "ring-gradient-color": "cecece",
+        "center-outline-gradient-start-color": "d5d5d5",
+        "center-outline-gradient-end-color": "525252",
+        "center-outline-gradient-angle": "-0.1",
+        "type": "magneticfeedback",
+        "feedback-smooth-window": "FEEDBACK_BYTE_SIZE",
+        "feedback-color": "MNF_ORANGE",
+        "feedback-history-size": "64",
+        "feedback-data-type": "float",
+        "feedback-data-size": "FEEDBACK_BYTE_SIZE",
+        "title": "Analog Filter Cutoff",
+        "predefined-style": "unipolar_silverknob_nodecimal_fdbk",
+        "param": "Vcf_Cutoff",
+        "feedback-data-offset": "Vcf_Cutoff_Feedback_Offset"
+      },
+      "style_chain": [
+        "MiniFreak V_gui.xml#91",
+        "MiniFreak V_gui.xml#94",
+        "MiniFreak V_gui.xml#107",
+        "MiniFreak V_gui.xml#109"
+      ],
+      "zones": [
+        {
+          "from": "0",
+          "to": "1",
+          "val-from": "0",
+          "val-to": "1",
+          "tooltip": "{100*zval:5}"
+        }
+      ],
+      "factory_normalized": 1.0,
+      "label": {
+        "text": "Cutoff",
+        "bounds": [
+          1861.8500000000001,
+          677.0,
+          125,
+          40
+        ],
+        "font": "Interstate Condensed Regular.otf",
+        "font_size": 34,
+        "color": "c4c4c4"
+      }
+    },
+    {
+      "title": "Analog Filter Res",
+      "parameter": "Vcf_Resonance",
+      "source_id": "screens/synth.xml#404",
+      "bounds": [
+        2033.1000000000001,
+        552.0,
+        125,
+        125
+      ],
+      "style": {
+        "x": "0",
+        "y": "0",
+        "w": "125",
+        "h": "125",
+        "view": "softknob",
+        "bg-color": "1b1b1b",
+        "fg-color": "1b1b1b",
+        "center-color": "212224",
+        "radius": "1",
+        "angle": "2.4",
+        "ring-thickness": "0.04",
+        "center-size": "0.69",
+        "ring-rounded-corners": "1",
+        "text-color": "grey",
+        "font": "Inter-ExtraLight.ttf",
+        "fontsize": "65",
+        "shadow-color": "000000",
+        "center-shadow": "1",
+        "shadow-offset-x-factor": "0",
+        "shadow-offset-y-factor": "12",
+        "center-value-text-display": "1",
+        "display-mapping": "1",
+        "rounded-center-value": "1",
+        "center-value-color": "f3f3f3",
+        "center-value-start": "0.02",
+        "center-value-width": "0.5",
+        "center-value-thickness": "0.07",
+        "center-outline": "0.08",
+        "center-outline-gradient": "1",
+        "ring-outline-thickness": "0.04",
+        "ring-outline-3D": "1",
+        "ring-outline-color": "33ffffff",
+        "ring-gradient-color": "cecece",
+        "center-outline-gradient-start-color": "d5d5d5",
+        "center-outline-gradient-end-color": "525252",
+        "center-outline-gradient-angle": "-0.1",
+        "type": "magneticfeedback",
+        "feedback-smooth-window": "FEEDBACK_BYTE_SIZE",
+        "feedback-color": "MNF_ORANGE",
+        "feedback-history-size": "64",
+        "feedback-data-type": "float",
+        "feedback-data-size": "FEEDBACK_BYTE_SIZE",
+        "title": "Analog Filter Res",
+        "predefined-style": "unipolar_silverknob_nodecimal_fdbk",
+        "param": "Vcf_Resonance",
+        "feedback-data-offset": "Vcf_Resonance_Feedback_Offset"
+      },
+      "style_chain": [
+        "MiniFreak V_gui.xml#91",
+        "MiniFreak V_gui.xml#94",
+        "MiniFreak V_gui.xml#107",
+        "MiniFreak V_gui.xml#109"
+      ],
+      "zones": [
+        {
+          "from": "0",
+          "to": "1",
+          "val-from": "0",
+          "val-to": "1",
+          "tooltip": "{100*zval:5}"
+        }
+      ],
+      "factory_normalized": 0.0,
+      "label": {
+        "text": "Res",
+        "bounds": [
+          2033.1000000000001,
+          677.0,
+          125,
+          40
+        ],
+        "font": "Interstate Condensed Regular.otf",
+        "font_size": 34,
+        "color": "c4c4c4"
+      }
+    },
+    {
+      "title": "Analog Filter Env Amount",
+      "parameter": "Vcf_EnvAmount",
+      "source_id": "screens/synth.xml#411",
+      "bounds": [
+        2204.3500000000004,
+        552.0,
+        125,
+        125
+      ],
+      "style": {
+        "x": "0",
+        "y": "0",
+        "w": "125",
+        "h": "125",
+        "view": "softknob",
+        "bg-color": "1b1b1b",
+        "fg-color": "1b1b1b",
+        "center-color": "212224",
+        "radius": "1",
+        "angle": "2.4",
+        "ring-thickness": "0.04",
+        "center-size": "0.69",
+        "ring-rounded-corners": "1",
+        "text-color": "grey",
+        "font": "Inter-ExtraLight.ttf",
+        "fontsize": "65",
+        "shadow-color": "000000",
+        "center-shadow": "1",
+        "shadow-offset-x-factor": "0",
+        "shadow-offset-y-factor": "12",
+        "center-value-text-display": "1",
+        "display-mapping": "1",
+        "rounded-center-value": "1",
+        "center-value-color": "f3f3f3",
+        "center-value-start": "0.02",
+        "center-value-width": "0.5",
+        "center-value-thickness": "0.07",
+        "center-outline": "0.08",
+        "center-outline-gradient": "1",
+        "ring-outline-thickness": "0.04",
+        "ring-outline-3D": "1",
+        "ring-outline-color": "33ffffff",
+        "ring-gradient-color": "cecece",
+        "center-outline-gradient-start-color": "d5d5d5",
+        "center-outline-gradient-end-color": "525252",
+        "center-outline-gradient-angle": "-0.1",
+        "type": "magneticfeedback",
+        "feedback-smooth-window": "FEEDBACK_BYTE_SIZE",
+        "feedback-color": "MNF_ORANGE",
+        "feedback-history-size": "64",
+        "feedback-data-type": "float",
+        "feedback-data-size": "FEEDBACK_BYTE_SIZE",
+        "title": "Analog Filter Env Amount",
+        "predefined-style": "bipolar_silverknob_nodecimal_fdbk",
+        "param": "Vcf_EnvAmount",
+        "feedback-data-offset": "Vcf_EnvAmount_Feedback_Offset"
+      },
+      "style_chain": [
+        "MiniFreak V_gui.xml#91",
+        "MiniFreak V_gui.xml#94",
+        "MiniFreak V_gui.xml#99",
+        "MiniFreak V_gui.xml#103"
+      ],
+      "zones": [
+        {
+          "from": "0",
+          "to": "0.46",
+          "val-from": "0",
+          "val-to": "0.5",
+          "tooltip": "-{100-100*zval:0}"
+        },
+        {
+          "from": "0.46",
+          "to": "0.54",
+          "val": "0.5",
+          "tooltip": "0"
+        },
+        {
+          "from": "0.54",
+          "to": "1",
+          "val-from": "0.5",
+          "val-to": "1",
+          "tooltip": "{100*zval:0}"
+        }
+      ],
+      "factory_normalized": 0.5,
+      "label": {
+        "text": "Env Amt",
+        "bounds": [
+          2204.3500000000004,
+          677.0,
+          125,
+          40
+        ],
+        "font": "Interstate Condensed Regular.otf",
+        "font_size": 34,
+        "color": "c4c4c4"
+      }
+    }
+  ],
+  "evidence_status": "declaration-derived comparison candidate; native raster/flex/gesture parity unverified"
+}

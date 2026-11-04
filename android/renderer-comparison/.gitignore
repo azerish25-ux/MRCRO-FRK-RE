@@ -1,0 +1,6 @@
+/.gradle/
+/local.properties
+**/build/
+/generated-assets/
+/package-cache/
+/artifacts/
