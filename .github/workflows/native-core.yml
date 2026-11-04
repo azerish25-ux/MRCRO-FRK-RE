@@ -1,0 +1,59 @@
+name: Native engine core
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  pitch-reference:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+      - name: Build portable engine checks
+        run: |
+          cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
+          cmake --build build --parallel 2
+      - name: Compare original-instruction reference vectors
+        run: ctest --test-dir build --output-on-failure
+
+  android-pitch-reference:
+    needs: pitch-reference
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+      - name: Install pinned NDK on the remote runner
+        run: sdkmanager 'ndk;27.2.12479018'
+      - name: Cross-compile Android core checks
+        run: |
+          for abi in arm64-v8a x86_64; do
+            cmake -S . -B "build-$abi" \
+              -DCMAKE_BUILD_TYPE=Release \
+              -DCMAKE_TOOLCHAIN_FILE="$ANDROID_HOME/ndk/27.2.12479018/build/cmake/android.toolchain.cmake" \
+              -DANDROID_ABI="$abi" \
+              -DANDROID_PLATFORM=android-26 \
+              -DANDROID_STL=c++_static
+            cmake --build "build-$abi" --parallel 2
+          done
+      - name: Enable emulator acceleration on the remote runner
+        run: sudo chmod 666 /dev/kvm
+      - name: Run original-vector checks inside Android
+        uses: ReactiveCircus/android-emulator-runner@4c44018e59b437e86cdfc41da381398f93ed8808 # v2
+        with:
+          api-level: 35
+          arch: x86_64
+          target: google_apis
+          disable-animations: true
+          script: |
+            adb push build-x86_64/mfrk_pitch_tests /data/local/tmp/mfrk_pitch_tests
+            adb shell chmod 755 /data/local/tmp/mfrk_pitch_tests
+            adb shell /data/local/tmp/mfrk_pitch_tests

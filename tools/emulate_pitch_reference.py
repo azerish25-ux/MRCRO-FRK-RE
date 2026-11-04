@@ -47,6 +47,8 @@ def main():
     values = [-200.0, -119.0, -118.999, -60.0, 0.0, 8.999, 9.0, 12.0, 48.0,
               60.0, 60.001, 60.003, 60.004, 60.5, 69.0, 69.125, 96.0, 127.0,
               135.999, 136.0, 200.0]
+    values.extend(note + fraction for note in range(128)
+                  for fraction in (0.0, 1 / 256, 127 / 256, 255 / 256, 0.99999))
     vectors = []
     for value in values:
         input_bits = struct.unpack("<I", struct.pack("<f", value))[0]
