@@ -1,0 +1,82 @@
+name: Native renderer comparison
+on:
+  push:
+    paths: ['android/renderer-comparison/**', '.github/workflows/android-renderer-comparison.yml']
+  pull_request:
+    paths: ['android/renderer-comparison/**', '.github/workflows/android-renderer-comparison.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+env:
+  # Asset-free comparison project; generated assets are acquired on the runner.
+  PROJECT: android/renderer-comparison
+  GRADLE_USER_HOME: ${{ github.workspace }}/.gradle-ci
+jobs:
+  renderer-api35:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-java@b6effb05e454b25005698d916606bdc6ffcbf961 # v5
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: android-actions/setup-android@9fc6c4e9069bf8d3d10b2204b1fb8f6ef7065407 # v3
+        with:
+          packages: platform-tools
+      - name: Install only on remote runner
+        shell: bash
+        run: |
+          set -euo pipefail
+          sdkmanager 'platforms;android-35' 'build-tools;35.0.0'
+          curl -fL --retry 3 https://services.gradle.org/distributions/gradle-8.9-bin.zip -o "$RUNNER_TEMP/gradle-8.9-bin.zip"
+          echo 'd725d707bfabd4dfdc958c624003b3c80accc03f7037b5122c4b1d0ef15cecab  '"$RUNNER_TEMP/gradle-8.9-bin.zip" | sha256sum -c -
+          unzip -q "$RUNNER_TEMP/gradle-8.9-bin.zip" -d "$RUNNER_TEMP"
+          echo "$RUNNER_TEMP/gradle-8.9/bin" >> "$GITHUB_PATH"
+      - name: Acquire and verify original assets outside source git
+        shell: bash
+        run: |
+          set -euo pipefail
+          python "$PROJECT/tools/acquire_assets.py" --manifest "$PROJECT/tools/acquisition-manifest.json" --output "$RUNNER_TEMP/minifreak-gui-resources" --cache "$RUNNER_TEMP/arturia-package-cache"
+          python "$PROJECT/tools/stage_renderer_assets.py" --verified-root "$RUNNER_TEMP/minifreak-gui-resources" --output "$PROJECT/app/build/generated/vendor/assets"
+      - name: Build comparison app and instrumentation APK
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$PROJECT/artifacts"
+          gradle --version > "$PROJECT/artifacts/gradle-version.txt"
+          java -version 2> "$PROJECT/artifacts/java-version.txt"
+          sdkmanager --list_installed > "$PROJECT/artifacts/sdk-packages.txt"
+          gradle -p "$PROJECT" --no-daemon :app:assembleDebug :app:assembleDebugAndroidTest :app:lintDebug
+          cp "$RUNNER_TEMP/arturia-package-cache/acquisition-result.json" "$PROJECT/artifacts/"
+      - name: Enable remote emulator acceleration
+        run: sudo chmod 666 /dev/kvm
+      - name: Install and capture five assigned comparison frames
+        uses: ReactiveCircus/android-emulator-runner@a421e43855164a8197daf9d8d40fe71c6996bb0d # v2
+        with:
+          api-level: 35
+          arch: x86_64
+          target: google_apis
+          profile: pixel_2
+          disable-animations: true
+          emulator-options: -no-window -gpu swiftshader_indirect -no-snapshot -noaudio -no-boot-anim -camera-back none
+          script: |
+            adb install -r $PROJECT/app/build/outputs/apk/debug/app-debug.apk
+            adb install -r $PROJECT/app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk
+            adb shell am instrument -w -r com.mfrk.renderercomparison.test/com.mfrk.renderercomparison.ComparisonInstrumentation | tee $PROJECT/artifacts/instrumentation.txt
+            adb logcat -d > $PROJECT/artifacts/logcat.txt
+            grep -q 'INSTRUMENTATION_CODE: -1' $PROJECT/artifacts/instrumentation.txt
+            adb exec-out run-as com.mfrk.renderercomparison tar -C files/renderer-comparison -cf - . > $PROJECT/artifacts/comparison.tar
+            tar xf $PROJECT/artifacts/comparison.tar -C $PROJECT/artifacts
+      - name: Publish requested comparison APKs/screenshots/reports
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: renderer-comparison-api35
+          path: |
+            android/renderer-comparison/app/build/outputs/apk/**/*.apk
+            android/renderer-comparison/artifacts/
+          if-no-files-found: warn
+          retention-days: 7

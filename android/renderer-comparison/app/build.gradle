@@ -1,0 +1,35 @@
+plugins { id 'com.android.application' }
+
+android {
+    namespace 'com.mfrk.renderercomparison'
+    compileSdk 35
+    buildToolsVersion '35.0.0'
+    defaultConfig {
+        applicationId 'com.mfrk.renderercomparison'
+        minSdk 26
+        targetSdk 35
+        versionCode 1
+        versionName '0.1-comparison'
+        testInstrumentationRunner 'com.mfrk.renderercomparison.ComparisonInstrumentation'
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    sourceSets.main.assets.srcDir(layout.buildDirectory.dir('generated/vendor/assets'))
+    buildTypes { debug { debuggable true }; release { minifyEnabled false } }
+}
+
+def verifyVendor = tasks.register('verifyVendorAssets') {
+    inputs.file(rootProject.file('tools/renderer-assets.json'))
+    doLast {
+        def hashes = new groovy.json.JsonSlurper().parse(rootProject.file('tools/renderer-assets.json'))
+        hashes.each { relative, expected ->
+            def asset = layout.buildDirectory.file('generated/vendor/assets/vendor/' + relative).get().asFile
+            if (!asset.isFile()) throw new GradleException('Missing verified generated asset: ' + relative)
+            def actual = java.security.MessageDigest.getInstance('SHA-256').digest(asset.bytes).encodeHex().toString()
+            if (actual != expected) throw new GradleException('Generated asset hash mismatch: ' + relative)
+        }
+    }
+}
+tasks.named('preBuild').configure { dependsOn(verifyVendor) }
