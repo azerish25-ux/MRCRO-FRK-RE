@@ -1,5 +1,7 @@
 #pragma once
 
+#include "mfrk/vcf_types.hpp"
+
 #include <array>
 #include <cstdint>
 #include <memory>
@@ -7,17 +9,7 @@
 
 namespace mfrk {
 
-enum class VcfOutput : std::uint8_t { lowpass, bandpass, highpass };
-
-struct Vcf37Controls {
-    float cutoff;
-    float resonance;
-    VcfOutput output;
-    bool noise;
-    std::array<std::uint8_t, 4> dirty;
-    bool first;
-    bool force;
-};
+using Vcf37Controls = VcfControls;
 
 struct Vcf37ControlSnapshot {
     float cutoff_hz;
