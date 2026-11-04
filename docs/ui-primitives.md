@@ -59,7 +59,11 @@ functions.
 
 Provenance is in `core/tests/ui_primitives_provenance.json`. Original captures,
 source slices, independent fresh instruction outputs and detailed review
-artifacts remain on D:. Android compilation and runtime verification are pending
-for this candidate. Full rendering, scene interpretation, touch gestures and UI
-equivalence remain required. The existing three-knob comparison application's
-Canvas conventions are still unverified.
+artifacts remain on D:. [Run41915285460](https://github.com/azerish25-ux/MRCRO-FRK-RE/actions/runs/41915285460)
+passes all37 Linux Release checks and every original UI reference on an API35
+x86_64 Android emulator, including15 direct guard cases and hash known vectors.
+Both Android ABIs compile; arm64 execution remains unverified.
+[Exact target record](ui-primitives-validation.json) pins the commit and jobs.
+Full rendering, scene interpretation, touch gestures and UI equivalence remain
+required. The existing three-knob comparison application's Canvas conventions
+are still unverified.

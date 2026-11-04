@@ -1,0 +1,49 @@
+{
+  "schema": 1,
+  "commit": "93e7ee0b5ec567ea10cd6573dbf8ea2c527debd8",
+  "run_id": 41915285460,
+  "run_url": "https://github.com/azerish25-ux/MRCRO-FRK-RE/actions/runs/41915285460",
+  "linux": {
+    "job_id": 126873181434,
+    "conclusion": "success",
+    "configuration": "Release",
+    "ctest_passed": 37,
+    "ctest_failed": 0
+  },
+  "android": {
+    "job_id": 126873442431,
+    "conclusion": "success",
+    "compiled_abis": [
+      "arm64-v8a",
+      "x86_64"
+    ],
+    "runtime_abi": "x86_64",
+    "api_level": 35,
+    "runner": "GitHub Actions",
+    "ui_case_counts": {
+      "center": 40,
+      "trig": 37056,
+      "gradient": 40,
+      "marker": 80,
+      "magnetic": 648,
+      "flex_edges": 270,
+      "scaled_dimension": 176
+    },
+    "ui_mismatches": 0,
+    "direct_invalid_domain_boolean_guards_rejected": 15,
+    "hash_known_vectors_pass": true
+  },
+  "independent_review": {
+    "body_count": 10,
+    "altered_fixture_rejections": 49,
+    "semantic_mutants_rejected": 7,
+    "additional_original_center_cases": 30,
+    "additional_original_magnetic_cases": 1728
+  },
+  "limits": [
+    "Seven bounded original math branches, not a complete renderer or scene/input lifecycle.",
+    "arm64-v8a is compile coverage only in this workflow.",
+    "Caller must honor public finite/representable and floating-environment contracts.",
+    "Full sound, preset, touch, MIDI and standalone application parity remain incomplete."
+  ]
+}

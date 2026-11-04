@@ -218,3 +218,19 @@
   KarplusStr buffers/kernel/table producers, native preset eligibility/empty
   hardware-slot and legacy WT AudioSample migrations. Full standalone Android
   sound/UI/touch/MIDI/preset parity remains active and incomplete.
+
+- Native UI primitives merged93e7ee0 after rootoriginalinstructionreproduction,
+  additional30geometry/1728magnetic sourcecases, different-author repo/wiring
+  review and successful Actions41915285460:37LinuxRelease checks/allAndroid
+  x86_64mathreferences,15domain/boolean guards and hashknownvectors pass.
+  Seven originalcasesets total38310 observations,0mismatches; bothABIscompiled.
+- mfrk_ui STATIC/PIC/IPO-off/strictFP owns seven puremath APIs,10exactbodies.
+  All7sourcegoldfixtures unchanged.49alteredfiles(includingCRCcollisions) and
+  7semanticmutants independentlyreject. Full native geometry/dragmath is bounded;
+  calleradmissions, original scene/paint/font/input lifecycle remain required.
+- WarmprocessorREA30608 nowownedwave_tables(targetbd036), avoidingduplicates;
+  Karplus96blocksourcekernel matching expands. Wrapper75012 remainsownedby
+  integration_review, nowpackaging complete nativeFlex andnestedlayout profiles.
+  Presetwork continues nativeeligibility/emptyHWslot andAudioSamplemigration.
+- Entire standaloneAndroid/UIUX/touch/MIDI/everypresetsound objective remains
+  active and incomplete. See docs/ui-primitives.md and remotevalidation record.
