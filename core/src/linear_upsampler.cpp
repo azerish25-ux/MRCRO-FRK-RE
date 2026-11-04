@@ -1,14 +1,17 @@
 #include "mfrk/linear_upsampler.hpp"
 
-#include <algorithm>
+#include <cstddef>
 
 namespace mfrk {
 
-// RED phase: direct original-instruction and composed-engine checks must reject
-// this before the recovered operation is implemented.
-void LinearUpsampler2x::process(std::span<const float, 16>,
+void LinearUpsampler2x::process(std::span<const float, 16> input,
                                 std::span<float, 32> output) noexcept {
-    std::fill(output.begin(), output.end(), 0.0f);
+    for (std::size_t index = 0; index < input.size(); ++index) {
+        const float current = input[index];
+        output[index * 2] = (current + previous_) * 0.5f;
+        output[index * 2 + 1] = current;
+        previous_ = current;
+    }
 }
 
 }  // namespace mfrk
