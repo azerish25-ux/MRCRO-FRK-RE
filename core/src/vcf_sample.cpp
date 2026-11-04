@@ -57,17 +57,17 @@ VcfSampleState::VcfSampleState(float rate, std::uint32_t initial_seed, float cap
     : inverse_rate(1.0f / rate),
       baseline(saturate(std::bit_cast<float>(std::uint32_t{0x3c83126fu}))),
       offset(std::bit_cast<float>(std::uint32_t{0xc08d3b9du})), seed(initial_seed) {
-        const float c2 = capacitor * capacitor;
-        float q = rate * rate;
-        q = q * vcf_constant<0x18055a558>();
-        q = q * c2;
-        q = 1.0f / q;
-        q = q + 1.0f;
-        q = std::sqrt(q);
-        compensation = 1.0f / q;
-        dc_coefficient = std::exp(inverse_rate * std::bit_cast<float>(std::uint32_t{0xc1490fdbu}));
-        feedforward = (dc_coefficient + 1.0f) * 0.5f;
-        negative_feedforward = -feedforward;
+    const float c2 = capacitor * capacitor;
+    float q = rate * rate;
+    q = q * vcf_constant<0x18055a558>();
+    q = q * c2;
+    q = 1.0f / q;
+    q = q + 1.0f;
+    q = std::sqrt(q);
+    compensation = 1.0f / q;
+    dc_coefficient = std::exp(inverse_rate * std::bit_cast<float>(std::uint32_t{0xc1490fdbu}));
+    feedforward = (dc_coefficient + 1.0f) * 0.5f;
+    negative_feedforward = -feedforward;
 }
 
 void VcfSampleState::reset(float resonance) noexcept {
@@ -89,32 +89,32 @@ float VcfSampleState::process_sample(float input, float g, float r) noexcept {
     constexpr float a = vcf_constant<0x180559ec4>();
     constexpr float b = vcf_constant<0x180559da0>();
     constexpr float k = vcf_constant<0x18055a4c8>();
-        float sample = input;
-        if (noise) {
-            seed ^= seed << 13;
-            seed ^= seed >> 17;
-            seed ^= seed << 5;
-            sample = (static_cast<float>(seed) * vcf_constant<0x180554834>() + sample) - vcf_constant<0x1805587e8>();
-        }
-        const float numerator = ((((r * k - (g * a + b)) * s1 + sample * vcf_constant<0x180559e8c>()) - s2 * a) + (s1 - delayed_bp) * compensation) + feedback * k;
-        const float denominator = (((g * g) * a + g * b) + a) - ((g * k) * r) - compensation * g;
-        const float hp = numerator / denominator;
-        const float g_hp = hp * g;
-        const float bp = g_hp + s1;
-        const float g_bp = bp * g;
-        const float lp = g_bp + s2;
-        s1 = bp + g_hp;
-        s2 = lp + g_bp;
-        delayed_bp = bp;
-        const float drive = bp * vcf_constant<0x180559f68>() - ((hp + lp) * a + bp * b);
-        const float x = std::abs(drive) * vcf_constant<0x18055a2c4>() + offset;
-        const float sign = std::bit_cast<float>((std::bit_cast<std::uint32_t>(drive) & 0xbf800000u) | 0x3f800000u);
-        feedback = (feedback_curve(x) * vcf_constant<0x180554a1c>() - vcf_constant<0x180554890>()) * sign;
-        const float selected = mode == VcfOutput::lowpass ? lp : mode == VcfOutput::bandpass ? bp : mode == VcfOutput::highpass ? hp : 0.0f;
-        const float raw = (saturate(vcf_constant<0x180559c34>() - selected * vcf_constant<0x180559e28>()) - baseline) * vcf_constant<0x18055a1e8>();
-        const float y = raw * feedforward + dc_state;
-        dc_state = y * dc_coefficient + raw * negative_feedforward;
-        return y * vcf_constant<0x18055a048>();
+    float sample = input;
+    if (noise) {
+        seed ^= seed << 13;
+        seed ^= seed >> 17;
+        seed ^= seed << 5;
+        sample = (static_cast<float>(seed) * vcf_constant<0x180554834>() + sample) - vcf_constant<0x1805587e8>();
+    }
+    const float numerator = ((((r * k - (g * a + b)) * s1 + sample * vcf_constant<0x180559e8c>()) - s2 * a) + (s1 - delayed_bp) * compensation) + feedback * k;
+    const float denominator = (((g * g) * a + g * b) + a) - ((g * k) * r) - compensation * g;
+    const float hp = numerator / denominator;
+    const float g_hp = hp * g;
+    const float bp = g_hp + s1;
+    const float g_bp = bp * g;
+    const float lp = g_bp + s2;
+    s1 = bp + g_hp;
+    s2 = lp + g_bp;
+    delayed_bp = bp;
+    const float drive = bp * vcf_constant<0x180559f68>() - ((hp + lp) * a + bp * b);
+    const float x = std::abs(drive) * vcf_constant<0x18055a2c4>() + offset;
+    const float sign = std::bit_cast<float>((std::bit_cast<std::uint32_t>(drive) & 0xbf800000u) | 0x3f800000u);
+    feedback = (feedback_curve(x) * vcf_constant<0x180554a1c>() - vcf_constant<0x180554890>()) * sign;
+    const float selected = mode == VcfOutput::lowpass ? lp : mode == VcfOutput::bandpass ? bp : mode == VcfOutput::highpass ? hp : 0.0f;
+    const float raw = (saturate(vcf_constant<0x180559c34>() - selected * vcf_constant<0x180559e28>()) - baseline) * vcf_constant<0x18055a1e8>();
+    const float y = raw * feedforward + dc_state;
+    dc_state = y * dc_coefficient + raw * negative_feedforward;
+    return y * vcf_constant<0x18055a048>();
 }
 
 }  // namespace mfrk::detail
