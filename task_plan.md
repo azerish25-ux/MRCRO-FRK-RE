@@ -81,8 +81,8 @@ unproven until all feature and equivalence requirements are independently verifi
   start a fresh owned CLI client only when further provider queries are needed.
 
 ## Next Step
-Integrate the verified ADSR into the original voice path and implement filter
-resource/fade lifecycle, then recover the remaining voice/allocator/filter graph and
+Integrate SuperWave and verified voice gain/pan/Q14 stages, connect ADSR and the
+deferred filter into the original voice/allocator/Dual graph, then
 integrate Android audio/UI from the recovered scene specification. Continue every
 remaining engine, effect, sequencer and preset/state requirement. The verified
 Basic Waves/VAnalog components are not completion of the instrument.

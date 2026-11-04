@@ -377,3 +377,27 @@
   ui-resource-agent/runtime-home. Static candidate, not verified Android/runtime UI.
 - Further oscillator-model bank mapping/reconstruction started independently under
   oscillator-model-agent. Remaining full instrument/application objective active.
+
+## Deferred controller integrated
+- Integrated63ddbfe193e939d53b3a1df1848a3fa6f567d99a after independent review.
+  Valid Init/prepare/render/end, private worker generations preserving logical raw
+  seed/latches, release/acquire handover, old reset before latest replay, suspended
+  no-write, exact dirty/cache conversion and latency/fade order.
+- Green41836390093 passes all14 native tests, both ABI builds and API35 x86_64:
+  1,398commands/24,064outputs/814states/1,834param snapshots/6suspended checks,
+  0callbackallocations/0mismatches. Parameter310+7constructor+7metadata exact.
+- Red41835908163 controller placeholder30,296mismatches, other checks passed.
+  Mutants resetafterreplay1952differences/zerounready192; portable allocationfault
+  retry verified separately, without nativeOOM compatibility claim.
+- Lifecycle414182bytes SHA256
+  f513aae769b8fb95aeab2e80671f6930f9280c8a095fb3733b6031f5cdf7e263;
+  reproducible LF parameterheaderSHA
+  c0ae297a43094e1fdbe2e052df81c64dec545a48b29646b3ef5ec3516d910d01.
+- Fixed49child, actor/worker/emptyalias/snapshot boundaries explicit; full Dual,
+  voice/FX/preset/UI/application remain incomplete.
+- SuperWave C++ candidate now2016fixtures including native float phase setter and
+  proven OscSlot default0. Separate24/30 bank maps/side+2*type indexing verified.
+  Local candidate/handoff await production integration.
+- FXinput gain/pan/Q14 candidate5376stereo/672history/3456each EnvSource+VCAword/
+  24norm checks exact, explicit7mono-lane history/settings. CC64flush,8thinput,
+  fullsum/effects/coldhistory still open. Integration-001 handoff is durable.

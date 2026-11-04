@@ -155,13 +155,13 @@ the original leaves output untouched and does not advance DSP/PRNG; caller owns
 clearing. Constructor/transition probes run actual numeric resource construction
 under bounded allocation models; mutex/refcount shell/pending-state replay and
 host worker timing remain outside this proof. No portable transition controller
-is integrated yet.
+was integrated at this earlier checkpoint; see the current result below.
 
 Adaptive factor selection can produce3. Original missing-key IIR fallback for3
 has zero gain, one zero-coefficient section and latency0; it must not be replaced
 with a generic3x filter. Factor1 skips resampler creation and copies directly.
 The numeric portable resource now includes bypass1, fallback3 and FIR profiles.
-The deferred controller itself remains unimplemented. Local filter-agent files
+The numeric scope here was later extended with the controller below. Local filter-agent files
 retain the exact selector/factory and transition evidence.
 
 ## Latest numeric resources and constructor contract
@@ -185,6 +185,28 @@ an uninitialized constructor or infer semantic names for that context flag.
 FIR fixed resources and both input streams are independently verified, including
 the original source-tap fallback3. Cross-kernel deferred transitions, arbitrary
 captured state-command replay and OS worker timing remain unverified.
+
+## Deferred controller current result
+
+Fixed49 controller integrated at63ddbfe193e939d53b3a1df1848a3fa6f567d99a.
+[Android41836390093](https://github.com/azerish25-ux/MRCRO-FRK-RE/actions/runs/41836390093)
+matched24,064 outputs,814 lifecycle snapshots and1,834 native cache snapshots;
+all prior checks and both ABI builds passed. Runtime remains x86_64.
+Worker generations preserve raw seed/latches and original reset results, not
+Windows pointer/refcount identity. Actor caches and pending updates remain
+separate from worker publication; completion merges the raw-init aggregate mark.
+
+Cache rules match310 original traces: IDs0/1 map norm→physical0..100; mode is
+min(floor(f32(norm*3)),2), kernel similarly2items, factor index4items. Noise/model
+remain continuous with strict preparedbool>0.5. Unchanged normalized writes still
+store incoming bits/status1. Dirty compares normalized equality, not physical bin.
+Physical origin uses index/(N-1); raw/extra eager cache handling differs. Actual
+constructor noncanonical cache origins are retained.
+
+Explicit initialize/prepare/render/end and worker steps preserve the tested cold,
+factor and cross-kernel sequences. Normal callbacks allocate nothing. Physical raw
+configuration requires idle worker; arbitrary captured-state replay, queue stress
+and full outer graph remain qualified gaps.
 
 ## Voice integration updates
 

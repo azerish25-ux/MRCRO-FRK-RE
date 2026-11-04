@@ -86,3 +86,8 @@ unfinished; the full1:1 objective stays active.
 also pass on Android, including settled FIR filter composition and the original
 fallback behavior. Deferred transitions, complete voice/FX/MIDI/preset behavior
 and the actual Android UI/app remain unfinished.
+
+[Deferred filter lifecycle](https://github.com/azerish25-ux/MRCRO-FRK-RE/actions/runs/41836390093)
+now passes24,064 original outputs plus cold-start, cache, pending-update and
+worker/fade state checks on Android. Full voice/FX/preset/MIDI integration,
+remaining models and the actual Android application remain unfinished.

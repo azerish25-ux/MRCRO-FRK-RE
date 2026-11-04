@@ -5,14 +5,24 @@ synchronous replacement approximation. Keep one logical raw state across resourc
 preserve PRNG, reconstruct original cache/dirty conversion and reset-before-
 pending replay. Both numeric kernels and factor selection/fade are already verified.
 
-- [ ] Integrate exact seven-record normalized/physical cache semantics and tests.
-- [ ] Add raw rate-initialization/reset preserving mode/noise/seed.
-- [ ] Implement explicit prepare/render/end and worker/completion phases with
+- [x] Integrate exact seven-record normalized/physical cache semantics and tests.
+- [x] Add raw rate-initialization/reset preserving mode/noise/seed.
+- [x] Implement explicit prepare/render/end and worker/completion phases with
   bounded mailboxes and pending latest-value normalized updates.
-- [ ] Verify original cold start, first-context branches, deferred factor1/3/4
+- [x] Verify original cold start, first-context branches, deferred factor1/3/4
   transitions, suspended no-write/PRNG freeze, pending reset order and metadata.
-- [ ] Cross-kernel and repeated-request evidence/validation where supported.
-- [ ] Independent review, remote Android tests, integrate and continue full graph.
+- [x] Verify both cross-kernel transition directions and captured cache states.
+- [x] Independent review/Android/integration at63ddbfe193e939d53b3a1df1848a3fa6f567d99a.
+- [ ] Further repeated/overlapping requests, arbitrary captured-state replay and
+  full graph/application requirements remain open.
+
+Red41835908163 rejected placeholder controller with30,296 mismatches; other
+checks passed. Green41836390093 passed all14 native checks, both Android ABI
+builds and API35 x86_64 execution:1,398commands/24,064outputs/814states/1,834
+parameter snapshots,6suspended checks,0callbackallocations,0mismatches.
+Parameter gold:310traces+7constructor records+7metadata rows. Portable worker
+allocation failure preserves the request and can retry; this is not a claim
+about native Windows OOM behavior. Source/provenance files accompany fixtures.
 
 Constructor-only original audio is invalid despite ready=true/null resource.
 The portable API requires initialize before prepare/render. context+50 retains

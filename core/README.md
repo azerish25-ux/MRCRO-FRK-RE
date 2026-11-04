@@ -223,5 +223,38 @@ Both Android ABIs compiled; runtime was API35 x86_64. Independent review verifie
 tap bits, arithmetic/history/reset, capacity handling, fixture regeneration and
 settled composition. Fixture SHA256:
 `c8ee189f26447620750fee7519577cd30c16f4c899a521ecbb48c5878ca92c82`.
-This does not implement the deferred worker/controller, arbitrary state-command
-replay, full voice/FX graph or Android application/UI.
+The deferred worker/controller was implemented subsequently as described below;
+arbitrary state-command replay, full voice/FX graph and Android app/UI remain open.
+
+## Deferred fixed49 controller and parameter caches
+
+`DeferredVcf49` implements public initialization, prepare/render/end, deferred
+request/worker/completion, fade ordering, latency publication and latest normalized
+pending updates. Reset uses old controls before replay; PRNG and latched controls
+survive replacement. Suspended render leaves output untouched and does not advance
+DSP. This is a fixed49 child; the hardware37 child and Dual selector remain separate.
+
+Private worker generations preserve the same logical state. Old allocations
+retire on the worker; release/acquire publication protects handover. Control calls
+are one actor; physical raw configuration requires an idle worker. Normal callback
+paths allocate nothing. Initialization and the explicit direct-build context may
+allocate. The host owns worker execution/joining. Native OS timing, ownership ABI
+and arbitrary captured-state-command replay are not claimed.
+
+Seven native records preserve incoming normalized bits, lazy cache origin, strict
+noise thresholds, discrete endpoint quantization and normalized dirty comparison.
+Snapshots include the raw-init aggregate mark published with a new generation.
+
+[Run41836390093](https://github.com/azerish25-ux/MRCRO-FRK-RE/actions/runs/41836390093)
+passed all14 native checks and Android API35 x86_64 references:1,398commands,
+24,064 outputs,814 lifecycle snapshots,1,834 parameter snapshots,6suspended checks
+and0callback allocations. Cases include cold/direct branches, factor2→4/1/3,
+both IIR/FIR directions and pending reset order. Separate parameter tests pass310
+traces,7constructor records and7metadata rows. Both ABIs built; arm64 was not run.
+
+Negative tests reject reset-after-replay (1,952 differences) and zeroing suspended
+output (192). Separate portable fault injection verifies allocation-failure retry;
+native allocation-failure compatibility is outside the reference fixtures.
+Lifecycle fixture SHA256:
+`f513aae769b8fb95aeab2e80671f6930f9280c8a095fb3733b6031f5cdf7e263`.
+Source hashes/counts and generator policy accompany the fixture provenance JSON.

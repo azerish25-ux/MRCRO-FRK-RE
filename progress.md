@@ -76,6 +76,13 @@
   device-level validation. No full instrument or APK completion is claimed.
 
 ## Live analysis handles (revalidate before reuse)
+- Deferred controller integrated63ddbfe193e939d53b3a1df1848a3fa6f567d99a;
+  Android41836390093 passes all14tests/lifecycle/cache references,0callbackallocs.
+  Both ABIs compiled; x86_64 executed. Full objective stays active.
+- SuperWave candidate now nativefloatphase/callerdefault0,2016fixtures, allmutants
+  fail; reviewapproved. Nextrootintegration. FXinput/Q14candidate likewise ready.
+- IntegrationREA58961 received normalclose byui_resources; confirmterminal before
+  reuse. Wave/oscillator ownedREA closed; no roothandlelive. Full graph/UI pending.
 - Numeric FIR/bypass/fallback/selector/fade/resource stage integrated d71cb685...
   Android41821648527 attempt2 passed all12 checks and new original references.
   First attempt failed old adb-pull; no code/numerical change was needed to retry.
