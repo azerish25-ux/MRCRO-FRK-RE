@@ -3,7 +3,9 @@
 **Goal:** Reconstruct the identified VAnalog mono engine output against original
 Init/Render numerical traces, without substituting a generic oscillator.
 
-**Architecture:** A stateful portable C++ engine with fixed 32-frame processing.
+**Architecture:** A stateful portable C++ engine with up to 32-frame processing.
+Wrapper decompilation established that Arturia requests 16 internal frames and
+then upsamples to its 32-frame output block. Test both 16 and 32-frame paths.
 Its controls remain raw recovered engine parameters. Wrapper routing, rate
 conversion, voices, filtering and UI integration remain separate requirements.
 

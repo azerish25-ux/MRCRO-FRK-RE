@@ -21,6 +21,7 @@ def main():
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--matrix", action="store_true")
     parser.add_argument("--trace-components", action="store_true")
+    parser.add_argument("--frames", type=int, choices=range(1, 33), default=32)
     args = parser.parse_args()
     output = args.output.resolve()
     if output.drive.upper() != "D:":
@@ -55,7 +56,7 @@ def main():
                 trace["return_address"] = struct.unpack("<Q", machine.mem_read(pointer, 8))[0]
                 trace["output_pointer"] = struct.unpack("<Q", machine.mem_read(pointer + 40, 8))[0]
             elif address == trace.get("return_address"):
-                trace["saw_output_bits"] = list(struct.unpack("<32I", machine.mem_read(trace["output_pointer"], 128)))
+                trace["saw_output_bits"] = list(struct.unpack(f"<{args.frames}I", machine.mem_read(trace["output_pointer"], args.frames * 4)))
                 trace.pop("return_address", None)
         machine.hook_add(UC_HOOK_CODE, trace_call)
 
@@ -97,13 +98,13 @@ def main():
         for index, values in enumerate(sequence):
             parameter_bytes = struct.pack("<4f", *values)
             machine.mem_write(parameters, struct.pack("<i", 2) + parameter_bytes + struct.pack("<f", 1.0))
-            invoke(0x18032FEF0, engine, parameters, out, aux, (32, heap + 7 * 4096))
+            invoke(0x18032FEF0, engine, parameters, out, aux, (args.frames, heap + 7 * 4096))
             block = {"block_index": index,
                            "parameter_bits_note_timbre_morph_harmonics": list(struct.unpack("<4I", parameter_bytes)),
-                           "out_bits": list(struct.unpack("<32I", machine.mem_read(out, 128))),
-                           "aux_bits": list(struct.unpack("<32I", machine.mem_read(aux, 128)))}
+                           "out_bits": list(struct.unpack(f"<{args.frames}I", machine.mem_read(out, args.frames * 4))),
+                           "aux_bits": list(struct.unpack(f"<{args.frames}I", machine.mem_read(aux, args.frames * 4)))}
             if args.trace_components:
-                block["square_output_bits"] = list(struct.unpack("<32I", machine.mem_read(temp, 128)))
+                block["square_output_bits"] = list(struct.unpack(f"<{args.frames}I", machine.mem_read(temp, args.frames * 4)))
                 block["saw_output_bits"] = trace["saw_output_bits"]
             blocks.append(block)
         scenarios.append({"name": name, "blocks": blocks})
@@ -111,7 +112,7 @@ def main():
               "method": "bounded emulation of original Init/Render and original tables",
               "init_address": "0x18032fe50", "render_address": "0x18032fef0",
               "trigger": 2, "accent": 1.0,
-              "frames_per_block": 32, "scenarios": scenarios,
+              "frames_per_block": args.frames, "scenarios": scenarios,
               "limitations": ["selected parameter cases and state changes only",
                               "not live sound or a complete instrument render",
                               "wrapper pitch/rate/parameter routing remains unverified"]}
@@ -120,7 +121,7 @@ def main():
         stream.write("\n")
     total_blocks = sum(len(scenario["blocks"]) for scenario in scenarios)
     print(json.dumps({"scenarios": len(scenarios), "blocks": total_blocks,
-                      "samples": total_blocks * 32}, indent=2))
+                      "samples": total_blocks * args.frames}, indent=2))
 
 
 if __name__ == "__main__":

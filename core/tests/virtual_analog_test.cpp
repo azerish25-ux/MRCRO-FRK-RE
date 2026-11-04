@@ -21,9 +21,10 @@ int main() {
             const mfrk::VirtualAnalogParameters parameters{
                 std::bit_cast<float>(bits[0]), std::bit_cast<float>(bits[1]),
                 std::bit_cast<float>(bits[2]), std::bit_cast<float>(bits[3])};
-            std::array<float, 32> output{};
-            engine.render(parameters, output);
-            for (std::size_t index = 0; index < output.size(); ++index) {
+            std::array<float, 32> output;
+            output.fill(123.0f);
+            engine.render(parameters, std::span<float>(output.data(), block.frames));
+            for (std::size_t index = 0; index < block.frames; ++index) {
                 const auto actual = std::bit_cast<std::uint32_t>(output[index]);
                 if (actual != block.output[index]) {
                     if (case_failures < 2) {
@@ -37,6 +38,13 @@ int main() {
                     ++failures;
                 }
                 ++samples;
+            }
+            for (std::size_t index = block.frames; index < output.size(); ++index) {
+                if (output[index] != 123.0f) {
+                    std::printf("%s: wrote beyond requested output length\n", scenario.name);
+                    ++failures;
+                    ++case_failures;
+                }
             }
             ++block_index;
         }

@@ -37,6 +37,7 @@
 
 #include <algorithm>
 #include <array>
+#include <cassert>
 
 namespace mfrk {
 
@@ -76,7 +77,8 @@ VirtualAnalog::VirtualAnalog() : impl_(std::make_unique<Impl>()) {}
 VirtualAnalog::~VirtualAnalog() = default;
 
 void VirtualAnalog::render(const VirtualAnalogParameters& parameters,
-                           std::span<float, 32> output) noexcept {
+                           std::span<float> output) noexcept {
+    assert(!output.empty() && output.size() <= impl_->temporary.size());
     const float primary_frequency = normalized_pitch_frequency(parameters.note);
     const float auxiliary_frequency = normalized_pitch_frequency(parameters.note + detuning(parameters.harmonics));
     const float sync_frequency = normalized_pitch_frequency(
