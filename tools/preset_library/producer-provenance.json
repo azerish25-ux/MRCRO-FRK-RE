@@ -1,0 +1,25 @@
+{
+  "scope": "Acquisition-only producer; original preset DSP/migration behavior remains separate.",
+  "text_policy": "Project Python/JSON normalized UTF8 without BOM/LF; manifest data and every staged original file identity unchanged.",
+  "files": {
+    "acquire_library.py": {
+      "reviewed_sha256": "4e592e1a328edc872c41af4887d014d4e0ef8134ee30d6cfd99db57336c895bf",
+      "published_sha256": "5c2fc97026849c15f2390e156e8668f1f64f44d1dc75863a81b532b4add58a3e"
+    },
+    "acquisition-manifest.json": {
+      "reviewed_sha256": "7ceac5ba13c1834dd165926ef2e435ca6cf5053c0ae325846ac8ba469b147696",
+      "published_sha256": "fbfa1490947e610fcaf57be087115feecd9d4c0f963e10c79b8fa4a5dbbad643"
+    }
+  },
+  "hardening_harness": {
+    "reviewed_source_sha256": "e8aedf3fbf3e6ba16ec984a505d0eade6287bf917c32f71d481a0c46d436cf90",
+    "adaptation": "Only sibling tool/manifest location and explicit --work-root/--report output paths changed. Case bodies retained. Windows-only junction case remains conditional. Report scope names distinguish owned test effects from the explicitly requested report path.",
+    "published_sha256": "5168d6fd02de4653b0e99d45f86d626186e16886c0aede827f699e2076db6b13",
+    "required_linux_file_symlink_cases": [
+      "direct_output_part_symlink",
+      "cache_part_symlink",
+      "report_symlink",
+      "cache_target_symlink"
+    ]
+  }
+}

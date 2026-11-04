@@ -1,0 +1,70 @@
+name: Included preset library
+on:
+  push:
+    paths: ['tools/preset_library/**', '.github/workflows/preset-library.yml']
+  pull_request:
+    paths: ['tools/preset_library/**', '.github/workflows/preset-library.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  original-library-identities:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+      - name: Check portable paths and atomic producer writes
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p artifacts/preset-library
+          python3 tools/preset_library/check_hardened_producer.py --work-root "$RUNNER_TEMP/preset-producer-checks" --report "$GITHUB_WORKSPACE/artifacts/preset-library/producer-hardening.json"
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          report=json.loads(Path('artifacts/preset-library/producer-hardening.json').read_text())
+          cases={row['case']:row for row in report['cases']}
+          required={'direct_output_part_symlink','cache_part_symlink','report_symlink','cache_target_symlink'}
+          assert required <= cases.keys()
+          assert not any(row.get('result')=='platform_unavailable' for row in cases.values())
+          for name in required:
+              assert cases[name].get('sentinel_unchanged') and cases[name].get('preexisting_symlink_preserved')
+          print('All four real file-symlink regressions executed; no platform skips')
+          PY
+      - name: Reproduce every original included preset and dependency
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 tools/preset_library/acquire_library.py --manifest tools/preset_library/acquisition-manifest.json --output "$RUNNER_TEMP/minifreak-included-library" --cache "$RUNNER_TEMP/minifreak-library-cache"
+          cp "$RUNNER_TEMP/minifreak-library-cache/library-acquisition-result.json" artifacts/preset-library/first-acquisition.json
+      - name: Check idempotent byte identities
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 tools/preset_library/acquire_library.py --manifest tools/preset_library/acquisition-manifest.json --output "$RUNNER_TEMP/minifreak-included-library" --cache "$RUNNER_TEMP/minifreak-library-cache"
+          cp "$RUNNER_TEMP/minifreak-library-cache/library-acquisition-result.json" artifacts/preset-library/second-acquisition.json
+          cmp artifacts/preset-library/first-acquisition.json artifacts/preset-library/second-acquisition.json
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          manifest=json.loads(Path('tools/preset_library/acquisition-manifest.json').read_text())
+          report=json.loads(Path('artifacts/preset-library/second-acquisition.json').read_text())
+          expected={row['output_path']:row['sha256'] for row in manifest['files']}
+          assert report['file_hashes']==expected
+          assert report['runtime_files']==1380 and report['verified_bytes']==75891958
+          assert report['preset_archive_count']==1210 and report['browser_catalog_count']==626
+          assert report['tutorial_state_count']==72 and report['hardware_backup_count']==512
+          assert report['all_original_identities_verified'] and not report['authentication_used'] and not report['installer_executed']
+          print('1380 original runtime files and 1210 preset archive identities match')
+          PY
+          cp tools/preset_library/producer-provenance.json artifacts/preset-library/
+      - name: Publish validation reports
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: included-preset-library-identities
+          path: artifacts/preset-library/
+          if-no-files-found: warn
+          retention-days: 7
