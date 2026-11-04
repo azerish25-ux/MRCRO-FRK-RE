@@ -1,0 +1,22 @@
+{
+  "processor_sha256": "bd036dfa6a0afcfef733c29c73b1b3df969f2c86ca860b0fa535d4492fa8fb74",
+  "golden_policy": "Expected snapshots/returns are copied only from original native emulation records. Independent-model fields/match booleans are ignored. Unit prestate restoration uses original baseline/previous snapshots; source clear commands are replayed by the harness. No candidate-derived expected values.",
+  "sources": [
+    {
+      "path": "m49-normalized-conversion-probes-v1.json",
+      "sha256": "423841fc1a71040b9ca64e59dc6295cb1af0f586c51b1609577444ce3ebcf750"
+    },
+    {
+      "path": "m49-normalized-dirty-origin-probes-v1.json",
+      "sha256": "6cf35f0ca4a46ca33ca83c4d2ff4ed69d20400f5985d1d69d997d463acbce86e"
+    },
+    {
+      "path": "original_constructor_snapshots.json",
+      "sha256": "cbb8242687c8a3f4c5452680e85ee7722338a7188c76cda7b5c18ff272cbaea1"
+    }
+  ],
+  "trace_cases": 310,
+  "constructor_states": 7,
+  "metadata_rows": 7,
+  "generated_header_sha256": "c0ae297a43094e1fdbe2e052df81c64dec545a48b29646b3ef5ec3516d910d01"
+}

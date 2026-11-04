@@ -57,6 +57,16 @@ void Vcf49::prepare(const VcfControls& controls) noexcept {
 
 void Vcf49::reset(float resonance) noexcept { impl_->reset(resonance); }
 
+std::unique_ptr<Vcf49> Vcf49::reconfigured(float rate, float resonance) const {
+    auto result = std::make_unique<Vcf49>(rate, impl_->seed);
+    result->impl_->cutoff = impl_->cutoff;
+    result->impl_->resonance = impl_->resonance;
+    result->impl_->mode = impl_->mode;
+    result->impl_->noise = impl_->noise;
+    result->reset(resonance);
+    return result;
+}
+
 void Vcf49::process(std::span<const float> audio, std::span<const float> modulation,
                     std::span<float> output) noexcept {
     assert(audio.size() == modulation.size() && audio.size() == output.size());

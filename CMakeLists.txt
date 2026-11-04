@@ -6,7 +6,8 @@ add_library(mfrk_core STATIC core/src/pitch.cpp core/src/virtual_analog.cpp
     core/src/virtual_analog_oscillator.cpp core/src/basic_wave_tables.cpp
     core/src/basic_waves.cpp core/src/vcf37.cpp core/src/vcf_sample.cpp core/src/vcf49.cpp
     core/src/iir_resampler.cpp core/src/oversampled_vcf49.cpp core/src/adsr.cpp
-    core/src/filter_resampling.cpp core/src/fir_resampler.cpp core/src/filter_resource.cpp)
+    core/src/filter_resampling.cpp core/src/fir_resampler.cpp core/src/filter_resource.cpp
+    core/src/deferred_vcf49.cpp)
 target_include_directories(mfrk_core PUBLIC core/include)
 target_include_directories(mfrk_core PRIVATE third_party)
 # Upstream stmlib's TEST path selects portable helpers instead of Cortex-M assembly.
@@ -57,6 +58,19 @@ if(BUILD_TESTING)
     add_executable(mfrk_filter_resource_tests core/tests/filter_resource_test.cpp)
     target_link_libraries(mfrk_filter_resource_tests PRIVATE mfrk_core)
     add_test(NAME original_filter_resources COMMAND mfrk_filter_resource_tests ${CMAKE_CURRENT_SOURCE_DIR}/core/tests/filter_resource_vectors.bin)
+    find_package(Threads REQUIRED)
+    add_executable(mfrk_filter_lifecycle_tests core/tests/filter_lifecycle_test.cpp)
+    target_link_libraries(mfrk_filter_lifecycle_tests PRIVATE mfrk_core Threads::Threads)
+    add_test(NAME original_filter_lifecycle COMMAND mfrk_filter_lifecycle_tests ${CMAKE_CURRENT_SOURCE_DIR}/core/tests/filter_lifecycle_vectors.bin)
+    add_executable(mfrk_filter_parameter_tests core/tests/filter_parameter_test.cpp)
+    target_include_directories(mfrk_filter_parameter_tests PRIVATE core/src)
+    target_link_libraries(mfrk_filter_parameter_tests PRIVATE mfrk_core)
+    if(MSVC)
+        target_compile_options(mfrk_filter_parameter_tests PRIVATE /fp:strict)
+    else()
+        target_compile_options(mfrk_filter_parameter_tests PRIVATE -fno-fast-math -ffp-contract=off)
+    endif()
+    add_test(NAME original_filter_parameters COMMAND mfrk_filter_parameter_tests)
     if(NOT ANDROID)
         find_package(Python3 REQUIRED COMPONENTS Interpreter)
         add_test(NAME original_basic_wave_tables

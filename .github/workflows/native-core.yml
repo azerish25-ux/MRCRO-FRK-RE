@@ -102,5 +102,12 @@ jobs:
             adb push core/tests/filter_resource_vectors.bin /data/local/tmp/filter_resource_vectors.bin
             adb shell chmod 755 /data/local/tmp/mfrk_filter_resource_tests
             adb shell /data/local/tmp/mfrk_filter_resource_tests /data/local/tmp/filter_resource_vectors.bin
+            adb push build-x86_64/mfrk_filter_lifecycle_tests /data/local/tmp/mfrk_filter_lifecycle_tests
+            adb push core/tests/filter_lifecycle_vectors.bin /data/local/tmp/filter_lifecycle_vectors.bin
+            adb shell chmod 755 /data/local/tmp/mfrk_filter_lifecycle_tests
+            adb shell /data/local/tmp/mfrk_filter_lifecycle_tests /data/local/tmp/filter_lifecycle_vectors.bin
+            adb push build-x86_64/mfrk_filter_parameter_tests /data/local/tmp/mfrk_filter_parameter_tests
+            adb shell chmod 755 /data/local/tmp/mfrk_filter_parameter_tests
+            adb shell /data/local/tmp/mfrk_filter_parameter_tests
       - name: Compare generated Android table bytes
         run: python3 tools/check_basic_wave_tables.py --dump build-x86_64/basic-wave-tables.bin --expected core/tests/basic_wave_table_hashes.json

@@ -18,6 +18,9 @@ public:
     Vcf49& operator=(const Vcf49&) = delete;
     void prepare(const VcfControls& controls) noexcept;
     void reset(float resonance) noexcept;
+    // Worker-owned generation of the same logical filter after public Init.
+    // Preserve latched controls and PRNG; original Init/reset clears DSP history.
+    [[nodiscard]] std::unique_ptr<Vcf49> reconfigured(float sample_rate, float reset_resonance) const;
     // Equal span lengths; finite audio/modulation. Exact in-place output over
     // an input is supported; partially overlapping ranges are not supported.
     void process(std::span<const float> audio, std::span<const float> modulation,
