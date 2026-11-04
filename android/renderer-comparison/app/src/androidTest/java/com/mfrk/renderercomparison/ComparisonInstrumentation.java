@@ -31,12 +31,13 @@ public final class ComparisonInstrumentation extends Instrumentation {
             String[] names={"minimum","center","factory-default","maximum","factory-repeat"};
             float[][] values={{0,0,0},{0.5f,0.5f,0.5f},{1,0,0.5f},{1,1,1},{1,0,0.5f}};
             JSONArray cases=new JSONArray(); HashSet<String> unique=new HashSet<>(); String factoryHash=null;
+            Intent intent=new Intent(getTargetContext(),RendererComparisonActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            RendererComparisonActivity activity=(RendererComparisonActivity)startActivitySync(intent);
+            RendererComparisonView view=activity.getComparisonView();
             for (int index=0;index<names.length;++index) {
-                Intent intent=new Intent(getTargetContext(),RendererComparisonActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                intent.putExtra("cutoff",values[index][0]);intent.putExtra("resonance",values[index][1]);intent.putExtra("envelope",values[index][2]);
-                RendererComparisonActivity activity=(RendererComparisonActivity)startActivitySync(intent);
-                RendererComparisonView view=activity.getComparisonView();
+                final float[] assigned=values[index];
+                runOnMainSync(() -> view.assignNormalized(assigned[0],assigned[1],assigned[2]));
                 CountDownLatch frame=new CountDownLatch(1);
                 runOnMainSync(() -> view.postOnAnimation(() -> {
                     view.invalidate();view.postOnAnimation(() -> view.postOnAnimation(frame::countDown));
@@ -62,14 +63,19 @@ public final class ComparisonInstrumentation extends Instrumentation {
                 Bitmap crop=Bitmap.createBitmap(screen,x,y,width,height);
                 String hash=pixelsHash(crop);if (index<4) unique.add(hash);
                 if (index==2) factoryHash=hash;
-                if (index==4 && !hash.equals(factoryHash)) throw new AssertionError("Repeated assignment not deterministic");
                 save(screen,new File(directory,names[index]+"-viewport.png"));
                 save(crop,new File(directory,names[index]+"-crop.png"));
                 audit[0].put("scenario",names[index]);audit[0].put("crop_argb_sha256",hash);
                 audit[0].put("capture_pixels",new JSONArray(new int[]{x,y,width,height}));
                 audit[0].put("pixel_oracle","none: original native raster is not verified");cases.put(audit[0]);
-                if (crop!=screen) crop.recycle();screen.recycle();runOnMainSync(activity::finish);waitForIdleSync();
+                JSONObject partial=new JSONObject();partial.put("passed",false);partial.put("cases",cases);
+                try (FileOutputStream output=new FileOutputStream(new File(directory,"comparison-report.json"))) {
+                    output.write(partial.toString(2).getBytes(StandardCharsets.UTF_8));
+                }
+                if (crop!=screen) crop.recycle();screen.recycle();
+                if (index==4 && !hash.equals(factoryHash)) throw new AssertionError("Repeated assignment not deterministic");
             }
+            runOnMainSync(activity::finish);waitForIdleSync();
             if (unique.size()!=4) throw new AssertionError("Indicator endpoint/center frames did not change");
             JSONObject report=new JSONObject();report.put("passed",true);report.put("cases",cases);
             report.put("assertions","required asset hashes, native draw, assignments, crop bounds, distinct positions, repeat stability");

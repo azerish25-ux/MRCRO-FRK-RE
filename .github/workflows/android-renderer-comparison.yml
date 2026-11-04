@@ -67,9 +67,9 @@ jobs:
             adb install -r $PROJECT/app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk
             adb shell am instrument -w -r com.mfrk.renderercomparison.test/com.mfrk.renderercomparison.ComparisonInstrumentation | tee $PROJECT/artifacts/instrumentation.txt
             adb logcat -d > $PROJECT/artifacts/logcat.txt
-            grep -q 'INSTRUMENTATION_CODE: -1' $PROJECT/artifacts/instrumentation.txt
             adb exec-out run-as com.mfrk.renderercomparison tar -C files/renderer-comparison -cf - . > $PROJECT/artifacts/comparison.tar
             tar xf $PROJECT/artifacts/comparison.tar -C $PROJECT/artifacts
+            grep -q 'INSTRUMENTATION_CODE: -1' $PROJECT/artifacts/instrumentation.txt
       - name: Publish requested comparison APKs/screenshots/reports
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
