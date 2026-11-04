@@ -493,8 +493,13 @@
       "sha256": "ce17f53f97abe9f12c58f5863d3a4f1c9ed54c9ef21613765831c7d3637227bc"
     },
     "docs/waveshaper/PRODUCTION_HANDOFF.md": {
-      "bytes": 5089,
-      "sha256": "934133b3655fc59d35ce8b59d2f5dc7d21947a6f12af7e35819d5d89f8099276"
+      "bytes": 5325,
+      "sha256": "d3a2e7578d33d862ea07fba23e7860becc63775f0c6be5e92c254deadc3eaad7"
     }
-  }
+  },
+  "root_adaptation_notes": [
+    "Public production/test bodies preserve the approved source after namespace/private-storage adaptation and text-only CRLF-to-LF normalization.",
+    "The historical authoring handoff has an added prefix explaining that its original script paths refer to the private candidate package.",
+    "CMake applies strict floating-point options to the library and five added checks; the workflow runs both original fixtures and three contract checks in Android."
+  ]
 }
