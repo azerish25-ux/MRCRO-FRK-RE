@@ -90,5 +90,9 @@ jobs:
             adb push core/tests/vcf49_vectors.bin /data/local/tmp/vcf49_vectors.bin
             adb shell chmod 755 /data/local/tmp/mfrk_vcf49_tests
             adb shell /data/local/tmp/mfrk_vcf49_tests /data/local/tmp/vcf49_vectors.bin
+            adb push build-x86_64/mfrk_filter_resampler_tests /data/local/tmp/mfrk_filter_resampler_tests
+            adb push core/tests/filter_resampler_vectors.bin /data/local/tmp/filter_resampler_vectors.bin
+            adb shell chmod 755 /data/local/tmp/mfrk_filter_resampler_tests
+            adb shell /data/local/tmp/mfrk_filter_resampler_tests /data/local/tmp/filter_resampler_vectors.bin
       - name: Compare generated Android table bytes
         run: python3 tools/check_basic_wave_tables.py --dump build-x86_64/basic-wave-tables.bin --expected core/tests/basic_wave_table_hashes.json
