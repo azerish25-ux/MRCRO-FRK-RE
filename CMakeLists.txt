@@ -3,6 +3,9 @@ project(mfrk_core VERSION 0.1.0 LANGUAGES CXX)
 
 add_library(mfrk_core STATIC core/src/pitch.cpp core/src/virtual_analog.cpp)
 target_include_directories(mfrk_core PUBLIC core/include)
+target_include_directories(mfrk_core PRIVATE third_party)
+# Upstream stmlib's TEST path selects portable helpers instead of Cortex-M assembly.
+target_compile_definitions(mfrk_core PRIVATE TEST)
 target_compile_features(mfrk_core PUBLIC cxx_std_20)
 set_target_properties(mfrk_core PROPERTIES POSITION_INDEPENDENT_CODE ON)
 if(MSVC)

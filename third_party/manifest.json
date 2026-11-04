@@ -1,0 +1,36 @@
+{
+  "purpose": "Candidate MIT oscillator primitives; equivalence must be established by original numeric traces",
+  "eurorack_commit": "f4cfa7697095a28d292bff758beb51deb49b5a86",
+  "stmlib_commit": "e3bd7c9cc00e4364166f9905c0509b6ffd0535ec",
+  "files": [
+    {
+      "path": "stmlib/stmlib.h",
+      "sha256": "b43df7beed29a7d4ae01548a636bbd22e1e419e6309ae3fc91c780414bb53c4f"
+    },
+    {
+      "path": "stmlib/dsp/dsp.h",
+      "sha256": "123f319524bb6b9f095c8df28d708c9a5349c4c9b2fc6850957686afa5553838"
+    },
+    {
+      "path": "stmlib/dsp/parameter_interpolator.h",
+      "sha256": "ded67bf6853cf60c58eae8f27c8a4cd3306fc06c46c0066c35844544a387f609"
+    },
+    {
+      "path": "stmlib/dsp/polyblep.h",
+      "sha256": "d20bc92c7b22363ab16b698f28950d1026c1b63d83e328d8801198254cb34d4a"
+    },
+    {
+      "path": "plaits/dsp/oscillator/oscillator.h",
+      "sha256": "419edc66055f04b1fae1d3a3efe7cf666907472cd98e3f76c1a7eb7470483da3"
+    },
+    {
+      "path": "plaits/dsp/oscillator/variable_shape_oscillator.h",
+      "sha256": "f863369f7ae2047b544d43d9350a3b7d436277293402dc253c12862454bbb9ee"
+    },
+    {
+      "path": "plaits/dsp/oscillator/variable_saw_oscillator.h",
+      "sha256": "c62853cfa101c4a1a9ca419dcdfe37f06f72c70b1f0fac80f9b971bb4058ae99"
+    }
+  ],
+  "license": "MIT notices retained in each file"
+}
