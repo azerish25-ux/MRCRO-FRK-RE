@@ -81,7 +81,7 @@ unproven until all feature and equivalence requirements are independently verifi
   start a fresh owned CLI client only when further provider queries are needed.
 
 ## Next Step
-Implement the recovered IIR oversampling and mapped ADSR, then recover
+Implement the mapped ADSR and filter resource/fade lifecycle, then recover
 the remaining voice/allocator/filter graph for a complete original voice path and
 integrate Android audio/UI from the recovered scene specification. Continue every
 remaining engine, effect, sequencer and preset/state requirement. The verified

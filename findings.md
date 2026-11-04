@@ -315,3 +315,19 @@
   5,760steps,20preparations,512dirty masks and4resets. Preserve signed32 wrap
   before decay-target widening and adjacent-field table endpoints. Details in
   local/evidence/envelope-agent/PORTABLE_ADSR.md. Portable C++ remains next work.
+
+## Verified filter IIR and settled chain
+- Integrated3a5b28aec7e9ddb2c82fdb88ec5120c020fdb4ed after independent review.
+  Exact original2/4/6/8 factors,8sections, separate up/down states, insertion
+  gains, first-phase decimation and reset. Startup-only wrapper buffer allocation.
+- Red41816094920 rejected placeholder resampler/chain with15,336 combined
+  mismatches; all earlier checks passed. Green41816365296 passed all10 native
+  tests, both Android ABI builds, x86_64 API35 execution and prior checks.
+- Android exact comparisons:9,600up values,1,920down,60paired state blocks,
+  1,920 actual original settled-wrapper outputs/PRNG states. Chain host rate96k.
+- Fade/resource lifecycle and full dual/filter graph still open; raw37/raw49
+  and settled49 are not proof of complete voice/instrument/application parity.
+- ADSR C++ candidate local/envelope-agent/cpp-candidate matches original traces
+  and tables, but requires constructor curve prewarm before repo integration.
+  Public all-nine-controls admission contract and test-only fixture loading
+  must remain explicit. No Android ADSR validation yet.

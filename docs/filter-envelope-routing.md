@@ -56,12 +56,23 @@ against 8,775 original outputs and 135 block-end PRNG states.
 passed these and all prior checks; both ABIs built, x86_64 executed. Independent
 review verified all four curve byte sequences and the shared-core extraction.
 
-The original IIR resampler core is independently recovered, not yet integrated.
+The original IIR resampler core and settled chain are now integrated.
 Coefficient descriptors for factors2/4/6/8 use eight sections and separate up/down
 state. Original setup/up/down/reset instructions agree with the independent
 recurrence on 9,600 upsampled and 1,920 downsampled values plus60 paired state
 checks. This excludes asynchronous resources, transition fades and the complete
 filter wrapper. Local evidence is in filter-agent's m49-iir-* files.
+Actual settled ModuleUpsampler traces also execute both input resamplers,
+original raw49 preparation/render and downsampling. All1,920 chain outputs and
+noise states match the portable fixed-resource inner chain.
+[Android41816365296](https://github.com/azerish25-ux/MRCRO-FRK-RE/actions/runs/41816365296)
+passed these outputs and all IIR state/value references. Both ABIs built;
+x86_64 executed. This wrapper evidence uses96kHz host rate and settled gain1.
+
+Original fade probes independently match3,904 gain values and their output
+products for0→1/1→0 transitions; original factor selection matches112 cases
+including float neighbors around rate thresholds. These later lifecycle results
+are not yet portable code or complete asynchronous-worker timing equivalence.
 
 ## Recovered envelopes
 

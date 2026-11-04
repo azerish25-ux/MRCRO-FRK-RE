@@ -72,3 +72,7 @@ application are still pending. Additional recovered boundaries are documented in
 now passes 8,775 original outputs on Android, alongside all earlier checks.
 Oversampling, full voice/envelope integration and the actual Android app remain
 in progress. These numerical component checks do not establish full synth parity.
+
+[Original filter IIR and settled chain](https://github.com/azerish25-ux/MRCRO-FRK-RE/actions/runs/41816365296)
+now also pass Android output/state comparisons. Asynchronous filter transitions,
+complete envelopes/voices and the Android application remain unfinished.

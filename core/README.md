@@ -144,3 +144,26 @@ is `tools/generate_vcf49_vectors.py`; SHA256 is
 This node expects the actual internal sample rate and equally sized finite-input
 spans. It does not supply the original oversampling, asynchronous resource/fade
 wrapper, dual selection or full voice scheduler. Those remain required.
+
+## Original filter resampling and settled model49 chain
+
+`IirResampler` preserves all four original factors (2/4/6/8), exact coefficient
+bits, eight-section float recurrence, insertion/gains, phase0 decimation and
+separate persistent up/down state. Its reported descriptor latency is4 frames
+at2x and5 at4/6/8x; graph latency alignment is still separate work.
+
+`OversampledVcf49` upsamples both audio and modulation, renders raw49 at the
+factor-scaled internal rate, then downsamples through the original IIR. Buffers
+allocate during construction, with checked maximum capacity. Process does not
+allocate. Reset clears resampler/filter state while retaining the noise seed.
+This class is the fixed-resource, settled-gain1 inner chain, not the asynchronous
+resource manager, factor transition fade or dual selector.
+
+[Run41816365296](https://github.com/azerish25-ux/MRCRO-FRK-RE/actions/runs/41816365296)
+passed9,600 original upsampled values,1,920 downsampled values,60 paired state
+blocks and1,920 actual settled-wrapper outputs on Android API35 x86_64. Both
+Android ABIs built; all previous checks passed. Settled wrapper fixtures use a
+96kHz host rate; arm64 execution and broader wrapper lifecycle remain unverified.
+Independent review checked coefficient provenance, recurrence, fixture bytes and
+callback allocation. Binary fixture SHA256 is
+`58e8329e1e5b992f3414f6a8f66f4c8e617be04d074525fe1db310d2ad3ba25d`.

@@ -76,6 +76,14 @@
   device-level validation. No full instrument or APK completion is claimed.
 
 ## Live analysis handles (revalidate before reuse)
+- Exact IIR/settled49 chain reviewed/integrated3a5b28aec7e9ddb2c82fdb88ec5120c020fdb4ed.
+  Android41816365296 passed9,600up/1,920down/60pairedstates and1,920chainoutputs,
+  plus all previous checks; both ABIs built, x86_64 executed. Full objective active.
+- ADSR C++ candidate reviewed: arithmetic/state/table provenance passes, required
+  integration fix is off-audio-thread curve prewarm. Candidate/no-op and widened
+  arithmetic negative checks are retained under envelope-agent/cpp-candidate.
+- Root83522 is now confirmed terminal(exit1) after explicit MCP Connection closed
+  and stalled close request. Only this owned client was interrupted; exports safe.
 - Fixed model49/shared nonlinear stage integrated on main at
   2c04d2f861a28285fd544488a8757b6c7d80ea06 after independent review and Android
   run41815081333:8,775model49 outputs/135blocks,7,680model37 outputs/162blocks,

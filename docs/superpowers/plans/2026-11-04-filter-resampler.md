@@ -11,11 +11,17 @@ source; original binary fixtures/generator/test, CMake and remote Android workfl
 
 - [x] Independent original setup/up/down/reset traces and mathematical recurrence.
 - [x] Actual settled wrapper trace includes both input resamplers and raw49.
-- [ ] Establish failing original-reference tests against silent stages.
-- [ ] Implement coefficient/state/gain/decimation/reset semantics without FMA.
-- [ ] Connect settled fixed-resource chain with startup-allocated buffers.
-- [ ] Verify original IIR outputs/states and chain outputs on native/Android.
-- [ ] Independent review and integration; continue complete wrapper and instrument.
+- [x] Establish failing original-reference tests against silent stages.
+- [x] Implement coefficient/state/gain/decimation/reset semantics without FMA.
+- [x] Connect settled fixed-resource chain with startup-allocated buffers.
+- [x] Verify original IIR outputs/states and chain outputs on native/Android.
+- [x] Independent review/integration at3a5b28aec7e9ddb2c82fdb88ec5120c020fdb4ed.
+- [ ] Continue complete wrapper, envelopes and full instrument/application.
+
+Red41816094920 rejected placeholders with15,336 combined mismatches, earlier
+checks passed. Green41816365296 passed all10 native checks, both Android ABI
+builds and x86_64 API35 emulator comparisons, with zero output/state mismatches.
+Settled chain fixtures use96kHz host rate. arm64 execution remains unverified.
 
 Tests compare9,600 upsampled +1,920 downsampled values and60 paired state blocks,
 then1,920 outputs from the actual original settled ModuleUpsampler execution.
