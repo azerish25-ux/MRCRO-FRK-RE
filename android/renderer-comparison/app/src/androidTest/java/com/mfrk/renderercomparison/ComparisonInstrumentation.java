@@ -7,6 +7,7 @@ import android.graphics.Bitmap;
 import android.graphics.RectF;
 import android.os.Bundle;
 import android.os.SystemClock;
+import android.view.ViewTreeObserver;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
@@ -37,11 +38,19 @@ public final class ComparisonInstrumentation extends Instrumentation {
             RendererComparisonView view=activity.getComparisonView();
             for (int index=0;index<names.length;++index) {
                 final float[] assigned=values[index];
-                runOnMainSync(() -> view.assignNormalized(assigned[0],assigned[1],assigned[2]));
                 CountDownLatch frame=new CountDownLatch(1);
-                runOnMainSync(() -> view.postOnAnimation(() -> {
-                    view.invalidate();view.postOnAnimation(() -> view.postOnAnimation(frame::countDown));
-                }));
+                runOnMainSync(() -> {
+                    boolean[] queued={false};
+                    ViewTreeObserver.OnDrawListener[] listener=new ViewTreeObserver.OnDrawListener[1];
+                    listener[0]=() -> {
+                        if (queued[0]) return;
+                        queued[0]=true;
+                        view.post(() -> view.getViewTreeObserver().removeOnDrawListener(listener[0]));
+                        view.postOnAnimation(() -> view.postOnAnimation(frame::countDown));
+                    };
+                    view.getViewTreeObserver().addOnDrawListener(listener[0]);
+                    view.assignNormalized(assigned[0],assigned[1],assigned[2]);
+                });
                 if (!frame.await(10,TimeUnit.SECONDS)) throw new AssertionError("Frame timeout");
                 waitForIdleSync();SystemClock.sleep(100);
                 RectF[] content=new RectF[1];int[] location=new int[2];JSONObject[] audit=new JSONObject[1];boolean[] focused=new boolean[1];

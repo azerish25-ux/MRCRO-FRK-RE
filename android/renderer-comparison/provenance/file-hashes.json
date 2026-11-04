@@ -21,6 +21,6 @@
   "app/src/main/java/com/mfrk/renderercomparison/RendererComparisonView.java": "54a870e724eee292c45adb52f35621aa9f4be134cf9a5116d4d6a4d0eef26960",
   "app/src/main/java/com/mfrk/renderercomparison/SilverSoftKnob.java": "c438266a70c35c9065aecceed238e8dc65749b113c47ad6f6d3bb358b83c30fd",
   "app/src/main/java/com/mfrk/renderercomparison/SourceScene.java": "c39ad75c43a9b1f70c060b83655995138d2014992476bd18e5860fb41afbcecb",
-  "app/src/androidTest/java/com/mfrk/renderercomparison/ComparisonInstrumentation.java": "e8ba2e95fac1659e6196fb24846a012d12270e8551cd52820d971de838592c7c",
+  "app/src/androidTest/java/com/mfrk/renderercomparison/ComparisonInstrumentation.java": "3d5402a612b4dac8167c579bd46e004a1f1c7c8c7dea4eece01d2566d757c8ad",
   "../../.github/workflows/android-renderer-comparison.yml": "bb36ccc9033c3120962ef1f41c5b3fc15a2b797911fc98ecd80615bce295ef2f"
 }
