@@ -50,3 +50,8 @@ This is numerical helper parity, not full synth or audio parity.
 [VAnalog verification](https://github.com/azerish25-ux/MRCRO-FRK-RE/actions/runs/41789935056)
 also passed 16/32-frame raw-engine traces and parameter-change sequences with
 zero bit mismatches. The complete instrument, Android UI and APK are pending.
+
+[The wrapper-stage run](https://github.com/azerish25-ux/MRCRO-FRK-RE/actions/runs/41794257456)
+also verified stateful interpolation, VAnalog control flags and trigger latch,
+and VAnalog output-level processing against original instructions. These are
+scoped component checks; the full 1:1 port remains in progress.

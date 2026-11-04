@@ -11,6 +11,9 @@ unproven until all feature and equivalence requirements are independently verifi
 - Project: installation/android-port; checkout: android-port/repo.
 - All project-controlled downloads, temporary files, caches and analysis databases
   must remain under android-port on D:. Never change the installed binaries.
+- If D: returns a storage-access error, wait five seconds and retry the affected
+  operation before diagnosing a persistent blocker. Preserve evidence and check
+  whether a write completed before repeating a mutation.
 - Android builds and emulators run on GitHub Actions, never this local PC.
 - Further live sound observations use the already-open MiniFreak V, per the
   user's updated instruction. Do not instantiate another synth for sound captures.
@@ -75,7 +78,7 @@ unproven until all feature and equivalence requirements are independently verifi
   @(...); corrected before execution of the intended read-only checks.
 
 ## Next Step
-Verify and implement VAnalog wrapper control/state routing and output-level
-processing against original-instruction references; then continue other engines,
-filters, effects, voices, presets and full Android UI. The raw engine and 2x
-interpolator already pass their sampled Android numerical comparisons.
+Recover Basic Waves table initialization and complete parameter/state setup,
+then build meaningful original-instruction references and port that engine.
+Continue all other engines, filters, effects, voices, presets and the full
+Android UI; VAnalog component checks are not completion of the instrument.

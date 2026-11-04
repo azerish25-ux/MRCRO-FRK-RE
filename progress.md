@@ -47,12 +47,22 @@
 - Old processor helper session 2309 exited with code 1 during a read request;
   reason unconfirmed. Complete earlier exports remain intact. Started an owned
   replacement CLI client and successfully reimported the same processor.
+- User added a D: recovery preference: wait five seconds and retry storage-access
+  errors before treating them as persistent. No storage relocation to C: is allowed.
+- Reconstructed VAnalog control state and output composition. Run 41794257456
+  passed 64 original state updates and 1,280 output-wrapper samples on the remote
+  Android emulator, with all earlier checks green. Reviewed and integrated
+  d2340082ff1857d4a8f1dc515202fc4533cd2dae.
+- Traced Basic Waves control, rendering, pitch/table selection and initializers.
+  Its image tables are initially zero; table-generation recovery is required
+  before meaningful Basic Waves numeric waveform references can be established.
 
 ## Live analysis handles (revalidate before reuse)
 - Persistent processor client exec session 78124; REA server and imported processor
   revalidated. Current responses: ../local/evidence/session-dsp-002.
   Old session 2309 is terminal; its responses remain in ../local/evidence/session-dsp.
-  Latest complete export: ../local/evidence/processor-evidence-003.bundle.json.
+  Latest new-session export: ../local/evidence/processor-evidence-007.bundle.json.
+  Earlier full symbol inventory: ../local/evidence/processor-evidence-003.bundle.json.
 - Persistent wrapper client exec session 73850; import completed after about
   991 seconds. Overview identifies 66,875 procedures and 37,450 defined strings.
   Export: ../local/evidence/wrapper-evidence-001.bundle.json. Do not duplicate imports.

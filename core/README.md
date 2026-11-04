@@ -1,7 +1,8 @@
 # Portable instrument core
 
-The core currently contains a recovered pitch helper and the raw VAnalog engine
-component. It is not a complete instrument engine or an Android app.
+The core contains a recovered pitch helper, raw VAnalog engine, stateful 2x
+interpolator, VAnalog control update and VAnalog output-stage composition.
+It is not a complete instrument engine or an Android app.
 
 `normalized_pitch_frequency` follows the original x64 helper at `0x18032e950`
 in processor SHA-256
@@ -50,6 +51,29 @@ output scaling and the multiplication order of the variable-shape wrap correctio
 The manifest records original and modified file hashes; original notices remain.
 
 This tests selected raw-engine parameter sequences, not every input or a complete
-patch. Wrapper controls, note/voice behavior, upsampling, filters, effects and
-host-rate conversion still require reconstruction. Wrapper assembly shows a
+patch. Complete initialization, upstream control scheduling, note/voice behavior,
+filters, effects and host-rate conversion still require reconstruction. Wrapper assembly shows a
 16-frame engine call followed by a 2x interpolator producing 32 output frames.
+
+## Interpolation and wrapper operations
+
+`LinearUpsampler2x` follows routine `0x1802c9e60` and retains the previous sample
+across blocks. Its input/output buffers must not overlap. Initial history is
+caller-supplied. [Run 41792381316](https://github.com/azerish25-ux/MRCRO-FRK-RE/actions/runs/41792381316)
+passed 1,920 direct and 1,280 composed VAnalog-chain output comparisons on the
+GitHub-hosted Android x86_64 emulator.
+
+`update_virtual_analog_controls` follows `0x1802c5570`: exact control-word scale
+bits `0x37800200`, dirty flags, trigger consumption and latch transitions. It
+preserves words, dirty bytes and note where the original leaves them unchanged.
+This is a caller-owned representation of selected fields, not the native ABI layout.
+
+`VirtualAnalogOscillator` composes the 16-frame raw engine, 2x interpolation and
+caller-supplied level, following `0x1802c5380`/`0x1802c54b0`. It advances the engine
+even during muted blocks. No factory output level is inferred from this API.
+
+[Run 41794257456](https://github.com/azerish25-ux/MRCRO-FRK-RE/actions/runs/41794257456)
+passed all earlier checks plus 64 original control-state updates and 1,280 original
+output-wrapper samples with zero mismatches. Both Android ABIs built; execution
+was on Android API 35 x86_64. GUI/MIDI scheduling, complete initialization,
+voice/filter/effect routing, presets and the Android UI remain unverified.

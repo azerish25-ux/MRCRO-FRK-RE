@@ -164,3 +164,54 @@
 - Do not infer a default gain from unrelated initializer offsets; multiple
   inheritance and this-pointer adjustments need explicit validation.
 - Fresh hashes of standalone, VST3 and processor still match initial identities.
+
+## Verified interpolation and VAnalog wrapper operations
+- Stateful interpolation integrated at 5b1da34a638671db3d3b59cfef83d930490643b9.
+  Original-reference zero implementation failed in run 41791767015; run
+  41792381316 passed 1,920 direct and 1,280 composed VAnalog-chain samples with
+  zero mismatches on Android x86_64, plus existing checks and both ABI builds.
+- Control scale is exactly 0x37800200 at 0x180555eac, float value
+  1.5259720385074615e-05. Read evidence:
+  ev_5c60bbed9ba90e2864881f35b6989e4010f627e14deae69f0fb1a747aad20211.
+- 64 independent state-update references cover all dirty masks, changed and
+  preserved controls, words through 65535, rising/held/released trigger states
+  and noncanonical nonzero byte flags. Dirty flags and words are not cleared
+  by the recovered routine. Note is preserved by this operation.
+- Output-stage references execute the unchanged native virtual wrapper, raw
+  engine, interpolation and supplied-level multiplication with explicit fixture
+  initialization. Nonzero initial history and muted-then-unmuted blocks are covered.
+- Run 41793812538 rejected no-op controls (64 mismatches) and zero output
+  (1,195/1,280 mismatches), while previous tests passed.
+- Run 41794257456 at d2340082ff1857d4a8f1dc515202fc4533cd2dae passed 64 state
+  updates and 1,280 output-wrapper samples, zero mismatches on Android API 35
+  x86_64. Existing checks and Android arm64/x86_64 builds passed. Reviewed and
+  integrated on main. arm64 execution, full factory initialization and GUI/MIDI
+  scheduling are still unverified.
+- Method 0x1802c17c0 sets the input signal byte +0x30. Method 0x1802c5320 writes
+  data at +0x108/+0x110; it is not proven to be an output-level setter.
+
+## Basic Waves investigation seeds (not ported)
+- Primary vtable 0x1805449e0; initializer 0x1802cf840, control update 0x1802cf8c0,
+  raw render 0x1802cfb30, pitch/table selection 0x1802c6870, phase seed setter
+  0x1802c6850. Source files are in local/evidence/session-dsp-002.
+- Raw render uses three uint32 phase accumulators, 512-entry signed-short tables,
+  16-bit interpolation fractions, signed-short interpolation deltas, signed
+  coefficients and float output scaling. This differs from the floating Plaits
+  VAnalog implementation and must not be replaced with a generic oscillator.
+- Pitch setter converts supplied frequency with approximately 44739.242 and
+  22369.621 factors into phase increments, and chooses table-bank pointers from
+  0x18046b310 using a band derived from its third argument. Exact constants and
+  caller semantics still need validation before implementation.
+- The initial table at 0x1805b0b10 and the sampled bank-17 table at 0x1805b1b10
+  are zero in the unloaded image. Constructor-only silence is not valid audio
+  equivalence evidence. Runtime table initialization must be reconstructed.
+- xrefs lead to table initializer 0x180275fa0: it builds a 512-element signed-short
+  sine table using sin(), amplitude 32767*0.8, +0.5 and integer truncation.
+  Other bank initializers and actual populated table bytes remain unresolved.
+- Aggregate initializer 0x1802e6fb0 constructs multiple generators. The filename
+  basic-waves-constructor.json is an investigation seed, not proof it constructs
+  only Basic Waves. Its Basic Waves base helper is 0x1802ea3f0; pointer initializer
+  0x1802ea790 initially assigns 0x1805b0b10.
+- The aggregate writes 0x3ee6e979 at Basic Waves instance level offset +0x28 and
+  0x3f8ccccd at both VAnalog instance level offsets +0x28. These are observed
+  initialization writes, not proof of final preset/GUI output levels.
