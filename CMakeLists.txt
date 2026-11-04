@@ -14,6 +14,7 @@ if(MSVC)
     target_compile_options(mfrk_core PRIVATE /fp:strict)
 else()
     target_compile_options(mfrk_core PRIVATE -fno-fast-math -ffp-contract=off)
+    target_link_libraries(mfrk_core PRIVATE m)
 endif()
 
 include(CTest)
