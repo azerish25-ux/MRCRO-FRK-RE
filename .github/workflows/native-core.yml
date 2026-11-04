@@ -127,5 +127,9 @@ jobs:
             adb push core/tests/ucrt_sinf_vectors.bin /data/local/tmp/ucrt_sinf_vectors.bin
             adb shell chmod 755 /data/local/tmp/mfrk_ucrt_sinf_tests
             adb shell /data/local/tmp/mfrk_ucrt_sinf_tests /data/local/tmp/ucrt_sinf_vectors.bin
+            adb push build-x86_64/mfrk_bass_tests /data/local/tmp/mfrk_bass_tests
+            adb push core/tests/bass_vectors.bin /data/local/tmp/bass_vectors.bin
+            adb shell chmod 755 /data/local/tmp/mfrk_bass_tests
+            adb shell /data/local/tmp/mfrk_bass_tests /data/local/tmp/bass_vectors.bin
       - name: Compare generated Android table bytes
         run: python3 tools/check_basic_wave_tables.py --dump build-x86_64/basic-wave-tables.bin --expected core/tests/basic_wave_table_hashes.json

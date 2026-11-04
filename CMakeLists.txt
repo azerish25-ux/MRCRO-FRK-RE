@@ -7,7 +7,7 @@ add_library(mfrk_core STATIC core/src/pitch.cpp core/src/virtual_analog.cpp
     core/src/basic_waves.cpp core/src/vcf37.cpp core/src/vcf_sample.cpp core/src/vcf49.cpp
     core/src/iir_resampler.cpp core/src/oversampled_vcf49.cpp core/src/adsr.cpp
     core/src/filter_resampling.cpp core/src/fir_resampler.cpp core/src/filter_resource.cpp
-    core/src/deferred_vcf49.cpp core/src/superwave.cpp core/src/fx_input.cpp core/src/fx_mix.cpp)
+    core/src/deferred_vcf49.cpp core/src/superwave.cpp core/src/fx_input.cpp core/src/fx_mix.cpp core/src/bass.cpp)
 target_include_directories(mfrk_core PUBLIC core/include)
 target_include_directories(mfrk_core PRIVATE third_party)
 # Upstream stmlib's TEST path selects portable helpers instead of Cortex-M assembly.
@@ -89,6 +89,9 @@ if(BUILD_TESTING)
         target_compile_options(mfrk_ucrt_sinf_tests PRIVATE -fno-fast-math -ffp-contract=off)
     endif()
     add_test(NAME original_ucrt_sinf COMMAND mfrk_ucrt_sinf_tests ${CMAKE_CURRENT_SOURCE_DIR}/core/tests/ucrt_sinf_vectors.bin)
+    add_executable(mfrk_bass_tests core/tests/bass_test.cpp)
+    target_link_libraries(mfrk_bass_tests PRIVATE mfrk_core)
+    add_test(NAME original_bass COMMAND mfrk_bass_tests ${CMAKE_CURRENT_SOURCE_DIR}/core/tests/bass_vectors.bin)
     if(NOT ANDROID)
         find_package(Python3 REQUIRED COMPONENTS Interpreter)
         add_test(NAME original_basic_wave_tables

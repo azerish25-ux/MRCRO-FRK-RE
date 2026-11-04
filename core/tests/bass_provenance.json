@@ -1,0 +1,144 @@
+{
+  "processor_sha256": "bd036dfa6a0afcfef733c29c73b1b3df969f2c86ca860b0fa535d4492fa8fb74",
+  "source_method": "Unchanged original instructions under identity-checked ProcessorReference, compared independently with scalar Python and C++20. Candidate never supplies golden outputs.",
+  "fixture": {
+    "path": "core/tests/bass_vectors.bin",
+    "cases": 776,
+    "samples": 14400,
+    "sha256": "ffeca3607cc709eebd4f4083a8c04c15ae73b76afd8e0afa947b61e229be33c6"
+  },
+  "source": {
+    "processor_sha256": "bd036dfa6a0afcfef733c29c73b1b3df969f2c86ca860b0fa535d4492fa8fb74",
+    "evidence_kind": "Same-artifact static byte-bearing GNU objdump instructions and unchanged-original offline Unicorn probes; no new REA session. Prior symbol/bank REA IDs in ../rea-index.json.",
+    "models": {
+      "osc1_type": 11,
+      "osc2_type": 12,
+      "class": "Arturia::minifreak_main::FreakBass<32,96000>",
+      "algorithm_vtable": "0x180544b80",
+      "interface_vtable": "0x1805474a8",
+      "interface_adjustment": "0x70",
+      "aggregate_objects": [
+        "0x870",
+        "0x8f0"
+      ]
+    },
+    "ranges": {
+      "constructor_inline": [
+        "0x1802e707e",
+        "0x1802e711b exclusive"
+      ],
+      "raw_tail_dispatch": [
+        "0x1802c6090",
+        "0x1802c609f"
+      ],
+      "kernel": [
+        "0x1802ca1c0",
+        "0x1802ca5e5"
+      ],
+      "control": [
+        "0x1802c60a0",
+        "0x1802c60f6"
+      ],
+      "initialize": [
+        "0x1802c6100",
+        "0x1802c6109"
+      ],
+      "pitch": [
+        "0x1802c5f20",
+        "0x1802c5f25"
+      ],
+      "phase": [
+        "0x1802c5f10",
+        "0x1802c5f15"
+      ],
+      "trigger": [
+        "0x1802c5f30",
+        "0x1802c5f60"
+      ],
+      "output": [
+        "0x1802c5f70",
+        "0x1802c5ff4"
+      ],
+      "interface_control": [
+        "0x1802c6000",
+        "0x1802c6022"
+      ],
+      "interface_initialize": [
+        "0x1802c6030",
+        "0x1802c603b"
+      ]
+    },
+    "globals": "Read-only float constants listed in constants.json; no dynamic tables, no import models.",
+    "files": {
+      "aggregate-asm-source.txt": "2d2d81cd737b1f503ec0bcbfdaa41456f0bf380be4b4b941cb0e3dd37edf435a",
+      "bass_scalar.py": "88093576a6a3dea38aec338d9c53f9bc7c4b3494a9afd18e4ad51f26f0a84202",
+      "constants.json": "bd03ef6e8e6c726df5d49e36d6c64e595a5b94545958aa5262d724a04e938016",
+      "constructor-probes.json": "20676dfe214972a32757c29d1e20e2f4187959a032654cc01982772e28aa86cc",
+      "cpp-verification.json": "5df8aa616f670ee02cd7016c0c7982eae8daa451630710da2b661de2a50f6e7d",
+      "export_fixtures.py": "116eff9e876c2620bc0240688e20cb382baed2b85998995ce24064c6b32bc377",
+      "interface-vtable.json": "5cf1bcab42cf7077536d4048fd84acf8ff447cd28049cc7c38c326264fd39f35",
+      "native-fixtures.json": "c3640f25559978ceca3e448127a9e98b12e8138207e63402613647e4e51ebbd7",
+      "native-verification.json": "2135b55e6aa8eea857885e6a9b04d90079f9ee42c1ebda2e36c92e74b5e95b41",
+      "phase-interface-objdump.txt": "ff866b29685c044045adcf68714c2056cb96b44dfbe36111c488108700365480",
+      "phase-objdump.txt": "888192ed739c8df2464bc56d43e1175952ff5783bd385cd0c2a307d02d3afe42",
+      "pitch-interface-objdump.txt": "24c693340856eeb7fd632301f7f3019388f7de58d1b341615ffe0ff0a0c3d744",
+      "probe_bass.py": "1e1aa9806f4d316f152436b90d4bbad365e01428f41173e203fa462ee2aedeb4",
+      "raw-native-fixtures.json": "664c47353249cec5656e618333e530da860c0c1a7b93d639a12ab378ab92fd26",
+      "render-objdump.txt": "41369bf42aab3b246322ceeca44aeafdb62652df879b4f06eb622d71c41dc764",
+      "trigger-interface-objdump.txt": "ff56a41f95ff2534e7acc8ed4618e024493c7142965ee9f1647675d422c5fd9f",
+      "verify_cpp.py": "fb8f80245b31fbb8ef02b81a3f4554bb97a0b4bf4f0e15fabd1974c3a86b8897",
+      "wrapper-objdump.txt": "a5c22a6706f12a653fd758b0adb07765cc9211be5c6e7bc205aeec0589fb5d7f"
+    }
+  },
+  "candidate_negative_controls": [
+    {
+      "name": "green",
+      "exit_code": 0,
+      "result": "TOTAL 776 fixtures 14400 samples 0 mismatches"
+    },
+    {
+      "name": "no-controls",
+      "exit_code": 1,
+      "result": "TOTAL 776 fixtures 14400 samples 112 mismatches"
+    },
+    {
+      "name": "no-smoothing",
+      "exit_code": 1,
+      "result": "TOTAL 776 fixtures 14400 samples 448 mismatches"
+    },
+    {
+      "name": "floor-phase",
+      "exit_code": 1,
+      "result": "TOTAL 776 fixtures 14400 samples 198 mismatches"
+    },
+    {
+      "name": "wrong-grouping",
+      "exit_code": 1,
+      "result": "TOTAL 776 fixtures 14400 samples 406 mismatches"
+    },
+    {
+      "name": "random-every-sample",
+      "exit_code": 1,
+      "result": "TOTAL 776 fixtures 14400 samples 450 mismatches"
+    },
+    {
+      "name": "phase-resets-current",
+      "exit_code": 1,
+      "result": "TOTAL 776 fixtures 14400 samples 28 mismatches"
+    },
+    {
+      "name": "initialize-resets-current",
+      "exit_code": 1,
+      "result": "TOTAL 776 fixtures 14400 samples 64 mismatches"
+    }
+  ],
+  "scope": "Bass Osc1 selector11/Osc2 selector12; native32frames96kHz, finite state/representable phase conversions, strict IEEE float. Full voice scheduling not established.",
+  "source_candidate_hashes": {
+    "bass.hpp": "f8cc21c005a386ff397d98c414f0c83eb356b34477b0291f1f02066eb6404c71",
+    "bass.cpp": "b095bede147176649c071cfaf1f0335f3b9e4de5d07bf3be8bc24d48454dce17",
+    "bass_test.cpp": "c6f643dd3dec07938497325694f9604bad8fb03edc27c343132d081bc22ae125",
+    "native-fixtures.json": "c3640f25559978ceca3e448127a9e98b12e8138207e63402613647e4e51ebbd7",
+    "probe_bass.py": "1e1aa9806f4d316f152436b90d4bbad365e01428f41173e203fa462ee2aedeb4",
+    "bass_scalar.py": "88093576a6a3dea38aec338d9c53f9bc7c4b3494a9afd18e4ad51f26f0a84202"
+  }
+}
