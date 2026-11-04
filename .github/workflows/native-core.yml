@@ -67,3 +67,6 @@ jobs:
             adb push build-x86_64/mfrk_vanalog_tests /data/local/tmp/mfrk_vanalog_tests
             adb shell chmod 755 /data/local/tmp/mfrk_vanalog_tests
             adb shell /data/local/tmp/mfrk_vanalog_tests
+            adb push build-x86_64/mfrk_upsampler_tests /data/local/tmp/mfrk_upsampler_tests
+            adb shell chmod 755 /data/local/tmp/mfrk_upsampler_tests
+            adb shell /data/local/tmp/mfrk_upsampler_tests

@@ -1,7 +1,8 @@
 cmake_minimum_required(VERSION 3.22)
 project(mfrk_core VERSION 0.1.0 LANGUAGES CXX)
 
-add_library(mfrk_core STATIC core/src/pitch.cpp core/src/virtual_analog.cpp)
+add_library(mfrk_core STATIC core/src/pitch.cpp core/src/virtual_analog.cpp
+    core/src/linear_upsampler.cpp)
 target_include_directories(mfrk_core PUBLIC core/include)
 target_include_directories(mfrk_core PRIVATE third_party)
 # Upstream stmlib's TEST path selects portable helpers instead of Cortex-M assembly.
@@ -22,4 +23,7 @@ if(BUILD_TESTING)
     add_executable(mfrk_vanalog_tests core/tests/virtual_analog_test.cpp)
     target_link_libraries(mfrk_vanalog_tests PRIVATE mfrk_core)
     add_test(NAME original_vanalog_vectors COMMAND mfrk_vanalog_tests)
+    add_executable(mfrk_upsampler_tests core/tests/linear_upsampler_test.cpp)
+    target_link_libraries(mfrk_upsampler_tests PRIVATE mfrk_core)
+    add_test(NAME original_upsampler_vectors COMMAND mfrk_upsampler_tests)
 endif()
