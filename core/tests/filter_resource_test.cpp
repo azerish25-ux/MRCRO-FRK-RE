@@ -1,6 +1,7 @@
 #include "mfrk/filter_resampling.hpp"
 #include "mfrk/fir_resampler.hpp"
 #include "mfrk/iir_resampler.hpp"
+#include "mfrk/oversampled_vcf49.hpp"
 
 #include <bit>
 #include <cstdio>
@@ -105,9 +106,39 @@ int main(int argc, char** argv) try {
         const float rate = reference.scalar(); const auto expected = reference.word();
         if (static_cast<std::uint32_t>(mfrk::select_filter_factor(index,adaptive,rate)) != expected) ++failures;
     }
+    const auto chain_cases = reference.count();
+    std::size_t chain_samples = 0;
+    for (std::uint32_t c = 0; c < chain_cases; ++c) {
+        const auto factor = static_cast<mfrk::FilterOversampling>(reference.word());
+        const float rate = reference.scalar(); const auto seed = reference.word();
+        mfrk::OversampledVcf49 filter(rate,factor,32,seed,mfrk::FilterKernel::fir);
+        mfrk::VcfControls controls{};
+        controls.cutoff = reference.scalar(); controls.resonance = reference.scalar();
+        controls.output = static_cast<mfrk::VcfOutput>(reference.word());
+        controls.dirty = {1,1,1,1}; controls.first = controls.force = true;
+        filter.prepare(controls); filter.reset(controls.resonance);
+        controls.first = controls.force = false;
+        const auto blocks = reference.count();
+        for (std::uint32_t b = 0; b < blocks; ++b) {
+            controls.cutoff = reference.scalar(); controls.resonance = reference.scalar();
+            controls.output = static_cast<mfrk::VcfOutput>(reference.word()); controls.noise = reference.word() != 0;
+            for (auto& flag : controls.dirty) flag = static_cast<std::uint8_t>(reference.word());
+            const bool reset = reference.word() != 0;
+            const auto frames = reference.count(), seed_after = reference.word();
+            if (frames > 32) throw std::runtime_error("FIR chain exceeds declared capacity");
+            auto audio = reference.samples(frames), modulation = reference.samples(frames);
+            std::vector<float> output(frames);
+            filter.prepare(controls); if (reset) filter.reset(controls.resonance);
+            filter.process(audio,modulation,output);
+            failures += reference.compare(output);
+            if (filter.noise_state() != seed_after) ++failures;
+            chain_samples += frames;
+        }
+    }
     if (reference.file.peek() != std::char_traits<char>::eof()) throw std::runtime_error("Trailing numeric filter bytes");
     std::printf("Original FIR: %zu up, %zu down; fade %zu samples; selector %u cases; %zu mismatches\n",
                 up_samples,down_samples,fade_samples,selector_cases,failures);
     std::printf("Original IIR fallback: %zu up, %zu down, %zu paired states\n",fallback_up,fallback_down,fallback_states);
+    std::printf("Original settled FIR wrapper: %zu samples\n",chain_samples);
     return failures == 0 ? 0 : 1;
 } catch (const std::exception& error) { std::fprintf(stderr,"%s\n",error.what()); return 2; }

@@ -46,6 +46,22 @@ def main():
     words(len(cases))
     for case in cases:
         words(case['factor_index'], int(case['adaptive'])); floats(case['rate']); words(case['actual'])
+    cases = read('m49-fir-settled-wrapper-probes-v1.json')['cases']
+    words(len(cases))
+    for case in cases:
+        words(case['factor']); floats(case['base_rate']); words(case['seed'])
+        floats(case['initial_cutoff'], case['initial_resonance']); words(case['initial_mode'],len(case['blocks']))
+        current = [case['initial_cutoff'],case['initial_resonance'],case['initial_mode'],0]
+        for block in case['blocks']:
+            dirty = [0]*4
+            for key,value in block['normalized_changes'].items():
+                index = int(key)
+                current[index] = int(value*2) if index == 2 else value
+                dirty[index] = 1
+            floats(*current[:2]); words(int(current[2]),int(current[3]>.5),*dirty)
+            state = bytes.fromhex(block['raw_state_hex_70_to_17f'])
+            words(int(block['reset_wrapper_and_raw_before']),len(block['audio_bits']),struct.unpack_from('<I',state,4)[0])
+            for key in ['audio_bits','mod_bits','output_bits']: words(*block[key])
     args.output.write_bytes(data)
     print(f'{len(data)} bytes; SHA256 {hashlib.sha256(data).hexdigest()}')
 
