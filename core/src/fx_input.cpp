@@ -1,5 +1,6 @@
 #include "mfrk/fx_input.hpp"
 #include "fx_input_constants.hpp"
+#include "ucrt_sinf.hpp"
 #include <algorithm>
 #include <bit>
 #include <cmath>
@@ -26,8 +27,8 @@ StereoLanes InputGainPan::process(const MonoInputs& mono, const Targets& envelop
     }
     const float amplitude = envelopes[lane] * detail::calibration;
     const float angle = pan * detail::quarter;
-    const float target_right = std::sin(angle + detail::quarter) * amplitude;
-    const float target_left = std::sin(angle + detail::three_quarter) * amplitude;
+    const float target_right = mfrk::detail::ucrt_sinf::evaluate(angle + detail::quarter) * amplitude;
+    const float target_left = mfrk::detail::ucrt_sinf::evaluate(angle + detail::three_quarter) * amplitude;
     const float difference_left = target_left - history_[lane].left;
     const float difference_right = target_right - history_[lane].right;
     for (unsigned sample = 0; sample < frame_count; ++sample) {

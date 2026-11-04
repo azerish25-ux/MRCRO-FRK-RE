@@ -16,7 +16,11 @@ struct PanSettings {
   bool disable_spread;
   bool alternate_pattern;
 };
-// Finite mono samples/envelopes/pan/settings. Canonical controller helpers:
+// Finite mono samples/envelopes/pan/settings; round-to-nearest floating point.
+// process() requires each computed sine argument to satisfy abs(float bits)
+// < 0x4b800456 (the recovered UCRT ordinary-domain branch). Canonical
+// pans in [-1,1] and width in [0,1] satisfy this requirement.
+// Canonical controller helpers:
 // signed16 source, Q14 sensitivities/effective0..16383, velocity0..127.
 class InputGainPan {
 public:

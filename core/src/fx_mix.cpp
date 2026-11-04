@@ -10,7 +10,9 @@ StereoSamples sum_lanes(const StereoLanes& lanes, StereoOverride external) noexc
   for (unsigned lane = 1; lane < lane_count; ++lane) {
     for (unsigned sample = 0; sample < frame_count; ++sample) {
       output.left[sample] = output.left[sample] + lanes[lane].left[sample];
-      output.right[sample] = output.right[sample] + lanes[lane].right[sample];
+      // The native first right SIMD group reverses the source operands.
+      output.right[sample] = sample < 4 ? lanes[lane].right[sample] + output.right[sample]
+                                        : output.right[sample] + lanes[lane].right[sample];
     }
   }
   if (external.left != nullptr && external.right != nullptr) {
