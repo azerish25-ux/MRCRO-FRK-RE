@@ -204,3 +204,17 @@
 - Full sounding standalone Android app, complete UI/UX/touch/MIDI and every
   preset's sound remain incomplete. Reviewed WaveShaper repository adaptation,
   source scene binding and native preset migration/default paths continue.
+
+- Waveshaper merged6fc3d79 after different-author source/API/wiring review and
+  successful finalrun41910253799:29LinuxRelease checks/allAndroidx86_64 references,
+  both Android ABIs compile.1612blocks/51584raw+scaled samples/2313generatedtable
+  values/320lifecycle commands all exact;512definedstress and39releaseguards pass,
+  zero ordinary callback allocations. Full admitted state/trace comparisons held.
+- Private state/Tables API requires explicit zero-arena and Init. Source phase
+  and reset are no-ops; Init preserves outer history. Active non-ok statuses roll
+  back outputs/state, without claiming equivalent native fault audio. Original
+  packedgold and provenance remain immutable; docs/waveshaper details scope.
+- Next active source work: seven numeric UI primitives production adapter,
+  KarplusStr buffers/kernel/table producers, native preset eligibility/empty
+  hardware-slot and legacy WT AudioSample migrations. Full standalone Android
+  sound/UI/touch/MIDI/preset parity remains active and incomplete.

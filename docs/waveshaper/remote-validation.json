@@ -1,0 +1,40 @@
+{
+  "schema": 1,
+  "commit": "6fc3d79cb643ea2b49adfc5d83af1c137240d86c",
+  "run_id": 41910253799,
+  "run_url": "https://github.com/azerish25-ux/MRCRO-FRK-RE/actions/runs/41910253799",
+  "linux": {
+    "job_id": 126855606631,
+    "conclusion": "success",
+    "configuration": "Release",
+    "ctest_passed": 29,
+    "ctest_failed": 0
+  },
+  "android": {
+    "job_id": 126855833177,
+    "conclusion": "success",
+    "compiled_abis": [
+      "arm64-v8a",
+      "x86_64"
+    ],
+    "runtime_abi": "x86_64",
+    "api_level": 35,
+    "runner": "GitHub Actions",
+    "blocks": 1612,
+    "raw_samples": 51584,
+    "scaled_samples": 51584,
+    "generated_table_values": 2313,
+    "lifecycle_commands": 320,
+    "ordinary_callback_allocations": 0,
+    "release_guard_checks": 39,
+    "defined_stress_blocks": 512,
+    "all_compared_mismatches": 0
+  },
+  "original_processor_sha256": "bd036dfa6a0afcfef733c29c73b1b3df969f2c86ca860b0fa535d4492fa8fb74",
+  "limits": [
+    "Fixed 32-frame 96kHz component and declared zero-arena initialization/defined lookup profile.",
+    "arm64-v8a compiled but not executed in this workflow.",
+    "Failure/rollback checks validate the portable contract outside native defined reads; they do not establish fault audio.",
+    "No complete voice graph, native preset loader, sound/UI parity or standalone APK completion."
+  ]
+}

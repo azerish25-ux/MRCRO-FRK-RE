@@ -93,9 +93,9 @@ unproven until all feature and equivalence requirements are independently verifi
   start a fresh owned CLI client only when further provider queries are needed.
 
 ## Next Step
-Integrate the independently reviewed WaveShaper candidate with original-instruction
-fixtures and remote Android validation. Complete original scene bindings/rendering
-and gestures, native preset defaults/version/custom migrations, and the full
+Integrate the seven source-verified UI numeric primitives and continue KarplusStr
+recovery. Waveshaper is merged after Linux/Android validation. Complete original
+scene bindings/rendering and gestures, native preset defaults/version/custom migrations, and the full
 voice/allocator/Dual/FX graph. Connect standalone Android audio, touch and MIDI;
 verify every included preset and complete feature parity. Included library
 acquisition is verified remotely, while native loading and audio remain required.

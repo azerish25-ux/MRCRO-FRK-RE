@@ -368,5 +368,10 @@ blocks,51584 raw and scaled samples, all2313 table values and320 lifecycle
 commands exactly, with zero ordinary render allocations. Failure/rollback,
 39 additional guard checks and API admission are separate tests. Original
 source/reference provenance and packed immutable gold accompany the tests.
-Remote Linux/Android validation and independent production-adapter review are
-pending; the surrounding oscillator/voice/preset/audio graph remains required.
+[Final run41910253799](https://github.com/azerish25-ux/MRCRO-FRK-RE/actions/runs/41910253799)
+passes all29 Linux Release checks and Android API35 x86_64 references. Both
+Android ABIs compile; arm64 runtime remains unverified. Independent adaptation,
+private API, original body/fixture identity, guards and wiring review approved
+this scope. [Target validation](../docs/waveshaper/remote-validation.json) retains
+the exact commit/job results. The surrounding oscillator/voice/preset/audio graph
+remains required.
