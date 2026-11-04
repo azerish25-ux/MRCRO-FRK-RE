@@ -128,3 +128,39 @@
   reference but insufficient for lossless pixel-equivalence claims.
 - Observed Advanced and Sequencer navigation changes the window's view/height.
   Returned to Home. Original patch controls were not modified.
+
+## Raw VAnalog reconstruction
+- Reviewed component integrated on main at d697f017d1357386048c2f1a12f6040cbab438ac.
+- Original-instruction trace cases: 18 scenarios, 80 blocks, 1,920 output samples
+  across 16 and 32-frame paths, including parameter changes across consecutive calls.
+- Actions run 41789935056 passed native checks, Android arm64/x86_64 builds and
+  Android API 35 x86_64 execution. Logs report 661 pitch cases and 1,920 VAnalog
+  samples with zero bit mismatches. Output-range guards also passed.
+- Exact matching required installed variable-saw scaling (`sample * 1.6666666f -
+  0.8333333f`) and the original variable-shape wrap-correction multiplication order.
+  All expected golden bits remained independent of the replacement code.
+- Correcting a flattened pseudocode grouping by itself was unsuccessful; assembly
+  evidence ev_0340a7d5b86c4999322dc598828ea4b53cb8c9ac3aaa713e22bae3ed8178289e
+  resolved actual operation order. Do not assume decompiler text preserves every
+  floating-point grouping.
+- Pinned MIT primitive sources and modified hashes are in third_party/manifest.json.
+  Render performs no allocation or I/O. These sampled cases do not establish all
+  inputs, arm64 execution, full patch output or complete instrument behavior.
+
+## Wrapper evidence and next component
+- FreakVirtualAnalog<32,96000> has vtables at 0x180544d78 and 0x180545f18.
+- Wrapper render at 0x1802c54b0 places 0x10 in the raw Render size argument, then
+  calls 0x1802c9e60. Assembly evidence:
+  ev_79e8a731d1f7322d72726ca2edb4d567eaf5428e2d0a9d6e4d63650ef982370d.
+- 0x1802c9e60 is a stateful linear 2x interpolator. For each of 16 inputs it writes
+  (previous + current) * 0.5, then current, updating previous across blocks.
+  Pseudocode evidence ev_dc0bf6d8b951b3f983784b5294447d60ce0b042f9b85bf96d1efb0180a994bda.
+  It is not yet ported or independently verified with numeric vectors.
+- Method 0x1802c5570 converts dirty ushort controls into engine parameters at
+  offsets +0xe0 (harmonics), +0xd8 (timbre), +0xdc (morph), using an approximately
+  1.525972e-05 factor. Exact factor bits, upstream UI/control mapping and full
+  object initialization remain to be established. Method 0x1802c5310 sets note
+  storage at +0xd4. Method 0x1802c5380 applies the float level at +0x28.
+- Do not infer a default gain from unrelated initializer offsets; multiple
+  inheritance and this-pointer adjustments need explicit validation.
+- Fresh hashes of standalone, VST3 and processor still match initial identities.

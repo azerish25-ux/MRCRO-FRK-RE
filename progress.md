@@ -29,10 +29,19 @@
 - Generated a four-block numerical trace of the original VAnalog routines in
   emulation. The portable VAnalog engine has not yet been implemented.
 - Saved live Home/Advanced/Sequencer JPEG baselines on D: and restored Home view.
+- Reconstructed raw VAnalog and resolved float operation-order differences without
+  relaxing bit comparisons. Integrated reviewed d697f017d1357386048c2f1a12f6040cbab438ac.
+- Run 41789935056 passed 661 pitch checks plus 1,920 original-instruction VAnalog
+  output comparisons in a GitHub-hosted Android API 35 emulator. arm64 and x86_64
+  Android cross-compiles passed; arm64 runtime remains unverified.
+- Recovered the actual 16-frame raw engine -> 32-frame 2x interpolation wrapper.
+  Next work is the interpolator and wrapper controls/state, followed by the other
+  instrument subsystems and all Android UI/functionality. No APK exists yet.
 
 ## Live analysis handles (revalidate before reuse)
 - Persistent processor client exec session 2309; REA server and imported processor
   are active. Complete responses: ../local/evidence/session-dsp.
+  Latest complete export: ../local/evidence/processor-evidence-003.bundle.json.
 - Persistent wrapper client exec session 73850; import completed after about
   991 seconds. Overview identifies 66,875 procedures and 37,450 defined strings.
   Export: ../local/evidence/wrapper-evidence-001.bundle.json. Do not duplicate imports.

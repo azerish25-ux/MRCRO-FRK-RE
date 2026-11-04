@@ -23,10 +23,16 @@ primitives, CMake/CTest, GitHub-hosted Android NDK/emulator checks.
 - [x] Recover Init 0x18032fe50 and Render 0x18032fef0 from the exact processor.
 - [x] Generate independent original-instruction traces: nine scenarios, 40 blocks,
   1,280 output samples, including parameter changes across consecutive blocks.
-- [ ] Write fixed-bit golden checks and confirm a zero implementation fails remotely.
-- [ ] Reconstruct the engine and compare each scenario; investigate mismatches.
-- [ ] Run the same tests on the GitHub-hosted Android emulator.
-- [ ] Review and integrate verified implementation; retain remaining scope explicitly.
+- [x] Extend to 16 and 32-frame paths: 18 scenarios, 80 blocks, 1,920 samples.
+- [x] Write fixed-bit golden checks and confirm a zero implementation fails remotely.
+- [x] Reconstruct the engine and compare each scenario; investigate mismatches.
+- [x] Run the same tests on the GitHub-hosted Android emulator.
+- [x] Review and integrate verified implementation; retain remaining scope explicitly.
+
+Verified at d697f017d1357386048c2f1a12f6040cbab438ac, Actions run 41789935056:
+661 pitch cases and 1,920 raw VAnalog samples, zero bit mismatches on Android
+x86_64. arm64 builds passed; arm64 execution and complete instrument parity are
+not established. Reviewed and integrated on main without changing the golden bits.
 
 ## Evidence
 Processor SHA-256: bd036dfa6a0afcfef733c29c73b1b3df969f2c86ca860b0fa535d4492fa8fb74.

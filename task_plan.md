@@ -67,7 +67,14 @@ unproven until all feature and equivalence requirements are independently verifi
   selecting platform-tools fixed that. NDK and emulator tests now pass remotely.
 - A stale sky screenshot ID rejected one view-navigation attempt before input.
   RESOLVED by re-observing the same app before retrying. Final view restored Home.
+- VAnalog candidate initially had 304/1,280 float-bit mismatches. Preserving the
+  installed saw output scaling reduced this to two. A naive-accumulation grouping
+  hypothesis increased mismatches to four and was reverted after assembly review.
+  Original wrap-correction multiplication order resolved the remaining two.
+- A PowerShell foreach pipeline metadata query required wrapping its results in
+  @(...); corrected before execution of the intended read-only checks.
 
 ## Next Step
-Reconstruct VAnalog against the bounded original-routine numeric traces, expand
-coverage across parameters/state changes, and retain full instrument/UI scope.
+Reconstruct the recovered 2x interpolator at 0x1802c9e60 and VAnalog wrapper
+control/state routing; then continue remaining engines, filters, effects, voices,
+presets and full Android UI. Current raw VAnalog passes sampled numeric parity.

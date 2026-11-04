@@ -3,8 +3,9 @@
 Evidence-driven reconstruction of an installed Arturia MiniFreak V for Android.
 The target is full sound, UI, interaction, preset and behavioral parity.
 This is an early reconstruction: no complete Android instrument exists yet.
-The first portable pitch helper matches 661 original-instruction reference cases
-bit for bit on a GitHub-hosted Android x86_64 emulator. Android arm64 also builds;
+The portable pitch helper matches 661 original-instruction cases, and the raw
+VAnalog component matches 1,920 sampled outputs bit for bit on a GitHub-hosted
+Android x86_64 emulator. Android arm64 also builds;
 arm64 execution and full-instrument equivalence remain unverified.
 
 Reference installation reports Windows version **5.1.1.4933efd** (product 5.1).
@@ -45,3 +46,7 @@ See [the portable core](core/README.md) for exact scope and attribution.
 cross-compiled arm64-v8a and x86_64, booted Android API 35 on GitHub Actions, and
 reported `661 checked, 0 mismatches` for the x86_64 pitch helper.
 This is numerical helper parity, not full synth or audio parity.
+
+[VAnalog verification](https://github.com/azerish25-ux/MRCRO-FRK-RE/actions/runs/41789935056)
+also passed 16/32-frame raw-engine traces and parameter-change sequences with
+zero bit mismatches. The complete instrument, Android UI and APK are pending.

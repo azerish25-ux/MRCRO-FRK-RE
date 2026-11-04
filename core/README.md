@@ -1,7 +1,7 @@
 # Portable instrument core
 
-Only the first pitch conversion helper is reconstructed here. This is not yet
-an oscillator, a complete instrument engine or an Android app.
+The core currently contains a recovered pitch helper and the raw VAnalog engine
+component. It is not a complete instrument engine or an Android app.
 
 `normalized_pitch_frequency` follows the original x64 helper at `0x18032e950`
 in processor SHA-256
@@ -28,3 +28,28 @@ inputs. They are finite-input samples, not an exhaustive proof for all floats.
 GitHub Actions builds native checks, cross-compiles Android arm64-v8a/x86_64,
 and runs the x86_64 checks inside an Android emulator. A passing math helper
 does not prove full instrument, audio, UI, latency or real-device equivalence.
+
+## Raw VAnalog component
+
+`VirtualAnalog` follows the recovered Init/Render routines at `0x18032fe50` and
+`0x18032fef0` in the same processor. It preserves oscillator state and gain
+interpolation across calls. Construction allocates its implementation once;
+rendering does not allocate or perform I/O. Output lengths must be 1..32 frames;
+16 and 32-frame paths are currently tested.
+
+[Verified run 41789935056](https://github.com/azerish25-ux/MRCRO-FRK-RE/actions/runs/41789935056)
+reported 1,920 original-instruction VAnalog output samples with zero bit
+mismatches on Android x86_64, alongside all 661 pitch cases. The 18 scenarios
+include consecutive parameter changes and checks that rendering does not write
+beyond a requested 16-frame output range. Both Android arm64 and x86_64 builds
+passed; arm64 execution remains unverified.
+
+MIT Plaits/stmlib oscillator primitives are pinned in `third_party/manifest.json`.
+Two installed-engine rounding differences are explicitly preserved: variable-saw
+output scaling and the multiplication order of the variable-shape wrap correction.
+The manifest records original and modified file hashes; original notices remain.
+
+This tests selected raw-engine parameter sequences, not every input or a complete
+patch. Wrapper controls, note/voice behavior, upsampling, filters, effects and
+host-rate conversion still require reconstruction. Wrapper assembly shows a
+16-frame engine call followed by a 2x interpolator producing 32 output frames.
