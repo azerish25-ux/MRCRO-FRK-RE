@@ -103,7 +103,13 @@ implementation specification. Preserve signed32 decay-target subtraction before
 widening to int64, fixed-point product wrap and table interpolation across
 adjacent object fields. A premature widening passed initial cases but failed
 1,584 expanded ticks. Reset retains the public output until the next step.
-Portable C++ envelope implementation and Android validation are still pending.
+The main portable `Adsr` is now implemented and integrated.
+[Android41817910133](https://github.com/azerish25-ux/MRCRO-FRK-RE/actions/runs/41817910133)
+matched all7,032 asserted records and3,600 table bytes; both ABIs built, x86_64
+executed. Construction prewarms curves outside the callback. All nine controls
+must be prepared before processing; portable admission returns are not asserted
+as native-method return equivalence. Caller/clock/hold-dispatch wiring and cyclic
+envelope implementation remain incomplete.
 
 ## Voice and scheduler boundaries
 
@@ -132,7 +138,31 @@ the original `ModuleCloner<MiniFreakDualVCF,6,0,0>` vtable and constructs six
 children at byteoffset0x70, stride0x2920, via wrapper `0x1802e45d0`. Its caller
 xref is0x1802d6572. Original PE runtime-function bounds place0x1802e076c inside
 0x1802e05b0..0x1802e0981; proximity to the voice constructor is insufficient.
-The graph's child-buffer binding, dispatch and enclosing owner remain open.
+This constructor establishes array topology; containing-engine dispatch is traced below.
+
+Later existing engine2be9b0 evidence establishes the processing order: aggregate
+control2ccb50/2cccc0, six Voice renders2d81b0, six-child filter ModuleCloner at
+engine+40 (childbase+70/stride2920), then per-voice smoothed gain buffers at
+engine+143358+8*i and engine gains+151b0/+13f70. The gain target source record is
+engine+a5ff8+0x34*i. Exact ADSR-copy/velocity/policy derivation and public control
+binding are still being traced; this is not a completed playable voice proof.
+
+Original deferred resource transitions are also independently recovered under
+explicit worker schedules. Requesting2x→4x fades61 blocks to zero, drops ready,
+queues work, installs through the original worker/builder, resets in construction
+and completion, updates latency and fades61 blocks back to one. At not-ready,
+the original leaves output untouched and does not advance DSP/PRNG; caller owns
+clearing. Constructor/transition probes run actual numeric resource construction
+under bounded allocation models; mutex/refcount shell/pending-state replay and
+host worker timing remain outside this proof. No portable transition controller
+is integrated yet.
+
+Adaptive factor selection can produce3. Original missing-key IIR fallback for3
+has zero gain, one zero-coefficient section and latency0; it must not be replaced
+with a generic3x filter. Factor1 skips resampler creation and copies directly.
+These later cases and the separate FIR path are outside the current2/4/6/8
+portable IIR scope. Local filter-agent files retain the exact selector/factory
+and transition evidence.
 
 Full allocator/event scheduling, modulation, remaining oscillators, effects,
 sequencer, state/preset behavior, Android audio/MIDI/UI and instrument-wide

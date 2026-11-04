@@ -76,3 +76,8 @@ in progress. These numerical component checks do not establish full synth parity
 [Original filter IIR and settled chain](https://github.com/azerish25-ux/MRCRO-FRK-RE/actions/runs/41816365296)
 now also pass Android output/state comparisons. Asynchronous filter transitions,
 complete envelopes/voices and the Android application remain unfinished.
+
+[Main ADSR checks](https://github.com/azerish25-ux/MRCRO-FRK-RE/actions/runs/41817910133)
+now pass7,032 original state records and3,600 curve bytes on Android. Complete
+voice scheduling, remaining engines/effects/presets and the Android UI/app remain
+unfinished; the full1:1 objective stays active.

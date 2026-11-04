@@ -81,8 +81,8 @@ unproven until all feature and equivalence requirements are independently verifi
   start a fresh owned CLI client only when further provider queries are needed.
 
 ## Next Step
-Implement the mapped ADSR and filter resource/fade lifecycle, then recover
-the remaining voice/allocator/filter graph for a complete original voice path and
+Integrate the verified ADSR into the original voice path and implement filter
+resource/fade lifecycle, then recover the remaining voice/allocator/filter graph and
 integrate Android audio/UI from the recovered scene specification. Continue every
 remaining engine, effect, sequencer and preset/state requirement. The verified
 Basic Waves/VAnalog components are not completion of the instrument.

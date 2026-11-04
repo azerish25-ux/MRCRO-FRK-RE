@@ -76,6 +76,13 @@
   device-level validation. No full instrument or APK completion is claimed.
 
 ## Live analysis handles (revalidate before reuse)
+- Main ADSR integratedb80b5bfef4ea1eb07d6be44df97de7043528630a; Android41817910133
+  passes8,032commands/7,032records/3,600bytes plus all earlier checks. Both ABIs
+  compiled, x86_64 executed. Required constructor prewarm fix reviewed/resolved.
+- ui_resources now traces full voice envelope/gate/gain/clock bindings; wave_tables
+  investigates actual filter factory/transitions/FIR/fallback factors; vcf_review
+  now recovers source-backed mf37 HOME runtime scene under ui-resource-agent/runtime-home.
+  No whole-instrument or APK completion claim; objective remains active.
 - Exact IIR/settled49 chain reviewed/integrated3a5b28aec7e9ddb2c82fdb88ec5120c020fdb4ed.
   Android41816365296 passed9,600up/1,920down/60pairedstates and1,920chainoutputs,
   plus all previous checks; both ABIs built, x86_64 executed. Full objective active.

@@ -331,3 +331,23 @@
   and tables, but requires constructor curve prewarm before repo integration.
   Public all-nine-controls admission contract and test-only fixture loading
   must remain explicit. No Android ADSR validation yet.
+
+## Main ADSR integrated and verified
+- Integratedb80b5bfef4ea1eb07d6be44df97de7043528630a after arithmetic/provenance
+  review and startup prewarm fix. Production has unconditional test-access friend,
+  fixture loader only in tests, no mutation branches. Construct off callback.
+- Red41817831985 rejected3,336table bytes/6,624state records; other checks passed.
+  Green41817910133 passed all11 native tests, both Android ABI builds and x86_64
+  API35 execution:8,032commands/7,032asserted records/3,600curve bytes, zero errors.
+- Original FX01 fixture2,283,246bytes compacted losslessly to242,791bytes FX02;
+  every33cell array survives, including unasserted cells/op6loads. SHA256
+  600ab02f2e8117d4a7db992ac0f4103dc5a99aa408d2a489d389e19ed4f9214d.
+  Root generators and independent review regenerate and decode byte-identically.
+- Caller/clock/envelope-copy roles, public dispatch and cyclic envelope remain open.
+- Filter transition evidence now runs actual numeric resource construction within
+  original worker/completion schedule (bounded ownership/import shell), exact audio
+  and states. Unready leaves output untouched and PRNG frozen. Not portable yet.
+- Adaptive factor3 uses original zero-gain/one-section fallback, factor1 directcopy;
+  do not substitute invented3x coefficients. Separate FIR/resource paths remain.
+- UI HOME runtime scene recovery started from source defaults/conditions/styles;
+  no actual Android renderer/app/APK or complete UI parity yet.

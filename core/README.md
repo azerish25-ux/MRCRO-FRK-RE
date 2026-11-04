@@ -167,3 +167,31 @@ Android ABIs built; all previous checks passed. Settled wrapper fixtures use a
 Independent review checked coefficient provenance, recurrence, fixture bytes and
 callback allocation. Binary fixture SHA256 is
 `58e8329e1e5b992f3414f6a8f66f4c8e617be04d074525fe1db310d2ad3ba25d`.
+
+## Main fixed-point ADSR
+
+`Adsr` preserves the recovered Q31 accumulator/Q15 output, mathematical curve
+construction, nine ushort controls and dirty ordering, gate/legato/hold/reset,
+five-tick retrigger and phase-specific coefficient updates. It uses explicit
+two's-complement wrap, saturation and adjacent-field interpolation boundaries.
+The decay target wraps to signed32 before its int64 product. Reset retains the
+public output until the next step.
+
+Construct outside the audio callback to prewarm both immutable curve tables.
+Prepare all nine controls once before gate/step; their Boolean return means
+portable API admission. Unwritten native ancillary cells are not claimed as
+known constructor defaults. The raw hold setter does not invent external
+pending-release dispatch. Test-only fixture loading is absent from the public API.
+
+[Run41817910133](https://github.com/azerish25-ux/MRCRO-FRK-RE/actions/runs/41817910133)
+passed all8,032 commands,7,032 asserted state records and3,600 original curve
+bytes on Android API35 x86_64, plus earlier checks. Both ABIs built; arm64 was not
+executed. Independent review covered original provenance, all five source maps,
+arithmetic/state behavior, startup safety and the lossless fixture codec.
+
+FX02 test data preserves every command, mask, argument and33-cell state array
+from canonical original traces. The242,791-byte fixture decodes byte-identically
+to the2,283,246-byte canonical data; provenance/hashes are in
+`core/tests/adsr_fixture_manifest.json`. Generators are `generate_adsr_vectors.py`
+and `compact_adsr_vectors.py` under tools. Full caller/clock/gate wiring and the
+cyclic envelope still need integration and instrument-wide validation.

@@ -6,6 +6,8 @@ namespace mfrk {
   enum class AdsrPhase : std::int32_t {
     idle, forced_maximum, attack, decay, sustain, release, retrigger
   };
+  // Attack/decay/sustain/release, attack/decay/release curve, legato policy, mode.
+  // Dirty-mask bits use this same order; inputs retain original ushort semantics.
   using AdsrControls = std::array<std::uint16_t,9>;
   struct AdsrState {
     AdsrPhase phase{};
