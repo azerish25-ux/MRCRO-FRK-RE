@@ -76,6 +76,15 @@
   device-level validation. No full instrument or APK completion is claimed.
 
 ## Live analysis handles (revalidate before reuse)
+- Raw model37 VCF passed native/Android run41813188815 at472182b148c3a498a6cf4616a3ac8c588e5a2e1f:
+  7,680 samples,162 control blocks,zero bit mismatches; all earlier checks passed.
+  Both Android ABIs compiled; x86_64 emulator executed. Independent review approved
+  the scoped implementation with first-only/force-only coverage limits. Integrated
+  on main at472182b148c3a498a6cf4616a3ac8c588e5a2e1f; full objective remains active.
+- Model49/oversampling investigation continues independently in filter-agent.
+- Root routing client83522 owns session-routing-001; verify liveness before reuse.
+- Envelope analysis client48056 closed normally; local envelope-agent retains
+  original instruction probes, shared mappings and system-CRT comparison evidence.
 - Processor client exec session 78124 is now terminal: exited1 on a late read-only
   assembly request. Cause unconfirmed; after a five-second retry/check, D: reads
   and original processor hash were healthy. Do not reuse this terminal handle.

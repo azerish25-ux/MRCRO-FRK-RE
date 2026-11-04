@@ -81,7 +81,8 @@ unproven until all feature and equivalence requirements are independently verifi
   start a fresh owned CLI client only when further provider queries are needed.
 
 ## Next Step
-Recover voice/envelope/filter routing for a complete original voice path, then
+Continue model49/oversampling and reconstruct the mapped envelopes, then recover
+the remaining voice/allocator/filter graph for a complete original voice path and
 integrate Android audio/UI from the recovered scene specification. Continue every
 remaining engine, effect, sequencer and preset/state requirement. The verified
 Basic Waves/VAnalog components are not completion of the instrument.

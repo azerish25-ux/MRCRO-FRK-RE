@@ -103,3 +103,22 @@ controls, word overflow and negative frequency. All earlier checks and Android
 arm64/x86_64 builds passed. arm64 execution and full voice/patch/application parity
 remain unverified. Method ordering and initialization in tests are explicit fixture
 conditions, not a claim about the complete original host scheduler.
+
+## Raw model37 filter
+
+`Vcf37` reconstructs normalized controls, double smoothing, nonlinear LP/BP/HP,
+reset, explicitly seeded noise and DC blocking in 32-frame blocks. Construction
+allocates once outside the audio callback. First/force/dirty flags belong to the
+caller; reset preserves the PRNG seed. Use positive sample rates and finite
+normalized controls in 0..1.
+
+[Run 41813188815](https://github.com/azerish25-ux/MRCRO-FRK-RE/actions/runs/41813188815)
+passed 7,680 original-instruction samples and 162 control blocks on Android API35
+x86_64, plus all previous checks. Both arm64-v8a and x86_64 built; arm64 execution
+remains unverified. Tests include high-resonance reset and five PRNG seeds with
+noise toggling. Separate first-only/force-only sequences are not directly covered.
+Independent review checked all 120 constants, both tables and the recovered core.
+
+This excludes model49, dual selection, oversampling and complete voice placement.
+See [routing evidence](../docs/filter-envelope-routing.md) for the recovered
+envelope and voice boundaries. A full Android instrument and APK remain pending.

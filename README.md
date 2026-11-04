@@ -61,3 +61,9 @@ now also pass 1,280 raw output samples and every generated table-bank byte hash.
 The original UI resource/skin/asset findings are summarized in
 [UI reconstruction evidence](docs/ui-reconstruction.md); no Android UI or APK is
 claimed complete.
+
+[Raw model37 filter checks](https://github.com/azerish25-ux/MRCRO-FRK-RE/actions/runs/41813188815)
+passed 7,680 original-instruction samples and 162 control blocks on the remote
+Android emulator. Model49, oversampling, full voice integration and the Android
+application are still pending. Additional recovered boundaries are documented in
+[filter/envelope/voice evidence](docs/filter-envelope-routing.md).

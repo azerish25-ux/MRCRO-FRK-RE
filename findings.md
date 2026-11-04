@@ -269,3 +269,27 @@
 - Source-based implementation constraints are summarized in docs/ui-reconstruction.md.
   No completed Android renderer, live mf49 screenshot or lossless pixel equivalence
   is established by these maps or bounded JPEG baselines.
+
+## Model37 filter and envelope/voice boundaries
+- Raw model37 initialization, normalized control maps, double smoothing,
+  nonlinear feedback, LP/BP/HP, reset, noise and DC blocker are reconstructed.
+  Original preferred addresses and limits: docs/filter-envelope-routing.md.
+- Independent initialization matched 72 fields; normalized prepare/core matched
+  5,184 outputs and 162 control blocks without copied initialized coefficients.
+- Added 1,536 impulse/reset samples and 960 noise samples with five seeds and
+  on/off/on toggles. Noise disabled preserves seed; reset does not reseed.
+- Red run 41812198195 rejected silence/no-op with 5,337 mismatches; other tests
+  passed. Green 472182b148c3a498a6cf4616a3ac8c588e5a2e1f/run41813188815 passed
+  all 7,680 VCF samples/162 blocks plus earlier checks on Android API35 x86_64.
+  arm64-v8a also compiled, not executed. Host eight tests passed.
+- Independent review found no required fixes and verified 120 constants and
+  both table byte sequences against original extraction. Separate first-only
+  and force-only transition vectors remain a coverage limit.
+- Main/cyclic envelope preparation, gates/steps and shared descriptor mappings
+  are recovered in local/evidence/envelope-agent. Portable envelopes remain open.
+- Actual Voice constructor2e5cd0/stride1a000, prepare2cd760, envelope step2d7fa0,
+  render2d81b0 and containing engine2be9b0 are mapped in local session-routing-001.
+  Display indices0..5/6..11 select oscillator1/2 within the same six voices;
+  this is not evidence for a second six-voice bank or twelve-voice polyphony.
+- Model49, dual/oversampling, complete routing/allocator, other models, effects,
+  sequencer, presets, Android UI/audio/MIDI and full-instrument parity remain open.
