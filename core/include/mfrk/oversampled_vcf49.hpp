@@ -1,9 +1,7 @@
 #pragma once
 
-#include "mfrk/iir_resampler.hpp"
+#include "mfrk/filter_resource.hpp"
 #include "mfrk/vcf49.hpp"
-
-#include <vector>
 
 namespace mfrk {
 
@@ -12,7 +10,8 @@ namespace mfrk {
 class OversampledVcf49 {
 public:
     OversampledVcf49(float host_rate, FilterOversampling factor,
-                     std::size_t maximum_frames, std::uint32_t seed);
+                     std::size_t maximum_frames, std::uint32_t seed,
+                     FilterKernel kernel = FilterKernel::iir);
     void prepare(const VcfControls& controls) noexcept;
     void reset(float resonance) noexcept;
     void process(std::span<const float> audio, std::span<const float> modulation,
@@ -20,10 +19,8 @@ public:
     [[nodiscard]] std::uint32_t noise_state() const noexcept;
 
 private:
-    IirResampler audio_resampler_, modulation_resampler_;
+    FilterResource resource_;
     Vcf49 filter_;
-    std::size_t maximum_frames_;
-    std::vector<float> up_audio_, up_modulation_, raw_output_;
 };
 
 }  // namespace mfrk

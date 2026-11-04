@@ -1,10 +1,11 @@
 // Original filter static-initializer descriptors; exact float32 coefficients.
 #pragma once
 #include <array>
+#include <cstddef>
 #include <bit>
 #include <cstdint>
 namespace mfrk::detail {
-struct IirCoefficients { float gain; std::array<float,8> numerator; std::array<float,16> denominator; std::uint32_t latency; };
+struct IirCoefficients { float gain; std::array<float,8> numerator; std::array<float,16> denominator; std::uint32_t latency; std::size_t sections = 8; };
 inline constexpr IirCoefficients kFilterIirCoefficients[] = {
     // Factor2, initializer 0x18023b900, descriptor 0x1805b9ec0.
     {std::bit_cast<float>(std::uint32_t{0x3b496ae2u}), {
@@ -118,5 +119,9 @@ inline constexpr IirCoefficients kFilterIirCoefficients[] = {
         std::bit_cast<float>(std::uint32_t{0xbfec9e67u}),
         std::bit_cast<float>(std::uint32_t{0x3f7582e2u}),
     }, 5},
+    // Factor1 is a direct-copy path; no original resampler object exists.
+    {1.0f, {}, {}, 0, 0},
+    // Missing-key factor3 descriptor1805b9e80, initialized by18023b850.
+    {0.0f, {}, {}, 0, 1},
 };
 }  // namespace mfrk::detail

@@ -1,13 +1,13 @@
 #pragma once
 
+#include "mfrk/filter_resampling.hpp"
+
 #include <array>
 #include <cstddef>
 #include <cstdint>
 #include <span>
 
 namespace mfrk {
-
-enum class FilterOversampling : std::uint32_t { x2 = 2, x4 = 4, x6 = 6, x8 = 8 };
 
 struct IirResamplerState {
     std::array<float, 16> up;
