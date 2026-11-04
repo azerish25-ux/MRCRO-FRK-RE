@@ -5,7 +5,7 @@ add_library(mfrk_core STATIC core/src/pitch.cpp core/src/virtual_analog.cpp
     core/src/linear_upsampler.cpp core/src/virtual_analog_controls.cpp
     core/src/virtual_analog_oscillator.cpp core/src/basic_wave_tables.cpp
     core/src/basic_waves.cpp core/src/vcf37.cpp core/src/vcf_sample.cpp core/src/vcf49.cpp
-    core/src/iir_resampler.cpp core/src/oversampled_vcf49.cpp)
+    core/src/iir_resampler.cpp core/src/oversampled_vcf49.cpp core/src/adsr.cpp)
 target_include_directories(mfrk_core PUBLIC core/include)
 target_include_directories(mfrk_core PRIVATE third_party)
 # Upstream stmlib's TEST path selects portable helpers instead of Cortex-M assembly.
@@ -50,6 +50,9 @@ if(BUILD_TESTING)
     add_executable(mfrk_filter_resampler_tests core/tests/filter_resampler_test.cpp)
     target_link_libraries(mfrk_filter_resampler_tests PRIVATE mfrk_core)
     add_test(NAME original_filter_resampler COMMAND mfrk_filter_resampler_tests ${CMAKE_CURRENT_SOURCE_DIR}/core/tests/filter_resampler_vectors.bin)
+    add_executable(mfrk_adsr_tests core/tests/adsr_test.cpp)
+    target_link_libraries(mfrk_adsr_tests PRIVATE mfrk_core)
+    add_test(NAME original_adsr COMMAND mfrk_adsr_tests ${CMAKE_CURRENT_SOURCE_DIR}/core/tests/adsr_vectors.bin)
     if(NOT ANDROID)
         find_package(Python3 REQUIRED COMPONENTS Interpreter)
         add_test(NAME original_basic_wave_tables
