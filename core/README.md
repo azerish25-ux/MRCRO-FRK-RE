@@ -384,3 +384,12 @@ fixtures. It preserves center/gradient/marker geometry, packed trig, magnetic
 drag mapping and dimension/edge quantization. [Scope and validation](../docs/ui-primitives.md)
 records exact admission, evidence and platform results. These functions do not
 implement the full renderer, scene, typography or touch-event lifecycle.
+
+## Native full and nested Flex calculation
+
+`mfrk::ui::flex` extends the strict-FP UI library with original numeric layout
+and explicit owned nested-box graphs. It preserves double calculation state,
+float bounds, signed margins, original sorting and freeze/distribution order.
+[Admission and validation](../docs/ui-flex.md) describes exact source evidence,
+immutable references and platform results. Component callbacks/clamps, scene
+construction and rendering remain separate work.

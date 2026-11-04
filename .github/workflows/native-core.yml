@@ -184,5 +184,13 @@ jobs:
             adb push core/tests/fixtures/scaled_dimension_vectors.bin /data/local/tmp/scaled_dimension_vectors.bin
             adb shell /data/local/tmp/mfrk_ui_primitives_tests scaled /data/local/tmp/scaled_dimension_vectors.bin
             adb shell /data/local/tmp/mfrk_ui_fixture_guard_tests
+            adb push build-x86_64/mfrk_ui_flex_tests /data/local/tmp/mfrk_ui_flex_tests
+            adb push build-x86_64/mfrk_ui_flex_guard_tests /data/local/tmp/mfrk_ui_flex_guard_tests
+            adb push core/tests/fixtures/full-flex-vectors.bin /data/local/tmp/full-flex-vectors.bin
+            adb push core/tests/fixtures/nested-flex-vectors.bin /data/local/tmp/nested-flex-vectors.bin
+            adb shell chmod 755 /data/local/tmp/mfrk_ui_flex_tests /data/local/tmp/mfrk_ui_flex_guard_tests
+            adb shell /data/local/tmp/mfrk_ui_flex_tests flat /data/local/tmp/full-flex-vectors.bin
+            adb shell /data/local/tmp/mfrk_ui_flex_tests nested /data/local/tmp/nested-flex-vectors.bin
+            adb shell /data/local/tmp/mfrk_ui_flex_guard_tests
       - name: Compare generated Android table bytes
         run: python3 tools/check_basic_wave_tables.py --dump build-x86_64/basic-wave-tables.bin --expected core/tests/basic_wave_table_hashes.json

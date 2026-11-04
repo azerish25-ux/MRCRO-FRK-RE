@@ -1,0 +1,224 @@
+{
+  "schema": 1,
+  "package_provenance": {
+    "scope": "Pure original numeric Flex with explicit nested-box recursion; no whole-scene claim",
+    "source_wrapper_sha256": "354c26c58e4c8c671b50f88d070452b47c9cd6b6505b1ea18391724929b3d19e",
+    "preferred_imagebase": "0x180000000",
+    "entry": "0x181070d90",
+    "original_instruction_models": [
+      "owned allocation/free",
+      "byte-preserving memmove",
+      "owned GS stack-limit field"
+    ],
+    "original_numeric_helpers_sort_stack_probe_cookie": "executed unchanged",
+    "associated_components": "null; setter/callback side effects excluded",
+    "records": [
+      {
+        "path": "../native-ui-source/flex-solver/native_flex.hpp",
+        "bytes": 10564,
+        "sha256": "f8f1e343f8085211cdce53639cbcffed4bf9b21a47e637f3b8d0cdf206b10763"
+      },
+      {
+        "path": "../native-ui-source/flex-solver/probe_full_flex.py",
+        "bytes": 5804,
+        "sha256": "ac9608169ec9a8147911d134c1e43883ac8a4f45373afe43777b580a52b6ccc0"
+      },
+      {
+        "path": "../native-ui-source/flex-solver/verify_full_flex.py",
+        "bytes": 2480,
+        "sha256": "f7199fc09d27bdc73a59af7133965e94b1c89b4670d6de20d242485423f48472"
+      },
+      {
+        "path": "../native-ui-source/flex-solver/run_negative_controls.py",
+        "bytes": 2442,
+        "sha256": "87beec6714a57dea34528d44d53bef9b975ecccdb10bbe4039174321de7f1498"
+      },
+      {
+        "path": "../native-ui-source/flex-solver/run_nested_negative_controls.py",
+        "bytes": 1411,
+        "sha256": "b2a358c044cc849b1cf54e463daf32cc487c8c9bb949683300ebc4bfd8349e87"
+      },
+      {
+        "path": "../native-ui-source/flex-solver/native-flex-all-numeric-asm.txt",
+        "bytes": 143158,
+        "sha256": "89285c14cd2e95c0ce49a269c46a2fb1fde80f36f9707d6b578f255cd69d6e84"
+      },
+      {
+        "path": "../native-ui-source/flex-solver/source-byte-ranges.json",
+        "bytes": 793,
+        "sha256": "5fff0a0c468baa1f989606ff1cc4937a278a551c84f94edfa691dda81ad4b5ce"
+      },
+      {
+        "path": "../native-ui-source/flex-solver/original-full-flex-gold.json",
+        "bytes": 27529015,
+        "sha256": "5d286d269a833cbcc42ea263fc6c448f413dc8b9fd236f3038bf1be6c2244610"
+      },
+      {
+        "path": "../native-ui-source/flex-solver/original-nested-flex-gold.json",
+        "bytes": 1838460,
+        "sha256": "b4ece2d6bbcc66d38f0e21be590b3aafb0b483549c1f1be724b20f660f5e22ae"
+      },
+      {
+        "path": "../native-ui-source/flex-solver/negative-controls.json",
+        "bytes": 1493,
+        "sha256": "c23b9c4308c9756d33feef33768b1cfdf238523af9f2616626b35f5e3a9dc303"
+      },
+      {
+        "path": "../native-ui-source/flex-solver/nested-negative-controls.json",
+        "bytes": 390,
+        "sha256": "6779b521ba66f0d43c5aacfe8805e3f10089594d32e1476e5f4bcfd3976f0bd7"
+      },
+      {
+        "path": "../native-ui-source/flex-solver/verification.json",
+        "bytes": 3049,
+        "sha256": "b4d0f88dab0ac7f7ac7efbc4905cdb13a82d95c7b90b63f57a9ba07c7d299ca5"
+      },
+      {
+        "path": "../native-ui-source/flex-solver/HANDOFF.md",
+        "bytes": 8776,
+        "sha256": "93c63529eb722f37f50e67860627a3893157fe837ad55722fb6ade566ab6fdb1"
+      },
+      {
+        "path": "../native-ui-source/flex-solver/full-flex-vectors.bin",
+        "bytes": 4781228,
+        "sha256": "2e3cc4c966b178e96b8f6e2194685480e36eb3d67b63ac67297df6811988b189"
+      },
+      {
+        "path": "../native-ui-source/flex-solver/nested-flex-vectors.bin",
+        "bytes": 354252,
+        "sha256": "e448f68ee278135c0d83bf036f5700eb9a700dbdf69e34adb7d533426e2047e2"
+      },
+      {
+        "path": "../native-ui-source/flex-solver/negative-controls/child-local-origin/candidate.hpp",
+        "bytes": 10529,
+        "sha256": "05cd3e1c2622b10322b88a2a28524d00644ccebcdb2f9e34ecd8bcf07a0c5045"
+      },
+      {
+        "path": "../native-ui-source/flex-solver/negative-controls/child-rounded-area/candidate.hpp",
+        "bytes": 10613,
+        "sha256": "065ce2ebf2fb887c67895d652634a003050e055ebcb44490865014926021bdec"
+      },
+      {
+        "path": "../native-ui-source/flex-solver/negative-controls/float-state/candidate.hpp",
+        "bytes": 10529,
+        "sha256": "c0aa03903f4d9a8df64bfee7cca624f52096f2e246e9b18acdee9410c5d24afb"
+      },
+      {
+        "path": "../native-ui-source/flex-solver/negative-controls/ignore-main-auto/candidate.hpp",
+        "bytes": 10540,
+        "sha256": "59a87801f6682d538d51bb193c87da070eb496613a41212f85bbd35ea3f75ea3"
+      },
+      {
+        "path": "../native-ui-source/flex-solver/negative-controls/no-freeze-retry/candidate.hpp",
+        "bytes": 10564,
+        "sha256": "da8679c4cf05424e3f4727b363bf0d986c1302665ad2f66e7bbc8fd2de1e1712"
+      },
+      {
+        "path": "../native-ui-source/flex-solver/negative-controls/omit-recursion/candidate.hpp",
+        "bytes": 10482,
+        "sha256": "25ed14e6f3d80f54216183090028f588061096b9fb85fca3a696a11a9b2a4885"
+      },
+      {
+        "path": "../native-ui-source/flex-solver/negative-controls/reorder-equal/candidate.hpp",
+        "bytes": 10623,
+        "sha256": "b3b0d289156036ffadf2312a672ac098ea80bcdd5e109e58accde8bf9adb2ac8"
+      },
+      {
+        "path": "../native-ui-source/flex-solver/negative-controls/reset-total-every-retry/candidate.hpp",
+        "bytes": 10577,
+        "sha256": "252899fce85bf3a1f2400063bc3f61d2ff5b4690ce667cbc4db81b5161b4c07f"
+      },
+      {
+        "path": "../native-ui-source/flex-solver/negative-controls/reverse-double-endpoint/candidate.hpp",
+        "bytes": 10598,
+        "sha256": "8cc482dcf3f8ccb78cd20c52ea37776a7e6b681a3fb289ee0243af893d6481fb"
+      },
+      {
+        "path": "../native-ui-source/flex-solver/negative-controls/space-evenly-denominator/candidate.hpp",
+        "bytes": 10562,
+        "sha256": "cb76e30911fad017b9064a3d3496e84481551a3ccf25bf7a54f73132af8a673b"
+      },
+      {
+        "path": "../native-ui-source/flex-solver/negative-controls/weighted-shrink/candidate.hpp",
+        "bytes": 10610,
+        "sha256": "0d99d4b4ed19d01219dd7bd5ca73a8382da4dff36b76201f37f5cd468661e076"
+      },
+      {
+        "path": "../native-ui-source/flex-solver/negative-controls/wrap-equal/candidate.hpp",
+        "bytes": 10565,
+        "sha256": "175adc9075cd97c3054ba8124d33f05a3b5c821bede8ac433427de84506d0c63"
+      }
+    ]
+  },
+  "body_preservation": {
+    "source": "native-ui-source/flex-solver/native_flex.hpp",
+    "source_sha256": "f8f1e343f8085211cdce53639cbcffed4bf9b21a47e637f3b8d0cdf206b10763",
+    "changes": "Namespace/public declarations/linkage only; private State/Line moved into implementation. Both full function bodies including original admission guards are unchanged.",
+    "functions": [
+      {
+        "name": "layout",
+        "body_sha256": "59eacd2a4d77faf0a421cd9606737b2ee5fce95b0e0ca53385c1ca395f6321ca"
+      },
+      {
+        "name": "layout_tree",
+        "body_sha256": "cb845a7b25958a2093cf5bc8ecfe68a4b269055b02685ffd8f16f0e906073d88"
+      }
+    ]
+  },
+  "root_adaptation": "Text-only CRLF-to-LF in C++/docs. Canonical binaries and both numerical bodies unchanged. Existing strict-FP PIC/IPO-off mfrk_ui target extended, with three host/Android checks.",
+  "root_independent_review": {
+    "fresh_original_gold_byte_identical": true,
+    "full_boxes": 4964,
+    "full_rectangles": 35802,
+    "nested_trees": 144,
+    "nested_boxes": 720,
+    "nested_rectangles": 2880,
+    "additional_constraint_cases": 72,
+    "additional_constraint_rectangles": 216,
+    "additional_native_trees": 8,
+    "additional_native_rectangles": 171,
+    "maximum_additional_tree_depth": 16,
+    "additional_constraint_sha256": "7eef9b5aed498f2dafc9b25f7a794b4a5a5f7b0bcfc038f1d0297feb11abb6d1",
+    "additional_tree_sha256": "0a0de86181f676ecbb7aededc65c906eb76801c4b743f740d42b5f55b11dd181",
+    "integrated_release_ctest": 40,
+    "scope": "Numeric Flex and explicit owned nested graphs only; no native Component/scene/raster/input equivalence."
+  },
+  "repository_files": {
+    "core/include/mfrk/ui_flex.hpp": {
+      "bytes": 1543,
+      "sha256": "46cabe7472b57f2166ab2dad117a8dddb24c0ff38272abb11dd889d0938dbf08"
+    },
+    "core/src/ui_flex.cpp": {
+      "bytes": 9607,
+      "sha256": "0f557c539aac8713f2f54054f7cd42b9e80d1ac4d8a62798b38ccc3963f70d0b"
+    },
+    "core/tests/fixtures/full-flex-vectors.bin": {
+      "bytes": 4781228,
+      "sha256": "2e3cc4c966b178e96b8f6e2194685480e36eb3d67b63ac67297df6811988b189"
+    },
+    "core/tests/fixtures/nested-flex-vectors.bin": {
+      "bytes": 354252,
+      "sha256": "e448f68ee278135c0d83bf036f5700eb9a700dbdf69e34adb7d533426e2047e2"
+    },
+    "core/tests/ui_flex_fixture_cases.hpp": {
+      "bytes": 4313,
+      "sha256": "855b46fd364cbced4dc0102953cf74f474330bdad6e30640c722fa2d84160ca2"
+    },
+    "core/tests/ui_flex_fixture_identity.hpp": {
+      "bytes": 794,
+      "sha256": "be0d4caa559c9c4fdd87f4ffc38a82953189b79765d8cc4c6c0adadfc4a8f1fc"
+    },
+    "core/tests/ui_flex_fixture_reader.hpp": {
+      "bytes": 4984,
+      "sha256": "f6d062d454b46646787a80e6c12803e814612b6658f8635ab95a3bca4b6ba270"
+    },
+    "core/tests/ui_flex_guard_test.cpp": {
+      "bytes": 1809,
+      "sha256": "46b423bc8ba51035abec602aa51e245abc9a87de68a341aa27d230983cfbb4b6"
+    },
+    "core/tests/ui_flex_test.cpp": {
+      "bytes": 1720,
+      "sha256": "661eb55ce663ab797fa017c1af3c5c6171c9ed726dc7491a795ff7b4663bbff7"
+    }
+  }
+}
