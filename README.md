@@ -64,6 +64,11 @@ claimed complete.
 
 [Raw model37 filter checks](https://github.com/azerish25-ux/MRCRO-FRK-RE/actions/runs/41813188815)
 passed 7,680 original-instruction samples and 162 control blocks on the remote
-Android emulator. Model49, oversampling, full voice integration and the Android
+Android emulator. Oversampling, full voice integration and the Android
 application are still pending. Additional recovered boundaries are documented in
 [filter/envelope/voice evidence](docs/filter-envelope-routing.md).
+
+[Model49 audio-rate modulation](https://github.com/azerish25-ux/MRCRO-FRK-RE/actions/runs/41815081333)
+now passes 8,775 original outputs on Android, alongside all earlier checks.
+Oversampling, full voice/envelope integration and the actual Android app remain
+in progress. These numerical component checks do not establish full synth parity.

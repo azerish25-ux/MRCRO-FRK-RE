@@ -293,3 +293,25 @@
   this is not evidence for a second six-voice bank or twelve-voice polyphony.
 - Model49, dual/oversampling, complete routing/allocator, other models, effects,
   sequencer, presets, Android UI/audio/MIDI and full-instrument parity remain open.
+
+## Fixed model49 verification and next filter boundary
+- Reconstructed audio-rate modulation and four original calibration curves in
+  Vcf49. Model49 uses current normalized cutoff/resonance regardless dirty;
+  mode/noise use dirty-or-force only. Its double caches are unused by render.
+- Shared nonlinear/DC/noise/reset extraction preserves all model37 references.
+- Red run41814746059 rejected silence on8,907 comparisons (8,775samples plus
+  seed checks); all earlier tests passed. Green2c04d2f861a28285fd544488a8757b6c7d80ea06,
+  run41815081333 passed all9 tests and Android API35 x86_64 output comparisons,
+  including8,775model49 samples/135blocks and7,680model37 samples/162blocks.
+  Both Android ABIs compiled; arm64 execution remains unverified.
+- Independent review approved fixed49/shared stage; every calibration-table
+  bit matches original extraction. Integrated on main; no full filter claim.
+- Exact8-section IIR factor2/4/6/8 equations independently match9,600up and
+  1,920down original values with60state-block pairs; wrapper async/fades pending.
+- Exact six-filter owner isModuleCloner constructor2e05b0, children+70/stride2920,
+  count6, constructor wrapper2e45d0, callerxref2d6572. Check PE pdata for owners;
+  earlier proximity guesses2e44e0/2deaf0 were wrong and are not graph evidence.
+- Main ADSR scalar handoff now independently matches3,600curve bytes,224gates,
+  5,760steps,20preparations,512dirty masks and4resets. Preserve signed32 wrap
+  before decay-target widening and adjacent-field table endpoints. Details in
+  local/evidence/envelope-agent/PORTABLE_ADSR.md. Portable C++ remains next work.

@@ -33,9 +33,35 @@ their fixture arguments were separately checked against the installed CRT.
 This is bounded reference evidence, not exhaustive input equivalence.
 
 The dual wrapper `0x1802feb30` selects model37 or an oversampled model49 branch.
-The latter has separate bulk processing and audio-rate modulation, and is
-not implemented. Its upsampler is not the oscillator's simple2x interpolator.
-No completed filter placement in a full voice/instrument is claimed.
+The raw fixed49 stage is now implemented; its wrapper/dual selection remain open.
+Its upsampler is not the oscillator's simple2x interpolator. No completed filter
+placement in a full voice/instrument is claimed.
+
+## Raw model49 and original resampler
+
+`Vcf49` uses the same nonlinear core with a different capacitor constant and
+per-sample modulation. Four static calibration curves map normalized cutoff to
+VCO coordinate, normalized modulation to multiplier, VCO coordinate to Hz and
+high-resonance frequency compensation. Float grouping and clamps are preserved.
+The process reads current normalized cutoff/resonance each block even without
+dirty flags. Output mode/noise latch under their own dirty flag or force, not
+first alone. The fixed49 node omits scalar/double caches unused by this path;
+it does not implement switching a raw instance between hardware models.
+
+Original instructions and an independent scalar model agreed on 6,471 broad
+matrix samples and 2,304 lifecycle samples. Calibration intermediate arrays
+also matched (38,826 and 13,824 values respectively). Portable C++ is tested
+against 8,775 original outputs and 135 block-end PRNG states.
+[Android run41815081333](https://github.com/azerish25-ux/MRCRO-FRK-RE/actions/runs/41815081333)
+passed these and all prior checks; both ABIs built, x86_64 executed. Independent
+review verified all four curve byte sequences and the shared-core extraction.
+
+The original IIR resampler core is independently recovered, not yet integrated.
+Coefficient descriptors for factors2/4/6/8 use eight sections and separate up/down
+state. Original setup/up/down/reset instructions agree with the independent
+recurrence on 9,600 upsampled and 1,920 downsampled values plus60 paired state
+checks. This excludes asynchronous resources, transition fades and the complete
+filter wrapper. Local evidence is in filter-agent's m49-iir-* files.
 
 ## Recovered envelopes
 
@@ -59,6 +85,15 @@ preparations. These are original-instruction observations, not a completed
 portable envelope implementation. Live curve-buffer identity and full
 gate/tempo scheduling still need verification.
 
+The subsequent independent scalar handoff generates all3,600 non-vtable curve
+bytes exactly and matches224 gates,5,760 step ticks,20 preparations,512 dirty
+masks and four reset patterns. `adsr_scalar.py` and `PORTABLE_ADSR.md` are the
+implementation specification. Preserve signed32 decay-target subtraction before
+widening to int64, fixed-point product wrap and table interpolation across
+adjacent object fields. A premature widening passed initial cases but failed
+1,584 expanded ticks. Reset retains the public output until the next step.
+Portable C++ envelope implementation and Android validation are still pending.
+
 ## Voice and scheduler boundaries
 
 The actual `Voice<32,96000,2>` constructor is `0x1802e5cd0`, with object stride
@@ -80,6 +115,13 @@ Correction: a locally named `routing-voice-prepare.json` response at
 `0x1802d7c20` contains a small sorted-pair helper, not voice preparation.
 The response named `routing-voice-audio.json` contains the control preparer.
 Use addresses and actual evidence rather than those provisional filenames.
+
+The six-filter owner is separately identified: constructor `0x1802e05b0` has
+the original `ModuleCloner<MiniFreakDualVCF,6,0,0>` vtable and constructs six
+children at byteoffset0x70, stride0x2920, via wrapper `0x1802e45d0`. Its caller
+xref is0x1802d6572. Original PE runtime-function bounds place0x1802e076c inside
+0x1802e05b0..0x1802e0981; proximity to the voice constructor is insufficient.
+The graph's child-buffer binding, dispatch and enclosing owner remain open.
 
 Full allocator/event scheduling, modulation, remaining oscillators, effects,
 sequencer, state/preset behavior, Android audio/MIDI/UI and instrument-wide

@@ -76,13 +76,23 @@
   device-level validation. No full instrument or APK completion is claimed.
 
 ## Live analysis handles (revalidate before reuse)
+- Fixed model49/shared nonlinear stage integrated on main at
+  2c04d2f861a28285fd544488a8757b6c7d80ea06 after independent review and Android
+  run41815081333:8,775model49 outputs/135blocks,7,680model37 outputs/162blocks,
+  all previous checks. Both ABIs compiled, x86_64 executed, full goal active.
+- Main ADSR independent mathematical curve/state model is ready for C++ port;
+  scalar handoff and expanded wrap/dirty/reset evidence are in envelope-agent.
+- Exact IIR resampler scalar core recovered; original complete filter wrapper
+  and async/fade lifecycle are under independent investigation in filter-agent.
+- Root83522 returned explicit MCP Connection closed on binary_session. Its saved
+  routing responses remain. Close request sent; do not reuse it for queries.
 - Raw model37 VCF passed native/Android run41813188815 at472182b148c3a498a6cf4616a3ac8c588e5a2e1f:
   7,680 samples,162 control blocks,zero bit mismatches; all earlier checks passed.
   Both Android ABIs compiled; x86_64 emulator executed. Independent review approved
   the scoped implementation with first-only/force-only coverage limits. Integrated
   on main at472182b148c3a498a6cf4616a3ac8c588e5a2e1f; full objective remains active.
 - Model49/oversampling investigation continues independently in filter-agent.
-- Root routing client83522 owns session-routing-001; verify liveness before reuse.
+- Root routing responses are retained in session-routing-001; see latest status above.
 - Envelope analysis client48056 closed normally; local envelope-agent retains
   original instruction probes, shared mappings and system-CRT comparison evidence.
 - Processor client exec session 78124 is now terminal: exited1 on a late read-only

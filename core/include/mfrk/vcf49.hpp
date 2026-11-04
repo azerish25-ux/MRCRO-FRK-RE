@@ -18,6 +18,8 @@ public:
     Vcf49& operator=(const Vcf49&) = delete;
     void prepare(const VcfControls& controls) noexcept;
     void reset(float resonance) noexcept;
+    // Equal span lengths; finite audio/modulation. Exact in-place output over
+    // an input is supported; partially overlapping ranges are not supported.
     void process(std::span<const float> audio, std::span<const float> modulation,
                  std::span<float> output) noexcept;
     [[nodiscard]] std::uint32_t noise_state() const noexcept;

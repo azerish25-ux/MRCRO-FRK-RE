@@ -122,3 +122,25 @@ Independent review checked all 120 constants, both tables and the recovered core
 This excludes model49, dual selection, oversampling and complete voice placement.
 See [routing evidence](../docs/filter-envelope-routing.md) for the recovered
 envelope and voice boundaries. A full Android instrument and APK remain pending.
+
+## Raw model49 filter
+
+`Vcf49` adds the actual audio-rate second-input modulation path, four original
+calibration curves, model49 capacitor compensation and variable block lengths.
+It shares the verified nonlinear/reset/noise/DC stage with `Vcf37`. Cutoff and
+resonance come directly from the current normalized records, including when
+dirty flags are clear. Mode/noise latch only under their dirty flags or force;
+first alone does not latch them. Unused fixed49 scalar/double caches are omitted.
+
+[Run 41815081333](https://github.com/azerish25-ux/MRCRO-FRK-RE/actions/runs/41815081333)
+passed 8,775 original model49 outputs and 135 block-end PRNG states on Android
+API35 x86_64, with unchanged model37 and all earlier checks. Fixtures span
+96/192/384kHz, 16..256 frames, dirty-clear/dirty/first/force writes, reset, output
+modes and noise changes. arm64-v8a compiled; arm64 runtime is still unverified.
+
+The binary fixture has an explicit little-endian versioned layout. Its generator
+is `tools/generate_vcf49_vectors.py`; SHA256 is
+`21cb834fa24197a9925c10d5ba225a06fece0a23e514fc7f298f9fe7877b6f6a`.
+This node expects the actual internal sample rate and equally sized finite-input
+spans. It does not supply the original oversampling, asynchronous resource/fade
+wrapper, dual selection or full voice scheduler. Those remain required.
