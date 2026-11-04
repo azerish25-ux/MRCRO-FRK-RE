@@ -75,6 +75,7 @@ unproven until all feature and equivalence requirements are independently verifi
   @(...); corrected before execution of the intended read-only checks.
 
 ## Next Step
-Reconstruct the recovered 2x interpolator at 0x1802c9e60 and VAnalog wrapper
-control/state routing; then continue remaining engines, filters, effects, voices,
-presets and full Android UI. Current raw VAnalog passes sampled numeric parity.
+Verify and implement VAnalog wrapper control/state routing and output-level
+processing against original-instruction references; then continue other engines,
+filters, effects, voices, presets and full Android UI. The raw engine and 2x
+interpolator already pass their sampled Android numerical comparisons.

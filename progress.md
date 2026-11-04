@@ -37,10 +37,21 @@
 - Recovered the actual 16-frame raw engine -> 32-frame 2x interpolation wrapper.
   Next work is the interpolator and wrapper controls/state, followed by the other
   instrument subsystems and all Android UI/functionality. No APK exists yet.
+- Continued: original-instruction upsampler tests rejected the zero implementation,
+  then passed 1,920 direct and 1,280 composed VAnalog-chain output comparisons.
+  Run 41792381316 also passed existing checks and remote Android ABI builds/emulator.
+  Reviewed and integrated at 5b1da34a638671db3d3b59cfef83d930490643b9.
+- Generated 64 original control-state transitions and 1,280 outputs by executing
+  the unchanged native VAnalog wrapper with explicit fixture initialization.
+  Current wrapper implementation/tests are in the red phase on a feature branch.
+- Old processor helper session 2309 exited with code 1 during a read request;
+  reason unconfirmed. Complete earlier exports remain intact. Started an owned
+  replacement CLI client and successfully reimported the same processor.
 
 ## Live analysis handles (revalidate before reuse)
-- Persistent processor client exec session 2309; REA server and imported processor
-  are active. Complete responses: ../local/evidence/session-dsp.
+- Persistent processor client exec session 78124; REA server and imported processor
+  revalidated. Current responses: ../local/evidence/session-dsp-002.
+  Old session 2309 is terminal; its responses remain in ../local/evidence/session-dsp.
   Latest complete export: ../local/evidence/processor-evidence-003.bundle.json.
 - Persistent wrapper client exec session 73850; import completed after about
   991 seconds. Overview identifies 66,875 procedures and 37,450 defined strings.
