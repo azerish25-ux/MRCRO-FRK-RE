@@ -2,7 +2,9 @@ name: Native engine core
 
 on:
   push:
+    paths: ['core/**', 'third_party/**', 'CMakeLists.txt', '.github/workflows/native-core.yml', 'tools/check_basic_wave_tables.py']
   pull_request:
+    paths: ['core/**', 'third_party/**', 'CMakeLists.txt', '.github/workflows/native-core.yml', 'tools/check_basic_wave_tables.py']
   workflow_dispatch:
 
 permissions:
@@ -54,7 +56,7 @@ jobs:
       - name: Enable emulator acceleration on the remote runner
         run: sudo chmod 666 /dev/kvm
       - name: Run original-vector checks inside Android
-        uses: ReactiveCircus/android-emulator-runner@4c44018e59b437e86cdfc41da381398f93ed8808 # v2
+        uses: ReactiveCircus/android-emulator-runner@a421e43855164a8197daf9d8d40fe71c6996bb0d # v2 peeled commit
         with:
           api-level: 35
           arch: x86_64
@@ -109,5 +111,17 @@ jobs:
             adb push build-x86_64/mfrk_filter_parameter_tests /data/local/tmp/mfrk_filter_parameter_tests
             adb shell chmod 755 /data/local/tmp/mfrk_filter_parameter_tests
             adb shell /data/local/tmp/mfrk_filter_parameter_tests
+            adb push build-x86_64/mfrk_superwave_tests /data/local/tmp/mfrk_superwave_tests
+            adb push core/tests/superwave_vectors.bin /data/local/tmp/superwave_vectors.bin
+            adb shell chmod 755 /data/local/tmp/mfrk_superwave_tests
+            adb shell /data/local/tmp/mfrk_superwave_tests /data/local/tmp/superwave_vectors.bin
+            adb push build-x86_64/mfrk_fx_input_tests /data/local/tmp/mfrk_fx_input_tests
+            adb push core/tests/fx_input_vectors.bin /data/local/tmp/fx_input_vectors.bin
+            adb shell chmod 755 /data/local/tmp/mfrk_fx_input_tests
+            adb shell /data/local/tmp/mfrk_fx_input_tests /data/local/tmp/fx_input_vectors.bin
+            adb push build-x86_64/mfrk_fx_mix_tests /data/local/tmp/mfrk_fx_mix_tests
+            adb push core/tests/fx_mix_vectors.bin /data/local/tmp/fx_mix_vectors.bin
+            adb shell chmod 755 /data/local/tmp/mfrk_fx_mix_tests
+            adb shell /data/local/tmp/mfrk_fx_mix_tests /data/local/tmp/fx_mix_vectors.bin
       - name: Compare generated Android table bytes
         run: python3 tools/check_basic_wave_tables.py --dump build-x86_64/basic-wave-tables.bin --expected core/tests/basic_wave_table_hashes.json

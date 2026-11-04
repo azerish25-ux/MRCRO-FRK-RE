@@ -1,0 +1,38 @@
+{
+  "format": "FXVCA001",
+  "original_processor_sha256": "bd036dfa6a0afcfef733c29c73b1b3df969f2c86ca860b0fa535d4492fa8fb74",
+  "fixture_bytes": 53348,
+  "fixture_sha256": "95152ce45e570734ea852a3c8638612dba6a6382a66e5d7aaf785bde52fa4c6d",
+  "prefix_cases": 24,
+  "stereo_sample_checks": 5376,
+  "q14_controller_cases": 288,
+  "q14_lane_words_each_kind": 3456,
+  "normalization_cases": 12,
+  "original_sources": [
+    {
+      "path": "fx-vca-pan-prefix-probes-v2.json",
+      "sha256": "757bdb6e46f5fe19505d6bd0e785eec73df5c488fa3ff87d7bc91ea5b29ddcfe"
+    },
+    {
+      "path": "voice-vca-controller-probes-v2.json",
+      "sha256": "ab8fc1f6f0bf90e33ab0b43a6988a9e46ffb23570c3b0a6d7d2082892236793c"
+    },
+    {
+      "path": "vca-normalization-probes.json",
+      "sha256": "4e3842e455d9c5a1381a205ad37fbcebf1fd66a71202ca27e42dc40b1cef07ff"
+    },
+    {
+      "path": "probe-fx-vca-prefix-v2.py",
+      "sha256": "6dcc1714c9feb8ee14ff8a31df44589af700a9006fa817569f9e1d878663ac4f"
+    },
+    {
+      "path": "probe-vca-controller-v2.py",
+      "sha256": "8be0f6fca214346f68d162241db9f2311a84bb8263c09d4ae2497cf0ee7c1a1b"
+    },
+    {
+      "path": "probe-vca-normalize.py",
+      "sha256": "19263c4eefed6a4e36b55689a3a53c681294749670041e9e3523f2aa955476f1"
+    }
+  ],
+  "scope": "Seven mono16-sample lanes only. Full original prefix to30f4e3, explicit prior gains/configuration; no eighth input, external stereo override, summing/effects or original startup-history claim. Q14v2 probes inject legal postmatrix gain edge values at2e3152. Expected behavioral outputs are retained original VM/SystemCRT observations; candidate/scalar code never imported."
+}

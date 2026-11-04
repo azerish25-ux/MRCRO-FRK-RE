@@ -7,7 +7,7 @@ add_library(mfrk_core STATIC core/src/pitch.cpp core/src/virtual_analog.cpp
     core/src/basic_waves.cpp core/src/vcf37.cpp core/src/vcf_sample.cpp core/src/vcf49.cpp
     core/src/iir_resampler.cpp core/src/oversampled_vcf49.cpp core/src/adsr.cpp
     core/src/filter_resampling.cpp core/src/fir_resampler.cpp core/src/filter_resource.cpp
-    core/src/deferred_vcf49.cpp)
+    core/src/deferred_vcf49.cpp core/src/superwave.cpp core/src/fx_input.cpp core/src/fx_mix.cpp)
 target_include_directories(mfrk_core PUBLIC core/include)
 target_include_directories(mfrk_core PRIVATE third_party)
 # Upstream stmlib's TEST path selects portable helpers instead of Cortex-M assembly.
@@ -71,6 +71,15 @@ if(BUILD_TESTING)
         target_compile_options(mfrk_filter_parameter_tests PRIVATE -fno-fast-math -ffp-contract=off)
     endif()
     add_test(NAME original_filter_parameters COMMAND mfrk_filter_parameter_tests)
+    add_executable(mfrk_superwave_tests core/tests/superwave_test.cpp)
+    target_link_libraries(mfrk_superwave_tests PRIVATE mfrk_core)
+    add_test(NAME original_superwave COMMAND mfrk_superwave_tests ${CMAKE_CURRENT_SOURCE_DIR}/core/tests/superwave_vectors.bin)
+    add_executable(mfrk_fx_input_tests core/tests/fx_input_test.cpp)
+    target_link_libraries(mfrk_fx_input_tests PRIVATE mfrk_core)
+    add_test(NAME original_fx_input COMMAND mfrk_fx_input_tests ${CMAKE_CURRENT_SOURCE_DIR}/core/tests/fx_input_vectors.bin)
+    add_executable(mfrk_fx_mix_tests core/tests/fx_mix_test.cpp)
+    target_link_libraries(mfrk_fx_mix_tests PRIVATE mfrk_core)
+    add_test(NAME original_fx_mix COMMAND mfrk_fx_mix_tests ${CMAKE_CURRENT_SOURCE_DIR}/core/tests/fx_mix_vectors.bin)
     if(NOT ANDROID)
         find_package(Python3 REQUIRED COMPONENTS Interpreter)
         add_test(NAME original_basic_wave_tables

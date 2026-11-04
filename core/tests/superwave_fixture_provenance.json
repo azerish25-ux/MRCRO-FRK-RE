@@ -1,0 +1,12 @@
+{
+  "schema": "SWZP0001",
+  "canonical_schema": "SWFX0001",
+  "canonical_bytes": 1109324,
+  "fixture_bytes": 621158,
+  "canonical_sha256": "ebb2af4d8a58f9f99f3ef7faab26e201e285a5dfc4a3431ae40ae1ca97756a35",
+  "fixture_sha256": "27e8b3c4bf6d5b6f353e9eb910c5fcebdc435e4be1bcde824ff0572662e4d162",
+  "canonical_crc32": 1363016296,
+  "byte_identical_roundtrip": true,
+  "records": 2016,
+  "policy": "Every original canonical byte is retained; no candidate-derived expectations or dropped state fields. Zero packets/literals max128; decoder checks size, CRC32, framing and trailing canonical data."
+}
