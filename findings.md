@@ -401,3 +401,16 @@
 - FXinput gain/pan/Q14 candidate5376stereo/672history/3456each EnvSource+VCAword/
   24norm checks exact, explicit7mono-lane history/settings. CC64flush,8thinput,
   fullsum/effects/coldhistory still open. Integration-001 handoff is durable.
+
+- SuperWave/FX input/mix integrated on main05f32eac; independent review approved.
+  Run41857702525 passes18 host checks and all Android API35 x86_64 references,
+  both ABIs compile. Recovered UCRT sine fixes Linux247sample/36history mismatch;
+  Android compact28246 returns0mismatches, hostlibm differs385. Source-gold exact
+  fixtures and numerical admission are documented in core/README.md.
+- First real renderer-comparison APKs/lint and715resource acquisition passed
+  run41853761969; screenshot repetition failed. Reuse-one-window and diagnostics
+  fixes pushed ui/renderer-comparison67f4e15f; run41857992066 pending.
+  This is3knobs/test-only; full instrument APK/UI parity remains incomplete.
+- Next actual graph work: NotePath candidate integration-002/cpp-notepath in
+  progress; Bass candidate ready; full Harmo investigation active with closed
+  table dependencies. All generated project material remains on D.

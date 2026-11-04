@@ -258,3 +258,39 @@ native allocation-failure compatibility is outside the reference fixtures.
 Lifecycle fixture SHA256:
 `f513aae769b8fb95aeab2e80671f6930f9280c8a095fb3733b6031f5cdf7e263`.
 Source hashes/counts and generator policy accompany the fixture provenance JSON.
+
+## SuperWave and FX input/mix integration
+
+Run [41857702525](https://github.com/azerish25-ux/MRCRO-FRK-RE/actions/runs/41857702525)
+passes all18 host checks and the Android API35 x86_64 reference executables.
+Both arm64-v8a and x86_64 compile; arm64 execution remains pending.
+
+`SuperWave` reproduces seven fixed-point phases, signed16 table interpolation,
+weights, control smoothing, phase/trigger lifecycle and scaled32-frame output at
+96kHz. Its admitted words/dirty flags and table-owner lifetime are explicit.
+The2,016 original-instruction fixtures cover raw/scaled output and state changes;
+synthetic delta stress is distinguished from factory wave data in provenance.
+The compact fixture decoder checks framing, lengths and CRC before consumption.
+
+`fx_input::InputGainPan` applies the recovered7-lane,16-frame gain/pan stage,
+previous-block ADSR controller quantization and j/16 gain ramps. The original
+fixture checks5,376 samples,672 gain-history words,3,456 envelope words,
+3,456 VCA words and24 normalization values. `fx_mix` preserves ordered lane sums,
+two-pointer override behavior and the scoped immediate-constructor defaults:
+384 output checks and68 constructor-field checks. Effect algorithms and the
+complete Voice/FX routing are still required.
+
+Linux initially differed on247 FX samples and36 histories because its sine
+rounding differed from the identified Windows UCRT FMA branch. The recovered
+ordinary-domain calculation uses exact source coefficients, explicit double FMA,
+range reduction and sign handling. It does not defer to host sine. Independent
+review checked380,505 original UCRT vectors; the28,246-vector repository fixture
+passes on Android, where host sine differs on385 inputs. The actual already-open
+synth's dispatcher flag was read twice as3 with module identity checks.
+Finite sine arguments with magnitude bits below0x4b800456 and round-to-nearest
+are required. Large/nonfinite inputs, other UCRT CPU branches and alternate
+rounding modes are outside this scoped reference contract.
+
+These component matches do not establish complete instrument equivalence.
+Remaining engines, actual voice scheduling, full effects, modulation, presets,
+sequencer and Android audio/UI integration remain active work.
