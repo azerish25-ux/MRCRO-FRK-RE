@@ -20,6 +20,7 @@ def main():
     parser.add_argument("processor", type=Path)
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--matrix", action="store_true")
+    parser.add_argument("--trace-components", action="store_true")
     args = parser.parse_args()
     output = args.output.resolve()
     if output.drive.upper() != "D:":
@@ -28,7 +29,7 @@ def main():
     digest = hashlib.sha256(data).hexdigest()
     if digest != "bd036dfa6a0afcfef733c29c73b1b3df969f2c86ca860b0fa535d4492fa8fb74":
         parser.error("processor identity does not match recovered routine addresses")
-    from unicorn import Uc, UC_ARCH_X86, UC_MODE_64, __version__
+    from unicorn import Uc, UC_ARCH_X86, UC_MODE_64, UC_HOOK_CODE, __version__
     from unicorn.x86_const import (UC_X86_REG_RSP, UC_X86_REG_RIP, UC_X86_REG_RCX,
                                    UC_X86_REG_RDX, UC_X86_REG_R8, UC_X86_REG_R9)
 
@@ -46,6 +47,17 @@ def main():
     engine, allocator, temp, parameters, out, aux = (heap + n * 4096 for n in range(1, 7))
     machine.mem_write(engine, struct.pack("<Q", 0x180540CF0))
     machine.mem_write(allocator, struct.pack("<QQQ", temp, 128, 128))
+    trace = {}
+    if args.trace_components:
+        def trace_call(machine, address, instruction_size, user_data):
+            if address == 0x18032F9A0:
+                pointer = machine.reg_read(UC_X86_REG_RSP)
+                trace["return_address"] = struct.unpack("<Q", machine.mem_read(pointer, 8))[0]
+                trace["output_pointer"] = struct.unpack("<Q", machine.mem_read(pointer + 40, 8))[0]
+            elif address == trace.get("return_address"):
+                trace["saw_output_bits"] = list(struct.unpack("<32I", machine.mem_read(trace["output_pointer"], 128)))
+                trace.pop("return_address", None)
+        machine.hook_add(UC_HOOK_CODE, trace_call)
 
     def invoke(address, rcx, rdx=0, r8=0, r9=0, stack_arguments=()):
         pointer = stack + 65536 - 256 - 8
@@ -86,10 +98,14 @@ def main():
             parameter_bytes = struct.pack("<4f", *values)
             machine.mem_write(parameters, struct.pack("<i", 2) + parameter_bytes + struct.pack("<f", 1.0))
             invoke(0x18032FEF0, engine, parameters, out, aux, (32, heap + 7 * 4096))
-            blocks.append({"block_index": index,
+            block = {"block_index": index,
                            "parameter_bits_note_timbre_morph_harmonics": list(struct.unpack("<4I", parameter_bytes)),
                            "out_bits": list(struct.unpack("<32I", machine.mem_read(out, 128))),
-                           "aux_bits": list(struct.unpack("<32I", machine.mem_read(aux, 128)))})
+                           "aux_bits": list(struct.unpack("<32I", machine.mem_read(aux, 128)))}
+            if args.trace_components:
+                block["square_output_bits"] = list(struct.unpack("<32I", machine.mem_read(temp, 128)))
+                block["saw_output_bits"] = trace["saw_output_bits"]
+            blocks.append(block)
         scenarios.append({"name": name, "blocks": blocks})
     result = {"processor_sha256": digest, "unicorn_version": __version__,
               "method": "bounded emulation of original Init/Render and original tables",

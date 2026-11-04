@@ -37,6 +37,9 @@
 
 #include <algorithm>
 #include <array>
+#include <bit>
+#include <cstdint>
+#include <cstdio>
 
 namespace mfrk {
 
@@ -104,7 +107,18 @@ void VirtualAnalog::render(const VirtualAnalogParameters& parameters,
     stmlib::ParameterInterpolator square_mix(&impl_->square_gain, square_gain * 0.3f * normalization, output.size());
     stmlib::ParameterInterpolator saw_mix(&impl_->saw_gain, saw_gain * 0.5f * normalization, output.size());
     for (std::size_t index = 0; index < output.size(); ++index) {
-        output[index] = square_mix.Next() * impl_->temporary[index] + saw_mix.Next() * output[index];
+        const float square_level = square_mix.Next();
+        const float saw_level = saw_mix.Next();
+        // Temporary branch-only diagnostics for the two remaining exact mismatches.
+        if (index == 15 && parameters.note >= 108.0f) {
+            std::printf("trace note %.9g: square %08x saw %08x square_gain %08x saw_gain %08x\n",
+                        static_cast<double>(parameters.note),
+                        std::bit_cast<std::uint32_t>(impl_->temporary[index]),
+                        std::bit_cast<std::uint32_t>(output[index]),
+                        std::bit_cast<std::uint32_t>(square_level),
+                        std::bit_cast<std::uint32_t>(saw_level));
+        }
+        output[index] = square_level * impl_->temporary[index] + saw_level * output[index];
     }
 }
 
