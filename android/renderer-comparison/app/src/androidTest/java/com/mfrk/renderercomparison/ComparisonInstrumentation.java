@@ -44,9 +44,9 @@ public final class ComparisonInstrumentation extends Instrumentation {
                 }));
                 if (!frame.await(10,TimeUnit.SECONDS)) throw new AssertionError("Frame timeout");
                 waitForIdleSync();SystemClock.sleep(100);
-                RectF[] content=new RectF[1];int[] location=new int[2];JSONObject[] audit=new JSONObject[1];
+                RectF[] content=new RectF[1];int[] location=new int[2];JSONObject[] audit=new JSONObject[1];boolean[] focused=new boolean[1];
                 runOnMainSync(() -> {
-                    content[0]=view.contentPixels();view.getLocationOnScreen(location);audit[0]=view.audit();
+                    content[0]=view.contentPixels();view.getLocationOnScreen(location);audit[0]=view.audit();focused[0]=view.hasWindowFocus();
                 });
                 if (view.getWidth()==0 || view.drawnFrames()==0) throw new AssertionError("No native view frame");
                 JSONArray assignments=audit[0].getJSONArray("assignments");
@@ -65,6 +65,7 @@ public final class ComparisonInstrumentation extends Instrumentation {
                 if (index==2) factoryHash=hash;
                 save(screen,new File(directory,names[index]+"-viewport.png"));
                 save(crop,new File(directory,names[index]+"-crop.png"));
+                audit[0].put("window_focused",focused[0]);
                 audit[0].put("scenario",names[index]);audit[0].put("crop_argb_sha256",hash);
                 audit[0].put("capture_pixels",new JSONArray(new int[]{x,y,width,height}));
                 audit[0].put("pixel_oracle","none: original native raster is not verified");cases.put(audit[0]);
@@ -73,6 +74,7 @@ public final class ComparisonInstrumentation extends Instrumentation {
                     output.write(partial.toString(2).getBytes(StandardCharsets.UTF_8));
                 }
                 if (crop!=screen) crop.recycle();screen.recycle();
+                if (!audit[0].getBoolean("window_focused")) throw new AssertionError("Comparison obscured by another window");
                 if (index==4 && !hash.equals(factoryHash)) throw new AssertionError("Repeated assignment not deterministic");
             }
             runOnMainSync(activity::finish);waitForIdleSync();

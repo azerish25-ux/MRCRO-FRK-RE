@@ -32,7 +32,7 @@ https://developer.android.com/reference/android/app/UiAutomation
 
 ## Integration and remote proof
 
-Copy this project to android/renderer-comparison in the parent repository and adapt/copy its proposed .github/workflows/renderer-comparison.yml to the repository workflow directory. It is workflow_dispatch only and pins existing checkout/setup-java/setup-android/emulator actions plus verified upload-artifact commit. All SDK/Gradle/APK/emulator work occurs on GitHub Actions. No secret/account is required for official asset acquisition.
+The project lives at android/renderer-comparison; .github/workflows/android-renderer-comparison.yml runs for scoped pushes/pull requests and manual dispatch. It pins checkout/setup-java/setup-android/emulator actions and upload-artifact by commit. All SDK/Gradle/APK/emulator work occurs on GitHub Actions. No secret/account is required for official asset acquisition.
 
 The workflow acquires/verifies original assets outside source git, stages three generated inputs, builds app+instrumentation APKs and lint, installs both on API35 x86_64, and runs the native Instrumentation harness. It exports full-view and exact-crop PNGs, parameter/source/transform metadata, font identity checks, SDK/Gradle versions and logs. Artifacts contain requested APKs/screenshots/reports; raw package caches and loose fonts are not artifact inputs.
 
@@ -40,6 +40,6 @@ The five frames are minimum[0,0,0], center[.5,.5,.5], declared-factory subset[1,
 
 ## Validation performed locally
 
-Only asset-free source checks ran: Python AST/XML parsing, Java delimiter/package checks, source geometry/style/default consistency, selected hash membership, no binary assets under src, and no launcher entry. tools/check_candidate.py passes; provenance/static-checks.json records the precise limits. Java/Android compilation and screenshots are pending the remote workflow and must not be claimed as already passing. The workflow system-image revision is recorded in sdk-packages.txt; pinning API35 alone is not a guarantee of cross-revision pixel identity.
+Only asset-free source checks ran: Python AST/XML parsing, Java delimiter/package checks, source geometry/style/default consistency, selected hash membership, no binary assets under src, and no launcher entry. tools/check_candidate.py passes; provenance/static-checks.json records the precise limits. Remote runs41853761969 and41857992066 built both APKs and passed lint. The first failed repeat stability; the second reused one Activity/View and retained screenshots, revealing the Android immersive-mode education overlay. Renderer assertions have not yet passed. The runner now acknowledges that first-use tutorial before launch and records focus in each capture. The workflow system-image revision is recorded in sdk-packages.txt; pinning API35 alone is not a guarantee of cross-revision pixel identity.
 
-Next proof is the first actual API35 APK build and visual inspection of its artifacts, followed by controlled original-raster calibration. The broader original HOME/Advanced/Sequencer UI, gesture dispatch and full instrument remain active future work outside this deliberately small comparison foundation.
+Next proof is an unobscured API35 screenshot run with all distinct/repeat assertions passing, followed by controlled original-raster calibration. The broader original HOME/Advanced/Sequencer UI, gesture dispatch and full instrument remain active future work outside this deliberately small comparison foundation.
