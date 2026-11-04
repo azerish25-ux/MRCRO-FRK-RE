@@ -1,0 +1,34 @@
+{
+  "schema": 1,
+  "commit": "4078698c91ef3211e18ef5520945a34ce6beed71",
+  "run_id": 41904333272,
+  "job_id": 126834838082,
+  "run_url": "https://github.com/azerish25-ux/MRCRO-FRK-RE/actions/runs/41904333272",
+  "conclusion": "success",
+  "runner": "ubuntu-24.04",
+  "focused_cases": 47,
+  "platform_unavailable_cases": 0,
+  "real_file_symlink_cases": [
+    "direct_output_part_symlink",
+    "cache_part_symlink",
+    "report_symlink",
+    "cache_target_symlink"
+  ],
+  "runtime_files": 1380,
+  "preset_archives": 1210,
+  "browser_presets": 626,
+  "tutorial_states": 72,
+  "hardware_backup_slots": 512,
+  "verified_bytes": 75891958,
+  "all_original_identities_verified": true,
+  "second_acquisition_report_byte_identical": true,
+  "authentication_used": false,
+  "installer_executed": false,
+  "artifact": {
+    "id": 13359173087,
+    "bytes": 112903,
+    "sha256": "a7624cd858cb40b31db24f74ac849407f33bea6b274f7721e01294da9e9a1c73",
+    "contents": "validation reports and producer provenance only"
+  },
+  "limits": "Asset acquisition only. No full native-loader, preset audio, complete application-resource or APK parity claim."
+}

@@ -446,3 +446,22 @@
   reproducedfromofficialpayloads. Independentreviewfoundpath/atomic-temporary
   producerfixes; noCI/mainassettoolintegrationclaimyet. Versionmigrations,
   componentFXmode/rates andfullDSPremainrequired.
+
+- Included library producer merged4078698 after independent review and successful
+  Actions run41904333272/job126834838082:47 Linux focused cases, zero skips,
+  all four real file-symlink regressions, all1380 original file identities and
+  byte-identical repeat reports. Preserves626 browser/72 tutorial/512 hardware
+  archives plus dependencies; no native preset-loading/audio parity claim.
+- Exclusive native UI survey extended through every Osc1 model's control labels,
+  Osc2 Chords plus six processing modes, sample/wavetable browser/import filter,
+  About, macro/matrix Learn/amount/reset, expression panel and chord note editing.
+  See docs/native-runtime-ui-survey.md. Osc2 visible21 retains30 native descriptor
+  slots, including9Dummy entries; normalization count is not visible-menu count.
+- Final native History restoration and Home80 view verified20:38:48UTC:2488
+  mapped scalar values exact,134LFO/shaper and1622sequence fields covered;
+  five UI prefix fields, native1280x616 root, three original filter knob bounds
+  and all originally captured style values match initial. Original screenshots
+  remain compressed UX observations, not lossless pixel-equivalence proof.
+- Full sounding standalone Android app, complete UI/UX/touch/MIDI and every
+  preset's sound remain incomplete. Reviewed WaveShaper repository adaptation,
+  source scene binding and native preset migration/default paths continue.

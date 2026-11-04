@@ -67,3 +67,6 @@ paint geometry and SliderComposer magnetic/gesture behavior are being traced in
 the matched installed wrapper. Full Home/Advanced/Sequencer and all interactions
 remain required. The user requires the same UI/UX, including tiny details;
 a stylistic approximation is not an acceptance criterion.
+
+See [native runtime survey](native-runtime-ui-survey.md) for subsequently observed
+model controls, menus, gestures, original descriptor counts and state restoration.

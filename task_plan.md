@@ -93,8 +93,9 @@ unproven until all feature and equivalence requirements are independently verifi
   start a fresh owned CLI client only when further provider queries are needed.
 
 ## Next Step
-Integrate SuperWave and verified voice gain/pan/Q14 stages, connect ADSR and the
-deferred filter into the original voice/allocator/Dual graph, then
-integrate Android audio/UI from the recovered scene specification. Continue every
-remaining engine, effect, sequencer and preset/state requirement. The verified
-Basic Waves/VAnalog components are not completion of the instrument.
+Integrate the independently reviewed WaveShaper candidate with original-instruction
+fixtures and remote Android validation. Complete original scene bindings/rendering
+and gestures, native preset defaults/version/custom migrations, and the full
+voice/allocator/Dual/FX graph. Connect standalone Android audio, touch and MIDI;
+verify every included preset and complete feature parity. Included library
+acquisition is verified remotely, while native loading and audio remain required.
