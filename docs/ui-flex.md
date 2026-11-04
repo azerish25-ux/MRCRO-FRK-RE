@@ -54,7 +54,11 @@ check complete size/CRC32/SHA256 before parsing and validate all cases before
 numeric execution. Fourteen admission/conversion guards and14 altered files
 reject, including same-CRC/different-SHA data. All12 semantic mutants reject.
 Source and canonical fixture identities are recorded in
-`core/tests/ui_flex_provenance.json`. Target Linux/Android validation is pending.
+`core/tests/ui_flex_provenance.json`.
+[Run41920532205](https://github.com/azerish25-ux/MRCRO-FRK-RE/actions/runs/41920532205)
+passes all40 Linux Release checks and the flat/nested/guard references on an
+API35 x86_64 Android emulator. Both Android ABIs compile; arm64 runtime remains
+unverified. [Exact target record](ui-flex-validation.json) pins the source and jobs.
 
 The original instruction oracle modeled owned allocator/byte-copy boundaries;
 original numeric helpers, sorting, recursion and stack/cookie instructions ran.

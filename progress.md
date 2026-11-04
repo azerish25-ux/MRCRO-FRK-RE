@@ -234,3 +234,23 @@
   Presetwork continues nativeeligibility/emptyHWslot andAudioSamplemigration.
 - Entire standaloneAndroid/UIUX/touch/MIDI/everypresetsound objective remains
   active and incomplete. See docs/ui-primitives.md and remotevalidation record.
+
+- Native full/nested Flex mergedc279057 after source/build/workflow review,
+  independent originalmachine-code regeneration and exactrevisionrun41920532205.
+  Linux40ReleaseCTest pass; Android x86_64API35flat4964/35802 float+integeredge
+  differences0,nested144trees720boxes/2880floatrectangles0;14guardsreject.
+  BothAndroidABIscompile,arm64runtimeunverified.
+- Twofullsolver bodies preserved; sourceprivateState doublecalculation/public
+  floatbounds,stableties,additiveshrink,stickyline-total/freezeretry,signedmargins,
+  strictwrap,floatreverseendpointandnativeownednestedrecursion retained.
+  Independentextra72conflicting/signedconstraintcases216rectangles and8trees
+  depths1..16/171rectangles matchactualcompiledlibrary.14altered/12mutantsreject.
+  SourceComponentsetters/callbacks,scene/font/raster/inputstillseparate.
+- Wrapper75012terminal(no process/no savedProgramDB); authorizedONEreplacement
+  wrapper11743 ownedintegration_review, target354c/Java11748, servingpresetqueries.
+  Processor30608 remainswarmownedwave_tables; no duplicatenativeimports.
+- RuntimeLayoutactorcandidate delivered privately: sourceitem cacheLengthf32+20,
+  geometrydoublefieldswidenfloat. Initialsource7bodies/6fixtures/20guards proven
+  privately; notyetmerged or targetverified. Do notreplaceitscachewithf64.
+- Karplus continues fullfiniteUCRT+sustainedcounterwrap proof; actualphaseposition
+  uses zero-extendeduint32 conversion, notsignedcounter. Fullinstrumentgoalactive.

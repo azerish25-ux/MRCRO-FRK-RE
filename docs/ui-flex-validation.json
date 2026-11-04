@@ -1,0 +1,50 @@
+{
+  "schema": 1,
+  "commit": "c27905751ab61d63291600315d874475560daa8f",
+  "run_id": 41920532205,
+  "run_url": "https://github.com/azerish25-ux/MRCRO-FRK-RE/actions/runs/41920532205",
+  "linux": {
+    "job_id": 126891506054,
+    "conclusion": "success",
+    "configuration": "Release",
+    "ctest_passed": 40,
+    "ctest_failed": 0
+  },
+  "android": {
+    "job_id": 126891771211,
+    "conclusion": "success",
+    "compiled_abis": [
+      "arm64-v8a",
+      "x86_64"
+    ],
+    "runtime_abi": "x86_64",
+    "api_level": 35,
+    "runner": "GitHub Actions",
+    "flat_cases": 4964,
+    "flat_item_rectangles": 35802,
+    "flat_float_differences": 0,
+    "flat_integer_edge_differences": 0,
+    "nested_trees": 144,
+    "nested_boxes": 720,
+    "nested_float_rectangles": 2880,
+    "nested_float_differences": 0,
+    "admission_topology_conversion_guards_rejected": 14
+  },
+  "independent_review": {
+    "whole_function_bodies": 2,
+    "altered_fixture_rejections": 14,
+    "semantic_mutants_rejected": 12,
+    "extra_original_constraint_cases": 72,
+    "extra_original_constraint_rectangles": 216,
+    "extra_original_trees": 8,
+    "extra_original_tree_rectangles": 171,
+    "extra_original_maximum_depth": 16
+  },
+  "limits": [
+    "Bounded pure numeric Flex and explicit owned nested graphs.",
+    "No native Component setters/clamps/callbacks, declarative scene/default generation, fonts, paint, raster or input lifecycle equivalence claim.",
+    "arm64-v8a compiled but not executed in this workflow.",
+    "Caller admission, floating-environment and allocation/exception exclusions remain explicit.",
+    "Full standalone Android sound/UI/touch/MIDI/preset parity remains incomplete."
+  ]
+}
