@@ -1,0 +1,53 @@
+# MiniFreak V Android parity project
+
+## Objective
+Reconstruct the installed MiniFreak V as an Android app with verified 1:1 sound,
+UI, UX and functionality. No original source code is available. Completion is
+unproven until all feature and equivalence requirements are independently verified.
+
+## Constraints
+- Repository: https://github.com/azerish25-ux/MRCRO-FRK-RE
+- Installation: D:/MAIN SOFTWARE/Synths/MFRK/main synth/MiniFreak V
+- Project: installation/android-port; checkout: android-port/repo.
+- All project-controlled downloads, temporary files, caches and analysis databases
+  must remain under android-port on D:. Never change the installed binaries.
+- Android builds and emulators run on GitHub Actions, never this local PC.
+- Use morluto/rea for artifact analysis. Keep evidence identity and limitations.
+- Commit and push project work. Keep proprietary installed binaries/assets and
+  sensitive local evidence out of the public repository.
+
+## Phases
+1. IN PROGRESS: establish repository, D: environment, artifact identities, REA.
+2. PENDING: inventory parameters, UI definitions, resources, preset formats.
+3. PENDING: map native engine and construct deterministic reference capture host.
+4. PENDING: reconstruct and verify each DSP subsystem against reference renders.
+5. PENDING: reproduce preset/state and complete instrument behavior.
+6. PENDING: implement faithful Android UI, interactions, audio and MIDI.
+7. PENDING: remote Android builds/emulator tests and complete parity audit.
+
+## Acceptance evidence
+- Exact version and hashes for every reference executable/resource set.
+- Exhaustive parameter/control/feature matrix with observed behavior and tests.
+- Reference/port audio comparisons across engines, modulation, voices, effects,
+  sample rates, presets and performance events. Deterministic and stochastic
+  comparisons distinguished; no generic oscillator substituted for recovered DSP.
+- Screenshots and interaction comparisons for every view, menu and state.
+- Preset compatibility and state restoration proven with representative and edge cases.
+- APK builds and emulator functionality checked on Actions; real-device latency,
+  thermals and touch performance remain unverified without actual device evidence.
+
+## Errors encountered
+- Local gh CLI has no authenticated account. Connected GitHub account has confirmed
+  admin/push access; use connector for writes where native Git auth is unavailable.
+- Host Node 24.18.0 is below REA 6.8.0 supported runtime; acquire a portable supported
+  runtime under D: before executing REA. RESOLVED: verified portable Node 24.22.1.
+- Standard XML parsing missed vendor fragments/undeclared template prefixes.
+  RESOLVED with documented in-memory wrapper; three regression checks pass.
+- One vendor template contains a duplicate attribute; retained as an explicit
+  inventory issue. No installed resource was modified.
+- PowerShell ConvertFrom-Json needs -AsHashtable for the inventory's empty
+  extension key (extensionless factory presets). RESOLVED in analysis commands.
+
+## Next Step
+Inspect the in-progress native Ghidra import and publish the verified initial
+analysis tooling/ledger to the authorized repository.

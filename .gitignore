@@ -1,0 +1,12 @@
+# Local analysis evidence, vendor assets, binaries, downloads and caches stay on D:.
+local/
+.gradle/
+.idea/
+**/build/
+local.properties
+*.apk
+*.aab
+*.jks
+*.keystore
+__pycache__/
+*.pyc
