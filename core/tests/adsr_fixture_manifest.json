@@ -1,0 +1,68 @@
+{
+  "schema": "ADSRFX02",
+  "commands": 8032,
+  "expected_fields": [
+    "phase",
+    "mode",
+    "value_q31",
+    "current_q15",
+    "output_q15",
+    "retrigger_ticks",
+    "hold",
+    "pending_release",
+    "legato_flag",
+    "trigger",
+    "time_a",
+    "time_d",
+    "time_r",
+    "sustain",
+    "variant_a",
+    "variant_d",
+    "variant_r",
+    "aux_d",
+    "aux_r",
+    "const_d0",
+    "const_d1",
+    "const_d2",
+    "const_r0",
+    "const_r1",
+    "const_r2",
+    "dynamic_d",
+    "dynamic_r",
+    "coef_a",
+    "add_a",
+    "coef_d",
+    "add_d",
+    "coef_r",
+    "add_r"
+  ],
+  "original_sources": [
+    {
+      "path": "adsr-constructor-emulated-crt.bin",
+      "sha256": "a6da9db2421fc01631ca5de714d46659e2f675ffde757a7af448f90e58a988e3"
+    },
+    {
+      "path": "adsr-original-instruction-probes.json",
+      "sha256": "4491901c5026d5350699700e1c1e15b8e523ca8e0f02e7af3c8e6053ebe050fe"
+    },
+    {
+      "path": "adsr-expanded-original-probes.json",
+      "sha256": "3ef2936d07ba96dd03c06d85899aa57776aa11a2ca62417f4a38a6be4094712e"
+    },
+    {
+      "path": "adsr-user-prepare-probes-crt.json",
+      "sha256": "25cb5a2a8f6edf144a017fe1d8ba5e28e8f8d2c46543339d598c64c7ea3c5e06"
+    },
+    {
+      "path": "adsr-reset-probes.json",
+      "sha256": "f63c3e4400287de6e756e426724bf0c9e4ce45476a56ef9fe7c31631496b5988"
+    }
+  ],
+  "semantics": "Expected values serialized only from retained original instruction/SystemCRT fixtures. Legacy prepared-state initialization decodes auxiliary from original constructor bytes; test-only fixture init is explicit. No candidate/scalar module imported. Lossless changed-field varint serialization preserves every33-cell array, including unasserted cells.",
+  "canonical_fixture_sha256": "ada05d2664dc679d7f79eddcf05e701ed5c72b971207b6b111262ffd390b18ba",
+  "canonical_fixture_bytes": 2283246,
+  "fixture_sha256": "600ab02f2e8117d4a7db992ac0f4103dc5a99aa408d2a489d389e19ed4f9214d",
+  "fixture_bytes": 242791,
+  "byte_identical_roundtrip": true,
+  "fields_calls": 8278
+}
