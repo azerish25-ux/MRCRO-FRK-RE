@@ -1,0 +1,7 @@
+# Local analysis/capture tools only; not Android application dependencies.
+pedalboard==0.9.26
+numpy==1.26.4
+soundcard==0.4.5
+cffi==2.1.1
+pycparser==3.12
+unicorn==2.1.4

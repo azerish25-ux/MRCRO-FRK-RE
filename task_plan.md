@@ -17,9 +17,9 @@ unproven until all feature and equivalence requirements are independently verifi
   sensitive local evidence out of the public repository.
 
 ## Phases
-1. IN PROGRESS: establish repository, D: environment, artifact identities, REA.
-2. PENDING: inventory parameters, UI definitions, resources, preset formats.
-3. PENDING: map native engine and construct deterministic reference capture host.
+1. COMPLETE: establish repository, D: environment, artifact identities, REA.
+2. IN PROGRESS: inventory parameters, UI definitions, resources, preset formats.
+3. IN PROGRESS: map native engine and construct deterministic reference capture host.
 4. PENDING: reconstruct and verify each DSP subsystem against reference renders.
 5. PENDING: reproduce preset/state and complete instrument behavior.
 6. PENDING: implement faithful Android UI, interactions, audio and MIDI.
@@ -47,7 +47,20 @@ unproven until all feature and equivalence requirements are independently verifi
   inventory issue. No installed resource was modified.
 - PowerShell ConvertFrom-Json needs -AsHashtable for the inventory's empty
   extension key (extensionless factory presets). RESOLVED in analysis commands.
+- Initial wrapper cold import exceeded 330,000 ms. Provider cleanup completed;
+  retained its failure report and raised startup budget to 1,800,000 ms in a
+  persistent local client. Separate processor import completed successfully.
+- Full list_names exceeded the MCP transport budget, but analysis was retained.
+  RESOLVED: exported complete evidence bundle and read the retained symbol array.
+- First offline capture was silent. Warmup plus avoiding an immediate state
+  restore produced audio; root cause is narrowed to initialization/state timing,
+  not fully isolated. Per updated user instructions, further sound observations
+  use the already-open synth.
+- SoundCard 0.4.5 called NumPy binary fromstring removed in NumPy 2.5.4.
+  RESOLVED: pin local reference environment to NumPy 1.26.4; live loopback succeeded.
+- Embedded Python excludes the script directory from sys.path. RESOLVED for the
+  emulation helper by inserting its explicit local tools directory.
 
 ## Next Step
-Inspect the in-progress native Ghidra import and publish the verified initial
-analysis tooling/ledger to the authorized repository.
+Publish extended analysis evidence/tools, then validate the first reconstructed
+pitch helper against emulated original-instruction vectors and on remote Android.
