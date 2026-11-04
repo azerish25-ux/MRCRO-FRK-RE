@@ -10,11 +10,17 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--evidence', type=Path, required=True)
     parser.add_argument('--output', type=Path, required=True)
+    parser.add_argument('--provenance', type=Path)
     args = parser.parse_args()
     commands = []
+    sources = {}
+    counts = {'audio_samples':0,'snapshots':0,'parameter_snapshots':0,'suspended_checks':0}
     def words(*v): return struct.pack('<'+'I'*len(v), *v)
     def floats(*v): return struct.pack('<'+'f'*len(v), *v)
-    def read(name): return json.loads((args.evidence/name).read_text())
+    def read(name):
+        payload = (args.evidence/name).read_bytes()
+        sources[name] = hashlib.sha256(payload).hexdigest()
+        return json.loads(payload)
     def expected(source=None, factor=None, seed=None):
         values = [0]*12
         mask = 0
@@ -47,6 +53,10 @@ def main():
         for row in rows:
             parameter_data += words(row['id'],row['normalized_bits'],row['physical_bits'],row['status'],row['dirty'],row['global_dirty'])
         commands.append(bytes([op])+payload+expected(state,factor,seed)+parameter_data)
+        if op == 5: counts['audio_samples'] += 32
+        if op == 9: counts['suspended_checks'] += 1
+        if state is not None: counts['snapshots'] += 1
+        counts['parameter_snapshots'] += len(rows)
 
     for case in read('m49-cold-start-probes-v2.json')['cases']:
         seed = case['after_constructor']['raw_prng_seed']
@@ -125,6 +135,13 @@ def main():
         add(8,state=case['final'])
     payload = words(0x4c46564d,2,len(commands))+b''.join(commands)
     args.output.write_bytes(payload)
+    if args.provenance:
+        report = {'processor_sha256':'bd036dfa6a0afcfef733c29c73b1b3df969f2c86ca860b0fa535d4492fa8fb74',
+                  'schema':'MVFL2','commands':len(commands),'fixture_bytes':len(payload),
+                  'fixture_sha256':hashlib.sha256(payload).hexdigest(),**counts,
+                  'sources':[{'path':name,'sha256':value} for name,value in sources.items()],
+                  'policy':'Only original captured input/output/control/cache/seed records supply expectations. Windows ownership/thread shells remain modeled, worker schedule explicit. Equivalent stable old2x for adaptive1/3 cases uses constructor index1; this does not replace source audio expectations. Portable allocation-failure recovery is separate from native gold.'}
+        args.provenance.write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8',newline='\n')
     print(f'{len(commands)} commands, {len(payload)} bytes; SHA256 {hashlib.sha256(payload).hexdigest()}')
 
 

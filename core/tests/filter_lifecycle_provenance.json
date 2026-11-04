@@ -1,0 +1,38 @@
+{
+  "processor_sha256": "bd036dfa6a0afcfef733c29c73b1b3df969f2c86ca860b0fa535d4492fa8fb74",
+  "schema": "MVFL2",
+  "commands": 1398,
+  "fixture_bytes": 414182,
+  "fixture_sha256": "f513aae769b8fb95aeab2e80671f6930f9280c8a095fb3733b6031f5cdf7e263",
+  "audio_samples": 24064,
+  "snapshots": 814,
+  "parameter_snapshots": 1834,
+  "suspended_checks": 6,
+  "sources": [
+    {
+      "path": "m49-cold-start-probes-v2.json",
+      "sha256": "4854971a2dd52c3cdaba82f092267147861cba0fecd9ea8dce5be8366f4df270"
+    },
+    {
+      "path": "m49-transition-controller-probes-v2.json",
+      "sha256": "70db6e4c7ce9044d1c53bd4bd8ddf2d300092d6df29afe200f3a7131b2cd8db3"
+    },
+    {
+      "path": "m49-transition-factor1-probes-v1.json",
+      "sha256": "0ae2edd3f5ffa27546558615d98594bb1c8894c1a9dcd3a447720a38ee675432"
+    },
+    {
+      "path": "m49-transition-factor3-probes-v1.json",
+      "sha256": "f1a920cfce580eee26b07416d05590d2b712956ad111d79a07a75de480ddd62a"
+    },
+    {
+      "path": "m49-transition-pending-probes-v1.json",
+      "sha256": "38f1cd0d88e1042e0244f5e77023a132c83ce0d4afb7c85c66c8842932649f42"
+    },
+    {
+      "path": "m49-cross-kernel-transition-probes-v1.json",
+      "sha256": "2fd1e8c7263c942386533267aed3d00956787a904286ca04f9a4e04e7ae4c5b9"
+    }
+  ],
+  "policy": "Only original captured input/output/control/cache/seed records supply expectations. Windows ownership/thread shells remain modeled, worker schedule explicit. Equivalent stable old2x for adaptive1/3 cases uses constructor index1; this does not replace source audio expectations. Portable allocation-failure recovery is separate from native gold."
+}
