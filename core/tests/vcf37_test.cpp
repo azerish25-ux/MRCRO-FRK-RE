@@ -1,5 +1,6 @@
 #include "mfrk/vcf37.hpp"
 #include "vcf37_vectors.hpp"
+#include "vcf37_extra_vectors.hpp"
 
 #include <array>
 #include <bit>
@@ -52,6 +53,36 @@ int main() {
             ++controls;
         }
         std::printf("%s: %zu mismatches\n", scenario.name, case_failures);
+    }
+    for (const auto& scenario : kVcfExtraScenarios) {
+        mfrk::Vcf37 filter(std::bit_cast<float>(scenario.rate), scenario.seed);
+        mfrk::Vcf37Controls state{std::bit_cast<float>(scenario.cutoff),
+            std::bit_cast<float>(scenario.resonance), static_cast<mfrk::VcfOutput>(scenario.mode),
+            scenario.noise, {1, 1, 1, 1}, true, true};
+        filter.prepare(state);
+        filter.reset(state.resonance);
+        state.first = state.force = false;
+        for (const auto& block : scenario.blocks) {
+            if (state.noise != block.noise) {
+                state.noise = block.noise;
+                state.dirty = {0, 0, 0, 1};
+                filter.prepare(state);
+            }
+            std::array<float, 32> input, output;
+            for (std::size_t i = 0; i < input.size(); ++i) input[i] = std::bit_cast<float>(block.input[i]);
+            filter.process(input, output);
+            for (std::size_t i = 0; i < output.size(); ++i) {
+                if (std::bit_cast<std::uint32_t>(output[i]) != block.output[i]) {
+                    if (failures < 3) std::printf("Impulse/noise seed %08x sample %zu mismatch\n", scenario.seed, samples);
+                    ++failures;
+                }
+                ++samples;
+            }
+            if (filter.control_snapshot().noise_state != block.seed_after) {
+                std::printf("Noise seed mismatch\n");
+                ++failures;
+            }
+        }
     }
     std::printf("Original-instruction VCF37: %zu samples, %zu control blocks, %zu mismatches\n", samples, controls, failures);
     return failures == 0 ? 0 : 1;

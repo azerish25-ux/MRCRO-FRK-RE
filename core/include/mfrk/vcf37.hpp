@@ -25,6 +25,7 @@ struct Vcf37ControlSnapshot {
     float r;
     double g_target;
     double r_target;
+    std::uint32_t noise_state;
 };
 
 // Raw hardware-model37 stage, not the dual/model49/oversampling wrapper. Controls
