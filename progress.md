@@ -166,3 +166,22 @@
   processesclosed. Worker ownsfreshisolatedclient; originalinstalledbinaryintact.
 - Harmo fullcandidate and NotePath candidate are under independent development;
   neither is repository-integrated or Android-verified yet. Continuefullgraph.
+
+- Harmo merged3a16b889 after source/independent review and run41865340832:21host
+  andallAndroidrefs pass,59264raw+scaled samples/state/delay/tables exact,
+  36lifecyclecommands exact. Privatevalue-state andexplicitzeroarena/FPcontract.
+- WholeNotePath merged94c4902e after run41885314678:24host+Androidrefs pass,
+  7172commands5.8Mfields all0; actor/publication/finish contracts documented.
+- Userexpandedacceptance: everyincludedpreset, everyfunctiontouchusable,
+  standaloneAndroid andhasslefreeMIDI. docs/android-parity-requirements.md tracks
+  this alongside alloriginalUI/sound features. Fullinstrument remainsactive.
+- OriginalCUGUIinspection resumed onuserreopenedPID240. OriginalpatchNativeZIP
+  retainedDwithCRC/dependencyproof;2488live-sharedserializedscalarsmatchbackup.
+  OneOsc2menuChordsselection wasrestoredBasicWaves; all11Osc2valuesbitmatch.
+  RuntimeDsurvey recordsoriginalviews,menus,bank/type/stylepanels anddeviceUI.
+- NativeUI helpers/fullFlex numeric gold independently source-proved; original
+  scene/default/property binding andfullraster/font/gesture parity remainopen.
+- Includedlibrarycandidate1380runtimefiles/1210presetarchives+assets/metadata
+  reproducedfromofficialpayloads. Independentreviewfoundpath/atomic-temporary
+  producerfixes; noCI/mainassettoolintegrationclaimyet. Versionmigrations,
+  componentFXmode/rates andfullDSPremainrequired.

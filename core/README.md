@@ -315,3 +315,41 @@ meaningful mutants and ten malformed fixture variants. No table dependency or
 host math substitution is introduced. Finite state and representable phase
 float-to-signed32 conversions are required. Full voice/oscillator scheduling
 remains separate work.
+
+
+## Complete bounded Harmo engine
+
+`mfrk::harmo::Engine` reproduces the32-frame96kHz Harmo preparation, additive
+kernel, optional2048-short delay, trigger/reset fades, midpoint upsampling, Q15
+decoder and scaled wrapper. Tables are generated mathematically outside the
+callback. Explicit zero-arena admission supplies bytes the native constructor
+leaves unwritten; it does not establish native heap initialization.
+
+[Run41865340832](https://github.com/azerish25-ux/MRCRO-FRK-RE/actions/runs/41865340832)
+passed21 host checks and all Android API35 x86_64 references. Harmo matches1852
+blocks/59,264 raw and scaled samples, state/delay and all generated tables;
+36 lifecycle commands match. Both Android ABIs compile. All finite positive
+frequencies and finite wrapped phases preserve source CVTT overflow semantics.
+Nearest rounding, masked FP exceptions and gradual underflow are required.
+
+Independent review regenerated gold, added96 fresh original blocks, checked the
+actual primary scaled wrapper, rejected meaningful mutants/malformed fixtures and
+verified the private state boundary. The discarded exp2f return is documented from
+source/perturbation evidence; no host-math approximation replaces an audible path.
+
+## Whole NotePath actor
+
+`mfrk::notepath::Engine` implements native transforms, allocation, learning, hold,
+mode/legato preparation and the source end-of-control-block boundary. Construction
+uses explicit zero-arena admission. [Admission and ownership](../docs/notepath-admission.md)
+defines valid inputs and once-only callback consumption; published row snapshots
+must not be replayed as fresh events. PerNoteKey is an opaque native byte.
+
+[Run41885314678](https://github.com/azerish25-ux/MRCRO-FRK-RE/actions/runs/41885314678)
+passed all24 host checks and Android API35 x86_64 references, including7172commands,
+5,809,320 state fields,165,358 packet bytes,4404 callback rows,2707 forwarding
+checks,816 hold fields and zero ordinary C++ actor allocations. Independent source
+and adapter review, regenerated immutable gold, five mutants/no-op and23 malformed
+fixtures support this scope. Both Android ABIs compile; arm64 execution remains
+pending. Host MIDI decoding, scheduling and the concrete voice/audio owner remain
+separate required integration work.

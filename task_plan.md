@@ -4,7 +4,10 @@
 Reconstruct the installed MiniFreak V as an Android app with verified 1:1 sound,
 UI, UX and functionality. Exact original appearance, layout, controls and
 interactions are required; a stylistic approximation does not meet acceptance.
-No original source code is available. Completion is
+Every included preset and its assets/metadata must remain available with the
+same sound/settings. The delivered product must be a standalone Android app;
+every control/function must be usable by touch and MIDI connection must be
+straightforward. No original source code is available. Completion is
 unproven until all feature and equivalence requirements are independently verified.
 
 ## Constraints
@@ -36,11 +39,17 @@ unproven until all feature and equivalence requirements are independently verifi
 ## Acceptance evidence
 - Exact version and hashes for every reference executable/resource set.
 - Exhaustive parameter/control/feature matrix with observed behavior and tests.
+- Full original visual/interaction parity at matched states/scales, with touch
+  access to every function, precision/reset/edit gestures and multi-touch keys.
+- Standalone APK launch, offline included content and native MIDI device/port
+  discovery, connection, hotplug/reconnect and controller-message routing.
 - Reference/port audio comparisons across engines, modulation, voices, effects,
   sample rates, presets and performance events. Deterministic and stochastic
   comparisons distinguished; no generic oscillator substituted for recovered DSP.
 - Screenshots and interaction comparisons for every view, menu and state.
-- Preset compatibility and state restoration proven with representative and edge cases.
+- Complete included browser/tutorial/hardware preset manifests, component FX
+  choices, original dependency assets and metadata. Version-aware interpretation
+  and state restoration must reproduce original behavior for every included bank.
 - APK builds and emulator functionality checked on Actions; real-device latency,
   thermals and touch performance remain unverified without actual device evidence.
 
