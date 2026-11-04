@@ -93,9 +93,9 @@ unproven until all feature and equivalence requirements are independently verifi
   start a fresh owned CLI client only when further provider queries are needed.
 
 ## Next Step
-Integrate the source-derived RuntimeLayout/resize-state actor and continue
-KarplusStr full-domain recovery. Native full/nested Flex, seven UI primitives and
-Waveshaper are merged after Linux/Android validation.
+Integrate source-derived scene construction and the full-finite Karplus engine;
+continue the actual native common voice/control/audio graph. Runtime resizev2,
+full/nested Flex, seven UI primitives and Waveshaper have Linux/Android evidence.
 Complete original scene bindings/rendering and gestures, native preset defaults/version/custom migrations, and the full
 voice/allocator/Dual/FX graph. Connect standalone Android audio, touch and MIDI;
 verify every included preset and complete feature parity. Included library

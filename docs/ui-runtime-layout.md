@@ -6,9 +6,10 @@ owner-resize event protocol. It accepts caller-initialized typed state; member
 initializers do not establish native factory or XML defaults.
 
 Runtime items retain **float32 cached lengths and rounding carry**. Geometry
-records contain double fields holding the original widened float results.
-Initial geometry uses float reciprocal then multiply; runtime geometry uses
-float division and inverse-scale multiplication. These producers are distinct.
+uses double storage. Initial relative geometry uses float reciprocal/multiply
+then widening; initial absolute geometry converts integer bounds exactly to
+double. Runtime geometry uses float division and inverse-scale multiplication
+then widens both results. These producers are distinct.
 
 All four native item bytes are represented: fixed, keep_ratio, opaque flag+A
 and fixed_current+B. C0 ignores+A and uses+B for fixed extents. Parent fixed-cache
@@ -65,6 +66,12 @@ Readers check full size/CRC32/SHA256 before payload interpretation, then bounded
 LE records, booleans, complete decoding and EOF before numerical execution.
 They validate trusted gold, without becoming a product interchange parser.
 Provenance is in `core/tests/ui_runtime_layout_provenance.json`.
-Linux/Android validation is pending for this revision. Full declarative scene,
-painting, fonts, rasterization, touch lifecycle and standalone instrument parity
-remain required.
+[Run41930772735](https://github.com/azerish25-ux/MRCRO-FRK-RE/actions/runs/41930772735)
+passes all50 Linux Release checks and all9 reference corpora plus20 guards on
+API35 x86_64 Android. Both ABIs compile; arm64 runtime remains unverified.
+[Exact target results](ui-runtime-layout-validation.json) pin the source and jobs.
+An independent Win64 call-frame audit replayed all4,016 geometry cases with
+correct entry stack alignment and unchanged golden bytes;
+[ABI audit](ui-runtime-oracle-abi.json) records the historical setup correction.
+Full declarative scene, painting, fonts, rasterization, touch lifecycle and
+standalone instrument parity remain required.

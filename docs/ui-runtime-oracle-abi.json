@@ -1,0 +1,68 @@
+{
+  "source_setup_correction": "Historical helper probes corrected from entry RSPmod16=0 to required Win64mod16=8. Native instructions and expected bytes unchanged.",
+  "author_audit": {
+    "scope": "Only synthetic call-frame stack alignment corrected toWin64 entrymod16=8; no native instructions/numeric models/gold bytes changed",
+    "results": {
+      "probe_geometry_spec.py": {
+        "cases": 1205,
+        "differences": []
+      },
+      "probe_child_resize.py": {
+        "cases": 1608,
+        "differences": []
+      },
+      "probe_runtime_geometry.py": {
+        "cases": 1203,
+        "differences": []
+      },
+      "original-expression-gold.json": {
+        "cases": 1218,
+        "differences": []
+      },
+      "original-logic-expression-gold-v1.json": {
+        "cases": 2607,
+        "differences": []
+      },
+      "original-attribute-number-gold-v1.json": {
+        "cases": 41,
+        "differences": []
+      },
+      "original-property-records-gold-v1.json": {
+        "cases": 481,
+        "differences": []
+      },
+      "original-if-decision-gold-v1.json": {
+        "cases": 24,
+        "differences": []
+      },
+      "original-string-expansion-gold-v1.json": {
+        "cases": 505,
+        "differences": []
+      }
+    }
+  },
+  "root_independent_runtime_geometry_replay": [
+    {
+      "file": "geometry-spec-vectors.bin",
+      "bytes": 106052,
+      "sha256": "f4cce31daf9f1c2f8a6f86134fcaa5f30e892913198da7890c4387f628de5544",
+      "entry_rsp_mod16": 8,
+      "byteIdentical": true
+    },
+    {
+      "file": "child-resize-vectors.bin",
+      "bytes": 173676,
+      "sha256": "50fd857d41a247a8ee5f4a6e49e9e32c877252c2b10c37d489f63ef4331eec8b",
+      "entry_rsp_mod16": 8,
+      "byteIdentical": true
+    },
+    {
+      "file": "runtime-geometry-vectors.bin",
+      "bytes": 110688,
+      "sha256": "fd1b7964cb91f3dc018eb7d3e107d621d9ca9e3ccac715bb0ed90f2a9b5fcaec",
+      "entry_rsp_mod16": 8,
+      "byteIdentical": true
+    }
+  ],
+  "scope": "Oracle setup/provenance audit only. Extra expression/property helpers in author audit are not claimed repository-integrated."
+}

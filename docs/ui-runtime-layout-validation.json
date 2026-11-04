@@ -1,0 +1,80 @@
+{
+  "schema": 2,
+  "commit": "010843adcaee96d73d5124ec91d266ad6db91c89",
+  "run_id": 41930772735,
+  "run_url": "https://github.com/azerish25-ux/MRCRO-FRK-RE/actions/runs/41930772735",
+  "linux": {
+    "job_id": 126926783774,
+    "conclusion": "success",
+    "configuration": "Release",
+    "ctest_passed": 50,
+    "ctest_failed": 0
+  },
+  "android": {
+    "job_id": 126927003228,
+    "conclusion": "success",
+    "compiled_abis": [
+      "arm64-v8a",
+      "x86_64"
+    ],
+    "runtime_abi": "x86_64",
+    "api_level": 35,
+    "corpora": {
+      "compile": {
+        "cases": 1205,
+        "differences": 0
+      },
+      "child": {
+        "cases": 1608,
+        "differences": 0
+      },
+      "geometry": {
+        "cases": 1203,
+        "differences": 0
+      },
+      "layout": {
+        "cases": 2400,
+        "items": 4716,
+        "differences": 0
+      },
+      "event": {
+        "cases": 1002,
+        "items": 2031,
+        "differences": 0
+      },
+      "math": {
+        "cases": 24951,
+        "differences": 0
+      },
+      "event-current": {
+        "cases": 1728,
+        "items": 3595,
+        "differences": 0
+      },
+      "layout-flags": {
+        "cases": 1312,
+        "items": 2643,
+        "differences": 0
+      },
+      "event-flags": {
+        "cases": 3616,
+        "items": 7251,
+        "differences": 0
+      }
+    },
+    "guards_rejected": 20
+  },
+  "independent_review": {
+    "fresh_original_corpora_byte_identical": 9,
+    "altered_fixture_rejections": 63,
+    "semantic_mutants_rejected": 19,
+    "historical_rejection_controls": 3,
+    "win64_aligned_geometry_cases_replayed": 4016
+  },
+  "limits": [
+    "Owner-entry/single ordinary observer and admitted guarded child size-change protocol, not external child-entry or arbitrary feature graph.",
+    "Float caches and widened-float geometry precision remain distinct; source-proved ABI alignment audit leaves all golden bytes unchanged.",
+    "arm64-v8a compiled but not executed in this workflow.",
+    "Full scene/rendering/touch/audio/MIDI/preset/standalone app parity remains incomplete."
+  ]
+}

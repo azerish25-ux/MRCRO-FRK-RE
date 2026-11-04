@@ -254,3 +254,19 @@
   privately; notyetmerged or targetverified. Do notreplaceitscachewithf64.
 - Karplus continues fullfiniteUCRT+sustainedcounterwrap proof; actualphaseposition
   uses zero-extendeduint32 conversion, notsignedcounter. Fullinstrumentgoalactive.
+
+- Runtime resizev2 merged010843a after rootindependent source/ASM/corpus review
+  and exactrevisionrun41930772735:50LinuxRelease checks/allAndroidx86_64refs0,
+  bothABIscompile.9corpora39025observations/20236itemupdates;20guardsreject.
+  All16RuntimeItemflags, combinedfixed+ratio andnonzero ratio minima retained.
+- Expandedoriginalparentcasesexposed206cachemismatches: fixed+A|Brefresh before
+  guardandchildsizecallbackrefresh beforecached-length accumulation are required.
+  v2correctsactualsourceprotocol; parentforcescrossfill, directC0stillno-observer.
+ 5oldhelpersunchanged,4moved/source-provedprotocoldefinitions explicitlymapped.
+ 63alteredfiles/19mutants/3historicalguardREDcontrols discriminateoldnarrowlogic.
+- Historicalgeometryoracleentryalignmentauditcorrected Win64RSP to8mod16;
+  rootindependentlyreplayed all4016geometrycases withproperframes, rawgoldexact.
+  Author'sseparate8892scene-helperaudit also0; no golden/sourceinstructionchanges.
+- Nextactualsourceintegration: sceneconstruction/property/named-expression
+  pipeline, fullfiniteKarplus/sharedowner and actualcommonvoice/audio graph.
+  Whole app/fullUI/touch/MIDI/preset sound scope remains active and incomplete.
