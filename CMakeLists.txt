@@ -4,7 +4,7 @@ project(mfrk_core VERSION 0.1.0 LANGUAGES CXX)
 add_library(mfrk_core STATIC core/src/pitch.cpp core/src/virtual_analog.cpp
     core/src/linear_upsampler.cpp core/src/virtual_analog_controls.cpp
     core/src/virtual_analog_oscillator.cpp core/src/basic_wave_tables.cpp
-    core/src/basic_waves.cpp)
+    core/src/basic_waves.cpp core/src/vcf37.cpp)
 target_include_directories(mfrk_core PUBLIC core/include)
 target_include_directories(mfrk_core PRIVATE third_party)
 # Upstream stmlib's TEST path selects portable helpers instead of Cortex-M assembly.
@@ -40,6 +40,9 @@ if(BUILD_TESTING)
     add_executable(mfrk_basic_waves_tests core/tests/basic_waves_test.cpp)
     target_link_libraries(mfrk_basic_waves_tests PRIVATE mfrk_core)
     add_test(NAME original_basic_waves COMMAND mfrk_basic_waves_tests)
+    add_executable(mfrk_vcf37_tests core/tests/vcf37_test.cpp)
+    target_link_libraries(mfrk_vcf37_tests PRIVATE mfrk_core)
+    add_test(NAME original_vcf37 COMMAND mfrk_vcf37_tests)
     if(NOT ANDROID)
         find_package(Python3 REQUIRED COMPONENTS Interpreter)
         add_test(NAME original_basic_wave_tables
