@@ -124,7 +124,8 @@ class VariableSawOscillator {
           notch_amount);
       previous_pw_ = pw;
 
-      *out++ = (2.0f * this_sample - 1.0f) / (1.0f + kVariableSawNotchDepth);
+      // Installed MiniFreak V uses this factored float32 order (0x18032f9a0).
+      *out++ = this_sample * 1.6666666f - 0.8333333f;
     }
     
     next_sample_ = next_sample;
