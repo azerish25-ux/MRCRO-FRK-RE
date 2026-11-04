@@ -393,3 +393,12 @@ float bounds, signed margins, original sorting and freeze/distribution order.
 [Admission and validation](../docs/ui-flex.md) describes exact source evidence,
 immutable references and platform results. Component callbacks/clamps, scene
 construction and rendering remain separate work.
+
+## Native runtime resize protocol
+
+`mfrk::ui::runtime` preserves source geometry production, float cached lengths
+and carry, all four runtime item flags, direct layout and the admitted owner
+resize/guarded-child protocol. [Scope and validation](../docs/ui-runtime-layout.md)
+describes exact original references and source-justified admission expansion.
+It does not implement arbitrary feature dispatch, full scene construction or
+widget rendering.

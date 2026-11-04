@@ -1,0 +1,12 @@
+# Source-proved v1 to v2 delta
+
+V1 was intentionally frozen. Root requested proof for fixed_current, then all four native item flags. No constructor unreachability assumption is used to retain an excluded boolean combination.
+
+1. bcdb50 first refreshes every fixed cache before deciding owner/child/reentry work. Its+a OR+b branch uses current integer extent; only when both are false does it use viewScale*reference. V1 admitted+b=false and+a implicitly0, concealing the missing refresh branch. V2 exposes+a and accepts+b true.
+2. C0 does not read+a. Fixed extents use+b alone. Its first pass processes keep_ratio even when fixed is also true, and its final fixed branch then overwrites the assigned length/cache. The ratio branch ignores minimum. Original all-mask cases disprove both v1 fixed+ratio and nonzero-ratio-minimum rejection guards, which are removed.
+3. The first expanded parent run had206 mismatches, typically native cache98 against portable98.8 for fixed+A true/B false, while bounds/geometry matched. Source bcdb50 refresh precedes d5/d6 tests, so the existing child-setBounds callback during guarded C0 still refreshes caches. Native C0 reloads cached length after its virtual setter atbce3f6, adding it atbce40f. V2's private C0 actor emits exactly that conditional refresh after a changed child width/height and before ideal-sum/error accumulation. It does not initiate an unproved relayout or external observer.
+4. Parent calls C0 with argument1, so it fills the cross axis. The shared direct C0 API's fill_cross option cannot change this parent entry behavior; all-mask parent tests also supply that option false and still match the native forced-fill output.
+
+Proofs: unchanged original entries, existing one-observer setter boundary, explicit new native+a input, no modeled numerical decisions. New current-flag corpus1728 and expanded all-four corpora1312/3616 pass. The latter include465/1041 fixed+ratio items and561/1137 nonzero-ratio-minimum items, respectively; flags0..15 all occur. Positive auto-owner results and finite/representable arithmetic remain profile boundaries; no all-constructor/all-event graph claim is added.
+
+The first four-flag corpus did not distinguish an accidental ratio-minimum clamp. Its diagnostic is retained;32 directed original cases per entry now put minimum10000 above computed ratio lengths. Both original gold versions remain separate and immutable.

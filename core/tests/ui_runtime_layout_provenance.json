@@ -1,0 +1,500 @@
+{
+  "schema": 2,
+  "package_provenance": {
+    "wrapper_sha256": "354c26c58e4c8c671b50f88d070452b47c9cd6b6505b1ea18391724929b3d19e",
+    "source_base": "0x180000000",
+    "runtime_item_cache": "float32 at native24-byte item+20; float accumulators/carry",
+    "geometry_cache": "8double fields containing widened float computations",
+    "entries": {
+      "0x180b6fa70": {
+        "requested_address": "0x180b6fa70",
+        "parent_evidence_id": "ev_5d3d56c44f2617dc8255622fbb73480f3335dbe6f7fc8da949ad9b10505b7288",
+        "pseudocode": "pseudocode/0x180b6fa70.c",
+        "batch_file": "rea\\scene-child-spec-writers-029.json"
+      },
+      "0x180b6f260": {
+        "requested_address": "0x180b6f260",
+        "parent_evidence_id": "ev_551b619736b307ede33e8e07e5b5c153fc7c60440a24311ddb8b6591ce56c28e",
+        "pseudocode": "pseudocode/0x180b6f260.c",
+        "batch_file": "rea\\scene-native-relative-child-resize-025.json"
+      },
+      "0x180b6ee90": {
+        "requested_address": "0x180b6ee90",
+        "parent_evidence_id": "ev_94b1a41280fd4c81b4d1f940af47b74f4a4477c99ae85ef34bfb9a1b710810c1",
+        "pseudocode": "pseudocode/0x180b6ee90.c",
+        "batch_file": "rea\\scene-runtime-layout-geometry-binding-036.json"
+      },
+      "0x180bcdff0": {
+        "requested_address": "0x180bcdff0",
+        "parent_evidence_id": "ev_315fe9efe1ad5227d2d6445a7e825616be1d9b96b6f8da002a43ce3e9184be54",
+        "pseudocode": "pseudocode/0x180bcdff0.c",
+        "batch_file": "rea\\scene-runtime-layout-solver-035.json"
+      },
+      "0x180bcdb50": {
+        "requested_address": "0x180bcdb50",
+        "parent_evidence_id": "ev_6ffba1e3e922807c036720862707717211dbcebcadc8e602ffeac70dfa97d8e5",
+        "pseudocode": "pseudocode/0x180bcdb50.c",
+        "batch_file": "rea\\scene-runtime-layout-events-and-lengths-049.json"
+      },
+      "0x180b6ceb0": {
+        "requested_address": "0x180b6ceb0",
+        "parent_evidence_id": "ev_f7f4836486215b939857a3723facef5261f932f1e4d6fedbb0f657fbf57178c3",
+        "pseudocode": "pseudocode/0x180b6ceb0.c",
+        "batch_file": "rea\\scene-widget-size-setter-050.json"
+      }
+    },
+    "scope": "One ordinary Layout observer; caller-supplied typed initialized state; all16nativeitemflags and finite/representable arithmetic; externalobservergraph separate",
+    "records": [
+      {
+        "path": "../native-ui-source/scene-builder/geometry.hpp",
+        "bytes": 2904,
+        "sha256": "13453e14e79351c08289884f6d3b93b6edf6173242e5dc08dd506c4a9e16a96d"
+      },
+      {
+        "path": "../native-ui-source/scene-builder/runtime_layout.hpp",
+        "bytes": 6649,
+        "sha256": "632f9e9c80cedfce5cf1823516ae3a937f4f4d417583a56757438627e4825a4a"
+      },
+      {
+        "path": "../native-ui-source/scene-builder/probe_geometry_spec.py",
+        "bytes": 2730,
+        "sha256": "035391d4bf08027ba25a972616664f07e1cff466b90c4b4f3c1525507decfd23"
+      },
+      {
+        "path": "../native-ui-source/scene-builder/probe_child_resize.py",
+        "bytes": 3784,
+        "sha256": "69f0839bb6329783fd2ba78e0cb8772d2ada7f717877e3c0631e666c4241b88d"
+      },
+      {
+        "path": "../native-ui-source/scene-builder/probe_runtime_geometry.py",
+        "bytes": 2662,
+        "sha256": "b9106e3e3861a1ec615c0192732d4e133ce81b3975e001914fff8a9c85e5926a"
+      },
+      {
+        "path": "../native-ui-source/scene-builder/probe_runtime_layout.py",
+        "bytes": 6971,
+        "sha256": "1fd0a362ea977614df7b2e094d12350a4b8eb0e40307d4fc9026725551920b8c"
+      },
+      {
+        "path": "../native-ui-source/scene-builder/probe_layout_parent_event.py",
+        "bytes": 9127,
+        "sha256": "ff7dcc6fd1fca87a12420a72f486cd0f078137f784c5811fb8343ab68e01c6ff"
+      },
+      {
+        "path": "../native-ui-source/scene-builder/probe_ui_round_trunc.py",
+        "bytes": 1952,
+        "sha256": "0902ba03f01c49ef45af0f3f4982befe55be55100b6159f2d4e24d9188c459db"
+      },
+      {
+        "path": "../native-ui-source/scene-builder/runtime_negative_controls.py",
+        "bytes": 2735,
+        "sha256": "b5c5d96e1fd43cbf27e41618c0caa64a7d7b9f80d57edd7459e00013e3b16f04"
+      },
+      {
+        "path": "../native-ui-source/scene-builder/negative_controls.py",
+        "bytes": 3907,
+        "sha256": "fa7cfee480fd32d4fa0701bc93ca1720f38d5d358b669679c9a6182dac1cb01c"
+      },
+      {
+        "path": "../native-ui-source/scene-builder/original-geometry-spec-gold.json",
+        "bytes": 733884,
+        "sha256": "c1587822872891c1082628248e15d2b5829a1c6b630efb33cdcff8373c7742b1"
+      },
+      {
+        "path": "../native-ui-source/scene-builder/original-child-resize-gold.json",
+        "bytes": 969113,
+        "sha256": "fcb09f921a238848e17dcee9f71477760a3b9987c7bd5f6d01c68c15c8ed5f7c"
+      },
+      {
+        "path": "../native-ui-source/scene-builder/original-runtime-geometry-gold.json",
+        "bytes": 496851,
+        "sha256": "62f7822390ccd614fa10280e03da1a538e5f5b0343032f52c726d751576ab40f"
+      },
+      {
+        "path": "../native-ui-source/scene-builder/original-runtime-layout-gold.json",
+        "bytes": 5327095,
+        "sha256": "56008c2c91f91d506e484733a8137a0915f115e24ddb5264e1fd4765eace232a"
+      },
+      {
+        "path": "../native-ui-source/scene-builder/original-layout-parent-event-gold.json",
+        "bytes": 2763618,
+        "sha256": "32b23eeef68242bf2453614ac56a7ad114e7846a24a9c695ceb248a5f26f25e9"
+      },
+      {
+        "path": "../native-ui-source/scene-builder/original-ui-round-trunc-gold.json",
+        "bytes": 2881094,
+        "sha256": "7dcfa610c3b9b8673d9945c5a7e315aa9037f4496f4a14cd8c718542a0891496"
+      },
+      {
+        "path": "../native-ui-source/scene-builder/ucrt-round-trunc-source.json",
+        "bytes": 1680,
+        "sha256": "b19158a29dc1f1d33c06e92bce2c6976147afc4d7f18cb23e410a7c518dc7de9"
+      },
+      {
+        "path": "../native-ui-source/scene-builder/live-ucrt-round-trunc-anchor-v2.json",
+        "bytes": 1937,
+        "sha256": "62ca2b64d8bf7a2f9b16e00d98779e0732e5b16be133af8899d61d01b224980d"
+      },
+      {
+        "path": "../native-ui-source/scene-builder/runtime-geometry-probe-abi-correction.json",
+        "bytes": 485,
+        "sha256": "4cf1346f23ca019e3cb23005754208c52d451f2899758b7b4703064a3efff58e"
+      },
+      {
+        "path": "../native-ui-source/scene-builder/live-layout-features-80-v2.json",
+        "bytes": 9422,
+        "sha256": "0f25059d351bf50097bf59013c75eb6d68444f0248c72144bdf855f17384bd5b"
+      },
+      {
+        "path": "../native-ui-source/scene-builder/live-layout-listeners-80-v1.json",
+        "bytes": 2140,
+        "sha256": "981395ef0381aa49efd4b9a8c012d4cbee448f84fca52ec88be51210d41338bd"
+      },
+      {
+        "path": "../native-ui-source/scene-builder/live-resize-dispatchers-80-v1.json",
+        "bytes": 1603,
+        "sha256": "e8258d7a8ee39103da01a5af92241ad4ddec7bf41433fc8630da32382f8d6a79"
+      },
+      {
+        "path": "../native-ui-source/scene-builder/runtime-negative-controls/clear-trunc-negative-zero/geometry.hpp",
+        "bytes": 2904,
+        "sha256": "13453e14e79351c08289884f6d3b93b6edf6173242e5dc08dd506c4a9e16a96d"
+      },
+      {
+        "path": "../native-ui-source/scene-builder/runtime-negative-controls/clear-trunc-negative-zero/runtime_layout.hpp",
+        "bytes": 6614,
+        "sha256": "f4933a9cbd3d298d0dec0969eceed5ac565e345aa354123ec7a582f0a40aa7d1"
+      },
+      {
+        "path": "../native-ui-source/scene-builder/runtime-negative-controls/event-no-auto-owner/geometry.hpp",
+        "bytes": 2904,
+        "sha256": "13453e14e79351c08289884f6d3b93b6edf6173242e5dc08dd506c4a9e16a96d"
+      },
+      {
+        "path": "../native-ui-source/scene-builder/runtime-negative-controls/event-no-auto-owner/runtime_layout.hpp",
+        "bytes": 6639,
+        "sha256": "249b936c4a49f93b44d7684b3737dec8d00d42b28b149e57549de8594da0c99f"
+      },
+      {
+        "path": "../native-ui-source/scene-builder/runtime-negative-controls/event-no-fixed-refresh/geometry.hpp",
+        "bytes": 2904,
+        "sha256": "13453e14e79351c08289884f6d3b93b6edf6173242e5dc08dd506c4a9e16a96d"
+      },
+      {
+        "path": "../native-ui-source/scene-builder/runtime-negative-controls/event-no-fixed-refresh/runtime_layout.hpp",
+        "bytes": 6552,
+        "sha256": "2a19ac0beb9d104874716adfc46666829a233355fbb404626c3d303252a92777"
+      },
+      {
+        "path": "../native-ui-source/scene-builder/runtime-negative-controls/event-no-self-reentry/geometry.hpp",
+        "bytes": 2904,
+        "sha256": "13453e14e79351c08289884f6d3b93b6edf6173242e5dc08dd506c4a9e16a96d"
+      },
+      {
+        "path": "../native-ui-source/scene-builder/runtime-negative-controls/event-no-self-reentry/runtime_layout.hpp",
+        "bytes": 6633,
+        "sha256": "28ac6b05105b0368b5605b8c9a1b56fb1a6e1f3a1df556663226c94d9cf855eb"
+      },
+      {
+        "path": "../native-ui-source/scene-builder/runtime-negative-controls/no-rounding-carry/geometry.hpp",
+        "bytes": 2904,
+        "sha256": "13453e14e79351c08289884f6d3b93b6edf6173242e5dc08dd506c4a9e16a96d"
+      },
+      {
+        "path": "../native-ui-source/scene-builder/runtime-negative-controls/no-rounding-carry/runtime_layout.hpp",
+        "bytes": 6643,
+        "sha256": "93d3dca246b4a166939c9ddeeb122a7252b5ea0745e11b75de9ae6c933231ad0"
+      },
+      {
+        "path": "../native-ui-source/scene-builder/runtime-negative-controls/ratio-float-grouping/geometry.hpp",
+        "bytes": 2904,
+        "sha256": "13453e14e79351c08289884f6d3b93b6edf6173242e5dc08dd506c4a9e16a96d"
+      },
+      {
+        "path": "../native-ui-source/scene-builder/runtime-negative-controls/ratio-float-grouping/runtime_layout.hpp",
+        "bytes": 6674,
+        "sha256": "220158debef6f18d0610f64563d1400d92deb98bc262a93120daef171237e1e7"
+      },
+      {
+        "path": "../native-ui-source/scene-builder/runtime-negative-controls/ratio-integer-cache/geometry.hpp",
+        "bytes": 2904,
+        "sha256": "13453e14e79351c08289884f6d3b93b6edf6173242e5dc08dd506c4a9e16a96d"
+      },
+      {
+        "path": "../native-ui-source/scene-builder/runtime-negative-controls/ratio-integer-cache/runtime_layout.hpp",
+        "bytes": 6674,
+        "sha256": "c6a276d0f011fe5761086b2cb387e76d6b83416d8f4f277ebab0e7f813254acf"
+      },
+      {
+        "path": "../native-ui-source/scene-builder/runtime-negative-controls/round-nearest-even/geometry.hpp",
+        "bytes": 2904,
+        "sha256": "13453e14e79351c08289884f6d3b93b6edf6173242e5dc08dd506c4a9e16a96d"
+      },
+      {
+        "path": "../native-ui-source/scene-builder/runtime-negative-controls/round-nearest-even/runtime_layout.hpp",
+        "bytes": 6736,
+        "sha256": "881ddc6aca3b5d85a49e0dfe3ee74e39c78614f170a03da0575ec67bf95828c8"
+      },
+      {
+        "path": "../native-ui-source/scene-builder/runtime-negative-controls/runtime-reciprocal-coordinate/geometry.hpp",
+        "bytes": 2910,
+        "sha256": "59210e3e685b7f21f5d757ea19901988fb59745f34babfafef708b900cc312ac"
+      },
+      {
+        "path": "../native-ui-source/scene-builder/runtime-negative-controls/runtime-reciprocal-coordinate/runtime_layout.hpp",
+        "bytes": 6649,
+        "sha256": "632f9e9c80cedfce5cf1823516ae3a937f4f4d417583a56757438627e4825a4a"
+      },
+      {
+        "path": "../native-ui-source/scene-builder/runtime_layout_fixed_current.hpp",
+        "bytes": 7081,
+        "sha256": "2a2b3321e4216764d455163c2fa67134073b3fb7f6ecb0030bcc5cefa2b31039"
+      },
+      {
+        "path": "../native-ui-source/scene-builder/probe_parent_fixed_current.py",
+        "bytes": 4058,
+        "sha256": "b462eb81db51f45a971a9b68d95b1559f3ed3325cc3e72eb9bd30992655fa26c"
+      },
+      {
+        "path": "../native-ui-source/scene-builder/probe_runtime_four_flags.py",
+        "bytes": 5081,
+        "sha256": "e8cd78181cd974f90bf5c52efd6da8562f71f6b37d4e44142b02fcce5852fecc"
+      },
+      {
+        "path": "../native-ui-source/scene-builder/probe_runtime_four_flags_v2.py",
+        "bytes": 5637,
+        "sha256": "ad0a3dd28d85a05aeac8fd0c3677ac2fbf8f209bd739826cee73ffa7940cb54b"
+      },
+      {
+        "path": "../native-ui-source/scene-builder/original-parent-fixed-current-gold-v1.json",
+        "bytes": 4825650,
+        "sha256": "fb52587a36aa559af31c4a82d23a57480e1f9be20dd5a9e072f81b6561faac94"
+      },
+      {
+        "path": "../native-ui-source/scene-builder/original-runtime-four-flags-gold-v1.json",
+        "bytes": 2985994,
+        "sha256": "d289ca0c9c15401f44cd652e27e7e3dcf93905fd95ea29cf5b893b8d3c798cab"
+      },
+      {
+        "path": "../native-ui-source/scene-builder/original-parent-four-flags-gold-v1.json",
+        "bytes": 9317261,
+        "sha256": "bcbe2bb8995ca18ef4607a4ad5db83170f4bc838f53dd3f9b17bbc7398e78f67"
+      },
+      {
+        "path": "../native-ui-source/scene-builder/original-runtime-four-flags-gold-v2.json",
+        "bytes": 3058774,
+        "sha256": "88600bb85df49d405d092eb503577175f40fa95ba120f41cf3cf2cb59ddf1df6"
+      },
+      {
+        "path": "../native-ui-source/scene-builder/original-parent-four-flags-gold-v2.json",
+        "bytes": 9400810,
+        "sha256": "13a0b36a06ae2b38792289ce5fd46da96cfe0eccecdc8e218d6dd19d44f54858"
+      }
+    ],
+    "revision": 2,
+    "v1_manifest_sha256": "b6007e2b01466fbc31007d29e1b744cea85b5392466d774ae8fcf8e33c663abc",
+    "runtime_flags": {
+      "native_fixed_byte": 8,
+      "native_ratio_byte": 9,
+      "native_opaque_a_byte": 10,
+      "native_current_b_byte": 11,
+      "C0": "all16combinations; ignores+a; fixed extent selects+b; first ratio pass also executes iffixed",
+      "parent": "fixedrefresh+AOR+B beforeguard and onactualchildsizechange duringC0; sourceargfill_cross1"
+    },
+    "fixture_origins": [
+      {
+        "kind": "compile",
+        "package_path": "core/tests/fixtures/geometry-spec-vectors.bin",
+        "original_path": "../native-ui-source/scene-builder/geometry-spec-vectors.bin",
+        "sha256": "f4cce31daf9f1c2f8a6f86134fcaa5f30e892913198da7890c4387f628de5544"
+      },
+      {
+        "kind": "child",
+        "package_path": "core/tests/fixtures/child-resize-vectors.bin",
+        "original_path": "../native-ui-source/scene-builder/child-resize-vectors.bin",
+        "sha256": "50fd857d41a247a8ee5f4a6e49e9e32c877252c2b10c37d489f63ef4331eec8b"
+      },
+      {
+        "kind": "geometry",
+        "package_path": "core/tests/fixtures/runtime-geometry-vectors.bin",
+        "original_path": "../native-ui-source/scene-builder/runtime-geometry-vectors.bin",
+        "sha256": "fd1b7964cb91f3dc018eb7d3e107d621d9ca9e3ccac715bb0ed90f2a9b5fcaec"
+      },
+      {
+        "kind": "layout",
+        "package_path": "core/tests/fixtures/runtime-layout-vectors.bin",
+        "original_path": "../native-ui-source/scene-builder/runtime-layout-vectors.bin",
+        "sha256": "24a0052534582db947e82bd1e2b63426d411fa3129083f0c1b6113790507f4cf"
+      },
+      {
+        "kind": "event",
+        "package_path": "core/tests/fixtures/layout-parent-event-vectors.bin",
+        "original_path": "../native-ui-source/scene-builder/layout-parent-event-vectors.bin",
+        "sha256": "7abd6cae1061f98360c253377b061c9622c84fb7bb11c6a92d2c00ccb9e17b39"
+      },
+      {
+        "kind": "math",
+        "package_path": "core/tests/fixtures/ui-round-trunc-vectors.bin",
+        "original_path": "../native-ui-source/scene-builder/ui-round-trunc-vectors.bin",
+        "sha256": "18559d35df9dcb373497aa9aa93d78d12844df494a8a9fde4bd967e6839288e6"
+      },
+      {
+        "kind": "event-current",
+        "package_path": "core/tests/fixtures/layout-parent-fixed-current-vectors.bin",
+        "original_path": "../native-ui-source/scene-builder/layout-parent-fixed-current-vectors.bin",
+        "sha256": "ca232d6dcc2f47562dc419a26954967b4cf7bfd3b5b8342810fd502d5449dacf"
+      },
+      {
+        "kind": "layout-flags",
+        "package_path": "core/tests/fixtures/runtime-four-flags-vectors.bin",
+        "original_path": "../native-ui-source/scene-builder/runtime-four-flags-v2-vectors.bin",
+        "sha256": "b840423bcd880e5f73fd132a44765439e6e40c22ab471b30d579cf009e8a537d"
+      },
+      {
+        "kind": "event-flags",
+        "package_path": "core/tests/fixtures/parent-four-flags-vectors.bin",
+        "original_path": "../native-ui-source/scene-builder/parent-four-flags-v2-vectors.bin",
+        "sha256": "881706926f45b72c10da768e344585e1ebe29c139fc1933f3e303654ff3c5e2e"
+      }
+    ]
+  },
+  "body_preservation": {
+    "compile_geometry": {
+      "reference": "geometry.hpp",
+      "sha256": "cecda247d208c2212e674b9f2d0bdb650d0740ff7dff4d472456d3d8bf007f81",
+      "base_v1_sha256": "cecda247d208c2212e674b9f2d0bdb650d0740ff7dff4d472456d3d8bf007f81"
+    },
+    "resize_child": {
+      "reference": "geometry.hpp",
+      "sha256": "902a6a0bba47bb62465aca1e928cefa9c362b62df78a2f12db081bfd24305aa2",
+      "base_v1_sha256": "902a6a0bba47bb62465aca1e928cefa9c362b62df78a2f12db081bfd24305aa2"
+    },
+    "update_runtime_geometry": {
+      "reference": "geometry.hpp",
+      "sha256": "24328d2a593ecd12cf1eaf446a2f1f59e1b4105d67b25270fc74979656580e23",
+      "base_v1_sha256": "24328d2a593ecd12cf1eaf446a2f1f59e1b4105d67b25270fc74979656580e23"
+    },
+    "native_round": {
+      "reference": "runtime_layout.hpp",
+      "sha256": "e12a93da19c59cc5e6be5b1caac485dbb3720e407a3d6f40491a59557580f04d",
+      "base_v1_sha256": "e12a93da19c59cc5e6be5b1caac485dbb3720e407a3d6f40491a59557580f04d"
+    },
+    "native_trunc": {
+      "reference": "runtime_layout.hpp",
+      "sha256": "bf88da7a17d438c9f1cbe5d8b54664bbba7c98df8b9fb2c803d955ab43ebd4bf",
+      "base_v1_sha256": "bf88da7a17d438c9f1cbe5d8b54664bbba7c98df8b9fb2c803d955ab43ebd4bf"
+    },
+    "refresh_fixed_lengths": {
+      "reference": "runtime_layout.hpp",
+      "sha256": "0502ecbf86c5804874606c2774d7e3079cf8b18c3d0a9a3be177cf2607c1c5fb",
+      "source_delta": "All4nativeitemflags; sourcefixedrefresh+A|B; guardedchildsizecallbackrefresh beforecacheaccumulation; parentC0fillarg1; numericalC0body moved tointernal compiledstep. See ADMISSION-DELTA.md."
+    },
+    "update_layout_internal": {
+      "reference": "runtime_layout.hpp",
+      "sha256": "4f6115eebecd0c2b8e917bc6e6f0e66018b03f39f4b586ce4c92d5b001e0bc69",
+      "source_delta": "All4nativeitemflags; sourcefixedrefresh+A|B; guardedchildsizecallbackrefresh beforecacheaccumulation; parentC0fillarg1; numericalC0body moved tointernal compiledstep. See ADMISSION-DELTA.md."
+    },
+    "update_layout": {
+      "reference": "runtime_layout.hpp",
+      "sha256": "68d22d17fbd14797edc5d11d7f37508c585b5b52bce19d0eabfdfa1faf2784a8",
+      "base_v1_sha256": "29cf563c6cf9fb6700346582462290124c35d8271974dbd04d4cf26009c628c4",
+      "source_delta": "All4nativeitemflags; sourcefixedrefresh+A|B; guardedchildsizecallbackrefresh beforecacheaccumulation; parentC0fillarg1; numericalC0body moved tointernal compiledstep. See ADMISSION-DELTA.md."
+    },
+    "parent_resized": {
+      "reference": "runtime_layout.hpp",
+      "sha256": "9d732afffa0ad4b1b90c9ff9240f7588ad8de385f4cfd7fb12c2def39714d900",
+      "base_v1_sha256": "a992253076fc6b53e93a1e5a2c768a06ba54b18c17e35ea338007b25982161e5",
+      "source_delta": "All4nativeitemflags; sourcefixedrefresh+A|B; guardedchildsizecallbackrefresh beforecacheaccumulation; parentC0fillarg1; numericalC0body moved tointernal compiledstep. See ADMISSION-DELTA.md."
+    }
+  },
+  "protocol_source_range": {
+    "wrapper_sha256": "354c26c58e4c8c671b50f88d070452b47c9cd6b6505b1ea18391724929b3d19e",
+    "start": "0x180bcdb50",
+    "end_exclusive": "0x180bce4a8",
+    "file_offset": "0xbccf50",
+    "bytes": 2392,
+    "sha256": "f40e160589fe7c4a160802b40c05e34dc54772fc4934d4faa19983fbccfcff4b",
+    "scope": "Contiguous source parent/C0 protocol code range including alignment/neighbor fragments, not assumed one pdata/function boundary",
+    "key_sites": {
+      "parent_refresh_flags": "bcdb50 entry fixed-item+0xa/+0xb branch before owner/child guards",
+      "child_setter_call": "bce3f6",
+      "post_callback_cache_accumulation": "bce40f cache reload after virtual setter",
+      "c0_guard_clear": "bce496"
+    }
+  },
+  "root_adaptation": "C++/documentation CRLF-to-LF only; canonical binaries unchanged. Existing mfrk_ui strict-FP PIC/IPO-off target extended with two executable targets and10host/Android checks.",
+  "root_independent_review": {
+    "original_corpora_reproduced_byte_identical": 9,
+    "flag_masks": 16,
+    "integrated_release_ctest": 50,
+    "isolated_release_ctest": 10,
+    "admission_guards": 20,
+    "altered_fixtures_rejected": 63,
+    "semantic_mutants_rejected": 19,
+    "historical_rejection_controls": 3,
+    "source_protocol": "Fixed cache+A|B refresh precedes guards; changed child cache refresh precedes C0sum/carry; parent argument1 forces crossfill.5oldhelperbodiesunchanged;4source-provedcompiledprotocoldefinitions compared.",
+    "limits": "One ordinary owner observer with guarded size-change delivery. Not external child-entry/multifeature/scene/raster/input lifecycle parity."
+  },
+  "repository_files": {
+    "core/include/mfrk/ui_runtime_layout.hpp": {
+      "bytes": 2269,
+      "sha256": "7c34046cf888b1d1605634292e6136b1c07296448653e5c060bc231a384f5c38"
+    },
+    "core/src/ui_runtime_layout.cpp": {
+      "bytes": 8398,
+      "sha256": "9d915007749b020ca5311c01e8358b38ff88ea4c99a24f9c5cac4359d21c4581"
+    },
+    "core/tests/fixtures/child-resize-vectors.bin": {
+      "bytes": 173676,
+      "sha256": "50fd857d41a247a8ee5f4a6e49e9e32c877252c2b10c37d489f63ef4331eec8b"
+    },
+    "core/tests/fixtures/geometry-spec-vectors.bin": {
+      "bytes": 106052,
+      "sha256": "f4cce31daf9f1c2f8a6f86134fcaa5f30e892913198da7890c4387f628de5544"
+    },
+    "core/tests/fixtures/layout-parent-event-vectors.bin": {
+      "bytes": 356712,
+      "sha256": "7abd6cae1061f98360c253377b061c9622c84fb7bb11c6a92d2c00ccb9e17b39"
+    },
+    "core/tests/fixtures/layout-parent-fixed-current-vectors.bin": {
+      "bytes": 628840,
+      "sha256": "ca232d6dcc2f47562dc419a26954967b4cf7bfd3b5b8342810fd502d5449dacf"
+    },
+    "core/tests/fixtures/parent-four-flags-vectors.bin": {
+      "bytes": 1304660,
+      "sha256": "881706926f45b72c10da768e344585e1ebe29c139fc1933f3e303654ff3c5e2e"
+    },
+    "core/tests/fixtures/runtime-four-flags-vectors.bin": {
+      "bytes": 454228,
+      "sha256": "b840423bcd880e5f73fd132a44765439e6e40c22ab471b30d579cf009e8a537d"
+    },
+    "core/tests/fixtures/runtime-geometry-vectors.bin": {
+      "bytes": 110688,
+      "sha256": "fd1b7964cb91f3dc018eb7d3e107d621d9ca9e3ccac715bb0ed90f2a9b5fcaec"
+    },
+    "core/tests/fixtures/runtime-layout-vectors.bin": {
+      "bytes": 793980,
+      "sha256": "24a0052534582db947e82bd1e2b63426d411fa3129083f0c1b6113790507f4cf"
+    },
+    "core/tests/fixtures/ui-round-trunc-vectors.bin": {
+      "bytes": 299424,
+      "sha256": "18559d35df9dcb373497aa9aa93d78d12844df494a8a9fde4bd967e6839288e6"
+    },
+    "core/tests/ui_runtime_fixture_identity.hpp": {
+      "bytes": 2221,
+      "sha256": "47935e5ded363e2fc599e13325d60eb26b7cf0d0098814a5c2c57919442f208b"
+    },
+    "core/tests/ui_runtime_fixture_reader.hpp": {
+      "bytes": 4994,
+      "sha256": "398899202fce3376446d42eed21666f59512725b0bec4bc882477f7408aa56c1"
+    },
+    "core/tests/ui_runtime_layout_guard_test.cpp": {
+      "bytes": 2948,
+      "sha256": "2740086bdec07bff82d4fbf3da6e10a830dadc739b27c7060f3a4a58ff2ce6c5"
+    },
+    "core/tests/ui_runtime_layout_test.cpp": {
+      "bytes": 6195,
+      "sha256": "87c200540ccd22785b9d65635dc15f65e287f1b99c4edd2b345880c74ae57aa7"
+    }
+  }
+}

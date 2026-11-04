@@ -192,5 +192,27 @@ jobs:
             adb shell /data/local/tmp/mfrk_ui_flex_tests flat /data/local/tmp/full-flex-vectors.bin
             adb shell /data/local/tmp/mfrk_ui_flex_tests nested /data/local/tmp/nested-flex-vectors.bin
             adb shell /data/local/tmp/mfrk_ui_flex_guard_tests
+            adb push build-x86_64/mfrk_ui_runtime_layout_tests /data/local/tmp/mfrk_ui_runtime_layout_tests
+            adb push build-x86_64/mfrk_ui_runtime_layout_guard_tests /data/local/tmp/mfrk_ui_runtime_layout_guard_tests
+            adb shell chmod 755 /data/local/tmp/mfrk_ui_runtime_layout_tests /data/local/tmp/mfrk_ui_runtime_layout_guard_tests
+            adb push core/tests/fixtures/geometry-spec-vectors.bin /data/local/tmp/geometry-spec-vectors.bin
+            adb shell /data/local/tmp/mfrk_ui_runtime_layout_tests compile /data/local/tmp/geometry-spec-vectors.bin
+            adb push core/tests/fixtures/child-resize-vectors.bin /data/local/tmp/child-resize-vectors.bin
+            adb shell /data/local/tmp/mfrk_ui_runtime_layout_tests child /data/local/tmp/child-resize-vectors.bin
+            adb push core/tests/fixtures/runtime-geometry-vectors.bin /data/local/tmp/runtime-geometry-vectors.bin
+            adb shell /data/local/tmp/mfrk_ui_runtime_layout_tests geometry /data/local/tmp/runtime-geometry-vectors.bin
+            adb push core/tests/fixtures/runtime-layout-vectors.bin /data/local/tmp/runtime-layout-vectors.bin
+            adb shell /data/local/tmp/mfrk_ui_runtime_layout_tests layout /data/local/tmp/runtime-layout-vectors.bin
+            adb push core/tests/fixtures/layout-parent-event-vectors.bin /data/local/tmp/layout-parent-event-vectors.bin
+            adb shell /data/local/tmp/mfrk_ui_runtime_layout_tests event /data/local/tmp/layout-parent-event-vectors.bin
+            adb push core/tests/fixtures/ui-round-trunc-vectors.bin /data/local/tmp/ui-round-trunc-vectors.bin
+            adb shell /data/local/tmp/mfrk_ui_runtime_layout_tests math /data/local/tmp/ui-round-trunc-vectors.bin
+            adb push core/tests/fixtures/layout-parent-fixed-current-vectors.bin /data/local/tmp/layout-parent-fixed-current-vectors.bin
+            adb shell /data/local/tmp/mfrk_ui_runtime_layout_tests event-current /data/local/tmp/layout-parent-fixed-current-vectors.bin
+            adb push core/tests/fixtures/runtime-four-flags-vectors.bin /data/local/tmp/runtime-four-flags-vectors.bin
+            adb shell /data/local/tmp/mfrk_ui_runtime_layout_tests layout-flags /data/local/tmp/runtime-four-flags-vectors.bin
+            adb push core/tests/fixtures/parent-four-flags-vectors.bin /data/local/tmp/parent-four-flags-vectors.bin
+            adb shell /data/local/tmp/mfrk_ui_runtime_layout_tests event-flags /data/local/tmp/parent-four-flags-vectors.bin
+            adb shell /data/local/tmp/mfrk_ui_runtime_layout_guard_tests
       - name: Compare generated Android table bytes
         run: python3 tools/check_basic_wave_tables.py --dump build-x86_64/basic-wave-tables.bin --expected core/tests/basic_wave_table_hashes.json
