@@ -1,0 +1,279 @@
+{
+  "schema": 1,
+  "original_package_provenance": {
+    "target_sha256": "354c26c58e4c8c671b50f88d070452b47c9cd6b6505b1ea18391724929b3d19e",
+    "target_preferred_image_base": "0x180000000",
+    "source_index": "native-ui-source/source-index-v2.json",
+    "source_bundle": "native-ui-source/native-ui-source-004.bundle.json",
+    "original_evidence": [
+      {
+        "kind": "center",
+        "source_span": "0x180f64300..before0x180f643f3",
+        "original_observation": "native-ui-source/center-geometry-native-probes.json",
+        "original_probe": "native-ui-source/probe_center_geometry.py",
+        "original_observation_sha256": "7bac2f1ae2ef75fe7fbee13e628a739b8221795d21356fb4f373fd469c2b807f",
+        "original_probe_sha256": "b7669ab8a2cf103acc24b1eb55f768f31261e7d0adce163b22e5a0b3f70ded5d"
+      },
+      {
+        "kind": "trig",
+        "source_span": "0x1814dd3e0; ordinary0x1814de180/0x1814deac0",
+        "original_observation": "native-ui-source/packed-trig-unit-native-probes.json",
+        "original_probe": "native-ui-source/probe_packed_trig.py",
+        "original_observation_sha256": "8a5cca70d90eb025320e1b47831dc5f72a03ae5c6dbda5d8abcdccf8c1536b6d",
+        "original_probe_sha256": "6e874e459d5880c924ee0dde16717ed8bc6486339d88d97eb07624d1af77b48c"
+      },
+      {
+        "kind": "gradient",
+        "source_span": "0x180f64500..before0x180f64862",
+        "original_observation": "native-ui-source/outline-gradient-native-probes.json",
+        "original_probe": "native-ui-source/probe_outline_gradient.py",
+        "original_observation_sha256": "8146a5b39ebc244fc2be62864b3434ba7fc00931fca2491ce6ee33a7eb8efce5",
+        "original_probe_sha256": "1fa36edd7cab6cfacd8a47798315d4dae1dee4e7aa3767d79b79e0c8cd160412"
+      },
+      {
+        "kind": "marker",
+        "source_span": "0x180f64f80..before0x180f650d0",
+        "original_observation": "native-ui-source/marker-geometry-native-probes.json",
+        "original_probe": "native-ui-source/probe_marker_geometry.py",
+        "original_observation_sha256": "6280b4e17701bee194b40cd5b1643d0b18fede249e5189db7fc6babdbef46082",
+        "original_probe_sha256": "4c2935b3eee9181218a618acddbd1784e486bed00f51cd83ccfc8348be53856b"
+      },
+      {
+        "kind": "magnetic",
+        "source_span": "0x180f59930 matching-param/non-wrapping",
+        "original_observation": "native-ui-source/magnetic-delta-native-probes.json",
+        "original_probe": "native-ui-source/probe_magnetic_delta.py",
+        "original_observation_sha256": "57dd8141387347c24cd2c614bb95ac2513048c37c98c317da8a0d2c669b1cfaf",
+        "original_probe_sha256": "3a96f9b8cda61db50f136d49e6480fba4547cae52af7f42dfc3f8a587ce103cc"
+      },
+      {
+        "kind": "flex",
+        "source_span": "0x181071293..before0x1810712e1",
+        "original_observation": "native-ui-source/flex-edge-native-probes.json",
+        "original_probe": "native-ui-source/probe_flex_edges.py",
+        "original_observation_sha256": "65144803acb7502e7022754c101d7cd936f75515832b3ee219b609a81512a9ad",
+        "original_probe_sha256": "a2223b7a13aaba6037e2df9acae50cd7ee198a82cdfc4b08fd63fd315d50f4a0"
+      },
+      {
+        "kind": "scaled",
+        "source_span": "0x180b89110/0x180b89200 scaled-absolute branch",
+        "original_observation": "native-ui-source/scaled-dimension-native-probes.json",
+        "original_probe": "native-ui-source/probe_scaled_dimension.py",
+        "original_observation_sha256": "e8afbca61438099bae2bac2f2e2ae7d84b09bb64cc5d23a9153830ce0dc794f6",
+        "original_probe_sha256": "d53ae7aea968ba7fc282696f7232df903441be94e7ad8161051ef9d8ec2850b2"
+      }
+    ],
+    "fixtures": [
+      {
+        "kind": "center",
+        "filename": "center_geometry_vectors.bin",
+        "magic": "UICG0001",
+        "count": 40,
+        "bytes": 1772,
+        "sha256": "ad94929867e5e140147a50d585ca2de5f3161c917db21eaea7f121dc2a68e6ec",
+        "crc32": 2587262352
+      },
+      {
+        "kind": "trig",
+        "filename": "native_packed_trig_vectors.bin",
+        "magic": "UIPT0001",
+        "count": 37056,
+        "bytes": 444684,
+        "sha256": "7a6342a100db3470c1db788db8561c6242e58ecaa73592e44d10be1916a66060",
+        "crc32": 176816159
+      },
+      {
+        "kind": "gradient",
+        "filename": "outline_gradient_vectors.bin",
+        "magic": "UIGR0001",
+        "count": 40,
+        "bytes": 1452,
+        "sha256": "c9aecf2993625eaadb3034654c9bdb805d7255a91ffd63cb8cdea6217bf6d5c5",
+        "crc32": 3516233862
+      },
+      {
+        "kind": "marker",
+        "filename": "marker_geometry_vectors.bin",
+        "magic": "UIMK0001",
+        "count": 80,
+        "bytes": 3212,
+        "sha256": "cef1d4b193af17f99d609de38fa3199cb44409f4ac407f01b945d80d4d1b4a48",
+        "crc32": 3826097377
+      },
+      {
+        "kind": "magnetic",
+        "filename": "magnetic_mapping_vectors.bin",
+        "magic": "UIMM0001",
+        "count": 648,
+        "bytes": 41700,
+        "sha256": "c580f61b37fd1505ace533336f5b47d0a1adda7b1dcd9abb131737eacaae81cd",
+        "crc32": 2211344182
+      },
+      {
+        "kind": "flex",
+        "filename": "flex_edge_vectors.bin",
+        "magic": "UIFE0001",
+        "count": 270,
+        "bytes": 8652,
+        "sha256": "f51aa78bf24fffc238640519f3f757711bc0fa6efb191b534a6e5cce78208fab",
+        "crc32": 264175537
+      },
+      {
+        "kind": "scaled",
+        "filename": "scaled_dimension_vectors.bin",
+        "magic": "UIDM0001",
+        "count": 176,
+        "bytes": 2828,
+        "sha256": "c778631db5116a7bb8732e0d226c2178b26dbabab2e58cc2279bcdbfd79be31b",
+        "crc32": 1516649240
+      }
+    ],
+    "adaptation": "Namespace/declaration/linkage/public packed function name only; all original numerical bodies preserved.",
+    "scope": "Admitted UI math primitives only; no raster/fullscene/pointerlifecycle/wholeinstrument/runtimeAndroid parity claim.",
+    "source_bundle_sha256": "8b0adf3cc3c9571766f6cbb32fdf1691d8fe98d77651ecb1be809d2070384ad3",
+    "bulk_capture_packed_trig_gold.py": {
+      "original_path": "native-ui-source/capture_packed_trig_gold.py",
+      "sha256": "de4e5fac05d814f1dfc273abe7a59577685cf5f340bb5bc9f4edc7f62910722e"
+    },
+    "bulk_packed-trig-fixture-manifest.json": {
+      "original_path": "native-ui-source/packed-trig-fixture-manifest.json",
+      "sha256": "07f90d966c98c24a752af3871f51209fad73471dc2f82f4c749188399630581f"
+    }
+  },
+  "body_adaptation": {
+    "source_sha256": "354c26c58e4c8c671b50f88d070452b47c9cd6b6505b1ea18391724929b3d19e",
+    "changes": "Public namespace/declarations, implementation linkage and evaluate function name only. All numerical function bodies byte-identical to original candidate source bodies.",
+    "functions": [
+      {
+        "original_header": "center_geometry.hpp",
+        "original_function": "interpolated_center_bounds",
+        "body_sha256": "7ce7e6f7f98c5cfbf18a785e196c2263e1214948b0027c9fb187eb74826b121e"
+      },
+      {
+        "original_header": "native_packed_trig.hpp",
+        "original_function": "value",
+        "body_sha256": "71158a13a98d8613e3c184ef385f0d07cb1312519191f87743b07bb4a8b9b1cd"
+      },
+      {
+        "original_header": "native_packed_trig.hpp",
+        "original_function": "lane",
+        "body_sha256": "32da32844d36761f1e35bbfd301e4b332363a32c6a2970b328920359262bc0b9"
+      },
+      {
+        "original_header": "native_packed_trig.hpp",
+        "original_function": "evaluate",
+        "body_sha256": "5df09efed3c453003c1dbfb25ef0108afd7bd3e11a1708b9dcbea663424c6e98"
+      },
+      {
+        "original_header": "outline_gradient.hpp",
+        "original_function": "outline_gradient_points",
+        "body_sha256": "296f98dbf42593fa20dfec67f3025766e6c917ed91b0acf5f6b1b0b0e4f720ca"
+      },
+      {
+        "original_header": "marker_geometry.hpp",
+        "original_function": "center_marker_points",
+        "body_sha256": "96bc6c30221a8c86d6b0bcdeff86db0d2ffc9ba867503ab51941cf3e80624fe0"
+      },
+      {
+        "original_header": "magnetic_mapping.hpp",
+        "original_function": "zone_for_value",
+        "body_sha256": "cbcf48394ade394f0cfa5d43ada4cadc9603723adfaf5d6125d0b7ab63f0ff36"
+      },
+      {
+        "original_header": "magnetic_mapping.hpp",
+        "original_function": "magnetic_delta",
+        "body_sha256": "d07ae5dd9ec1b842889a798f626c76f84bcc1a7cec01112ff3bd6588d9095cdd"
+      },
+      {
+        "original_header": "flex_edges.hpp",
+        "original_function": "quantize_flex_edges",
+        "body_sha256": "0e1d9fe9d248f10fec80bc8922d10ecdbd4e792e5c1d817e8ef7eb11604472a1"
+      },
+      {
+        "original_header": "scaled_dimension.hpp",
+        "original_function": "scaled_absolute_dimension",
+        "body_sha256": "a03ab06a2216eb9327cfdd63f042a06720f8879bbf879f1212e8c8797fa9260a"
+      }
+    ]
+  },
+  "root_adaptation": "C++/documentation CRLF-to-LF only; public header comments additionally state gradual-underflow/masked-exception profile. All10 numerical bodies unchanged. Root CMake builds STATIC PIC UI module with IPOdisabled and strictprivateFP; eight checks added to existinghost/Android workflow.",
+  "independent_review": {
+    "original_fixture_reproduction": "All7 original unchanged instruction probes freshly rerun; direct fixture bytes or independent original-JSON projections identical.",
+    "extra_original_geometry_cases": 30,
+    "extra_original_magnetic_cases": 1728,
+    "extra_magnetic_fixture_sha256": "e61620edcc04e64a73ef93fb0ed9f0695220566b957b41847eda3951a63a1942",
+    "isolated_release_ctest": 8,
+    "altered_files_rejected": 49,
+    "domain_boolean_guards_rejected": 15,
+    "semantic_mutants_rejected": 7,
+    "mutant_case_mismatches": [
+      25,
+      32374,
+      32,
+      80,
+      409,
+      230,
+      4
+    ],
+    "integrated_host_release_ctest": 37,
+    "scope": "Original bounded UI math only, no full rendering/input/scene/font/standalone parity or target-platform assumption."
+  },
+  "repository_files": {
+    "core/include/mfrk/ui.hpp": {
+      "bytes": 2978,
+      "sha256": "a110f6c09a8d08699db4580d5e4d48b900246c5af1be4a73d93f2f49f0560fd2"
+    },
+    "core/src/ui_primitives.cpp": {
+      "bytes": 7989,
+      "sha256": "c4abe5b5d2a5121045d95d072c65f431a786b54a344f28a7912b114170178529"
+    },
+    "core/tests/fixtures/center_geometry_vectors.bin": {
+      "bytes": 1772,
+      "sha256": "ad94929867e5e140147a50d585ca2de5f3161c917db21eaea7f121dc2a68e6ec"
+    },
+    "core/tests/fixtures/flex_edge_vectors.bin": {
+      "bytes": 8652,
+      "sha256": "f51aa78bf24fffc238640519f3f757711bc0fa6efb191b534a6e5cce78208fab"
+    },
+    "core/tests/fixtures/magnetic_mapping_vectors.bin": {
+      "bytes": 41700,
+      "sha256": "c580f61b37fd1505ace533336f5b47d0a1adda7b1dcd9abb131737eacaae81cd"
+    },
+    "core/tests/fixtures/marker_geometry_vectors.bin": {
+      "bytes": 3212,
+      "sha256": "cef1d4b193af17f99d609de38fa3199cb44409f4ac407f01b945d80d4d1b4a48"
+    },
+    "core/tests/fixtures/native_packed_trig_vectors.bin": {
+      "bytes": 444684,
+      "sha256": "7a6342a100db3470c1db788db8561c6242e58ecaa73592e44d10be1916a66060"
+    },
+    "core/tests/fixtures/outline_gradient_vectors.bin": {
+      "bytes": 1452,
+      "sha256": "c9aecf2993625eaadb3034654c9bdb805d7255a91ffd63cb8cdea6217bf6d5c5"
+    },
+    "core/tests/fixtures/scaled_dimension_vectors.bin": {
+      "bytes": 2828,
+      "sha256": "c778631db5116a7bb8732e0d226c2178b26dbabab2e58cc2279bcdbfd79be31b"
+    },
+    "core/tests/ui_fixture_domains.hpp": {
+      "bytes": 3423,
+      "sha256": "bf87c171dc022f84550d85c225995c882e13f785e478c1d3a9fbf8effb002b99"
+    },
+    "core/tests/ui_fixture_guard_test.cpp": {
+      "bytes": 1940,
+      "sha256": "3beccafa48414cbe138b358db20dd2048eb907d4c00f170dade9f2d2a56d8442"
+    },
+    "core/tests/ui_fixture_identity.hpp": {
+      "bytes": 2007,
+      "sha256": "2d204a6537dba7efb882aab1ef54bfa5752fdae5dc0971d7cff07836537de970"
+    },
+    "core/tests/ui_fixture_reader.hpp": {
+      "bytes": 4803,
+      "sha256": "73708591ab6f88e8259a2bf9085fdfad9f4b2f7994d4831716c4ee1ad4898455"
+    },
+    "core/tests/ui_primitives_test.cpp": {
+      "bytes": 3234,
+      "sha256": "34da1f1c954a04196da46133e989063a387db26ba1fa53c610641fff64000e9a"
+    }
+  }
+}

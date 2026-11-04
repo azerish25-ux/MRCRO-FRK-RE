@@ -375,3 +375,12 @@ private API, original body/fixture identity, guards and wiring review approved
 this scope. [Target validation](../docs/waveshaper/remote-validation.json) retains
 the exact commit/job results. The surrounding oscillator/voice/preset/audio graph
 remains required.
+
+## Source-derived UI math backend
+
+`mfrk_ui` is a separate strict-FP static library containing seven original UI
+math primitives, with out-of-line implementation and immutable source-gold
+fixtures. It preserves center/gradient/marker geometry, packed trig, magnetic
+drag mapping and dimension/edge quantization. [Scope and validation](../docs/ui-primitives.md)
+records exact admission, evidence and platform results. These functions do not
+implement the full renderer, scene, typography or touch-event lifecycle.

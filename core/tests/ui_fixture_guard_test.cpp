@@ -1,0 +1,9 @@
+#include "ui_fixture_reader.hpp"
+#include "ui_fixture_domains.hpp"
+#include <iostream>
+#include <limits>
+using namespace mfrk::ui::test;
+int main(){try{unsigned rejected=0;auto bad=[&](auto f){try{f();}catch(const std::exception&){++rejected;return;}throw std::runtime_error("invalid-domain fixture admitted");};const float nan=std::bit_cast<float>(0x7fc00001u);bad([&]{trig_argument(nan);});bad([&]{trig_argument(64.0001f);});bad([&]{center_domain(-1,1,{1,1,1,1,0});});bad([&]{center_domain(1,1,{1,nan,1,1,0});});bad([&]{marker_domain(1,1,{.5f,2,0,.5f});});bad([&]{gradient_domain(1,1,{2.4f,2.4f,100});});bad([&]{scaled_domain(1,std::numeric_limits<double>::infinity());});bad([&]{scaled_domain(1,2147483648.);});bad([&]{scaled_domain(-1,1);});bad([&]{flex_domain({2147483648.f,0,0,0});});bad([&]{flex_domain({-2147483648.f,0,4294967040.f,0});});bad([&]{flex_domain({nan,0,0,0});});bad([&]{std::array<mfrk::ui::MagneticZone,2>z{{{.5f,1,.5f,1,false},{0,.5f,0,.5f,false}}};magnetic_domain(z,.5f,0);});bad([&]{std::array<mfrk::ui::MagneticZone,1>z{{{0,1,nan,1,false}}};magnetic_domain(z,.5f,0);});
+ // Guard binary boolean parsing even when test-only identity matches a constructed input.
+ bad([&]{std::vector<std::uint8_t>data{'G','U','A','R','D','0','0','1',1,0,0,0,2};Identity id{"guard","","GUARD001",1,data.size(),crc32(data),sha256(data)};Reader r(data,id);r.flag();});
+ const std::array<std::uint8_t,3>abc{'a','b','c'};const std::array<std::uint8_t,32>sha_abc{0xba,0x78,0x16,0xbf,0x8f,0x01,0xcf,0xea,0x41,0x41,0x40,0xde,0x5d,0xae,0x22,0x23,0xb0,0x03,0x61,0xa3,0x96,0x17,0x7a,0x9c,0xb4,0x10,0xff,0x61,0xf2,0x00,0x15,0xad};require(sha256(abc)==sha_abc,"SHA256 known vector");require(crc32(abc)==0x352441c2u,"CRC32 known vector");std::cout<<rejected<<" invalid-domain/boolean guards rejected before backend calls; identity known vectors pass\n";return rejected==15?0:1;}catch(const std::exception&e){std::cerr<<e.what()<<'\n';return 2;}}
