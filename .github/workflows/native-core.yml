@@ -76,3 +76,9 @@ jobs:
             adb push build-x86_64/mfrk_vanalog_output_tests /data/local/tmp/mfrk_vanalog_output_tests
             adb shell chmod 755 /data/local/tmp/mfrk_vanalog_output_tests
             adb shell /data/local/tmp/mfrk_vanalog_output_tests
+            adb push build-x86_64/mfrk_basic_tables_dump /data/local/tmp/mfrk_basic_tables_dump
+            adb shell chmod 755 /data/local/tmp/mfrk_basic_tables_dump
+            adb shell /data/local/tmp/mfrk_basic_tables_dump /data/local/tmp/basic-wave-tables.bin
+            adb pull /data/local/tmp/basic-wave-tables.bin build-x86_64/basic-wave-tables.bin
+      - name: Compare generated Android table bytes
+        run: python3 tools/check_basic_wave_tables.py --dump build-x86_64/basic-wave-tables.bin --expected core/tests/basic_wave_table_hashes.json

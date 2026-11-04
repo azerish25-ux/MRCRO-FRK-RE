@@ -3,7 +3,7 @@ project(mfrk_core VERSION 0.1.0 LANGUAGES CXX)
 
 add_library(mfrk_core STATIC core/src/pitch.cpp core/src/virtual_analog.cpp
     core/src/linear_upsampler.cpp core/src/virtual_analog_controls.cpp
-    core/src/virtual_analog_oscillator.cpp)
+    core/src/virtual_analog_oscillator.cpp core/src/basic_wave_tables.cpp)
 target_include_directories(mfrk_core PUBLIC core/include)
 target_include_directories(mfrk_core PRIVATE third_party)
 # Upstream stmlib's TEST path selects portable helpers instead of Cortex-M assembly.
@@ -33,4 +33,14 @@ if(BUILD_TESTING)
     add_executable(mfrk_vanalog_output_tests core/tests/virtual_analog_oscillator_test.cpp)
     target_link_libraries(mfrk_vanalog_output_tests PRIVATE mfrk_core)
     add_test(NAME original_vanalog_output COMMAND mfrk_vanalog_output_tests)
+    add_executable(mfrk_basic_tables_dump core/tests/basic_wave_tables_dump.cpp)
+    target_link_libraries(mfrk_basic_tables_dump PRIVATE mfrk_core)
+    if(NOT ANDROID)
+        find_package(Python3 REQUIRED COMPONENTS Interpreter)
+        add_test(NAME original_basic_wave_tables
+            COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tools/check_basic_wave_tables.py
+                --dump-program $<TARGET_FILE:mfrk_basic_tables_dump>
+                --dump ${CMAKE_CURRENT_BINARY_DIR}/basic-wave-tables.bin
+                --expected ${CMAKE_CURRENT_SOURCE_DIR}/core/tests/basic_wave_table_hashes.json)
+    endif()
 endif()
