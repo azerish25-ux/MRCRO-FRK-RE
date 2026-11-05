@@ -17,6 +17,8 @@ int main(){
  if(!ingress.feed(2,0,realtime,60)||!ingress.pop(message)||message.timestamp!=60)return 6;
  Ingress concurrent;std::atomic<bool> done=false;std::atomic<bool> failed=false;
  std::thread producer([&]{for(int i=0;i<3000;++i)if(!concurrent.feed(7,1,realtime,i))failed=true;done=true;});
- int next=0;while(!done.load()||next<3000){if(concurrent.pop(message)){if(message.device!=7||message.port!=1||message.timestamp!=next||message.event.status!=0xf8)failed=true;++next;}else if(done.load()&&next<3000){failed=true;break;}}
- producer.join();if(failed||next!=3000||concurrent.recover_overflow())return 7;
+ int next=0;auto consume=[&]{if(message.device!=7||message.port!=1||message.timestamp!=next||message.event.status!=0xf8)failed=true;++next;};
+ while(!done.load()){if(concurrent.pop(message))consume();}
+ producer.join();while(concurrent.pop(message))consume();
+ if(failed||next!=3000||concurrent.recover_overflow())return 7;
 }
