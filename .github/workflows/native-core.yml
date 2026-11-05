@@ -141,6 +141,28 @@ jobs:
             adb push core/tests/harmo_lifecycle_vectors.bin /data/local/tmp/harmo_lifecycle_vectors.bin
             adb shell chmod 755 /data/local/tmp/mfrk_harmo_lifecycle_tests
             adb shell /data/local/tmp/mfrk_harmo_lifecycle_tests /data/local/tmp/harmo_lifecycle_vectors.bin
+            adb push build-x86_64/mfrk_karplus_tests /data/local/tmp/mfrk_karplus_tests
+            adb push core/tests/karplus_vectors.krzp /data/local/tmp/karplus_vectors.krzp
+            adb shell chmod 755 /data/local/tmp/mfrk_karplus_tests
+            adb shell /data/local/tmp/mfrk_karplus_tests /data/local/tmp/karplus_vectors.krzp
+            adb push build-x86_64/mfrk_karplus_lifecycle_tests /data/local/tmp/mfrk_karplus_lifecycle_tests
+            adb push core/tests/karplus_lifecycle_vectors.krzp /data/local/tmp/karplus_lifecycle_vectors.krzp
+            adb shell chmod 755 /data/local/tmp/mfrk_karplus_lifecycle_tests
+            adb shell /data/local/tmp/mfrk_karplus_lifecycle_tests /data/local/tmp/karplus_lifecycle_vectors.krzp
+            adb push build-x86_64/mfrk_karplus_import_tests /data/local/tmp/mfrk_karplus_import_tests
+            adb push core/tests/karplus_import_vectors.bin /data/local/tmp/karplus_import_vectors.bin
+            adb shell chmod 755 /data/local/tmp/mfrk_karplus_import_tests
+            adb shell /data/local/tmp/mfrk_karplus_import_tests /data/local/tmp/karplus_import_vectors.bin
+            adb push build-x86_64/mfrk_karplus_status_tests /data/local/tmp/mfrk_karplus_status_tests
+            adb shell chmod 755 /data/local/tmp/mfrk_karplus_status_tests
+            adb shell /data/local/tmp/mfrk_karplus_status_tests
+            adb push build-x86_64/mfrk_karplus_allocation_tests /data/local/tmp/mfrk_karplus_allocation_tests
+            adb shell chmod 755 /data/local/tmp/mfrk_karplus_allocation_tests
+            adb shell /data/local/tmp/mfrk_karplus_allocation_tests
+            adb push build-x86_64/mfrk_karplus_counter_tests /data/local/tmp/mfrk_karplus_counter_tests
+            adb push core/tests/karplus_counter_vectors.krzp /data/local/tmp/karplus_counter_vectors.krzp
+            adb shell chmod 755 /data/local/tmp/mfrk_karplus_counter_tests
+            adb shell /data/local/tmp/mfrk_karplus_counter_tests /data/local/tmp/karplus_counter_vectors.krzp
             adb push build-x86_64/mfrk_notepath_tests /data/local/tmp/mfrk_notepath_tests
             adb push core/tests/notepath_vectors.bin /data/local/tmp/notepath_vectors.bin
             adb shell chmod 755 /data/local/tmp/mfrk_notepath_tests

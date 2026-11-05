@@ -407,3 +407,15 @@ resize/guarded-child protocol. [Scope and validation](../docs/ui-runtime-layout.
 describes exact original references and source-justified admission expansion.
 It does not implement arbitrary feature dispatch, full scene construction or
 widget rendering.
+
+
+## KarplusStr oscillator
+
+`karplus::Engine` implements the original type3 integer exciter/string model at
+32 frames / 96 kHz, with caller-owned persistent memory and shared random state.
+Its 8440 original blocks, 854 lifecycle commands, 720 counter-boundary blocks
+and 6139 import returns match locally, together with all 552 generated table
+words. The source phase position is unsigned; raw reset/phase setters are no-ops.
+Construction, pending binding, domain guards and owner-sharing limits are explicit
+in the [reference contract](../docs/karplus-reference.md). The full native slot
+owner and Harmo shared delay integration remain required.

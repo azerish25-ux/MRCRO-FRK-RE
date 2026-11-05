@@ -1,0 +1,80 @@
+{
+  "source_processor_sha256": "bd036dfa6a0afcfef733c29c73b1b3df969f2c86ca860b0fa535d4492fa8fb74",
+  "method": "Unchanged original processor instructions executed offline; actual SHA-pinned SystemUCRT imports, no native vendor DLL load, no candidate-derived expected outputs.",
+  "model": 3,
+  "frames": 32,
+  "sample_rate": 96000,
+  "entries": {
+    "initialize": "0x2c3f90",
+    "prepare": "0x2c3ed0",
+    "raw": "0x2c3e50",
+    "scaled": "0x2c3d20",
+    "pitch": "0x2c3ca0",
+    "trigger": "0x2c3cd0",
+    "bind": "0x2c3430",
+    "core": "0x333800",
+    "exciter": "0x333a60",
+    "string": "0x3342d0",
+    "reset_phase_noop": "0x2a3390"
+  },
+  "constructor": {
+    "object_bytes": 288,
+    "written_bytes": 173,
+    "unwritten_bytes": 115,
+    "admission": "Explicit zero preconstructor arena; actual caller Memory contents and shared RNG supplied independently. Native constructor does not imply zeroing."
+  },
+  "ownership": {
+    "rings": "Two4096 signed16 rings in caller-owned8192-word Memory",
+    "rng": "One owner-shared module LCG, not automatically reset per voice",
+    "binding": "Opaque source state labels never dereferenced; actual fixed storage is borrowed at construction. Pending bind commits on initialize.",
+    "selection": "Actual owner has persistent model bank per voice/side and a fixed16KiB slot resource. Model reset/phase are no-ops; whole-slot reset additionally clears resource. Shared-slot Harmo adaptation and owner graph remain separate work."
+  },
+  "math": {
+    "sine": "Central full-finite identified UCRT FMA source profile",
+    "exp2": "Source UCRT RVA0x79a70 dispatcher&3==3, finite[-64,64], RN-even, separate double multiply/add (no implicit contraction)",
+    "tables": "552 signed32 mathematical coefficients generated from original pow/tan expression order, all compared against original; target verification required",
+    "fenv": "Nearest rounding, masked exceptions, gradual underflow. No errno/fenv side effects or alternative dispatcher branch parity."
+  },
+  "counter": {
+    "phase": "Zero-extended uint32→float, modular32 increments",
+    "remaining": "Signed modular32 subtraction/clamp",
+    "tests": "Injected counter anchors around0x80000000 and0xffffffff after80 original warm blocks; not a claim of full12/24-hour histories",
+    "duration": "No prior finite-sine magnitude ceiling under normal pitch inputs. Nonfinite intermediate sine arguments return explicit math-domain failure."
+  },
+  "gold": [
+    {
+      "file": "core/tests/karplus_vectors.krzp",
+      "bytes": 4892337,
+      "sha256": "48f5f724d391d83950d633c8e600a6222c0e21a46b5b55371e861d8420135d6c"
+    },
+    {
+      "file": "core/tests/karplus_lifecycle_vectors.krzp",
+      "bytes": 380055,
+      "sha256": "ff64ed04f3a5a7f8bf65b2e157a6c8de3d3f0d8a146ad5321614d9dcda204888"
+    },
+    {
+      "file": "core/tests/karplus_import_vectors.bin",
+      "bytes": 55263,
+      "sha256": "a4beaedf3b353cbe548ea4bcdb93168543419c74f119c7dd9b78e0c8bfe968ee"
+    },
+    {
+      "file": "core/tests/karplus_counter_vectors.krzp",
+      "bytes": 567812,
+      "sha256": "a65c97e1841fe1d129179820d8e6839a8f75f6c9002ef1712b8a4a43de834b88"
+    }
+  ],
+  "observations": {
+    "main_blocks": 8440,
+    "main_samples": 270080,
+    "lifecycle_commands": 854,
+    "lifecycle_rendered_blocks": 404,
+    "counter_blocks": 720,
+    "counter_samples": 23040,
+    "original_import_returns": 6139,
+    "release_rollback_admission_checks": 7,
+    "allocation_render_blocks": 2048,
+    "dynamic_allocations": 0
+  },
+  "host_verification": "All57 Release CTests passed; independent strict private adaptation allsix corpora passed",
+  "remaining": "Common slot owner/resource sharing, native pitch and complete voice/effects/modulation graph, Android audio/UI/MIDI and whole preset parity. This component is not a complete standalone app."
+}
