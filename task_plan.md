@@ -100,7 +100,8 @@ Scene expression/property/geometry producers are merged and Linux/Android verifi
 Native numeric slot pitch is merged and Linux/Android verified (03a7e7f).
 Master audio processing is merged and Linux/Android verified (c8c3e7b).
 Native XML/style data front end is merged and Linux/Android verified (f7ab26c).
-Join actual upstream pitch/control/model dispatch/mixer, scoped scene lowering and full factory/paint/touch lifecycle;
+Genuine Bass-to-common-voice audio prefix is merged and Linux/Android verified (00750c2).
+Join persistent all-model bank lifecycle/upstream controllers/filters/rate/master, scoped scene lowering and full factory/paint/touch lifecycle;
 continue the actual native common voice/control/audio graph. Runtime resizev2,
 full/nested Flex, seven UI primitives and Waveshaper have Linux/Android evidence.
 Complete original scene bindings/rendering and gestures, native preset defaults/version/custom migrations, and the full
