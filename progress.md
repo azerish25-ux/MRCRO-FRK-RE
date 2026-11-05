@@ -270,3 +270,17 @@
 - Nextactualsourceintegration: sceneconstruction/property/named-expression
   pipeline, fullfiniteKarplus/sharedowner and actualcommonvoice/audio graph.
   Whole app/fullUI/touch/MIDI/preset sound scope remains active and incomplete.
+
+- Corrected NotePathcaller example/header/docs using originalMiniProcess2f3760:
+  sequence/control first, countconsumer onlyifnonzero, finish-control boundary
+  BEFORE postseqfanout/MNFvoiceaudio. Priorwording conflatedMNFSequencer/MNFEngine.
+ 20byteallocatorrows,24byteMIDI-formattedpackets,20bytepostseqevents staydistinct.
+- RegressiontestRED exit4 oldordering; fixedhelperGREEN3NotePath/all50Release,
+  independentlysource-reviewed/compiled. Exact873f38e run41938151985passes50Linux
+  andAndroidx86_64allrefs/actor-flow, bothABIscompile. Actor numeric/statecode and
+  originalgoldunchanged. Originalprivatehashes retainedashistorical; newowner
+  schedule/sourcebytes/currentfilehashes areexplicitinnotepath_provenance.json.
+- Fulloriginalnativeaudio graphreference now640external16frame blocks/8supported
+  profiles, finite/nonzero finalchannels, noDSPmodels andactualpinnedUCRTmath.
+  Thisisprivateoriginaloracleevidence, NOT integratedCppparity orfactorydefaults;
+  neutralcontrols suppliedexplicitly throughactualsetters. Commongraphportnext.

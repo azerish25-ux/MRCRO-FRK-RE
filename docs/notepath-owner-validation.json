@@ -1,0 +1,35 @@
+{
+  "schema": 1,
+  "commit": "873f38e17d7e2308dbd23fd1d07ca00a7249880a",
+  "run_id": 41938151985,
+  "run_url": "https://github.com/azerish25-ux/MRCRO-FRK-RE/actions/runs/41938151985",
+  "linux": {
+    "job_id": 126951774992,
+    "conclusion": "success",
+    "ctest_passed": 50,
+    "ctest_failed": 0
+  },
+  "android": {
+    "job_id": 126951958068,
+    "conclusion": "success",
+    "compiled_abis": [
+      "arm64-v8a",
+      "x86_64"
+    ],
+    "runtime_abi": "x86_64",
+    "api_level": 35,
+    "actor_flow_regression": "passed"
+  },
+  "regression": {
+    "old_helper_exit": 4,
+    "local_notepath_checks_passed": 3,
+    "independent_source_contract_review": "wave_tables compiled strict Release actor-flow exit0 and checked original2f3760 order"
+  },
+  "source_order": [
+    "sequencer/control work and immediate publication handoff",
+    "conditional note-count consumer",
+    "finish_control_block",
+    "remaining owner continuation: postseq event fanout and main MNF audio"
+  ],
+  "limits": "Caller/example ordering fix; NotePath numerical/state implementation and reference gold unchanged. Not full owner graph, MIDI transport, full sound or standalone app completion."
+}
