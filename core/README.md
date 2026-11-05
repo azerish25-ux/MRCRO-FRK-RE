@@ -430,3 +430,13 @@ retains its owned initialized profile. The continuous original regression covers
 with zero state/memory/seed/raw/audio differences locally. See the
 [shared-slot contract](../docs/shared-slot-reference.md) for constructor, Init,
 reset, pointer-role normalization and the remaining full-slot integration scope.
+
+
+## Native scene data producers
+
+`mfrk::ui::scene` preserves original expression, alias, property and initial
+geometry semantics, composing the reviewed runtime geometry and Flex item types.
+Eleven original corpora cover7582 cases, with explicit finite-field versus
+nonfinite-control domains and strict source-reader order. See the
+[scene contract](../docs/ui-scene-prefix.md) for inputs and remaining full
+scene/widget/event/paint/touch work.

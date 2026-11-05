@@ -242,5 +242,38 @@ jobs:
             adb push core/tests/fixtures/parent-four-flags-vectors.bin /data/local/tmp/parent-four-flags-vectors.bin
             adb shell /data/local/tmp/mfrk_ui_runtime_layout_tests event-flags /data/local/tmp/parent-four-flags-vectors.bin
             adb shell /data/local/tmp/mfrk_ui_runtime_layout_guard_tests
+            adb push build-x86_64/mfrk_ui_scene_attributes /data/local/tmp/mfrk_ui_scene_attributes
+            adb shell chmod 755 /data/local/tmp/mfrk_ui_scene_attributes
+            adb push build-x86_64/mfrk_ui_scene_geometry /data/local/tmp/mfrk_ui_scene_geometry
+            adb shell chmod 755 /data/local/tmp/mfrk_ui_scene_geometry
+            adb push build-x86_64/mfrk_ui_scene_controls /data/local/tmp/mfrk_ui_scene_controls
+            adb shell chmod 755 /data/local/tmp/mfrk_ui_scene_controls
+            adb push build-x86_64/mfrk_ui_scene_expressions /data/local/tmp/mfrk_ui_scene_expressions
+            adb shell chmod 755 /data/local/tmp/mfrk_ui_scene_expressions
+            adb push build-x86_64/mfrk_ui_scene_guards /data/local/tmp/mfrk_ui_scene_guards
+            adb shell chmod 755 /data/local/tmp/mfrk_ui_scene_guards
+            adb push core/tests/fixtures/property-pipeline-vectors.bin /data/local/tmp/property-pipeline-vectors.bin
+            adb shell /data/local/tmp/mfrk_ui_scene_attributes properties /data/local/tmp/property-pipeline-vectors.bin
+            adb push core/tests/fixtures/attribute-number-vectors.bin /data/local/tmp/attribute-number-vectors.bin
+            adb shell /data/local/tmp/mfrk_ui_scene_attributes numbers /data/local/tmp/attribute-number-vectors.bin
+            adb push core/tests/fixtures/if-decision-vectors.bin /data/local/tmp/if-decision-vectors.bin
+            adb shell /data/local/tmp/mfrk_ui_scene_attributes conditions /data/local/tmp/if-decision-vectors.bin
+            adb push core/tests/fixtures/string-expansion-vectors.bin /data/local/tmp/string-expansion-vectors.bin
+            adb shell /data/local/tmp/mfrk_ui_scene_attributes strings /data/local/tmp/string-expansion-vectors.bin
+            adb push core/tests/fixtures/geometry-pipeline-vectors.bin /data/local/tmp/geometry-pipeline-vectors.bin
+            adb shell /data/local/tmp/mfrk_ui_scene_geometry /data/local/tmp/geometry-pipeline-vectors.bin
+            adb push core/tests/fixtures/geometry-parent-kinds-vectors.bin /data/local/tmp/geometry-parent-kinds-vectors.bin
+            adb shell /data/local/tmp/mfrk_ui_scene_geometry geometry-kinds /data/local/tmp/geometry-parent-kinds-vectors.bin
+            adb push core/tests/fixtures/control-expression-vectors.bin /data/local/tmp/control-expression-vectors.bin
+            adb shell /data/local/tmp/mfrk_ui_scene_controls /data/local/tmp/control-expression-vectors.bin
+            adb push core/tests/fixtures/expression-vectors.bin /data/local/tmp/expression-vectors.bin
+            adb shell /data/local/tmp/mfrk_ui_scene_expressions arithmetic /data/local/tmp/expression-vectors.bin
+            adb push core/tests/fixtures/logic-expression-vectors.bin /data/local/tmp/logic-expression-vectors.bin
+            adb shell /data/local/tmp/mfrk_ui_scene_expressions logic /data/local/tmp/logic-expression-vectors.bin
+            adb push core/tests/fixtures/product-expression-vectors.bin /data/local/tmp/product-expression-vectors.bin
+            adb shell /data/local/tmp/mfrk_ui_scene_expressions product /data/local/tmp/product-expression-vectors.bin
+            adb push core/tests/fixtures/builtin-expression-vectors.bin /data/local/tmp/builtin-expression-vectors.bin
+            adb shell /data/local/tmp/mfrk_ui_scene_expressions builtins /data/local/tmp/builtin-expression-vectors.bin
+            adb shell /data/local/tmp/mfrk_ui_scene_guards
       - name: Compare generated Android table bytes
         run: python3 tools/check_basic_wave_tables.py --dump build-x86_64/basic-wave-tables.bin --expected core/tests/basic_wave_table_hashes.json

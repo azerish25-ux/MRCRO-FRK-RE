@@ -1,0 +1,11 @@
+# Native scene expression and geometry producers
+
+The UI library now contains the original expression, alias, property and initial geometry producers used by MiniFreak V's scene builder. The compiled implementation keeps source decimal accumulation, eager logic, raw builtin arguments, local/style precedence, condition-specific alias resolution, integer attribute conversion, previous-sibling integer macros and parent-specific property caches. It composes the existing reviewed runtime geometry and Flex item modules.
+
+These details affect the actual UI. VisuContainer y100 and h2.3*PH/5 at PH575 yields integer height264 before the next sibling's offset-y10 produces y374. Matrix conditions require the native zero-division/unordered comparison and conversion-indefinite decisions to skip the both-zero case. Ordinary geometry remains finite; this control decision profile is not a general NaN/FP-status contract.
+
+The unchanged source-instruction corpora contain 7582 cases across11 datasets, including complete property/alias paths, parent kinds, arithmetic, logical expressions, explicit features and joined geometry/spec/item values. All12 new host Release CTests pass alongside the existing58 checks. Fixture readers check exact length, CRC32 and SHA256 before parsing; bounds rejections and unsupported inputs remain explicit. The public header contains declarations and caller-owned typed state; numerical bodies and parser implementation compile privately under strict floating-point flags.
+
+The caller supplies native context, resource-derived intrinsic dimensions, constructor caches and immutable feature state. This module stops at the recovered geometry prefix and numerical registration/item producers. Full XML include/for/with/style inheritance, widget factories, event ownership, localization, paint/fonts/raster and touch gesture lifecycle still require integration. It must not substitute fixed coordinates, platform layout or placeholder widgets for unresolved source behavior.
+
+See the [admission contract](ui-scene-prefix-admission.md), [source order](ui-scene-prefix-source-order.md) and core/tests/ui_scene_prefix_provenance.json. Exact Linux/Android revision results will be recorded after remote validation.

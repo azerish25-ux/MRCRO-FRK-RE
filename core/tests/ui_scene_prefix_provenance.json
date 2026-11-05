@@ -1,0 +1,405 @@
+{
+  "wrapper_sha256": "354c26c58e4c8c671b50f88d070452b47c9cd6b6505b1ea18391724929b3d19e",
+  "scope": "Compiled admitted expression/property/geometry prefix and typed data composition, not full scene/factory/render parity",
+  "entries": {
+    "0x1806c2c30": {
+      "requested_address": "0x1806c2c30",
+      "parent_evidence_id": "ev_d0182902f5c48fea7c6b4c32670d4c93fb9b81b976cbc0e06c9b73b988a01d68",
+      "pseudocode": "pseudocode/0x1806c2c30.c",
+      "batch_file": "rea\\scene-expression-and-bounds-decompile-013.json"
+    },
+    "0x1806b8740": {
+      "requested_address": "0x1806b8740",
+      "parent_evidence_id": "ev_86edcfe8f07f47d07fe2a2af036e18675ac546146be7344b6340459a68d06ee2",
+      "pseudocode": "pseudocode/0x1806b8740.c",
+      "batch_file": "rea\\scene-component-resized-and-decimal-022.json"
+    },
+    "0x1805d2d50": {
+      "requested_address": "0x1805d2d50",
+      "parent_evidence_id": "ev_1d4d696be885378151ae39b5492ca03ace07564fc139c8057c16cf33a46e2b53",
+      "pseudocode": "pseudocode/0x1805d2d50.c",
+      "batch_file": "rea\\scene-string-expansion-recovery-002.json"
+    },
+    "0x1805d2920": {
+      "requested_address": "0x1805d2920",
+      "parent_evidence_id": "ev_1d4d696be885378151ae39b5492ca03ace07564fc139c8057c16cf33a46e2b53",
+      "pseudocode": "pseudocode/0x1805d2920.c",
+      "batch_file": "rea\\scene-string-expansion-recovery-002.json"
+    },
+    "0x180978410": {
+      "requested_address": "0x180978410",
+      "parent_evidence_id": "ev_eda72e7b8ae847b9dc436d6d1d246854a6090d309b36fcd6957a832f2410b4c4",
+      "pseudocode": "pseudocode/0x180978410.c",
+      "batch_file": "rea\\scene-if-string-contract-recovery-004.json"
+    },
+    "0x180622af0": {
+      "requested_address": "0x180622af0",
+      "parent_evidence_id": "ev_e3f9d8310822cad32af24fb78c41ab1a169cad0e783a138f9399b2119eaa66be",
+      "pseudocode": "pseudocode/0x180622af0.c",
+      "batch_file": "rea\\scene-attribute-lookup-and-number-012.json"
+    },
+    "0x180724e20": {
+      "requested_address": "0x180724e20",
+      "parent_evidence_id": "ev_d71b8fc257aa82228cb8dc4d336fbeb40568bbc6d51a7f1d0d0503429a2b02e9",
+      "pseudocode": "pseudocode/0x180724e20.c",
+      "batch_file": "rea\\scene-style-inheritance-and-layout-ctor-038.json"
+    },
+    "0x18072b760": {
+      "requested_address": "0x18072b760",
+      "parent_evidence_id": "ev_aaa80310422b71d7ea610f81ce887d90230a30776b9c5ee16fa65e8f96c1c008",
+      "pseudocode": "pseudocode/0x18072b760.c",
+      "batch_file": "rea\\scene-attribute-context-recovery-001.json"
+    },
+    "0x180b770e0": {
+      "requested_address": "0x180b77143",
+      "parent_evidence_id": "ev_c0b4c1b61c390014a8312b5a6f17d5708ae55b301064eacafc41d243b3c053eb",
+      "pseudocode": "pseudocode/0x180b770e0.c",
+      "batch_file": "rea\\scene-property-readers-decompile-010.json"
+    },
+    "0x180b77560": {
+      "requested_address": "0x180b7ab04",
+      "parent_evidence_id": "ev_d0182902f5c48fea7c6b4c32670d4c93fb9b81b976cbc0e06c9b73b988a01d68",
+      "pseudocode": "pseudocode/0x180b77560.c",
+      "batch_file": "rea\\scene-expression-and-bounds-decompile-013.json"
+    },
+    "0x180b6fa70": {
+      "requested_address": "0x180b6fa70",
+      "parent_evidence_id": "ev_5d3d56c44f2617dc8255622fbb73480f3335dbe6f7fc8da949ad9b10505b7288",
+      "pseudocode": "pseudocode/0x180b6fa70.c",
+      "batch_file": "rea\\scene-child-spec-writers-029.json"
+    },
+    "0x180b892f0": {
+      "requested_address": "0x180b892f0",
+      "parent_evidence_id": "ev_baca9af3bf017e1f1c48e38807837414238ae2d6a3296e8932ee2ef968c38cb3",
+      "pseudocode": "pseudocode/0x180b892f0.c",
+      "batch_file": "rea\\native-flexbox-layout-decompile-001.json"
+    },
+    "0x180b60490": {
+      "requested_address": "0x180b6070a",
+      "parent_evidence_id": "ev_3d28e94fddc7365ca492b44654932d1d75c4f7328240a0db08ca14049fbcc452",
+      "pseudocode": "pseudocode/0x180b60490.c",
+      "batch_file": "rea\\scene-builder-if-owner-recovery-003.json"
+    },
+    "0x18071d7b0": {
+      "requested_address": "0x18071d8ba",
+      "parent_evidence_id": "ev_c368fa95eb764ae37a5d78b215355938385afc521594cdfbb8151fc87db03adf",
+      "pseudocode": "pseudocode/0x18071d7b0.c",
+      "batch_file": "rea\\scene-fill-syntax-owners-recovery-018.json"
+    },
+    "0x180b69330": {
+      "requested_address": "0x180b693d4",
+      "parent_evidence_id": "ev_e657aee00348dbc6aae035f1bf985c43e5562f900a729b33ac62aa0f0bea76c8",
+      "pseudocode": "pseudocode/0x180b69330.c",
+      "batch_file": "rea\\scene-component-field-constructors-recovery-021.json"
+    },
+    "0x180b88a20": {
+      "requested_address": "0x180b88acb",
+      "parent_evidence_id": "ev_e657aee00348dbc6aae035f1bf985c43e5562f900a729b33ac62aa0f0bea76c8",
+      "pseudocode": "pseudocode/0x180b88a20.c",
+      "batch_file": "rea\\scene-component-field-constructors-recovery-021.json"
+    }
+  },
+  "records": [
+    {
+      "path": "../native-ui-source/scene-builder/probe_attribute_numbers.py",
+      "bytes": 9511,
+      "sha256": "bd06a27f392e66dfe66a62278920b9990a7d38e24896c8fd323ae243b19923dd"
+    },
+    {
+      "path": "../native-ui-source/scene-builder/probe_if_directive.py",
+      "bytes": 2749,
+      "sha256": "8123489bbd2cb9f0c4d36096fa03c9159fe605ac6b718b6e58c7dd089ce59bc8"
+    },
+    {
+      "path": "../native-ui-source/scene-builder/probe_string_expansion.py",
+      "bytes": 1901,
+      "sha256": "9269718899316a5310dccfb9f3025b71f72b6dfe5a0401293ede50b103f22623"
+    },
+    {
+      "path": "../native-ui-source/scene-builder/probe_xml_geometry_prefix.py",
+      "bytes": 11006,
+      "sha256": "4eff008489ab77f426dbe902b143eeda2ca714eddf654c96fd06e3fece7cb39a"
+    },
+    {
+      "path": "../native-ui-source/scene-builder/probe_expression_builtins.py",
+      "bytes": 5031,
+      "sha256": "e00dd2126722a13525288dc8251594c8ac529fd85114c8aacd051238e2695d4e"
+    },
+    {
+      "path": "../native-ui-source/scene-builder/probe_named_expression.py",
+      "bytes": 5136,
+      "sha256": "fbcb5f7e024b023adf082b519f6e135ea8716a16b28202fa63b570c9b501f53b"
+    },
+    {
+      "path": "../native-ui-source/scene-builder/probe_item_builder.py",
+      "bytes": 5050,
+      "sha256": "7587346183f35ce3a96acbcd86246ddeb18e00e1005da7f61c703b02612a4cca"
+    },
+    {
+      "path": "../native-ui-source/scene-builder/probe_geometry_spec.py",
+      "bytes": 2730,
+      "sha256": "035391d4bf08027ba25a972616664f07e1cff466b90c4b4f3c1525507decfd23"
+    },
+    {
+      "path": "../native-ui-source/scene-builder/probe_child_resize.py",
+      "bytes": 3784,
+      "sha256": "69f0839bb6329783fd2ba78e0cb8772d2ada7f717877e3c0631e666c4241b88d"
+    },
+    {
+      "path": "../native-ui-source/scene-builder/probe_runtime_geometry.py",
+      "bytes": 2662,
+      "sha256": "b9106e3e3861a1ec615c0192732d4e133ce81b3975e001914fff8a9c85e5926a"
+    },
+    {
+      "path": "../native-ui-source/scene-builder/audit_call_frame_alignment.py",
+      "bytes": 3474,
+      "sha256": "ce21a15977a6a15b4e3f09d4a3b8d0a9a5abf83ce6716b7fc27698817a1605ec"
+    },
+    {
+      "path": "../native-ui-source/scene-builder/original-property-records-gold-v1.json",
+      "bytes": 450248,
+      "sha256": "836e955106fe4eeec1855ab969633a2503d21f040fb20f2f8823e71c0c898e98"
+    },
+    {
+      "path": "../native-ui-source/scene-builder/original-attribute-number-gold-v1.json",
+      "bytes": 14959,
+      "sha256": "f59cca260de970136c311113bbe7969c95e2697cf54ee29f257e8ec457d05ace"
+    },
+    {
+      "path": "../native-ui-source/scene-builder/original-if-decision-gold-v1.json",
+      "bytes": 7009,
+      "sha256": "aef9519f61f5eecf9ad9ecdc875d50ed1ef3c127009c9fb4a40f503771340c08"
+    },
+    {
+      "path": "../native-ui-source/scene-builder/original-string-expansion-gold-v1.json",
+      "bytes": 86759,
+      "sha256": "a8163110db335e081d50d3d4f7db2eb74dec8ced5d89911e0c91f7621104ac41"
+    },
+    {
+      "path": "../native-ui-source/scene-builder/original-geometry-pipeline-gold-v1.json",
+      "bytes": 2705761,
+      "sha256": "c4687c4c53a7355d5da655b48df5bd3c404e1b9a4bd50a89971dd1d0fe61d2e8"
+    },
+    {
+      "path": "../native-ui-source/scene-builder/original-geometry-parent-kinds-gold-v1.json",
+      "bytes": 220070,
+      "sha256": "ce522d7445f1c886e5212a4d27ed134b00994c151b8bebe6ec257ee059dec786"
+    },
+    {
+      "path": "../native-ui-source/scene-builder/original-control-expression-gold-v1.json",
+      "bytes": 213562,
+      "sha256": "e8f6c3bbac450743eb053dc4f6716a69bebf09344c6a526612703766379641df"
+    },
+    {
+      "path": "../native-ui-source/scene-builder/original-expression-gold.json",
+      "bytes": 447062,
+      "sha256": "75ad61c90d38eaa72d5b8bbe6cb621b0612d6d4c5d0df18a6c425d2cf4e98469"
+    },
+    {
+      "path": "../native-ui-source/scene-builder/original-logic-expression-gold-v1.json",
+      "bytes": 685782,
+      "sha256": "d5a555c3b4d89e48a7b173c738668e9cd8852b5e09b5b15c77f7f24b8503f902"
+    },
+    {
+      "path": "../native-ui-source/scene-builder/original-product-expression-gold-v1.json",
+      "bytes": 182559,
+      "sha256": "8dd6496aeee7cb74ea4952ec9338acb2c0ce92a16bdb4ff5cd4cd2ebf5d97b25"
+    },
+    {
+      "path": "../native-ui-source/scene-builder/original-builtin-expression-smoke-v1.json",
+      "bytes": 4645,
+      "sha256": "f8a40316e5a9a2bab306c491901fb43ef027267425a606740d0b520b392e23a7"
+    },
+    {
+      "path": "../native-ui-source/scene-builder/original-condition-string-smoke-v1.json",
+      "bytes": 688,
+      "sha256": "4e59b6689c31e4741071d53abd524d9bdc3ec3337a7620c72520c9c6205afaa8"
+    },
+    {
+      "path": "../native-ui-source/scene-builder/abi-alignment-audit/alignment-audit-v1.json",
+      "bytes": 1042,
+      "sha256": "fadd548d81fc04f925bfaa4eeccd8d492a4873b8fe73223fd57884f7ac9af2df"
+    },
+    {
+      "path": "../native-ui-source/scene-builder/canonical-xml-grammar-inventory-v2.json",
+      "bytes": 1220109,
+      "sha256": "612367fe419aced30f45bd606ee7b456e0f931eaea358a11881d4924965c80db"
+    },
+    {
+      "path": "../native-ui-source/scene-builder/oracles/attribute-number-oracle-before-multimap.py",
+      "bytes": 8862,
+      "sha256": "1efeb38cbb47ea6888c3cc44c98136929bcc84b0a4495c9067c4d00bcdc3f3d4"
+    },
+    {
+      "path": "../native-ui-source/scene-builder/oracles/xml-geometry-prefix-v1.py",
+      "bytes": 10326,
+      "sha256": "1f42070cf3a9681a1c9565d0dc4b39884675a8dae8b814a13871d790a1e19e28"
+    },
+    {
+      "path": "../native-ui-source/scene-builder/original-nonfinite-operator-smoke-v1.json",
+      "bytes": 1793,
+      "sha256": "b8a92fb643d9c53a2b2b23aea0ce614f3520a44da0585e5407303a421902d923"
+    },
+    {
+      "path": "../native-ui-source/scene-builder/original-control-floor-nonfinite-smoke-v1.json",
+      "bytes": 2139,
+      "sha256": "2db2afe81059a9657a8944dc0dcffb0b60b1bf117ae5225c2b20ed6ffc5dd005"
+    },
+    {
+      "path": "../native-ui-source/scene-builder/original-string-expansion-smoke-v1.json",
+      "bytes": 1280,
+      "sha256": "b3203d0d2f9a3901bd9a4f66e0a026afac947095fe27d84e5787af813140c6ef"
+    },
+    {
+      "path": "../native-ui-source/scene-builder/original-align-self-table-smoke-v2.json",
+      "bytes": 1271,
+      "sha256": "7202bd56f587db85019dd9fcee3a81d824c339a8ffeca834d01bf2b4530ef858"
+    },
+    {
+      "path": "../native-ui-source/scene-builder/syntax-version-string-locations.json",
+      "bytes": 74,
+      "sha256": "125ae978168a04e77a26a1a9745be4f7677e192aeccc2d8ecd2c592ffa684277"
+    }
+  ],
+  "runtime_dependency": {
+    "path": "../../../repo/core/src/ui_runtime_layout.cpp",
+    "sha256": "9d915007749b020ca5311c01e8358b38ff88ea4c99a24f9c5cac4359d21c4581"
+  },
+  "repository_integration": {
+    "implementation": "core/src/ui_scene_prefix.cpp",
+    "public_header": "core/include/mfrk/ui_scene_prefix.hpp",
+    "library": "mfrk_ui, strict FP, PIC ON, IPO FALSE; existing runtime geometry linked once",
+    "candidate_cpp_sha256": "6bc2d6db010c646781e2de89e99f705e1661ad100b657a671bc73389a4cd1d30",
+    "body_definition_count": 15,
+    "body_comparison": "All numerical definitions/private parser exactly match frozen source-derived reference text",
+    "corpora": 11,
+    "cases": 7582,
+    "host_release_ctests": 70,
+    "new_scene_ctests": 12,
+    "guards": {
+      "exit": 0,
+      "result": "23 guards rejected; typedcontrol/no-parent profiles retained"
+    },
+    "altered_rejections": 77,
+    "same_crc_different_sha_rejections": 11,
+    "semantic_mutants_rejected": 23,
+    "actual_repo_root_verification_sha256": "386d3739a41d37220d4ff604bda5b2f5b52e9c00f9e526a137dac9b9d9804efa",
+    "fixture_identities": [
+      {
+        "kind": "properties",
+        "magic": "UIPP0001",
+        "filename": "property-pipeline-vectors.bin",
+        "count": 481,
+        "size": 134687,
+        "crc": 4239519177,
+        "sha": "477d26229eef622f13234920a2b7a47d012c5800a70cfaab0ed4cfc85978cc4d",
+        "source_json": "original-property-records-gold-v1.json",
+        "source_sha256": "836e955106fe4eeec1855ab969633a2503d21f040fb20f2f8823e71c0c898e98"
+      },
+      {
+        "kind": "numbers",
+        "magic": "UIAN0001",
+        "filename": "attribute-number-vectors.bin",
+        "count": 41,
+        "size": 4667,
+        "crc": 73437939,
+        "sha": "52c3f16f61857c00291e9005ace4ffb013652fce6bd449db76e3fd60940ac679",
+        "source_json": "original-attribute-number-gold-v1.json",
+        "source_sha256": "f59cca260de970136c311113bbe7969c95e2697cf54ee29f257e8ec457d05ace"
+      },
+      {
+        "kind": "conditions",
+        "magic": "UIIF0001",
+        "filename": "if-decision-vectors.bin",
+        "count": 24,
+        "size": 2432,
+        "crc": 721254908,
+        "sha": "3c322c69033a59631519d8f084737c41ae7b9ab8ab1588d6180c2038f6a07e69",
+        "source_json": "original-if-decision-gold-v1.json",
+        "source_sha256": "aef9519f61f5eecf9ad9ecdc875d50ed1ef3c127009c9fb4a40f503771340c08"
+      },
+      {
+        "kind": "strings",
+        "magic": "UIST0001",
+        "filename": "string-expansion-vectors.bin",
+        "count": 505,
+        "size": 27798,
+        "crc": 1952139010,
+        "sha": "0424887417eecc0c623af3e3055dd542a8b342875a0bf5364d01a4e88d06083b",
+        "source_json": "original-string-expansion-gold-v1.json",
+        "source_sha256": "a8163110db335e081d50d3d4f7db2eb74dec8ced5d89911e0c91f7621104ac41"
+      },
+      {
+        "kind": "geometry",
+        "magic": "UIGP0001",
+        "filename": "geometry-pipeline-vectors.bin",
+        "count": 691,
+        "size": 578631,
+        "crc": 3296725245,
+        "sha": "6a9ac64ef21b7a02ab5143846ac4f0710d9e816d3a847d1d6e17eb057af56615",
+        "source_json": "original-geometry-pipeline-gold-v1.json",
+        "source_sha256": "c4687c4c53a7355d5da655b48df5bd3c404e1b9a4bd50a89971dd1d0fe61d2e8"
+      },
+      {
+        "kind": "geometry-kinds",
+        "magic": "UIGK0001",
+        "filename": "geometry-parent-kinds-vectors.bin",
+        "count": 72,
+        "size": 44800,
+        "crc": 1872125078,
+        "sha": "93636479f349b8d67341c76134ce280c9179be9329000f1dcbdb02c447c5580e",
+        "source_json": "original-geometry-parent-kinds-gold-v1.json",
+        "source_sha256": "ce522d7445f1c886e5212a4d27ed134b00994c151b8bebe6ec257ee059dec786"
+      },
+      {
+        "kind": "controls",
+        "magic": "UIPC0001",
+        "filename": "control-expression-vectors.bin",
+        "count": 794,
+        "size": 53376,
+        "crc": 4042657608,
+        "sha": "fc4038d07253559a284477a7ae68a9ffe858056165de5e7436c37674cb7c0b12",
+        "source_json": "original-control-expression-gold-v1.json",
+        "source_sha256": "e8f6c3bbac450743eb053dc4f6716a69bebf09344c6a526612703766379641df"
+      },
+      {
+        "kind": "arithmetic",
+        "magic": "UIEX0001",
+        "filename": "expression-vectors.bin",
+        "count": 1218,
+        "size": 225619,
+        "crc": 2892592249,
+        "sha": "00f4381c53bb696fb784e758c673d97086f3b6f9d9283b253086e94ea5f89adb"
+      },
+      {
+        "kind": "logic",
+        "magic": "UILG0001",
+        "filename": "logic-expression-vectors.bin",
+        "count": 2607,
+        "size": 318225,
+        "crc": 2332432979,
+        "sha": "67b835096dbb36b45106c434d4a5699b42ac7ad23b7540c2f8b5074ad8e9eb20"
+      },
+      {
+        "kind": "product",
+        "magic": "UIPR0001",
+        "filename": "product-expression-vectors.bin",
+        "count": 1124,
+        "size": 52840,
+        "crc": 3417154265,
+        "sha": "c3e25367a876a0ca98ad0a49bf9e58faec353c914a6786388242f15dade60cc0"
+      },
+      {
+        "kind": "builtins",
+        "magic": "UIBF0001",
+        "filename": "builtin-expression-vectors.bin",
+        "count": 25,
+        "size": 863,
+        "crc": 3428251466,
+        "sha": "afcc4c5b377c65bfbfab7018b09cb580648cf3704803a34d7cde8682bd15c766",
+        "source_json": "original-builtin-expression-smoke-v1.json"
+      }
+    ],
+    "scope": "Expression/property/geometry data producers only; full scene/factories/events/paint/fonts/raster/touch remain required. No Linux/Android success claim before exact revision CI."
+  }
+}
