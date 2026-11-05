@@ -7,6 +7,8 @@
 #include "mfrk/virtual_analog_controls.hpp"
 #include "mfrk/waveshaper.hpp"
 #include "mfrk/bass.hpp"
+#include "mfrk/pitch_update.hpp"
+#include "mfrk/slot_pitch.hpp"
 #include <array>
 #include <bit>
 #include <span>
@@ -78,6 +80,10 @@ class SlotController {
  Model selected_=Model::basic;
  float phase_=0;
  std::array<std::uint8_t,3> dirty_{};
+ std::array<std::uint16_t,3> words_{};
+ std::array<std::uint16_t,9> pitch_words_{};
+ std::array<std::uint8_t,9> pitch_dirty_{};
+ slot_pitch::Pitch pitch_=slot_pitch::Pitch::admitted_zero_owner_arena();
 public:
  explicit SlotController(Side& side) noexcept : side_(side) {}
  SlotController(const SlotController&)=delete;
@@ -86,6 +92,13 @@ public:
  Model selected() const noexcept { return selected_; }
  const auto& dirty() const noexcept { return dirty_; }
  void clear_dirty() noexcept { dirty_={}; }
+ const auto& pitch_dirty() const noexcept {return pitch_dirty_;}
+ bool set_model_control(unsigned index,std::uint16_t word,std::uint8_t dirty) noexcept;
+ bool set_pitch_control(unsigned index,std::uint16_t word,std::uint8_t dirty) noexcept;
+ // Original slot preparation: forward dirty model controls, compile pitch,
+ // dispatch updated pitch and prepare the selected persistent model. Outer
+ // model dirty bytes remain until clear_dirty(); pitch dirty bytes are consumed.
+ bool prepare(pitch_update::Slot&,slot_pitch::Result&) noexcept;
  // False means outside this bank's model profile. An already-active model is a no-op.
  bool select(Model model) noexcept;
 };

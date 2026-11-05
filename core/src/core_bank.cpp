@@ -1,4 +1,5 @@
 #include "mfrk/core_bank.hpp"
+#include <cmath>
 
 namespace mfrk::core_bank {
 bool Side::render(Model m,std::array<float,32>&out) noexcept {
@@ -25,5 +26,20 @@ bool SlotController::select(Model model) noexcept {
  side_.initialize(model);
  dirty_={1,1,1};
  return true;
+}
+bool SlotController::set_model_control(unsigned index,std::uint16_t word,std::uint8_t dirty) noexcept {
+ if(index>=words_.size())return false;words_[index]=word;dirty_[index]=dirty;return true;
+}
+bool SlotController::set_pitch_control(unsigned index,std::uint16_t word,std::uint8_t dirty) noexcept {
+ if(index>=pitch_words_.size())return false;pitch_words_[index]=word;pitch_dirty_[index]=dirty;return true;
+}
+bool SlotController::prepare(pitch_update::Slot& base,slot_pitch::Result& result) noexcept {
+ if(!std::isfinite(base.note))return false;
+ for(unsigned i=0;i<words_.size();++i)if(dirty_[i]){side_.word(selected_,i,words_[i]);side_.dirty(selected_,i,1);}
+ const slot_pitch::Input input{base.note,pitch_words_,pitch_dirty_,base.dirty};
+ if(!pitch_.try_prepare(input,result))return false;
+ pitch_dirty_={};
+ if(result.recomputed){base.dirty=0;side_.pitch(selected_,result.hz,result.note);}
+ side_.prepare(selected_);return true;
 }
 }

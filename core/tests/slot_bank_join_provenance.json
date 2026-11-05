@@ -1,0 +1,8 @@
+{
+  "processor_sha256": "bd036dfa6a0afcfef733c29c73b1b3df969f2c86ca860b0fa535d4492fa8fb74",
+  "source_functions": ["0x1802d85b0", "0x1802cdad0"],
+  "fixture_sha256": "d4042d71b559ac7f214daa99e2fffe5df131615ec51358d43f611dcaac3ebde3",
+  "cases": 64,
+  "scope": "Original cold owner, Basic selection, explicitly supplied packed slot controls, continuous slot prepare and Basic scaled render. The fixture stores original pitch outputs, control-dirty effects and 32 audio samples per block without injecting snapshots during replay. Other models and the full voice graph remain separate.",
+  "local_evidence": "local/evidence/voice-graph-agent/probe_slot_bank_join_v1.py and original-slot-bank-join-v1.json"
+}
