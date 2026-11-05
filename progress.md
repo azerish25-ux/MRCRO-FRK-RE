@@ -333,3 +333,9 @@
 - Compiled private interpolation/mixing/FM routing now renders through persistent model hooks. Genuine Bass11/12 test constructs actualportedcores once, replays20sourceoperations and compares22representedmodel fields/owner flags, generated secondinput/core returns/callbackorder and mixed/FM over96continuousblocks, without runtimegoldstate/stream playback.
 - Exact00750c2/run41965248844 passes all81LinuxRelease tests, both Android ABI builds and API35x86 runtimeall3suites0;2048blocks0alloc/guards pass. Sixbodymaps exact, sevensemanticmutants and11malformed controls reject, bothoriginalfixturesregeneratedidentically, independentactualrepo reviewapproved.
 - Next persistent-bank join requires source-specific phase-onlyBasictrigger/runtimepolicy, VAengine-onlyInit preservingupsampler and same-slot borrowed scratch. Source-owned protocol/alias packets are nowready. Completecontroller/gates/filters/rate/FX/master scheduling/fullUI/preset loading/standaloneAudioMidi remain open.
+
+## Scoped native UI traversal integrated (2026-11-05)
+
+- Integrated the recovered `with` and conditional traversal into `mfrk_ui`, retaining separate numeric and string contexts and the original terminal factory boundary. The live scoped context now joins the existing property evaluator; source-valid large string contexts are admitted.
+- Focused Windows Release checks passed for the 297 original scope programs, scope guards, existing string corpus, and prefix guards. Android cross-build and emulator checks are configured in CI but have not yet run for this change.
+- Loops, includes, templates, factory creation, rendering and touch remain open. This layer does not make the Android instrument complete.

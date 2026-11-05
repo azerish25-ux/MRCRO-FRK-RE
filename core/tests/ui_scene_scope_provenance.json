@@ -1,0 +1,132 @@
+{
+  "utc": "2026-11-05T04:10:33.400706+00:00",
+  "wrapper_sha256": "354c26c58e4c8c671b50f88d070452b47c9cd6b6505b1ea18391724929b3d19e",
+  "functions": {
+    "0x180b5e8c0": {
+      "requested_address": "0x180b5f650",
+      "parent_evidence_id": "ev_eb9fb25c2b3a6fd5af05239fcd123460389a62eb47b473427dca9ea8aef1dedc",
+      "pseudocode": "pseudocode/0x180b5e8c0.c",
+      "batch_file": "rea\\scene-with-builder-recovery-034.json"
+    },
+    "0x180b5dcb0": {
+      "requested_address": "0x180b5dcb0",
+      "parent_evidence_id": "ev_c2c070ba4fbb56000f971bb8176fd6c44b306e72793ebf4576485c3f2cbf53ae",
+      "pseudocode": "pseudocode/0x180b5dcb0.c",
+      "batch_file": "rea\\scene-with-values-recovery-035.json"
+    },
+    "0x180b60490": {
+      "requested_address": "0x180b6070a",
+      "parent_evidence_id": "ev_3d28e94fddc7365ca492b44654932d1d75c4f7328240a0db08ca14049fbcc452",
+      "pseudocode": "pseudocode/0x180b60490.c",
+      "batch_file": "rea\\scene-builder-if-owner-recovery-003.json"
+    },
+    "0x180b60cc0": {
+      "requested_address": "0x180b60cc0",
+      "parent_evidence_id": "ev_936faf964e5a7e2a93a70c9a093d870205eb67b2e14ba709e19d45fa860dd784",
+      "pseudocode": "pseudocode/0x180b60cc0.c",
+      "batch_file": "rea\\scene-reading-context-initializer-recovery-048.json"
+    },
+    "0x1807d8db0": {
+      "requested_address": "0x1807d8db0",
+      "parent_evidence_id": "ev_cc7c2565cf6fa52d0f4e626d51cdcf05d2bfaffb52042a9a8c31fc66eef4dfe4",
+      "pseudocode": "pseudocode/0x1807d8db0.c",
+      "batch_file": "rea\\scene-constant-context-base-constructor-recovery-049.json"
+    },
+    "0x180b61af0": {
+      "requested_address": "0x180b61c20",
+      "parent_evidence_id": "ev_eb9fb25c2b3a6fd5af05239fcd123460389a62eb47b473427dca9ea8aef1dedc",
+      "pseudocode": "pseudocode/0x180b61af0.c",
+      "batch_file": "rea\\scene-with-builder-recovery-034.json"
+    },
+    "0x1809697d0": {
+      "requested_address": "0x1809697d0",
+      "parent_evidence_id": "ev_c2c070ba4fbb56000f971bb8176fd6c44b306e72793ebf4576485c3f2cbf53ae",
+      "pseudocode": "pseudocode/0x1809697d0.c",
+      "batch_file": "rea\\scene-with-values-recovery-035.json"
+    },
+    "0x180969c90": {
+      "requested_address": "0x180969c90",
+      "parent_evidence_id": "ev_c2c070ba4fbb56000f971bb8176fd6c44b306e72793ebf4576485c3f2cbf53ae",
+      "pseudocode": "pseudocode/0x180969c90.c",
+      "batch_file": "rea\\scene-with-values-recovery-035.json"
+    },
+    "0x180978410": {
+      "requested_address": "0x180978410",
+      "parent_evidence_id": "ev_eda72e7b8ae847b9dc436d6d1d246854a6090d309b36fcd6957a832f2410b4c4",
+      "pseudocode": "pseudocode/0x180978410.c",
+      "batch_file": "rea\\scene-if-string-contract-recovery-004.json"
+    },
+    "0x1805c98e0": {
+      "requested_address": "0x1805c98e0",
+      "parent_evidence_id": "ev_aaa80310422b71d7ea610f81ce887d90230a30776b9c5ee16fa65e8f96c1c008",
+      "pseudocode": "pseudocode/0x1805c98e0.c",
+      "batch_file": "rea\\scene-attribute-context-recovery-001.json"
+    },
+    "0x1806c2c30": {
+      "requested_address": "0x1806c2c30",
+      "parent_evidence_id": "ev_d0182902f5c48fea7c6b4c32670d4c93fb9b81b976cbc0e06c9b73b988a01d68",
+      "pseudocode": "pseudocode/0x1806c2c30.c",
+      "batch_file": "rea\\scene-expression-and-bounds-decompile-013.json"
+    },
+    "0x1813132e0": {
+      "requested_address": "0x1813132e0",
+      "parent_evidence_id": "ev_eda72e7b8ae847b9dc436d6d1d246854a6090d309b36fcd6957a832f2410b4c4",
+      "pseudocode": "pseudocode/0x1813132e0.c",
+      "batch_file": "rea\\scene-if-string-contract-recovery-004.json"
+    },
+    "0x180653710": {
+      "requested_address": "0x180653710",
+      "parent_evidence_id": "ev_b1575460a526d60ff43f4816e6d2c4ffabcebeb50447e554c99e6b3450cf5488",
+      "pseudocode": "pseudocode/0x180653710.c",
+      "batch_file": "rea\\scene-style-clone-helpers-recovery-029.json"
+    },
+    "0x180972ce0": {
+      "requested_address": "0x180972ce0",
+      "parent_evidence_id": "ev_3a4085cdd758f87959c8b271ef5302788c5a57102e4496208255cbcea966a465",
+      "raw_record": "..\\local\\evidence\\native-ui-wrapper-recovery-20261104\\scene-scope-erasure-integer-format-recovery-050.json"
+    },
+    "0x180751470": {
+      "requested_address": "0x180751470",
+      "parent_evidence_id": "ev_3a4085cdd758f87959c8b271ef5302788c5a57102e4496208255cbcea966a465",
+      "raw_record": "..\\local\\evidence\\native-ui-wrapper-recovery-20261104\\scene-scope-erasure-integer-format-recovery-050.json"
+    },
+    "0x18056e8f0": {
+      "requested_address": "0x18056e8f0",
+      "parent_evidence_id": "ev_3a4085cdd758f87959c8b271ef5302788c5a57102e4496208255cbcea966a465",
+      "raw_record": "..\\local\\evidence\\native-ui-wrapper-recovery-20261104\\scene-scope-erasure-integer-format-recovery-050.json"
+    }
+  },
+  "records": {
+    "rea\\scene-with-builder-recovery-034.json": "ev_eb9fb25c2b3a6fd5af05239fcd123460389a62eb47b473427dca9ea8aef1dedc",
+    "rea\\scene-with-values-recovery-035.json": "ev_c2c070ba4fbb56000f971bb8176fd6c44b306e72793ebf4576485c3f2cbf53ae",
+    "rea\\scene-builder-if-owner-recovery-003.json": "ev_3d28e94fddc7365ca492b44654932d1d75c4f7328240a0db08ca14049fbcc452",
+    "rea\\scene-reading-context-initializer-recovery-048.json": "ev_936faf964e5a7e2a93a70c9a093d870205eb67b2e14ba709e19d45fa860dd784",
+    "rea\\scene-constant-context-base-constructor-recovery-049.json": "ev_cc7c2565cf6fa52d0f4e626d51cdcf05d2bfaffb52042a9a8c31fc66eef4dfe4",
+    "rea\\scene-if-string-contract-recovery-004.json": "ev_eda72e7b8ae847b9dc436d6d1d246854a6090d309b36fcd6957a832f2410b4c4",
+    "rea\\scene-attribute-context-recovery-001.json": "ev_aaa80310422b71d7ea610f81ce887d90230a30776b9c5ee16fa65e8f96c1c008",
+    "rea\\scene-expression-and-bounds-decompile-013.json": "ev_d0182902f5c48fea7c6b4c32670d4c93fb9b81b976cbc0e06c9b73b988a01d68",
+    "rea\\scene-style-clone-helpers-recovery-029.json": "ev_b1575460a526d60ff43f4816e6d2c4ffabcebeb50447e554c99e6b3450cf5488",
+    "..\\local\\evidence\\native-ui-wrapper-recovery-20261104\\scene-scope-erasure-integer-format-recovery-050.json": "ev_3a4085cdd758f87959c8b271ef5302788c5a57102e4496208255cbcea966a465"
+  },
+  "authoritative_oracles": "D:\\MAIN SOFTWARE\\Synths\\MFRK\\main synth\\MiniFreak V\\android-port\\local\\evidence\\native-ui-source\\scene-lowering",
+  "oracle_dependencies": "D:\\MAIN SOFTWARE\\Synths\\MFRK\\main synth\\MiniFreak V\\android-port\\local\\evidence\\native-ui-source\\scene-builder",
+  "scope": "Defined string/numeric context and terminal-node projection only, not full SShared memory or factory/lifetime state",
+  "models": "Owned alloc/free/calloc and CRT bytes; owned terminal std::function observer/copy/delete; explicit supplied8byte write to existing owned numeric seed. All arithmetic/alias/condition/scope operations original instructions.",
+  "source_gold": {
+    "programs": 297,
+    "events": 605,
+    "raw_json_sha256": "01ab82863b442b48ed4abccd267f7f773bf4eec5f14bf3c2b7da691d94c4dc65",
+    "fixture_sha256": "453957d79da66b9a04f9802e3e746e3e03a87d547b92ee863eb307cb02ebeadb"
+  },
+  "admission_delta": {
+    "string_count": [
+      256,
+      4096
+    ],
+    "context_value_bytes": [
+      1024,
+      4096
+    ]
+  },
+  "native_hard_limit_claim": false
+}
