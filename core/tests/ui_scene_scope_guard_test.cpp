@@ -54,6 +54,10 @@ int main(){unsigned guards=0;auto reject=[&](auto action){bool failed=false;try{
   auto list_loop=parent(node("for",{{"src","item"},{"in","item_list(${param})"},{"index","ITEM_IDX"}},{node("widget")}));
   walk_nodes(list_loop,list,[&](const Node&,Context& live){seen.push_back(live.strings.at("item")+":"+live.strings.at("ITEM_IDX"));if(live.numbers.contains("item")||((flags&1)&&live.numbers.at("ITEM_IDX")!=double(seen.size())))throw std::runtime_error("item-list numeric aliases");},flags);
   if(seen!=std::vector<std::string>{"Alpha:1","one:2","two:3","2:4"}||list.strings.size()!=1||!list.numbers.empty())throw std::runtime_error("item-list output or cleanup");
+  Context dual;dual.strings["param"]="Sustain_Polarity";dual.item_list=[](std::string_view){return std::vector<std::string>{"Regular","Inverted"};};seen.clear();
+  auto buttons=parent(node("for",{{"src","item"},{"in","item_list(${param})"},{"index","ITEM_IDX"}}, {node("with",{{"src","INV"},{"double","${ITEM_IDX}==1"}},{node("ibutton",{{"text","${item}"},{"invert","${INV}"}})})}));
+  walk_nodes(buttons,dual,[&](const Node&,Context& live){seen.push_back(live.strings.at("item")+":"+live.strings.at("INV"));if(live.numbers.at("INV")!=double(seen.size()==1))throw std::runtime_error("dual button inversion");},flags);
+  if(seen!=std::vector<std::string>{"Regular:1","Inverted:0"}||dual.strings.size()!=1||!dual.numbers.empty())throw std::runtime_error("side panel nested scope");
  }
  std::cout<<guards<<" scope guards and lazy-clause regression passed\n";return 0;
  }catch(const std::exception& error){std::cerr<<error.what()<<'\n';return 1;}
