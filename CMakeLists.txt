@@ -9,7 +9,7 @@ add_library(mfrk_core STATIC core/src/pitch.cpp core/src/virtual_analog.cpp
     core/src/filter_resampling.cpp core/src/fir_resampler.cpp core/src/filter_resource.cpp
     core/src/deferred_vcf49.cpp core/src/superwave.cpp core/src/fx_input.cpp core/src/fx_mix.cpp core/src/bass.cpp core/src/harmo.cpp core/src/karplus.cpp core/src/slot_pitch.cpp core/src/master_output.cpp core/src/voice_audio.cpp core/src/notepath.cpp)
 target_include_directories(mfrk_core PUBLIC core/include)
-target_sources(mfrk_core PRIVATE core/src/preset_migration.cpp core/src/core_bank.cpp core/src/midi_stream.cpp core/src/midi_ingress.cpp core/src/midi_note_route.cpp core/src/audio_block_adapter.cpp core/src/pitch_update.cpp core/src/publication_sink.cpp)
+target_sources(mfrk_core PRIVATE core/src/preset_migration.cpp core/src/core_bank.cpp core/src/midi_stream.cpp core/src/midi_ingress.cpp core/src/midi_note_route.cpp core/src/audio_block_adapter.cpp core/src/pitch_update.cpp core/src/publication_sink.cpp core/src/gate_dispatch.cpp)
 target_include_directories(mfrk_core PRIVATE third_party)
 # Upstream stmlib's TEST path selects portable helpers instead of Cortex-M assembly.
 target_compile_definitions(mfrk_core PRIVATE TEST)
@@ -30,6 +30,12 @@ endif()
 
 include(CTest)
 if(BUILD_TESTING)
+    add_executable(gate_dispatch_test core/tests/gate_dispatch_test.cpp)
+    target_link_libraries(gate_dispatch_test PRIVATE mfrk_core)
+    add_test(NAME original_gate_dispatch COMMAND gate_dispatch_test ${CMAKE_CURRENT_SOURCE_DIR}/core/tests/gate_dispatch_vectors.bin)
+    add_executable(slot_bank_join_test core/tests/slot_bank_join_test.cpp)
+    target_link_libraries(slot_bank_join_test PRIVATE mfrk_core)
+    add_test(NAME original_slot_bank_join COMMAND slot_bank_join_test ${CMAKE_CURRENT_SOURCE_DIR}/core/tests/slot_bank_join_vectors.bin)
     add_executable(publication_sink_test core/tests/publication_sink_test.cpp)
     target_link_libraries(publication_sink_test PRIVATE mfrk_core)
     add_test(NAME original_publication_sink COMMAND publication_sink_test ${CMAKE_CURRENT_SOURCE_DIR}/core/tests/publication_sink_vectors.bin)
