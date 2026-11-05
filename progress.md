@@ -363,3 +363,8 @@
 - Added a separate Android MIDI input library that discovers visible MIDI 1 devices, opens available output ports and delivers copied, timestamped bytes and port-reset notifications on one worker. The library is not yet joined to the decoder or app; Bluetooth discovery, MIDI 2 and physical-device verification remain open. Its remote build is configured separately.
 - Added a fixed-capacity single-producer/single-consumer handoff with one decoder per port. Overflow is latched so the future audio consumer can discard queued events and reset notes/controllers rather than silently leaving notes held.
 - The Android device listener now feeds that native decoder and queue through JNI. The future audio host must detach before bridge destruction and consume port-reset/overflow events. The note/controller and audio graphs remain unconnected; remote JNI cross-build and device behavior are pending.
+
+## Android audio output boundary (in progress)
+
+- Added a fixed-block adapter and Android AAudio output boundary for the recovered 48 kHz stereo profile. It requires a real graph callback and handles variable callback sizes without allocating on the audio thread. The stream owner must handle disconnect/reopen and lifecycle off the callback thread.
+- This boundary is not yet connected to the synth graph, MIDI queue or a standalone Activity. Audio focus, automatic recovery, other sample rates and physical-device behavior are not established.

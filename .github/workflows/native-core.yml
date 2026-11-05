@@ -2,9 +2,9 @@ name: Native engine core
 
 on:
   push:
-    paths: ['core/**', 'third_party/**', 'CMakeLists.txt', '.github/workflows/native-core.yml', 'tools/check_basic_wave_tables.py']
+    paths: ['core/**', 'third_party/**', 'android/audio-host/**', 'CMakeLists.txt', '.github/workflows/native-core.yml', 'tools/check_basic_wave_tables.py']
   pull_request:
-    paths: ['core/**', 'third_party/**', 'CMakeLists.txt', '.github/workflows/native-core.yml', 'tools/check_basic_wave_tables.py']
+    paths: ['core/**', 'third_party/**', 'android/audio-host/**', 'CMakeLists.txt', '.github/workflows/native-core.yml', 'tools/check_basic_wave_tables.py']
   workflow_dispatch:
 
 permissions:
@@ -340,5 +340,8 @@ jobs:
             adb push build-x86_64/midi_ingress_test /data/local/tmp/midi_ingress_test
             adb shell chmod 755 /data/local/tmp/midi_ingress_test
             adb shell /data/local/tmp/midi_ingress_test
+            adb push build-x86_64/audio_block_adapter_test /data/local/tmp/audio_block_adapter_test
+            adb shell chmod 755 /data/local/tmp/audio_block_adapter_test
+            adb shell /data/local/tmp/audio_block_adapter_test
       - name: Compare generated Android table bytes
         run: python3 tools/check_basic_wave_tables.py --dump build-x86_64/basic-wave-tables.bin --expected core/tests/basic_wave_table_hashes.json
