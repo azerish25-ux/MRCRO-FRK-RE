@@ -360,3 +360,4 @@
 ## Android MIDI input boundary (in progress)
 
 - Added an allocation-free MIDI 1 byte-stream decoder with per-port state, running status, split messages, interleaved real-time bytes and streamed SysEx bytes. It is a transport boundary only: Android device discovery, timestamp scheduling, MIDI 2 UMP and routing into the native note/controller graph remain to be connected.
+- Added a separate Android MIDI input library that discovers visible MIDI 1 devices, opens available output ports and delivers copied, timestamped bytes and port-reset notifications on one worker. The library is not yet joined to the decoder or app; Bluetooth discovery, MIDI 2 and physical-device verification remain open. Its remote build is configured separately.
