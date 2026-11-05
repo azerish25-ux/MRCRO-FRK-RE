@@ -1,0 +1,52 @@
+{
+  "tested_revision": "4018a374b157474463a11937837ba19afc7d2025",
+  "tested_tree": "63b2e85c7e13c3a0bdcf550f175872b6aa5565b5",
+  "run_id": 41945301517,
+  "run_url": "https://github.com/azerish25-ux/MRCRO-FRK-RE/actions/runs/41945301517",
+  "linux": {
+    "job_id": 126975913632,
+    "release_ctest_passed": 58,
+    "failed": 0,
+    "log_sha256": "c75414540ea7a35902b9eb1c82a2467a9d2c0d5347a57894f4cf3eb562220eba"
+  },
+  "android": {
+    "job_id": 126976191647,
+    "compiled_abis": [
+      "arm64-v8a",
+      "x86_64"
+    ],
+    "runtime_abi": "x86_64",
+    "api_level": 35,
+    "shared_sequence": {
+      "operations": 206,
+      "render_blocks": 88,
+      "state_mismatches": 0,
+      "memory_mismatches": 0,
+      "rng_mismatches": 0,
+      "owner_mismatches": 0,
+      "raw_mismatches": 0,
+      "audio_mismatches": 0
+    },
+    "old_owned_harmo": {
+      "samples": 59264,
+      "table_sample_prepared_state_delay_mismatches": 0,
+      "lifecycle_commands": 36,
+      "lifecycle_mismatches": 0
+    },
+    "all_reference_steps": "success",
+    "log_sha256": "3bc1236040f78c3c3732e7812e93c3fe5483a30bb7f37607938a67808d9e0716"
+  },
+  "independent_review": {
+    "required_findings": 0,
+    "actual_repository_strict_shared_sequence": "206ops/88blocks all fields0",
+    "old_harmo_regressions": "59264samples and36commands all0",
+    "fixture_regeneration": "Hash-pinned original JSON observations reencoded byte-identically by independent Python producer"
+  },
+  "negative_controls": {
+    "owned_delay_wrong_audio_samples": 203,
+    "eager_init_state_observation_differences": 375,
+    "missing_harmo_reset_state_differences": 720,
+    "clear_resource_on_selection_wrong_audio_samples": 640
+  },
+  "scope": "Two persistent raw models sharing fixed slot memory, phase0 and manager(null,0). No arm64 runtime claim or complete NativeSlot/model-bank/voice graph, preset, UI or standalone instrument equivalence."
+}
