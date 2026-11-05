@@ -1,0 +1,8 @@
+{
+  "processor_sha256": "bd036dfa6a0afcfef733c29c73b1b3df969f2c86ca860b0fa535d4492fa8fb74",
+  "source_functions": ["0x1802c02f0", "0x1802ced10", "0x1802ceb00", "0x1802cf6f0"],
+  "fixture_sha256": "c9c2c8d3918082a8499f9c3ab71257b70475694910eefda171bd56d4bf4fdb6c",
+  "cases": 192,
+  "scope": "Original LFO and cyclic phase reset instructions over bounded finite supplied fields. The composed cyclic ADSR/phase and shared reset fields were also observed on an initialized original owner. These are reset/gate projections, not complete LFO or cyclic renderers.",
+  "local_evidence": "local/evidence/voice-graph-agent/probe_phase_reset_v1.py, original-composed-reset-v1.json and local/evidence/envelope-agent/integration-001/original-cyclic-gate-phase-v1.json"
+}

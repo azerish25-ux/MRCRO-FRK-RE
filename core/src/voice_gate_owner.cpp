@@ -6,8 +6,8 @@ bool ready(Owner& owner,const gate_dispatch::Action* actions,unsigned count) noe
   if(a.kind==gate_dispatch::Kind::oscillator&&!owner.slots[index])return false;
   if(a.kind==gate_dispatch::Kind::main&&(!owner.main_envelopes[index]||!owner.main_envelopes[index]->prepared()))return false;
   if(a.kind==gate_dispatch::Kind::main_reset&&!owner.main_envelopes[index])return false;
-  if(a.kind==gate_dispatch::Kind::cyclic&&!owner.cyclic)return false;
-  if((a.kind==gate_dispatch::Kind::cyclic_reset||a.kind==gate_dispatch::Kind::lfo1_reset||a.kind==gate_dispatch::Kind::lfo2_reset||a.kind==gate_dispatch::Kind::voice_reset)&&!owner.reset)return false;
+  if(a.kind==gate_dispatch::Kind::cyclic&&(!owner.cyclic||(owner.cyclic_ready&&!owner.cyclic_ready(owner.cyclic_context,a.voice,a.side,a.on))))return false;
+  if(a.kind==gate_dispatch::Kind::cyclic_reset||a.kind==gate_dispatch::Kind::lfo1_reset||a.kind==gate_dispatch::Kind::lfo2_reset||a.kind==gate_dispatch::Kind::voice_reset){if(!owner.reset||(owner.reset_ready&&!owner.reset_ready(owner.reset_context,a.kind,a.voice,a.side)))return false;}
  }
  return true;
 }

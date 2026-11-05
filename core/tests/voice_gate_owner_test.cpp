@@ -1,5 +1,6 @@
 #include "mfrk/voice_gate_owner.hpp"
 #include "mfrk/publication_sink.hpp"
+#include "mfrk/phase_reset.hpp"
 #include "adsr_test_access.hpp"
 #include <memory>
 using namespace mfrk;
@@ -28,4 +29,13 @@ int main(){
  std::array<notepath::NoteRow,12> reset_rows{};for(auto& row:reset_rows)row.bytes[7]=5;gate_dispatch::State startup_state;
  if(!voice_gate::process_rows(startup,startup_state,reset_rows,false,0,false)||resets!=36)return 9;
  for(const auto& e:envs)if(e->snapshot().phase!=AdsrPhase::idle)return 10;
+ Adsr cyc_env;initial={};initial.phase=AdsrPhase::idle;AdsrTestAccess::load_explicit_fixture(cyc_env,initial);AdsrTestAccess::load_explicit_fixture(env,initial);
+ phase_reset::Cyclic cyc;cyc.envelope=&cyc_env;cyc.phase={.2f,.5f,.75f,7.f,8.f};cyc.flag93=127;phase_reset::Phase lfo1{.2f,.5f,.75f,7.f,8.f},lfo2=lfo1;phase_reset::Bank modulators;modulators.cyclic[0]=&cyc;modulators.lfo1[0]=&lfo1;modulators.lfo2[0]=&lfo2;
+ owner.cyclic=phase_reset::Bank::gate_callback;owner.cyclic_ready=phase_reset::Bank::can_gate;owner.cyclic_context=&modulators;owner.reset=phase_reset::Bank::reset_callback;owner.reset_ready=phase_reset::Bank::can_reset;owner.reset_context=&modulators;state={};
+ if(!voice_gate::dispatch(owner,state,0,1,false,0,false)||cyc_env.snapshot().phase!=AdsrPhase::attack||cyc.flag92!=1||cyc.flag95!=127)return 11;
+ if(!voice_gate::dispatch(owner,state,0,5,false,0,false)||cyc_env.snapshot().phase!=AdsrPhase::idle||lfo1.current!=cyc.phase.current||lfo2.current!=cyc.phase.current)return 12;
+ gate_dispatch::ResetContext other{false,false};const auto before_count=state.active_count;
+ if(voice_gate::dispatch(owner,state,0,5,true,0,false,&other)||state.active_count!=before_count)return 13;
+ phase_reset::Shared shared{9,8};modulators.shared[0]=&shared;
+ if(!voice_gate::dispatch(owner,state,0,5,true,0,false,&other)||shared.field18!=0||shared.field60!=3)return 14;
 }

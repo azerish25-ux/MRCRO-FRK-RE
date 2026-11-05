@@ -8,15 +8,19 @@ namespace mfrk::voice_gate {
 // phase/reset side effects; it runs synchronously on the owner thread without
 // blocking, allocating or reentering the gate owner.
 using Cyclic=void(*)(void*,std::uint8_t voice,std::uint8_t side,bool on) noexcept;
+using CyclicReady=bool(*)(void*,std::uint8_t voice,std::uint8_t side,bool on) noexcept;
 // Handles original shared-voice, cyclic and LFO reset actions without allocation or reentry.
 using Reset=void(*)(void*,gate_dispatch::Kind,std::uint8_t voice,std::uint8_t side) noexcept;
+using ResetReady=bool(*)(void*,gate_dispatch::Kind,std::uint8_t voice,std::uint8_t side) noexcept;
 struct Owner {
  // Indexed voice*2+side. Objects are persistent and owned by the caller.
  std::array<core_bank::SlotController*,12> slots{};
  std::array<Adsr*,12> main_envelopes{};
  Cyclic cyclic=nullptr;
+ CyclicReady cyclic_ready=nullptr;
  void* cyclic_context=nullptr;
  Reset reset=nullptr;
+ ResetReady reset_ready=nullptr;
  void* reset_context=nullptr;
 };
 // Applies the bounded gate projection atomically with respect to rejected
