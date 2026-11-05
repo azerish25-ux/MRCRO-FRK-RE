@@ -96,7 +96,8 @@ unproven until all feature and equivalence requirements are independently verifi
 Shared full-finite sine prerequisite is merged and Linux/Android verified (12dd701).
 KarplusStr source core is merged and Linux/Android verified (94026e7).
 Shared Karplus/Harmo slot resource lifecycle is merged and Linux/Android verified (4018a37).
-Integrate native slot pitch/control/dispatch and source-derived scene construction;
+Scene expression/property/geometry producers are merged and Linux/Android verified (1135d0c).
+Integrate native slot pitch/control/dispatch and structural scene/factory/paint/touch lifecycle;
 continue the actual native common voice/control/audio graph. Runtime resizev2,
 full/nested Flex, seven UI primitives and Waveshaper have Linux/Android evidence.
 Complete original scene bindings/rendering and gestures, native preset defaults/version/custom migrations, and the full

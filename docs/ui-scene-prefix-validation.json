@@ -1,0 +1,43 @@
+{
+  "tested_revision": "1135d0c20870a463d254e8eca02275b803dafe1b",
+  "tested_tree": "e0e16144f90fbfc66e265ff409e00f51563e07f4",
+  "run_id": 41947451146,
+  "run_url": "https://github.com/azerish25-ux/MRCRO-FRK-RE/actions/runs/41947451146",
+  "linux": {
+    "job_id": 126983067566,
+    "release_ctests_passed": 70,
+    "failed": 0,
+    "log_sha256": "037b06b0b344e9a725788185248d77e346c8450d1f903c177d0425874afac045"
+  },
+  "android": {
+    "job_id": 126983308414,
+    "compiled_abis": [
+      "arm64-v8a",
+      "x86_64"
+    ],
+    "runtime_abi": "x86_64",
+    "api_level": 35,
+    "scene_corpora": 11,
+    "original_cases": 7582,
+    "mismatches": 0,
+    "guards_rejected": 23,
+    "all_reference_steps": "success",
+    "log_sha256": "9ed742e09b234d0db42c28abc5e3b06737c268d3328497a2da5755a973e8ef70"
+  },
+  "root_verification": {
+    "exact_body_definitions": 15,
+    "original_corpora": 11,
+    "original_cases": 7582,
+    "altered_fixtures_rejected": 77,
+    "crc_collisions_rejected_by_sha256": 11,
+    "semantic_mutants_rejected": 23
+  },
+  "independent_review": {
+    "required_findings": 0,
+    "strict_actual_repository_corpora": 11,
+    "cases": 7582,
+    "mismatches": 0,
+    "guards_rejected": 23
+  },
+  "scope": "Scene expression/property/geometry producers, not full XML construction, widget factories/events, paint/fonts/raster/touch or complete standalone instrument. No arm64 runtime claim."
+}
