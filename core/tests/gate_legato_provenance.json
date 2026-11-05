@@ -1,0 +1,8 @@
+{
+  "processor_sha256": "bd036dfa6a0afcfef733c29c73b1b3df969f2c86ca860b0fa535d4492fa8fb74",
+  "source_function": "0x1802dcb90",
+  "fixture_sha256": "fc4e35828d0d8f1caf148e6d9936f7529de9c42becaf2f801fd698e5f54118a2",
+  "cases": 216,
+  "scope": "Original dispatcher statuses 3/4 over explicit poly/para, voice/lane, active-count and cyclic-mode fixtures. Oscillator and envelope calls are observed boundaries; pitch/LFO and cyclic phase effects remain separate.",
+  "local_evidence": "local/evidence/envelope-agent/integration-001/gate-dispatch-legato-v1.json"
+}
