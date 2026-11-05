@@ -62,5 +62,72 @@
   ],
   "unique_argument_words": 364791,
   "repository_fixture": "core/tests/ucrt_sinf_vectors.bin",
-  "reference_domain": "original identified FMA branch, finite absbits<0x4b800456; exact source coefficients/reduction, no host sine fallback"
+  "reference_domain": "Identified nonzero FMA branch; all finite IEEE binary32 inputs, round-to-nearest-even, exact source coefficients/reduction. Nonfinite results and errno/fenv effects, other dispatcher branches and alternate rounding modes excluded.",
+  "full_finite_extension": {
+    "source_reducer_rva": [
+      "0xac490",
+      "0xac5e4"
+    ],
+    "finite_upper_abs_bits_exclusive": "0x7f800000",
+    "table": {
+      "rva": "0x107360",
+      "reachable_byte_offsets_inclusive": [
+        119,
+        154
+      ],
+      "bytes": 36,
+      "sha256": "608ea981d08c1512a57e6879b60593f18511db479aa52a13f8f5cda7561f5d90",
+      "independent_math": "450-digit Machin pi, floor((2/pi)*2^1202), required 36 bytes match; full160-byte source differs at unreachable byte0, no general double-input claim"
+    },
+    "repository_fixture": {
+      "file": "core/tests/ucrt_sinf_full_finite_vectors.bin",
+      "magic": "UCSF0002",
+      "cases": 11951,
+      "bytes": 95620,
+      "sha256": "5f1147acc31965e8e37f10df189fcb8ada35f089a289aa2f1e97fd48544d80c3"
+    },
+    "broad_original": {
+      "cases": 662365,
+      "bytes": 5298932,
+      "sha256": "41ba3f0747eb9b835ba9fb728c0f59fceabd0d4e85b0db222de14b18ef0cdcb6"
+    },
+    "independent_root_replay": {
+      "source_sha256": "dedb7611e1abc1ff3852dcac3d4c93a048d729e25b061973b9969f22698f14ca",
+      "dispatcher_flag": 3,
+      "method": "Independent fresh direct System UCRT scalar calls; no vendor DLL load or candidate-derived expected returns",
+      "fixtures": [
+        {
+          "file": "original-full-finite-compact-v1.bin",
+          "cases": 11951,
+          "sha256": "5f1147acc31965e8e37f10df189fcb8ada35f089a289aa2f1e97fd48544d80c3",
+          "mismatches": 0
+        },
+        {
+          "file": "original-full-finite-v1.bin",
+          "cases": 662365,
+          "sha256": "41ba3f0747eb9b835ba9fb728c0f59fceabd0d4e85b0db222de14b18ef0cdcb6",
+          "mismatches": 0
+        }
+      ]
+    },
+    "integer_safety": {
+      "positive_representations": 872415232,
+      "exponents_inclusive": [
+        24,
+        127
+      ],
+      "property": "Leading fraction nonzero after masking; integer safety sweep, not an original-return/audio corpus"
+    },
+    "mutants": {
+      "omit_quadrant_carry": 3782,
+      "omit_ones_complement": 3782,
+      "replace_explicit_fma_with_separate_operations": 4
+    },
+    "red_green": {
+      "old_helper_ordinary_fixture_admission_mismatches": 4,
+      "old_helper_full_finite_fixture": "rejected as outside declared domain",
+      "new_helper_host_ctest": "51/51 Release passed"
+    },
+    "scope": "Shared math prerequisite; does not establish Karplus model, duration histories, full voice graph or standalone Android instrument equivalence"
+  }
 }

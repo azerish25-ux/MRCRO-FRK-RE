@@ -287,9 +287,14 @@ range reduction and sign handling. It does not defer to host sine. Independent
 review checked380,505 original UCRT vectors; the28,246-vector repository fixture
 passes on Android, where host sine differs on385 inputs. The actual already-open
 synth's dispatcher flag was read twice as3 with module identity checks.
-Finite sine arguments with magnitude bits below0x4b800456 and round-to-nearest
-are required. Large/nonfinite inputs, other UCRT CPU branches and alternate
-rounding modes are outside this scoped reference contract.
+The shared helper now implements the identified large-angle reduction for all
+finite binary32 inputs. A fresh independent original-UCRT replay matched 662,365
+broad and 11,951 compact full-range returns exactly; the compact corpus is included
+in CTest and the remote Android emulator job. Portable limb products preserve the
+source quadrant carry and one's complement without host sine or compiler-specific
+128-bit integers. Nonfinite inputs, errno/fenv side effects, other UCRT CPU branches
+and alternate rounding modes remain outside this reference contract. See the
+[full-range evidence](../docs/ucrt-sinf-full-finite.md).
 
 These component matches do not establish complete instrument equivalence.
 Remaining engines, actual voice scheduling, full effects, modulation, presets,
