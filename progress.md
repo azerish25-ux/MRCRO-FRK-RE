@@ -350,3 +350,8 @@
 
 - Integrated the supplied-descriptor discrete version converter and eligible numeric write selector into the strict-FP core. The installed wrapper identity is SHA-256 `354c26c58e4c8c671b50f88d070452b47c9cd6b6505b1ea18391724929b3d19e`; the original-instruction evidence and private fixture are retained on D: in `local/evidence/preset-library-agent/migrations`.
 - The actual integrated source matched 10,440 discrete cases, 518 additional 129-entry cases and 800 raw numeric write cases on the local Windows Release build. Synthetic edge cases are included in the repository and configured for Android CI. These helpers do not load preset archives, construct descriptors, run instrument-specific migrations or apply values to the audio graph.
+
+## Persistent oscillator bank integration (in progress)
+
+- Integrated the source-derived persistent bank for Basic Waves, SuperWave, Harmo, Karplus, Virtual Analog, Waveshaper and Bass. Model selection preserves the recovered per-model lifecycle and the slot's shared scratch; this is not yet the complete voice or instrument scheduler.
+- The integrated Windows Release bank matched the retained original 7,738-operation, 2,004-render sequence for every compared audio sample, random state, owner flag and final shared-memory word. The reference fixture is SHA-256 checked before use and the same check is configured for Android CI. Other models, upstream controls, filters, effects and full instrument behavior remain open.

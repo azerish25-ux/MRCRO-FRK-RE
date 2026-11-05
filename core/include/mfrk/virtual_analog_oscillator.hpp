@@ -10,6 +10,10 @@ namespace mfrk {
 class VirtualAnalogOscillator {
 public:
     explicit VirtualAnalogOscillator(float previous_sample = 0.0f);
+    explicit VirtualAnalogOscillator(std::span<std::byte,128> scratch, float previous_sample = 0.0f);
+
+    // Selection Init resets engine state only, never upsampler history.
+    void initialize() noexcept;
 
     void render(const VirtualAnalogParameters& parameters, float level,
                 std::span<float, 32> output) noexcept;

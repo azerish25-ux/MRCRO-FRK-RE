@@ -85,6 +85,8 @@ public:
     // remains the fixed owned/borrowed buffer; binding does not migrate memory.
     void bind_buffer(bool enabled,std::uint32_t count,
                      std::uint64_t identity_label=0x400003000ull) noexcept;
+    // Exact owner-policy byte at raw+0x199. No invented DSP interpretation.
+    void set_owner_policy_byte(std::uint8_t value) noexcept { put(0x199,value); }
     void initialize() noexcept;
     void trigger(bool value) noexcept;
     void reset() noexcept;

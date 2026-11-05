@@ -81,6 +81,7 @@ struct BasicWaves::Impl {
     std::int16_t sub_mix = 0;
     std::array<std::int16_t, 3> gain{32767, 0, 0};
     bool force = false;
+    std::uint8_t trigger_suppressed = 1;
 
     explicit Impl(const BasicWaveTables& source)
         : tables(source), main_table(&source.lookup(BasicWaveform::sine, 0)),
@@ -101,6 +102,17 @@ void BasicWaves::set_pitch(float frequency, float table_key) noexcept {
 
 void BasicWaves::set_phase_seed(float phase) noexcept {
     impl_->seed = static_cast<std::uint32_t>(static_cast<std::int64_t>(phase * from_bits(0x4f800000u)));
+}
+
+void BasicWaves::initialize() noexcept {}
+
+void BasicWaves::set_trigger_suppressed(std::uint8_t value) noexcept {
+    impl_->trigger_suppressed = value;
+}
+
+void BasicWaves::trigger(std::uint8_t flag) noexcept {
+    if (flag != 0 && impl_->trigger_suppressed == 0)
+        impl_->phase = {impl_->seed, impl_->seed + impl_->pulse_offset, impl_->seed};
 }
 
 void BasicWaves::reset() noexcept {

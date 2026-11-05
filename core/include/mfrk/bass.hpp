@@ -36,6 +36,9 @@ public:
         s_.words = words;
         s_.dirty = dirty;
     }
+    // Native aggregate2e0fa0 stores the literal byte at raw+0x68.
+    void set_trigger_suppressed(std::uint8_t value) noexcept { s_.trigger_suppressed = value; }
+
     void set_pitch(float frequency_hz) noexcept { s_.frequency = frequency_hz; }
     void set_phase(float phase) noexcept;
     void trigger(std::uint8_t flag) noexcept;

@@ -37,6 +37,7 @@
 
 #include <algorithm>
 #include <array>
+#include <cstring>
 #include <cassert>
 
 namespace mfrk {
@@ -46,6 +47,7 @@ struct VirtualAnalog::Impl {
     plaits::VariableShapeOscillator square;
     plaits::VariableSawOscillator saw;
     std::array<float, 32> temporary{};
+    std::byte* external_scratch = nullptr;
     float square_gain = 0.0f;
     float saw_gain = 0.0f;
 
@@ -74,7 +76,18 @@ float detuning(float harmonics) noexcept {
 }  // namespace
 
 VirtualAnalog::VirtualAnalog() : impl_(std::make_unique<Impl>()) {}
+VirtualAnalog::VirtualAnalog(std::span<std::byte,128> scratch) : impl_(std::make_unique<Impl>()) {
+    impl_->external_scratch = scratch.data();
+}
 VirtualAnalog::~VirtualAnalog() = default;
+
+void VirtualAnalog::initialize() noexcept {
+    impl_->primary.Init();
+    impl_->square.Init();
+    impl_->saw.Init();
+    impl_->square_gain = 0.0f;
+    impl_->saw_gain = 0.0f;
+}
 
 void VirtualAnalog::render(const VirtualAnalogParameters& parameters,
                            std::span<float> output) noexcept {
@@ -101,6 +114,10 @@ void VirtualAnalog::render(const VirtualAnalogParameters& parameters,
     impl_->square.Render(primary_frequency,
                          normalized_pitch_frequency(parameters.note + square_sync),
                          square_width, 1.0f, impl_->temporary.data(), output.size());
+    // Native square scratch resides in the shared slot resource. Preserve the
+    // exact written span, using byte copies rather than float/int16 aliasing.
+    if (impl_->external_scratch)
+        std::memcpy(impl_->external_scratch, impl_->temporary.data(), output.size_bytes());
     impl_->saw.Render(auxiliary_frequency, saw_width, saw_shape, output.data(), output.size());
     const float normalization = 1.0f / std::max(square_gain, saw_gain);
     stmlib::ParameterInterpolator square_mix(&impl_->square_gain, square_gain * 0.3f * normalization, output.size());

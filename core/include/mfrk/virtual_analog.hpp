@@ -1,5 +1,6 @@
 #pragma once
 
+#include <cstddef>
 #include <memory>
 #include <span>
 
@@ -18,9 +19,14 @@ struct VirtualAnalogParameters {
 class VirtualAnalog {
 public:
     VirtualAnalog();
+    // Fixed borrowed slot scratch; storage must outlive this engine.
+    explicit VirtualAnalog(std::span<std::byte,128> scratch);
     ~VirtualAnalog();
     VirtualAnalog(const VirtualAnalog&) = delete;
     VirtualAnalog& operator=(const VirtualAnalog&) = delete;
+
+    // Native inner Init; preserves the outer wrapper interpolation history.
+    void initialize() noexcept;
 
     void render(const VirtualAnalogParameters& parameters,
                 std::span<float> output) noexcept;

@@ -54,6 +54,9 @@ public:
         state_.dirty = dirty;
     }
 
+    // Native aggregate2e0fa0 stores the literal byte at raw+0x141.
+    void set_trigger_suppressed(std::uint8_t value) noexcept { state_.trigger_suppressed = value; }
+
     void set_pitch(float hz, float table_key) noexcept;
     // Phase plus each offset must have a representable signed32 truncation.
     // Native0x1802c63d0 updates seven seeds AND seven current phases.
