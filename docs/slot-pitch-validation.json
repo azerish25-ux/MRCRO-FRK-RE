@@ -1,0 +1,53 @@
+{
+  "tested_revision": "03a7e7f8c6dbd2251b046957382639e5da51cd01",
+  "tested_tree": "b4103f6c2f3c3055f1dab83a76180888839402d0",
+  "run_id": 41949268317,
+  "run_url": "https://github.com/azerish25-ux/MRCRO-FRK-RE/actions/runs/41949268317",
+  "linux": {
+    "job_id": 126989057233,
+    "release_ctests_passed": 72,
+    "failed": 0,
+    "log_sha256": "05d83862f3a3dedfaefd3811c5e6cb6200599715e1e0b53f33202c6c45953a3e"
+  },
+  "android": {
+    "job_id": 126989300558,
+    "compiled_abis": [
+      "arm64-v8a",
+      "x86_64"
+    ],
+    "runtime_abi": "x86_64",
+    "api_level": 35,
+    "slot_cases": 1160,
+    "state_mismatches": 0,
+    "dispatch_flag_mismatches": 0,
+    "returned_note_hz_mismatches": 0,
+    "slot_admission_mismatches": 0,
+    "powf_cases": 137161,
+    "powf_mismatches": 0,
+    "powf_hz_mismatches": 0,
+    "powf_admission_mismatches": 0,
+    "all_reference_steps": "success",
+    "log_sha256": "bd9b466cae360677b164595e8930d31b090896cf5220129cfa0758d9c77274cf"
+  },
+  "root_verification": {
+    "exact_slot_method_bodies": 7,
+    "malformed_rejections": 22,
+    "actual_original_ucrt_replay_cases": 137161,
+    "powf_hz_mismatches": 0,
+    "independent_decimal250_coefficients": 64,
+    "coefficient_mismatches": 0,
+    "result_swap_mutant": {
+      "state_mismatches": 0,
+      "dispatch_flag_mismatches": 0,
+      "returned_value_mismatches": 2320
+    }
+  },
+  "independent_review": {
+    "required_findings": 0,
+    "actual_repo_strict_slot_cases": 1160,
+    "actual_repo_strict_math_cases": 137161,
+    "mismatches": 0,
+    "inline_constexpr_table_linkage": "Approved; numerical definitions/data unchanged"
+  },
+  "scope": "Numeric slot preparation on fixed recovered metadata and raw upstream field ABI. No arm64 runtime, public note/MIDI/compiler interface, complete model dispatch/voice graph, full UI/preset or standalone instrument claim."
+}
