@@ -364,6 +364,7 @@
 - Traced all 128 MIDI note values through original public Mini processing to the packed pitch write at `2dd10d` and target setup `2d4f70`. The 0..128 descriptor's encoding and decoding now feed the recovered glide setup, with all 128 original word/target cases matching locally. Voice assignment, trigger and other note-row effects are still separate.
 - Joined native-order slot control forwarding and pitch preparation to the persistent Basic Waves bank. A continuous original cold-owner sequence matched 64 blocks, including 2,048 scaled audio samples and the represented pitch/dirty state, on Windows Release. Other models, full controller setup and the downstream voice graph still require integration.
 - Added a bounded note gate dispatch plan for the original two-lane poly/para and cyclic-selection paths. It matches 144 original dispatcher boundary cases, including main-envelope release/hold behavior. The owner still must perform cyclic phase resets and the other pitch/LFO/voice effects before this becomes a full dispatcher.
+- Connected that gate projection to persistent oscillator slots and the recovered ADSR actor. The owner requires an explicit cyclic callback to carry the still-unimplemented phase/reset work, and rejects missing dependencies before changing gate state. This is a partial voice join, not a complete playable engine.
 
 ## Android MIDI input boundary (in progress)
 

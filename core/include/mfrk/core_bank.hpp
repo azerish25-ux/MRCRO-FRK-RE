@@ -92,6 +92,7 @@ public:
  Model selected() const noexcept { return selected_; }
  const auto& dirty() const noexcept { return dirty_; }
  void clear_dirty() noexcept { dirty_={}; }
+ void trigger(std::uint8_t gate) noexcept {side_.trigger(selected_,gate);}
  const auto& pitch_dirty() const noexcept {return pitch_dirty_;}
  bool set_model_control(unsigned index,std::uint16_t word,std::uint8_t dirty) noexcept;
  bool set_pitch_control(unsigned index,std::uint16_t word,std::uint8_t dirty) noexcept;
