@@ -9,6 +9,7 @@ add_library(mfrk_core STATIC core/src/pitch.cpp core/src/virtual_analog.cpp
     core/src/filter_resampling.cpp core/src/fir_resampler.cpp core/src/filter_resource.cpp
     core/src/deferred_vcf49.cpp core/src/superwave.cpp core/src/fx_input.cpp core/src/fx_mix.cpp core/src/bass.cpp core/src/harmo.cpp core/src/karplus.cpp core/src/slot_pitch.cpp core/src/master_output.cpp core/src/voice_audio.cpp core/src/notepath.cpp)
 target_include_directories(mfrk_core PUBLIC core/include)
+target_sources(mfrk_core PRIVATE core/src/preset_migration.cpp)
 target_include_directories(mfrk_core PRIVATE third_party)
 # Upstream stmlib's TEST path selects portable helpers instead of Cortex-M assembly.
 target_compile_definitions(mfrk_core PRIVATE TEST)
@@ -23,6 +24,9 @@ endif()
 
 include(CTest)
 if(BUILD_TESTING)
+    add_executable(preset_migration_test core/tests/preset_migration_test.cpp)
+    target_link_libraries(preset_migration_test PRIVATE mfrk_core)
+    add_test(NAME preset_migration_edges COMMAND preset_migration_test)
     add_executable(mfrk_karplus_tests core/tests/karplus_test.cpp)
     target_include_directories(mfrk_karplus_tests PRIVATE core/src)
     target_link_libraries(mfrk_karplus_tests PRIVATE mfrk_core)
