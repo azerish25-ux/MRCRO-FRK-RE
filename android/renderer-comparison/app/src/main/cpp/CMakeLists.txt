@@ -1,0 +1,7 @@
+cmake_minimum_required(VERSION 3.22)
+project(mfrk_knob_geometry LANGUAGES CXX)
+set(REPO_ROOT "${CMAKE_CURRENT_LIST_DIR}/../../../../../..")
+add_library(mfrk_knob_geometry SHARED knob_geometry_jni.cpp "${REPO_ROOT}/core/src/ui_primitives.cpp")
+target_include_directories(mfrk_knob_geometry PRIVATE "${REPO_ROOT}/core/include")
+target_compile_features(mfrk_knob_geometry PRIVATE cxx_std_20)
+target_compile_options(mfrk_knob_geometry PRIVATE -fno-fast-math -ffp-contract=off)

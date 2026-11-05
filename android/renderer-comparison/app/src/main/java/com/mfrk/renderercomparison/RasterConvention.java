@@ -4,7 +4,7 @@ import org.json.JSONObject;
 
 /** Every unresolved native raster convention lives here, not in source metadata. */
 final class RasterConvention {
-    static final String ID = "source-constrained-skia-candidate-v1";
+    static final String ID = "source-geometry-skia-candidate-v2";
     private RasterConvention() {}
     static float dimension(JSONObject style, String key) {
         try { return Float.parseFloat(style.getString(key)); }
@@ -22,12 +22,5 @@ final class RasterConvention {
     static float shadowYOffset(float diameter, JSONObject style) {
         float divisor = dimension(style, "shadow-offset-y-factor");
         return divisor == 0 ? 0 : diameter / divisor;
-    }
-    static float indicatorDegrees(JSONObject style, float position) {
-        return -90 + (position * 2 - 1) * halfSweepDegrees(style);
-    }
-    // Candidate: outline-gradient-angle is radians from the positive x-axis.
-    static float gradientAngle(JSONObject style) {
-        return dimension(style, "center-outline-gradient-angle");
     }
 }

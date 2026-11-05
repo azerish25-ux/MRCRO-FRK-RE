@@ -6,18 +6,19 @@
     "source silver gradient endpoints/colors and angle attribute2.4",
     "source ring/center/indicator/shadow scalar attributes",
     "exact font binary hashes and original100% background hash",
-    "explicit factory subset cutoff1/resonance0/envelope0.5"
+    "explicit factory subset cutoff1/resonance0/envelope0.5",
+    "native center bounds, outline endpoints and marker endpoints for the admitted integer-size profile"
   ],
   "unverified_interpretations": [
     {
       "area": "angle",
-      "candidate": "angle2.4 is a symmetric half sweep in radians about12oclock",
-      "location": "RasterConvention.halfSweepDegrees/indicatorDegrees"
+      "candidate": "ring arc uses a symmetric half sweep; native ring path and raster remain unverified",
+      "location": "RasterConvention.halfSweepDegrees"
     },
     {
       "area": "dimensions",
-      "candidate": "thickness fractions multiply declared diameter; center-size scales outer radius",
-      "location": "RasterConvention/SilverSoftKnob"
+      "candidate": "center bounds use recovered integer-dimension geometry; thickness scaling and native physical size remain unverified",
+      "location": "NativeGeometry/SilverSoftKnob"
     },
     {
       "area": "ring gradient",
@@ -26,8 +27,8 @@
     },
     {
       "area": "center outline",
-      "candidate": "linear gradient; source angle-0.1 interpreted as radians fromeast",
-      "location": "RasterConvention.gradientAngle"
+      "candidate": "endpoints use recovered packed-trig geometry; gradient color interpolation and raster remain unverified",
+      "location": "NativeGeometry.outline/SilverSoftKnob"
     },
     {
       "area": "ring outline3D",
@@ -41,8 +42,8 @@
     },
     {
       "area": "indicator",
-      "candidate": "round-capped line using source start/width/thickness as radial fractions",
-      "location": "SilverSoftKnob.draw"
+      "candidate": "endpoints use recovered packed-trig marker geometry; stroke thickness and cap raster remain unverified",
+      "location": "NativeGeometry.marker/SilverSoftKnob.draw"
     },
     {
       "area": "labels",

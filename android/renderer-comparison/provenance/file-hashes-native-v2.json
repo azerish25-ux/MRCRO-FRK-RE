@@ -1,0 +1,14 @@
+{
+  "app/build.gradle": "00b07888c258295421e41668b36bff4e11cec39fbb34595b737dee090401c5c2",
+  "app/src/main/cpp/CMakeLists.txt": "15372d0ec4cb16eb863b17eac058700a6566f6af7fd48f7fa0707c1edec9a3f6",
+  "app/src/main/cpp/knob_geometry_jni.cpp": "ea13f565b1080b7cae63ed26df39548384eec3ca77578d020564cf9b868aa94c",
+  "app/src/main/java/com/mfrk/renderercomparison/NativeGeometry.java": "f283b0fea2c471f0d81d6e1279bbfc7cb7ac87b50a83b302f2cf58499f0af1fd",
+  "app/src/main/java/com/mfrk/renderercomparison/SilverSoftKnob.java": "736fb31cbaa236acc24a4da4f8daf0f03a7180e48e9e9c616d4cf442a4d87213",
+  "app/src/main/java/com/mfrk/renderercomparison/RasterConvention.java": "9bb562f6fd084d5f58f82d760272e57ac3376e2af64c27d507d560d8eece8757",
+  "app/src/androidTest/java/com/mfrk/renderercomparison/ComparisonInstrumentation.java": "9f7ebbbdc6446dcac023cdc35e604b839d0990ff41cf99cf17baa344f864c8b4",
+  "provenance/raster-assumptions.json": "ed5027eb6d91c9e39f4a9f738290b772c8acb1b7315b74388757fd232bf23cf6",
+  "provenance/source-and-toolchain.json": "92b6fb75fd2e9ccb568006d47df7d5d4ea542f0fcde0d46b655ce31510efb7c5",
+  "provenance/static-checks.json": "f85b42fd7c3cbad406f7ae86e67b9c9748537151faddc085204813f9f877655d",
+  "README.md": "a220352e245f1002f65830bb7190e6ce30358b581134e5be4813a0a4f20e92c8",
+  "../../core/src/ui_primitives.cpp": "c4abe5b5d2a5121045d95d072c65f431a786b54a344f28a7912b114170178529"
+}

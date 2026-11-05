@@ -29,6 +29,7 @@ public final class ComparisonInstrumentation extends Instrumentation {
             File directory=new File(getTargetContext().getFilesDir(),"renderer-comparison");
             if (!directory.isDirectory() && !directory.mkdirs()) throw new AssertionError("Output directory");
             verifyAssets();
+            verifyNativeGeometry();
             String[] names={"minimum","center","factory-default","maximum","factory-repeat"};
             float[][] values={{0,0,0},{0.5f,0.5f,0.5f},{1,0,0.5f},{1,1,1},{1,0,0.5f}};
             JSONArray cases=new JSONArray(); HashSet<String> unique=new HashSet<>(); String factoryHash=null;
@@ -99,6 +100,15 @@ public final class ComparisonInstrumentation extends Instrumentation {
             android.util.Log.e("RendererComparison","Instrumentation failure",error);
             result.putString("stream","Renderer comparison failed: "+error+"\n");finish(Activity.RESULT_CANCELED,result);
         }
+    }
+    private static void verifyNativeGeometry() {
+        float[] bounds=NativeGeometry.center(125,125,1f,.69f);
+        float[] gradient=NativeGeometry.outline(125,125,2.4f,-.1f,bounds[2]*.5f);
+        float[] marker=NativeGeometry.marker(125,125,.5f,2.4f,bounds[2]*.5f,.02f,.5f);
+        float[] expectedBounds={19.7200012f,19.7200012f,85.5599976f,85.5599976f};
+        float[] expectedGradient={49.2802544f,21.8138046f,75.7197418f,103.1862030f};
+        float[] expectedMarker={62.5f,18.4793892f,62.5f,40.9388809f};
+        for(int i=0;i<4;++i)if(Math.abs(bounds[i]-expectedBounds[i])>.0001f||Math.abs(gradient[i]-expectedGradient[i])>.0001f||Math.abs(marker[i]-expectedMarker[i])>.0001f)throw new AssertionError("Native geometry mismatch");
     }
     private void verifyAssets() throws Exception {
         String[][] files={

@@ -10,7 +10,9 @@
     "compileSDK": 35,
     "targetSDK": 35,
     "minSDK": 26,
-    "buildTools": "35.0.0"
+    "buildTools": "35.0.0",
+    "NDK": "27.2.12479018",
+    "CMake": "3.22.1"
   },
   "official_sources": [
     "https://developer.android.com/build/releases/agp-8-7-0-release-notes",
@@ -37,5 +39,10 @@
     "native_pixel_parity": "not yet verified",
     "source_encoding": "UTF-8 without BOM, LF; generated vendor payload bytes are never normalized beyond explicit hash-verified manifest rules"
   },
-  "original_captured_acquisition_manifest_sha256": "eccce0e23a39141f600b33a6597038222a15d9863a70671c4000ca27d7e98dc1"
+  "original_captured_acquisition_manifest_sha256": "eccce0e23a39141f600b33a6597038222a15d9863a70671c4000ca27d7e98dc1",
+  "geometry_source": {
+    "path": "core/src/ui_primitives.cpp",
+    "sha256": "c4abe5b5d2a5121045d95d072c65f431a786b54a344f28a7912b114170178529",
+    "scope": "center bounds, outline endpoints, marker endpoints; integer-size source profile; remaining raster unverified"
+  }
 }
