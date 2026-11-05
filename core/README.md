@@ -419,3 +419,14 @@ words. The source phase position is unsigned; raw reset/phase setters are no-ops
 Construction, pending binding, domain guards and owner-sharing limits are explicit
 in the [reference contract](../docs/karplus-reference.md). The full native slot
 owner and Harmo shared delay integration remain required.
+
+
+## Shared oscillator slot resource
+
+Harmo supports a constructor-only native owner profile with a borrowed fixed
+span into the same slot buffer used by KarplusStr. The existing isolated factory
+retains its owned initialized profile. The continuous original regression covers
+206 operations and88 rendered blocks through selection, overwrite and reacquisition
+with zero state/memory/seed/raw/audio differences locally. See the
+[shared-slot contract](../docs/shared-slot-reference.md) for constructor, Init,
+reset, pointer-role normalization and the remaining full-slot integration scope.

@@ -4,6 +4,7 @@
 #include <cstddef>
 #include <cstdint>
 #include <cstring>
+#include <span>
 
 namespace mfrk::harmo {
 struct TestAccess;
@@ -44,6 +45,9 @@ class Engine {
     // oracle labels, never process addresses or dereferenced pointers.
     std::array<std::uint8_t,424> state{};
     std::array<std::int16_t,2048> delay{};
+    std::int16_t* external_delay=nullptr;
+    auto delay_words() noexcept { return std::span<std::int16_t,2048>(external_delay?external_delay:delay.data(),2048); }
+    auto delay_words() const noexcept { return std::span<const std::int16_t,2048>(external_delay?external_delay:delay.data(),2048); }
     template<class T=std::int32_t> T get(std::size_t offset) const noexcept {
         assert(offset+sizeof(T)<=state.size());
         T value;std::memcpy(&value,state.data()+offset,sizeof value);return value;
@@ -54,7 +58,8 @@ class Engine {
     }
     void word(std::size_t offset,std::int64_t value) noexcept;
     void integer(std::size_t offset,std::int64_t value) noexcept;
-    Engine(const Tables&,bool delay_enabled) noexcept;
+    Engine(const Tables&,bool delay_enabled,std::int16_t* external=nullptr,
+           bool initialize_now=true) noexcept;
     void target(int base,float value) noexcept;
     float smoother(int base) noexcept;
     void controls() noexcept;
@@ -67,10 +72,27 @@ public:
     static Engine admitted_zero_arena(const Tables& tables,bool delay_enabled) noexcept {
         return Engine(tables,delay_enabled);
     }
-    // Binding changes the saved binding; initialize installs it for rendering.
-    void bind_buffer(bool enabled,std::uint32_t count) noexcept;
+    // Native owner-pool profile: raw construction, derived class/gain stores,
+    // no bind or Init. Borrow the first2048 words of a persistent slot resource.
+    // Memory must outlive this model; construction/Init do not clear it.
+    // Copies of this borrowed profile share the same storage.
+    static Engine admitted_zero_arena_uninitialized(const Tables& tables,
+                                     std::span<std::int16_t,2048> memory) noexcept {
+        return Engine(tables,false,memory.data(),false);
+    }
+    // Binding changes saved metadata; initialize commits it for rendering.
+    // identity_label is inert provenance, never a host address. Actual storage
+    // remains the fixed owned/borrowed buffer; binding does not migrate memory.
+    void bind_buffer(bool enabled,std::uint32_t count,
+                     std::uint64_t identity_label=0x400003000ull) noexcept;
     void initialize() noexcept;
     void trigger(bool value) noexcept;
+    void reset() noexcept;
+    bool set_word(unsigned index,std::uint16_t value) noexcept;
+    bool set_dirty(unsigned index,std::uint8_t value) noexcept;
+    // Native interface prepare: read stored words/dirty, prepare, then clear flags.
+    // Set positive finite frequency before calling, as required by prepare().
+    void prepare_current() noexcept;
     void set_frequency(float value) noexcept;
     void set_phase(float phase) noexcept;
     void prepare(const Input&) noexcept;

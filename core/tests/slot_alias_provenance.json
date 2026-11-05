@@ -1,0 +1,77 @@
+{
+  "original_packed_sha256": "d632c56cc70a69832c65325ae019d9a5491c87d8838285f37be699100a9405d9",
+  "original_canonical_sha256": "a2df9bf95778ba4f722b5263be6c3d7a7e02700fe2ab505e9a4f4e4380e06a36",
+  "canonical_bytes": 199386,
+  "canonical_sha256": "03fd3002877d92f1f0e382cc48524b69a3b620a88cdfbcb01ea2a988f8d18889",
+  "packed_bytes": 108648,
+  "packed_sha256": "42552f6c65a6eead10824e363144065f908350f17d489b9bd812232e5c372978",
+  "operations": 206,
+  "changed_resource_words": 3337,
+  "normalization": "Only fixed context pointer field+18 maps to typed explicit record-input role0 in both models; resource pointers map to canonical slot resource identity400020000 (+8192 for K second ring). All numeric state bytes preserved. No candidate-derived expectations, no per-step initial state injection.",
+  "source_processor_sha256": "bd036dfa6a0afcfef733c29c73b1b3df969f2c86ca860b0fa535d4492fa8fb74",
+  "method": "Unchanged original processor interfaces and source owner selection; continuous histories, one initial owner setup, no per-operation restore or candidate-derived expected outputs.",
+  "resource": {
+    "bytes": 16384,
+    "words": 8192,
+    "harmo_view": "first2048 signed16 words",
+    "initial": "explicit zero caller memory; actual original packet verifies zero",
+    "seed": "explicit owner-shared54321"
+  },
+  "source_entries": {
+    "owner_selection": "0x2d85b0",
+    "harmo_raw_ctor": "0x2e9ea0",
+    "harmo_derived_vtable_store": "0x2e76a3",
+    "harmo_derived_gain_store": "0x2e76b8 (side1 0x2e76ea)",
+    "harmo_gain_bits": "0x4023d70a",
+    "harmo_interface_prepare": "0x2c3500",
+    "harmo_initialize": "0x2c3440",
+    "harmo_interface_reset": "0x2c3530",
+    "harmo_primary_reset": "0x2c3770"
+  },
+  "profile": {
+    "models": [
+      3,
+      2
+    ],
+    "operations": 206,
+    "render_blocks": 88,
+    "samples": 2816,
+    "nonzero_samples": 1157,
+    "karplus_nonzero_samples_after_reacquire": 640,
+    "harmo_blocks_writing_shared_memory": 15,
+    "selection_boundaries_preserving_memory": 3,
+    "phase_bits": 0,
+    "manager_data": 0,
+    "manager_count": 0,
+    "bind_count": 16384
+  },
+  "comparison": "Full K288 bytes and H424-byte DSP prefix, all8192 memory words and shared seed after every operation, all raw/scaled render returns, and owner active-model/Hactive flag separately. H remaining secondary-interface metadata is not a C++ object representation claim.",
+  "constructor": "Existing isolated H zero-arena owned factory still auto-binds/initializes with gain1.0. New owner-pool factory executes raw construction plus original derived vtable/gain2.56 stores, leaves bind/Init explicit and borrows fixed storage. No state is supplied from reference checkpoints.",
+  "selection_boundary": "Source dirties OUTER slot records; raw model dirty words are changed only by later recorded setter operations. This test expands native lifecycle for the two raw models and does not implement/test the rest of slot preparation.",
+  "reset": "H SetBoth LPFs from stored19c/1a0; write byte198=1 preserving199, thresholds/time/coefs, phase/trigger/resource/seed. Existing prepare(reset_smoothers) delegates to same reset operation.",
+  "negative_controls": [
+    {
+      "mutant": "owned_delay",
+      "exit": 1,
+      "result": "ops 206 blocks 88 state 946 memory 67967 rng 0 owner 0 raw 203 audio 203"
+    },
+    {
+      "mutant": "eager_init",
+      "exit": 1,
+      "result": "ops 206 blocks 88 state 375 memory 0 rng 0 owner 0 raw 0 audio 0"
+    },
+    {
+      "mutant": "no_harmo_reset",
+      "exit": 1,
+      "result": "ops 206 blocks 88 state 720 memory 0 rng 0 owner 0 raw 0 audio 0"
+    },
+    {
+      "mutant": "clear_resource_on_selection",
+      "exit": 1,
+      "result": "ops 206 blocks 88 state 3099 memory 110462 rng 0 owner 0 raw 640 audio 640"
+    }
+  ],
+  "regeneration": "tools/encode_slot_alias_fixture.py accepts the SHA-pinned original packet; independent Python regeneration matches the separately encoded repository fixture byte-for-byte.",
+  "review": "Independent actual-repo strict O2/NDEBUG/Wconversion/Werror review: shared sequence206/88, old59264H samples and36lifecycle commands all fields0; no required findings.",
+  "remaining": "Complete slot pitch/control forwarding and model bank graph, other model combinations, asynchronous resources, final audio/UI/MIDI/preset parity and sounding standalone app remain required."
+}
