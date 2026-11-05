@@ -36,6 +36,32 @@ int main(){unsigned guards=0;auto reject=[&](auto action){bool failed=false;try{
  auto scoped=parent(node("with",{{"src","LOCAL"},{"string","${LONG}"}},{node("widget")}));
  walk_nodes(scoped,joined,[&](const Node&,Context& live){if(mfrk::ui::scene::expand_aliases("${LOCAL}",live.strings,true)!=std::string(2048,'x'))throw std::runtime_error("scope/property context join");});
  if(joined.strings.contains("LOCAL"))throw std::runtime_error("scope cleanup");
+ {
+  TemplateDefinition definition{{{"name",TemplateKind::string,"fallback"},{"label",TemplateKind::string,"${name}"},{"n",TemplateKind::number,"1/4"}},node("template",{}, {node("widget")})};
+  Templates templates{{"Example",definition}};Context c;c.templates=&templates;unsigned count=0;
+  auto instance=parent(node("template:Example",{{"name","Alpha"},{"name","Beta"}}));
+  walk_nodes(instance,c,[&](const Node& n,Context& live){if(n.name!="widget"||live.strings.at("name")!="Beta"||live.strings.at("label")!="Beta"||live.numbers.at("n")!=.25)throw std::runtime_error("template bindings");++count;});
+  if(count!=1||!c.strings.empty()||!c.numbers.empty())throw std::runtime_error("template cleanup");
+ }
+ {
+  TemplateDefinition definition{{{"a",TemplateKind::number,"0"},{"b",TemplateKind::integer,"0"}},node("template",{}, {node("widget")})};
+  Templates templates{{"numeric",definition}};Context c;c.templates=&templates;c.numbers["X"]=2.;
+  walk_nodes(parent(node("template:numeric",{{"a","${X}+1"},{"b","1/4"}})),c,[&](const Node&,Context& live){if(live.numbers.at("a")!=3.||live.strings.contains("a")||live.numbers.at("b")!=0.||live.strings.at("b")!="0")throw std::runtime_error("template numeric namespaces");});
+  if(c.numbers.size()!=1||c.numbers.at("X")!=2.||!c.strings.empty())throw std::runtime_error("template numeric cleanup");
+ }
+ {
+  auto parsed=mfrk::ui::scene::structure::parse_native_xml("<template id='dual'><attribute name='name' type='string'/><attribute name='label' type='string' default='${name}'/><attribute name='amount' type='double' default='1/4'/><widget/></template>");
+  Templates templates;register_template(templates,parsed.children.at(0));Context c;c.templates=&templates;unsigned count=0;
+  walk_nodes(parent(node("template:dual",{{"name","Regular"}})),c,[&](const Node&,Context& live){if(live.strings.at("label")!="Regular"||live.numbers.at("amount")!=.25)throw std::runtime_error("registered template values");++count;});
+  if(count!=1||!c.strings.empty()||!c.numbers.empty())throw std::runtime_error("registered template cleanup");
+ }
+ {
+  auto parsed=mfrk::ui::scene::structure::parse_native_xml("<template id='dual'><attribute name='name' type='string'/><attribute name='param' type='string'/><panel><for src='item' in='item_list(${param})' index='ITEM_IDX'><with src='INV' double='${ITEM_IDX}==1'><ibutton text='${item}' invert='${INV}'/></with></for></panel></template>");
+  Templates templates;register_template(templates,parsed.children.at(0));Context c;c.templates=&templates;c.item_list=[](std::string_view p){if(p!="Sustain_Polarity")throw std::runtime_error("wrong template parameter");return std::vector<std::string>{"Regular","Inverted"};};std::vector<std::string> seen;
+  Emit factory;factory=[&](const Node& n,Context& live){if(n.name=="ibutton")seen.push_back(mfrk::ui::scene::expand_aliases(n.attributes.at(0).second,live.strings,true)+":"+mfrk::ui::scene::expand_aliases(n.attributes.at(1).second,live.strings,true));else walk_nodes(n,live,factory,1);};
+  walk_nodes(parent(node("template:dual",{{"name","Sustain Polarity"},{"param","Sustain_Polarity"}})),c,factory,1);
+  if(seen!=std::vector<std::string>{"Regular:1","Inverted:0"}||!c.strings.empty()||!c.numbers.empty())throw std::runtime_error("template/loop/factory composition");
+ }
  for(unsigned flags: {0u,1u}){
   Context loop;loop.numbers["SEED"]=.125;std::vector<std::string> seen;
   auto range=parent(node("for",{{"src","I"},{"from","1+1"},{"to","0"},{"inclusive","false"},{"index","IDX"}},{node("widget")}));

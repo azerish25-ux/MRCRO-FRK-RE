@@ -4,6 +4,7 @@
 #include <cstdint>
 #include <limits>
 #include <stdexcept>
+#include <unordered_map>
 #include <unordered_set>
 namespace mfrk::ui::scene::scope {
 namespace {
@@ -95,6 +96,27 @@ void walk(const Node& parent,Context& context,const Emit& emit,unsigned depth,un
    walk(child,context,emit,depth+1,flags);
    for(const auto& [key,value]:bindings.strings)context.strings.erase(key);
    for(const auto& [key,value]:bindings.numbers){context.numbers.erase(key);context.strings.erase(key);}
+  }else if(child.name.starts_with("template:")){
+   if(!context.templates||field(child,"predefined-style"))throw std::invalid_argument("template registry or style outside profile");
+   const auto found=context.templates->find(child.name.substr(9));
+   if(found==context.templates->end())throw std::invalid_argument("unknown template");
+   std::unordered_map<std::string,std::string> args;
+   for(const auto& [key,value]:child.attributes){if(value.empty())throw std::invalid_argument("empty template argument");if(key!="id")args[key]=value;}
+   std::unordered_set<std::string> names;
+   for(const auto& parameter:found->second.parameters){
+    if(parameter.name.empty()||parameter.name.size()>1024||parameter.name.find('\0')!=std::string::npos||!names.insert(parameter.name).second||(parameter.kind!=TemplateKind::number&&parameter.kind!=TemplateKind::string&&parameter.kind!=TemplateKind::integer))throw std::invalid_argument("template parameter admission");
+    if((parameter.kind!=TemplateKind::number&&context.strings.contains(parameter.name))||(parameter.kind!=TemplateKind::string&&context.numbers.contains(parameter.name)))throw std::invalid_argument("template parameter collision");
+   }
+   for(const auto& parameter:found->second.parameters){
+    const auto value=args.find(parameter.name);const auto& raw=value==args.end()?parameter.default_value:value->second;
+    if(value==args.end()&&raw.empty()&&parameter.kind!=TemplateKind::string)throw std::invalid_argument("missing template value");
+    if(parameter.kind==TemplateKind::string)context.strings.emplace(parameter.name,expand_string(raw,context.strings,true));
+    else if(parameter.kind==TemplateKind::number){auto text=expand_string(raw,context.strings,true,true);context.numbers.emplace(parameter.name,LogicalExpression(text,context.numbers,context.features,false).evaluate());}
+    else if(parameter.kind==TemplateKind::integer){const auto n=condition_integer(LogicalExpression(raw,context.numbers,context.features,false).evaluate());context.numbers.emplace(parameter.name,double(n));context.strings.emplace(parameter.name,std::to_string(n));}
+    else throw std::invalid_argument("template kind outside profile");
+   }
+   walk(found->second.body,context,emit,depth+1,flags);
+   for(const auto& parameter:found->second.parameters){if(parameter.kind!=TemplateKind::number)context.strings.erase(parameter.name);if(parameter.kind!=TemplateKind::string)context.numbers.erase(parameter.name);}
   }else if(child.name=="for"){
    if(const auto in=field(child,"in")){
     const auto name=field(child,"src"),index=field(child,"index");
@@ -151,6 +173,20 @@ void walk(const Node& parent,Context& context,const Emit& emit,unsigned depth,un
   }
  }
 }
+}
+void register_template(Templates& templates,const Node& node){
+ if(node.type!=1||node.name!="template")throw std::invalid_argument("template definition required");
+ const auto id=field(node,"id");if(!id||id->empty()||id->size()>1024||templates.contains(std::string(*id)))throw std::invalid_argument("template id admission");
+ TemplateDefinition definition;definition.body=node;std::unordered_set<std::string> names;
+ for(const auto& child:node.children){
+  if(child.type!=1)throw std::invalid_argument("template element profile");
+  if(child.name!="attribute")continue;
+  const auto name=field(child,"name"),type=field(child,"type"),fallback=field(child,"default");
+  if(!name||name->empty()||name->size()>1024||!type||definition.parameters.size()>=128||!names.insert(std::string(*name)).second)throw std::invalid_argument("template declaration admission");
+  TemplateKind kind;if(*type=="string")kind=TemplateKind::string;else if(*type=="double")kind=TemplateKind::number;else throw std::invalid_argument("template declaration type");
+  definition.parameters.push_back({std::string(*name),kind,fallback?std::string(*fallback):std::string()});
+ }
+ templates.emplace(std::string(*id),std::move(definition));
 }
 Bindings collect_with(const Node& node,const Context& context){
  Bindings result;
