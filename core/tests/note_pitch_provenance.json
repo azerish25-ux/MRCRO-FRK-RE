@@ -1,0 +1,9 @@
+{
+  "processor_sha256": "bd036dfa6a0afcfef733c29c73b1b3df969f2c86ca860b0fa535d4492fa8fb74",
+  "source_write": "0x1802dd10d",
+  "source_target_setup": "0x1802d4f70 -> 0x1802da290",
+  "fixture_sha256": "1aa9361909347fe42f51cf48e4f59eb0fe5af8b6354e2123737a6b57ff5cecba",
+  "cases": 128,
+  "scope": "Actual public Mini MIDI note-on/off sequence in an explicit neutral profile, one observed pitch-record write and glide target per MIDI pitch. Voice selection, triggering, control setup and full audio are outside this adapter.",
+  "local_evidence": "local/evidence/voice-graph-agent/probe_note_pitch_target_v1.py and original-note-pitch-target-v1.json"
+}

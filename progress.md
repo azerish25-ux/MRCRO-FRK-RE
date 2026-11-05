@@ -360,6 +360,7 @@
 - Added the source selection order for a previously initialized Basic slot and empty manager metadata: activate the target, reset/deactivate the old model, bind the same resource, forward phase, initialize, and mark the outer control bytes dirty. An already-active selection is a no-op. This bounded actor does not yet represent cold placeholder selection or the whole voice scheduler.
 - Recovered pitch update `2da0a0`, including shared versus split glide, strict endpoint comparisons, source float/double ordering and the two slot-note writes per voice. The integrated raw-field component matched 48 original owner-flow snapshots plus 48 supplied-state original executions on Windows Release. The hash-bound pointer-free fixture is configured for Android CI; higher-level note/control writers remain open.
 - Added bounded glide setup `2da290`, preserving the native prior-note selection, early snap, rate choice and mixed float/double calculation. It matches 256 original supplied-state executions on Windows Release. The fixture is hash-bound and configured for Android; the higher-level note/control writers and complete voice scheduler remain open.
+- Traced all 128 MIDI note values through original public Mini processing to the packed pitch write at `2dd10d` and target setup `2d4f70`. The 0..128 descriptor's encoding and decoding now feed the recovered glide setup, with all 128 original word/target cases matching locally. Voice assignment, trigger and other note-row effects are still separate.
 
 ## Android MIDI input boundary (in progress)
 

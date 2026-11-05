@@ -28,4 +28,10 @@ struct GlideControl {
 // For shared mode index must be 0..5; for split mode 0..11. On rejected
 // index/rate the state is unchanged. Other supplied numeric fields are finite.
 bool setup_glide(State&,GlideControl&,unsigned index,bool copy_previous) noexcept;
+// Active note profile: original 0..128 descriptor encodes MIDI pitch to a
+// 16-bit record, then the pitch controller decodes that record and initializes
+// glide. Voice selection, triggering and other note-row side effects remain with
+// the owner. Invalid pitch/index or unsupported glide inputs leave state intact.
+bool encode_note_pitch(std::uint8_t pitch,std::uint16_t& word) noexcept;
+bool apply_note_pitch(State&,GlideControl&,unsigned index,std::uint8_t pitch) noexcept;
 }
