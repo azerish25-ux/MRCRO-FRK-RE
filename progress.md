@@ -358,6 +358,7 @@
 - Integrated the source-derived persistent bank for Basic Waves, SuperWave, Harmo, Karplus, Virtual Analog, Waveshaper and Bass. Model selection preserves the recovered per-model lifecycle and the slot's shared scratch; this is not yet the complete voice or instrument scheduler.
 - The integrated Windows Release bank matched the retained original 7,738-operation, 2,004-render sequence for every compared audio sample, random state, owner flag and final shared-memory word. The reference fixture is SHA-256 checked before use and the same check is configured for Android CI. Other models, upstream controls, filters, effects and full instrument behavior remain open.
 - Added the source selection order for a previously initialized Basic slot and empty manager metadata: activate the target, reset/deactivate the old model, bind the same resource, forward phase, initialize, and mark the outer control bytes dirty. An already-active selection is a no-op. This bounded actor does not yet represent cold placeholder selection or the whole voice scheduler.
+- Recovered pitch update `2da0a0`, including shared versus split glide, strict endpoint comparisons, source float/double ordering and the two slot-note writes per voice. The integrated raw-field component matched 48 original owner-flow snapshots plus 48 supplied-state original executions on Windows Release. The hash-bound pointer-free fixture is configured for Android CI; upstream glide setup and note/control writers remain open.
 
 ## Android MIDI input boundary (in progress)
 

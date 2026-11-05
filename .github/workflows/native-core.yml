@@ -346,5 +346,9 @@ jobs:
             adb push build-x86_64/audio_block_adapter_test /data/local/tmp/audio_block_adapter_test
             adb shell chmod 755 /data/local/tmp/audio_block_adapter_test
             adb shell /data/local/tmp/audio_block_adapter_test
+            adb push build-x86_64/pitch_update_test /data/local/tmp/pitch_update_test
+            adb push core/tests/pitch_update_vectors.bin /data/local/tmp/pitch_update_vectors.bin
+            adb shell chmod 755 /data/local/tmp/pitch_update_test
+            adb shell /data/local/tmp/pitch_update_test /data/local/tmp/pitch_update_vectors.bin
       - name: Compare generated Android table bytes
         run: python3 tools/check_basic_wave_tables.py --dump build-x86_64/basic-wave-tables.bin --expected core/tests/basic_wave_table_hashes.json
