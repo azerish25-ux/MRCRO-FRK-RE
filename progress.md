@@ -365,6 +365,7 @@
 - Joined native-order slot control forwarding and pitch preparation to the persistent Basic Waves bank. A continuous original cold-owner sequence matched 64 blocks, including 2,048 scaled audio samples and the represented pitch/dirty state, on Windows Release. Other models, full controller setup and the downstream voice graph still require integration.
 - Added a bounded note gate dispatch plan for the original two-lane poly/para and cyclic-selection paths. It matches 144 original dispatcher boundary cases, including main-envelope release/hold behavior. The owner still must perform cyclic phase resets and the other pitch/LFO/voice effects before this becomes a full dispatcher.
 - Connected that gate projection to persistent oscillator slots and the recovered ADSR actor. The owner requires an explicit cyclic callback to carry the still-unimplemented phase/reset work, and rejects missing dependencies before changing gate state. This is a partial voice join, not a complete playable engine.
+- Connected published row snapshots to the bounded gate owner in the native voice-then-side scan order. Original multi-row tracing confirms that order. The original clears only row status byte 7 after the voice stage and resets the outgoing record count at block start; those boundaries are now explicit, so held rows are not retriggered by replay. Other row statuses and non-gate voice effects remain outside this join.
 
 ## Android MIDI input boundary (in progress)
 

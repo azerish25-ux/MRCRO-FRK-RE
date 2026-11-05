@@ -16,5 +16,9 @@ int main(int argc,char**argv)try{
  for(unsigned test=0;test<count;++test){const auto index=r.get<std::uint8_t>();Owner owner;owner.count=r.get<std::uint32_t>();mfrk::notepath::NoteRow row;row.bytes=r.array<20>();owner.rows[index].bytes=r.array<20>();const auto slot=owner.count<256?owner.count:255;owner.queue[slot]=r.array<24>();owner.last_active=r.get<std::uint32_t>();const auto tail=r.get<std::uint8_t>();const auto expected_row=r.array<20>();const auto expected_count=r.get<std::uint32_t>(),expected_last=r.get<std::uint32_t>();const auto expected_record=r.array<24>();
   if(!publish(owner,index,row,tail))return 2;differences+=owner.rows[index].bytes!=expected_row||owner.count!=expected_count||owner.last_active!=expected_last||owner.queue[slot]!=expected_record;
  }
- if(r.p!=r.b.size())return 2;std::cout<<count<<" original publication sinks, "<<differences<<" differences\n";return differences?1:0;
+ if(r.p!=r.b.size())return 2;
+ Owner owner;owner.count=7;owner.queue[0].fill(0xa5);for(auto& row:owner.rows)row.bytes.fill(0x5a);
+ begin_block(owner);finish_voice_block(owner);if(owner.count!=0||owner.queue[0][0]!=0xa5)return 2;
+ for(const auto& row:owner.rows)for(unsigned i=0;i<20;++i)if(row.bytes[i]!=(i==7?0:0x5a))return 2;
+ std::cout<<count<<" original publication sinks, "<<differences<<" differences\n";return differences?1:0;
 }catch(const std::exception&e){std::cerr<<e.what()<<'\n';return 2;}

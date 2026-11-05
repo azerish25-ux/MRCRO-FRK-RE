@@ -16,4 +16,6 @@ bool publish_batch(Owner& owner,const notepath::Publications& batch,std::uint8_t
  for(unsigned i=0;i<batch.count;++i)publish(owner,batch.entries[i].row,batch.entries[i].value,stack_byte);
  return true;
 }
+void begin_block(Owner& owner) noexcept {owner.count=0;}
+void finish_voice_block(Owner& owner) noexcept {for(auto& row:owner.rows)row.bytes[7]=0;}
 }

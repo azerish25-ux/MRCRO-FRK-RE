@@ -16,4 +16,14 @@ bool dispatch(State& state,std::uint8_t row,std::uint8_t status,bool para,std::u
  if(!on&&state.active_count)state.active_count=static_cast<std::uint8_t>(state.active_count-1);
  return true;
 }
+bool plan_rows(State& state,const std::array<notepath::NoteRow,12>& rows,bool para,std::uint8_t cyclic_mode,bool disabled,RowsPlan& result) noexcept {
+ if(cyclic_mode>2)return false;
+ auto next=state;RowsPlan output;
+ for(unsigned voice=0;voice<6;++voice)for(unsigned side=0;side<2;++side){
+  const auto row=static_cast<std::uint8_t>(voice+side*6);const auto status=rows[row].bytes[7];if(!status)continue;
+  Plan plan;if(!dispatch(next,row,status,para,cyclic_mode,disabled,plan))return false;
+  for(unsigned i=0;i<plan.count;++i)output.actions[output.count++]=plan.actions[i];
+ }
+ state=next;result=output;return true;
+}
 }

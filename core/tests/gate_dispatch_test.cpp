@@ -19,5 +19,11 @@ int main(int argc,char**argv)try{
   for(unsigned j=0;j<plan.count;++j){auto action=plan.actions[j];if(action.kind==Kind::main&&!action.on){if(!env.gate(false))return 2;}else observed.push_back(action);}
   differences+=observed!=expected;if(status==2){const auto actual=env.snapshot();differences+=static_cast<unsigned>(actual.phase)!=phase||actual.pending_release!=pending;}
  }
- if(r.p!=r.b.size())return 2;std::cout<<count<<" original gate dispatch cases, "<<differences<<" differences\n";return differences?1:0;
+ if(r.p!=r.b.size())return 2;
+ std::array<mfrk::notepath::NoteRow,12> rows{};rows[0].bytes[7]=rows[2].bytes[7]=rows[6].bytes[7]=1;State state;RowsPlan all;
+ if(!plan_rows(state,rows,false,0,false,all)||state.active_count!=3)return 2;
+ const std::vector<Action> multi={{Kind::oscillator,0,0,true},{Kind::oscillator,0,1,true},{Kind::main,0,0,true},{Kind::cyclic,0,0,true},{Kind::oscillator,0,0,true},{Kind::oscillator,0,1,true},{Kind::main,0,1,true},{Kind::cyclic,0,1,true},{Kind::oscillator,2,0,true},{Kind::oscillator,2,1,true},{Kind::main,2,0,true},{Kind::cyclic,2,0,true}};
+ if(all.count!=multi.size())return 2;for(unsigned i=0;i<all.count;++i)differences+=!(all.actions[i]==multi[i]);
+ rows[4].bytes[7]=3;const auto prior=state;if(plan_rows(state,rows,false,0,false,all)||state.active_count!=prior.active_count)return 2;
+ std::cout<<count<<" original gate dispatch cases plus source row order, "<<differences<<" differences\n";return differences?1:0;
 }catch(const std::exception&e){std::cerr<<e.what()<<'\n';return 2;}

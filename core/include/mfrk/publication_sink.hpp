@@ -15,4 +15,8 @@ struct Owner {
 // must not alias owner storage. Invalid row/count is rejected without mutation.
 bool publish(Owner&,std::uint8_t index,const notepath::NoteRow&,std::uint8_t stack_byte) noexcept;
 bool publish_batch(Owner&,const notepath::Publications&,std::uint8_t stack_byte) noexcept;
+// Original Mini process resets the outgoing count at block start. After the
+// voice processing stage, original 2bf0b0 clears only status byte 7 in each row.
+void begin_block(Owner&) noexcept;
+void finish_voice_block(Owner&) noexcept;
 }

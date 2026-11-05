@@ -1,4 +1,5 @@
 #include "mfrk/voice_gate_owner.hpp"
+#include "mfrk/publication_sink.hpp"
 #include "adsr_test_access.hpp"
 #include <memory>
 using namespace mfrk;
@@ -15,4 +16,10 @@ int main(){
  if(state.active_count!=1||env.snapshot().phase!=AdsrPhase::attack||log.calls!=2||!log.last)return 4;
  const auto before=env.snapshot();owner.slots[1]=nullptr;
  if(voice_gate::dispatch(owner,state,0,2,false,0,false)||state.active_count!=1||env.snapshot().phase!=before.phase||log.calls!=2)return 5;
+ owner.slots[1]=&slot1;state={};initial={};initial.phase=AdsrPhase::idle;AdsrTestAccess::load_explicit_fixture(env,initial);
+ auto notes=notepath::Engine::admitted_zero_arena();publication_sink::Owner published;notes.feed_midi_note(true,60,100);
+ if(!notes.publications().count||!publication_sink::publish_batch(published,notes.publications(),0))return 6;
+ if(!voice_gate::process_rows(owner,state,published.rows,false,0,false)||state.active_count!=1||env.snapshot().phase!=AdsrPhase::attack||log.calls!=3)return 7;
+ publication_sink::finish_voice_block(published);
+ if(!voice_gate::process_rows(owner,state,published.rows,false,0,false)||state.active_count!=1||log.calls!=3)return 8;
 }
