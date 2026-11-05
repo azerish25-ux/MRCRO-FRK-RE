@@ -94,7 +94,8 @@ unproven until all feature and equivalence requirements are independently verifi
 
 ## Next Step
 Shared full-finite sine prerequisite is merged and Linux/Android verified (12dd701).
-Integrate source-derived scene construction and the full-finite Karplus engine;
+KarplusStr source core is merged and Linux/Android verified (94026e7).
+Integrate native shared-slot resource ownership and source-derived scene construction;
 continue the actual native common voice/control/audio graph. Runtime resizev2,
 full/nested Flex, seven UI primitives and Waveshaper have Linux/Android evidence.
 Complete original scene bindings/rendering and gestures, native preset defaults/version/custom migrations, and the full

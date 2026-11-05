@@ -1,0 +1,44 @@
+{
+  "tested_revision": "94026e74874f6a8794f3fedc7572fae764d0ef4b",
+  "tested_tree": "aa3e3775f2ab0323c3cf3edad9049c3f82b3f626",
+  "run_id": 41942970468,
+  "run_url": "https://github.com/azerish25-ux/MRCRO-FRK-RE/actions/runs/41942970468",
+  "linux": {
+    "job_id": 126968100914,
+    "release_ctest_passed": 57,
+    "failed": 0,
+    "log_sha256": "4dd47764053a92d7133d44e51ff5608692af97f06fb23bde77eb34150f89f34f"
+  },
+  "android": {
+    "job_id": 126968303981,
+    "compiled_abis": [
+      "arm64-v8a",
+      "x86_64"
+    ],
+    "runtime_abi": "x86_64",
+    "api_level": 35,
+    "main_blocks": 8440,
+    "table_constructor_state_memory_rng_raw_decoded_scaled_excitation_mismatches": 0,
+    "lifecycle_commands": 854,
+    "lifecycle_mismatches": 0,
+    "original_import_returns": 6139,
+    "import_mismatches": 0,
+    "release_rollback_checks": 7,
+    "allocation_blocks": 2048,
+    "allocations": 0,
+    "counter_blocks": 720,
+    "counter_mismatches": 0,
+    "log_sha256": "359ff32cc1612a702cf468f8c0980ffabe45861c5fc7b230107373e1b00b1a09"
+  },
+  "independent_review": {
+    "required_findings": 0,
+    "strict_actual_repository_tests_passed": 6,
+    "numerical_method_bodies_compared": 23,
+    "result": "Frozen candidate bodies identical after whitespace and intended exp2 namespace normalization; source unsigned counter and persistent resource contract preserved"
+  },
+  "root_malformed_fixtures": {
+    "rejected": 33,
+    "total": 33
+  },
+  "scope": "Core component only. No arm64 runtime claim, complete owner resource-sharing integration, full instrument/preset/UI/audio parity or sounding standalone APK."
+}
