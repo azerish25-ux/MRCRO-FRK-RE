@@ -17,4 +17,15 @@ struct State {
  std::array<Slot,12> slots{};
 };
 void advance(State&) noexcept;
+// Raw source fields used by 2da290; names describe observed storage roles,
+// not public parameter mappings. Rates must be finite and positive when used.
+struct GlideControl {
+ std::uint8_t scale_mode=0,gate_mode=0,shared_gate=0,alternate=0,force=0;
+ std::uint32_t last_index=0;
+ std::array<std::uint8_t,12> enabled{},held{},dirty_a{},dirty_b{};
+ std::array<float,12> rate_a{},rate_b{};
+};
+// For shared mode index must be 0..5; for split mode 0..11. On rejected
+// index/rate the state is unchanged. Other supplied numeric fields are finite.
+bool setup_glide(State&,GlideControl&,unsigned index,bool copy_previous) noexcept;
 }

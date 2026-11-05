@@ -1,0 +1,8 @@
+{
+  "processor_sha256": "bd036dfa6a0afcfef733c29c73b1b3df969f2c86ca860b0fa535d4492fa8fb74",
+  "source_function": "0x1802da290",
+  "fixture_sha256": "0ea1b98e382957b571cb6e86c1c0af5a234339ea4a76d044eb5c55e7519de612",
+  "cases": 256,
+  "scope": "Original instructions on bounded supplied finite fields, positive rates and legal indices, using initialized owner memory. This is not a public MIDI setter or a complete note/glide controller.",
+  "local_evidence": "local/evidence/voice-graph-agent/probe_pitch_glide_setup_v2.py and encode_pitch_glide_setup_v2.py"
+}
