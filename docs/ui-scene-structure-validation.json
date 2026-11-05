@@ -1,0 +1,43 @@
+{
+  "tested_revision": "f7ab26c18a80838f5207fb41dda2484439750e50",
+  "tested_tree": "21708470bac5fcc72b624bac3f4d31c3e0ee0016",
+  "run_id": 41958413328,
+  "run_url": "https://github.com/azerish25-ux/MRCRO-FRK-RE/actions/runs/41958413328",
+  "linux": {
+    "job_id": 127018729041,
+    "release_ctests_passed": 78,
+    "failed": 0,
+    "log_sha256": "d395c8b684ae4b7074073bf458a7f5c3e5030882d5dba6e6ed77da53ed37ec17"
+  },
+  "android": {
+    "job_id": 127018953729,
+    "compiled_abis": [
+      "arm64-v8a",
+      "x86_64"
+    ],
+    "runtime_abi": "x86_64",
+    "api_level": 35,
+    "xml_cases": 650,
+    "style_cases": 323,
+    "ast_style_differences": 0,
+    "structure_guards": 14,
+    "typed_parser_style_join": "passed",
+    "all_reference_steps": "success",
+    "log_sha256": "0583d1f714e97fda82b85d74ac88be5fc0a4c0141d9d56c8d644a91cd669b611"
+  },
+  "root_verification": {
+    "exact_source_definitions": 5,
+    "source_character_tables": "byte-identical",
+    "altered_fixtures_rejected": 14,
+    "crc_collisions_rejected_by_sha256": 2,
+    "semantic_mutants_rejected": 11
+  },
+  "independent_review": {
+    "required_findings": 0,
+    "strict_actual_repo_xml_cases": 650,
+    "strict_actual_repo_style_cases": 323,
+    "differences": 0,
+    "guards_and_join": "passed"
+  },
+  "scope": "Mode0 parser-body owning output and immutable element-style snapshots. No native pointer aliases or complete constructor/include/with/factory/lifecycle/render/touch parity; no arm64 runtime or complete instrument claim."
+}

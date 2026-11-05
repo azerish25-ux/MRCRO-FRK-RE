@@ -99,7 +99,8 @@ Shared Karplus/Harmo slot resource lifecycle is merged and Linux/Android verifie
 Scene expression/property/geometry producers are merged and Linux/Android verified (1135d0c).
 Native numeric slot pitch is merged and Linux/Android verified (03a7e7f).
 Master audio processing is merged and Linux/Android verified (c8c3e7b).
-Join actual upstream pitch/control/model dispatch/mixer and structural scene/factory/paint/touch lifecycle;
+Native XML/style data front end is merged and Linux/Android verified (f7ab26c).
+Join actual upstream pitch/control/model dispatch/mixer, scoped scene lowering and full factory/paint/touch lifecycle;
 continue the actual native common voice/control/audio graph. Runtime resizev2,
 full/nested Flex, seven UI primitives and Waveshaper have Linux/Android evidence.
 Complete original scene bindings/rendering and gestures, native preset defaults/version/custom migrations, and the full
