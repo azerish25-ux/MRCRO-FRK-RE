@@ -51,12 +51,16 @@ bool encode_note_pitch(std::uint8_t pitch,std::uint16_t& word) noexcept {
  word=static_cast<std::uint16_t>((std::uint32_t(pitch)*65535u+64u)/128u);
  return true;
 }
-bool apply_note_pitch(State& state,GlideControl& control,unsigned index,std::uint8_t pitch) noexcept {
- std::uint16_t word=0;if(!encode_note_pitch(pitch,word)||index>=12||(!state.split&&index>=6))return false;
+bool apply_note_word(State& state,GlideControl& control,unsigned index,std::uint16_t word) noexcept {
+ if(index>=12||(!state.split&&index>=6))return false;
  State next=state;GlideControl next_control=control;
  next.target[index]=float((std::uint32_t(word)*129u+64u)>>16);
  if(!setup_glide(next,next_control,index,true))return false;
  next_control.force=0;next_control.last_index=index;
  state=next;control=next_control;return true;
+}
+bool apply_note_pitch(State& state,GlideControl& control,unsigned index,std::uint8_t pitch) noexcept {
+ std::uint16_t word=0;if(!encode_note_pitch(pitch,word))return false;
+ return apply_note_word(state,control,index,word);
 }
 }

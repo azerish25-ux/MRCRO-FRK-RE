@@ -1,0 +1,8 @@
+{
+  "processor_sha256": "bd036dfa6a0afcfef733c29c73b1b3df969f2c86ca860b0fa535d4492fa8fb74",
+  "source_functions": ["0x1802dcb90", "0x1802d4f70"],
+  "fixture_sha256": "fca14e966a3366a8f6f01a83e2a0db709d891cc4d0a03e8dfc0d31221331044f",
+  "cases": 96,
+  "scope": "Entry/exit pitch-record, dirty, held and count fields from original public Mini processing in explicit mono/poly/para profiles, including startup status 5 and mono status 4. Other dispatcher effects and full voice/audio output are excluded.",
+  "local_evidence": "local/evidence/voice-graph-agent/probe_note_row_pitch_v1.py and original-note-row-pitch-v1.json"
+}

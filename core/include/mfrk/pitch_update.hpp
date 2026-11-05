@@ -33,5 +33,6 @@ bool setup_glide(State&,GlideControl&,unsigned index,bool copy_previous) noexcep
 // glide. Voice selection, triggering and other note-row side effects remain with
 // the owner. Invalid pitch/index or unsupported glide inputs leave state intact.
 bool encode_note_pitch(std::uint8_t pitch,std::uint16_t& word) noexcept;
+bool apply_note_word(State&,GlideControl&,unsigned index,std::uint16_t word) noexcept;
 bool apply_note_pitch(State&,GlideControl&,unsigned index,std::uint8_t pitch) noexcept;
 }
