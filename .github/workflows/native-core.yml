@@ -340,6 +340,9 @@ jobs:
             adb push build-x86_64/midi_ingress_test /data/local/tmp/midi_ingress_test
             adb shell chmod 755 /data/local/tmp/midi_ingress_test
             adb shell /data/local/tmp/midi_ingress_test
+            adb push build-x86_64/midi_note_route_test /data/local/tmp/midi_note_route_test
+            adb shell chmod 755 /data/local/tmp/midi_note_route_test
+            adb shell /data/local/tmp/midi_note_route_test
             adb push build-x86_64/audio_block_adapter_test /data/local/tmp/audio_block_adapter_test
             adb shell chmod 755 /data/local/tmp/audio_block_adapter_test
             adb shell /data/local/tmp/audio_block_adapter_test

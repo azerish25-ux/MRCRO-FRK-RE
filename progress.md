@@ -365,6 +365,7 @@
 - Added a separate Android MIDI input library that discovers visible MIDI 1 devices, opens available output ports and delivers copied, timestamped bytes and port-reset notifications on one worker. The library is not yet joined to the decoder or app; Bluetooth discovery, MIDI 2 and physical-device verification remain open. Its remote build is configured separately.
 - Added a fixed-capacity single-producer/single-consumer handoff with one decoder per port. Overflow is latched so the future audio consumer can discard queued events and reset notes/controllers rather than silently leaving notes held.
 - The Android device listener now feeds that native decoder and queue through JNI. The future audio host must detach before bridge destruction and consume port-reset/overflow events. The note/controller and audio graphs remain unconnected; remote JNI cross-build and device behavior are pending.
+- Added a bounded note-on/note-off adapter from decoded MIDI 1 events to the recovered NotePath actor, with an explicit channel/omni policy and synchronous publication handoff. This does not yet implement CC, pitch bend, MPE, transport, timestamp scheduling or the downstream voice owner.
 
 ## Android audio output boundary (in progress)
 
