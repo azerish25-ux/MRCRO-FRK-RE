@@ -1,9 +1,9 @@
 name: Android MIDI host
 on:
   push:
-    paths: ['android/midi-host/**', '.github/workflows/android-midi-host.yml']
+    paths: ['android/midi-host/**', 'core/include/mfrk/midi_*.hpp', 'core/src/midi_*.cpp', '.github/workflows/android-midi-host.yml']
   pull_request:
-    paths: ['android/midi-host/**', '.github/workflows/android-midi-host.yml']
+    paths: ['android/midi-host/**', 'core/include/mfrk/midi_*.hpp', 'core/src/midi_*.cpp', '.github/workflows/android-midi-host.yml']
   workflow_dispatch:
 permissions:
   contents: read
@@ -26,7 +26,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          sdkmanager 'platforms;android-35' 'build-tools;35.0.0'
+          sdkmanager 'platforms;android-35' 'build-tools;35.0.0' 'cmake;3.22.1' 'ndk;27.2.12479018'
           curl -fL --retry 3 https://services.gradle.org/distributions/gradle-8.9-bin.zip -o "$RUNNER_TEMP/gradle.zip"
           echo 'd725d707bfabd4dfdc958c624003b3c80accc03f7037b5122c4b1d0ef15cecab  '"$RUNNER_TEMP/gradle.zip" | sha256sum -c -
           unzip -q "$RUNNER_TEMP/gradle.zip" -d "$RUNNER_TEMP"
