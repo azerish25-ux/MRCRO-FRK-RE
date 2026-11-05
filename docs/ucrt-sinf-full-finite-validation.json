@@ -1,0 +1,73 @@
+{
+  "tested_revision": "12dd701f305aebb5ceb6a574699b3acc634f4883",
+  "tested_tree": "8a069e4fee2a270fdedfea2a54947e337812eefa",
+  "run_id": 41941565476,
+  "run_url": "https://github.com/azerish25-ux/MRCRO-FRK-RE/actions/runs/41941565476",
+  "linux": {
+    "job_id": 126963405359,
+    "release_ctest_passed": 51,
+    "failed": 0,
+    "log_sha256": "3162ed44f143a2e269376528879ccae3c58252479bfe51f211d8b14dc18e2713"
+  },
+  "android": {
+    "job_id": 126963615193,
+    "compiled_abis": [
+      "arm64-v8a",
+      "x86_64"
+    ],
+    "runtime_abi": "x86_64",
+    "api_level": 35,
+    "original_ordinary_returns": 28246,
+    "original_ordinary_mismatches": 0,
+    "host_sine_ordinary_differences": 385,
+    "original_full_finite_returns": 11951,
+    "original_full_finite_mismatches": 0,
+    "host_sine_full_finite_differences": 120,
+    "admission_mismatches": 0,
+    "all_reference_steps": "success",
+    "log_sha256": "a85cc4407bdbe39f25cc74aeabdd9349e82425aefd3142c6f7ecad4b5051de35"
+  },
+  "independent_review": {
+    "result": "No required findings; source arithmetic and shift/index safety approved",
+    "central_helper_broad_original_returns": 662365,
+    "return_mismatches": 0,
+    "strict_flags": [
+      "-O2",
+      "-DNDEBUG",
+      "-fno-fast-math",
+      "-ffp-contract=off",
+      "-Wall",
+      "-Wextra",
+      "-Wpedantic",
+      "-Wconversion",
+      "-Werror"
+    ]
+  },
+  "root_negative_controls": [
+    {
+      "mutant": "omit_quadrant_carry",
+      "exit": 1,
+      "cases": 11951,
+      "mismatches": 3782,
+      "host_libm_differences": 0,
+      "admission_mismatches": 0
+    },
+    {
+      "mutant": "omit_ones_complement",
+      "exit": 1,
+      "cases": 11951,
+      "mismatches": 3782,
+      "host_libm_differences": 0,
+      "admission_mismatches": 0
+    },
+    {
+      "mutant": "separate_fma",
+      "exit": 1,
+      "cases": 11951,
+      "mismatches": 4,
+      "host_libm_differences": 0,
+      "admission_mismatches": 0
+    }
+  ],
+  "scope": "Finite source-profile scalar return compatibility. No arm64 runtime execution, nonfinite/fenv/errno parity, integrated Karplus/full voice graph or completed standalone instrument claim."
+}

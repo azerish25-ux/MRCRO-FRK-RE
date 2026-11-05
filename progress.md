@@ -284,3 +284,9 @@
   profiles, finite/nonzero finalchannels, noDSPmodels andactualpinnedUCRTmath.
   Thisisprivateoriginaloracleevidence, NOT integratedCppparity orfactorydefaults;
   neutralcontrols suppliedexplicitly throughactualsetters. Commongraphportnext.
+
+## Full finite source sine verified (2026-11-05 UTC)
+
+- Shared UCRT FMA sine now covers all finite binary32 inputs. Existing ordinary math and gold remain unchanged. Root freshly replayed 662,365 broad and 11,951 compact original returns with zero differences; central production header and independent source review agree.
+- New compact fixture and finite/NaN/infinity admission checks reproduce the old range failure. Three central negative controls fail 3782/3782/4 returns as expected. All 51 host and Linux Release CTests pass; exact 12dd701 remote run 41941565476 passes both Android ABI builds and API35 x86_64 reference execution. Android host sine differs on 120 full-range inputs, while the recovered helper matches every case.
+- Karplus production adaptation is private and passes its original 8440-block corpus locally. Slot reuse evidence proves persistent per-voice/side models and shared slot buffers; Harmo external delay ownership and the common graph still need integration. No sounding standalone app or complete preset/UI/audio parity claim.

@@ -93,6 +93,7 @@ unproven until all feature and equivalence requirements are independently verifi
   start a fresh owned CLI client only when further provider queries are needed.
 
 ## Next Step
+Shared full-finite sine prerequisite is merged and Linux/Android verified (12dd701).
 Integrate source-derived scene construction and the full-finite Karplus engine;
 continue the actual native common voice/control/audio graph. Runtime resizev2,
 full/nested Flex, seven UI primitives and Waveshaper have Linux/Android evidence.
