@@ -1,0 +1,39 @@
+{
+  "tested_revision": "c8c3e7b110d96807f4040fab8382e184a66f9926",
+  "tested_tree": "932ca623a5076e985cb4ddf705efb07627392b32",
+  "run_id": 41955832141,
+  "run_url": "https://github.com/azerish25-ux/MRCRO-FRK-RE/actions/runs/41955832141",
+  "linux": {
+    "job_id": 127010377973,
+    "release_ctests_passed": 75,
+    "failed": 0,
+    "log_sha256": "fe7f23bd62cc8bc2239e35bdf2626d0567c4b08d30cdfdfb877afa305de3d020"
+  },
+  "android": {
+    "job_id": 127010542391,
+    "compiled_abis": [
+      "arm64-v8a",
+      "x86_64"
+    ],
+    "runtime_abi": "x86_64",
+    "api_level": 35,
+    "limiter_blocks": 288,
+    "prepared_master_blocks": 160,
+    "constructor_alias_blocks": 112,
+    "output_state_ring_counter_smoother_input_after_mismatches": 0,
+    "all_reference_steps": "success",
+    "log_sha256": "29e9e14198cf73da18cb9385e2cc2b717aedd954e12ae19726ceb3bd9c128c5e"
+  },
+  "independent_review": {
+    "required_findings": 0,
+    "strict_actual_repo_suites_passed": 3,
+    "original_cold_projection_regeneration": "342628B SHA923f51dd942060fd60a81d396885a4781120e580ca9199451974b79278b06de1 byte-identical"
+  },
+  "source_body_definitions": 7,
+  "lifecycle_negative_controls": {
+    "raw_current_zero_state_observations": 4,
+    "reset_erases_ring_word_differences": 5056,
+    "reset_recomputes_threshold_state_observations": 50
+  },
+  "scope": "Prepared master audio processing, distinct raw/ready source lifecycle and typed stereo buffer alias shapes. No arm64 runtime, normalized master control conversion, complete voice/FX graph or full standalone instrument claim."
+}
