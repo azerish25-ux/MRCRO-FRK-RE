@@ -339,3 +339,8 @@
 - Integrated the recovered `with` and conditional traversal into `mfrk_ui`, retaining separate numeric and string contexts and the original terminal factory boundary. The live scoped context now joins the existing property evaluator; source-valid large string contexts are admitted.
 - Focused Windows Release checks passed for the 297 original scope programs, scope guards, existing string corpus, and prefix guards. Android cross-build and emulator checks are configured in CI but have not yet run for this change.
 - Loops, includes, templates, factory creation, rendering and touch remain open. This layer does not make the Android instrument complete.
+
+## Numeric UI loop profile (in progress)
+
+- Added a bounded single numeric range to scoped traversal, including the source flag controlling numeric aliases and the one-based index. Original-instruction probes found that an exclusive range leaves its index at the next value, including for an empty range; an inclusive range removes it. The implementation retains this distinction.
+- The profile intentionally rejects list, alphabetic and multiple zipped ranges; item-list providers, includes, templates and factory ownership remain unfinished. Local probe evidence is retained under `local/evidence/native-ui-source/scene-lowering` on D: and the wider Android verification has not yet run.

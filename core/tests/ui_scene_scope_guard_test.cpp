@@ -34,6 +34,18 @@ int main(){unsigned guards=0;auto reject=[&](auto action){bool failed=false;try{
  auto scoped=parent(node("with",{{"src","LOCAL"},{"string","${LONG}"}},{node("widget")}));
  walk_nodes(scoped,joined,[&](const Node&,Context& live){if(mfrk::ui::scene::expand_aliases("${LOCAL}",live.strings,true)!=std::string(2048,'x'))throw std::runtime_error("scope/property context join");});
  if(joined.strings.contains("LOCAL"))throw std::runtime_error("scope cleanup");
+ for(unsigned flags: {0u,1u}){
+  Context loop;loop.numbers["SEED"]=.125;std::vector<std::string> seen;
+  auto range=parent(node("for",{{"src","I"},{"from","1+1"},{"to","0"},{"inclusive","false"},{"index","IDX"}},{node("widget")}));
+  walk_nodes(range,loop,[&](const Node&,Context& live){seen.push_back(live.strings.at("I")+":"+live.strings.at("IDX"));if((flags&1)&&(live.numbers.at("I")!=double(3-seen.size())||live.numbers.at("IDX")!=double(seen.size())))throw std::runtime_error("numeric loop aliases");if(!(flags&1)&&(live.numbers.contains("I")||live.numbers.contains("IDX")))throw std::runtime_error("unexpected numeric loop alias");},flags);
+  if(seen!=std::vector<std::string>{"2:1","1:2"}||loop.strings.contains("I")||loop.strings.at("IDX")!="3"||loop.numbers.size()!=1+(flags&1)||((flags&1)&&loop.numbers.at("IDX")!=3.))throw std::runtime_error("range output or exclusive index state");
+  Context inclusive;seen.clear();auto forward=parent(node("for",{{"src","I"},{"from","-2"},{"to","1"},{"index","IDX"}},{node("widget")}));
+  walk_nodes(forward,inclusive,[&](const Node&,Context& live){seen.push_back(live.strings.at("I"));},flags);
+  if(seen!=std::vector<std::string>{"-2","-1","0","1"}||!inclusive.strings.empty()||!inclusive.numbers.empty())throw std::runtime_error("inclusive range output or cleanup");
+  Context empty;seen.clear();auto equal=parent(node("for",{{"src","I"},{"from","2"},{"to","2"},{"inclusive","false"},{"index","IDX"}},{node("widget")}));
+  walk_nodes(equal,empty,[&](const Node&,Context&){seen.push_back("unexpected");},flags);
+  if(!seen.empty()||empty.strings.at("IDX")!="1"||((flags&1)&&empty.numbers.at("IDX")!=1.))throw std::runtime_error("empty exclusive range index");
+ }
  std::cout<<guards<<" scope guards and lazy-clause regression passed\n";return 0;
  }catch(const std::exception& error){std::cerr<<error.what()<<'\n';return 1;}
 }

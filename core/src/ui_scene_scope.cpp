@@ -1,6 +1,7 @@
 #include "mfrk/ui_scene_scope.hpp"
 #include <algorithm>
 #include <cmath>
+#include <cstdint>
 #include <limits>
 #include <stdexcept>
 #include <unordered_set>
@@ -62,7 +63,7 @@ using mfrk::ui::scene::attribute_value;
 bool select_if(const Attributes&local,const Constants&numbers,const StringConstants&strings,bool strict_strings,const Features*features){const auto value=attribute_value("constant",local,{});if(!value)throw std::invalid_argument("if requires constant");const auto text=expand_string(*value,strings,strict_strings,true);const double evaluated=LogicalExpression(text,numbers,features,false).evaluate();const auto integer=condition_integer(evaluated);const auto positive=attribute_value("positive_or_negative",local,{});return positive&&literal_boolean(*positive)?integer>0:integer==1;}
 std::optional<std::string_view> field(const Node& node,const std::string& key){return mfrk::ui::scene::attribute_value(key,node.attributes,{});}
 bool structural(std::string_view name){return name=="if"||name=="elseif"||name=="else"||name=="for"||name=="array"||name=="replace"||name=="group"||name.starts_with("template:");}
-void walk(const Node& parent,Context& context,const Emit& emit,unsigned depth){
+void walk(const Node& parent,Context& context,const Emit& emit,unsigned depth,unsigned flags){
  if(depth>128)throw std::invalid_argument("scope depth admission");
  bool chain=false,unmatched=false;
  for(const auto& child:parent.children){
@@ -70,17 +71,17 @@ void walk(const Node& parent,Context& context,const Emit& emit,unsigned depth){
   if(child.name=="attribute")continue;
   if(child.name=="if"){
    const bool take=select_if(child.attributes,context.numbers,context.strings,true,context.features);
-   if(take)walk(child,context,emit,depth+1);
+   if(take)walk(child,context,emit,depth+1,flags);
    unmatched=!take;chain=true;continue;
   }
   if(child.name=="elseif"){
    if(!chain)throw std::invalid_argument("elseif requires adjacent if/elseif");
-   if(unmatched){const bool take=select_if(child.attributes,context.numbers,context.strings,true,context.features);if(take)walk(child,context,emit,depth+1);unmatched=!take;}
+   if(unmatched){const bool take=select_if(child.attributes,context.numbers,context.strings,true,context.features);if(take)walk(child,context,emit,depth+1,flags);unmatched=!take;}
    chain=true;continue;
   }
   if(child.name=="else"){
    if(!chain)throw std::invalid_argument("else requires adjacent if/elseif");
-   if(unmatched)walk(child,context,emit,depth+1);
+   if(unmatched)walk(child,context,emit,depth+1,flags);
    chain=false;continue;
   }
   chain=false;
@@ -91,9 +92,31 @@ void walk(const Node& parent,Context& context,const Emit& emit,unsigned depth){
    for(const auto& [key,value]:bindings.numbers)if(context.numbers.contains(key)||context.strings.contains(key)||!numbers.insert(key).second||!aliases.insert(key).second)throw std::invalid_argument("scope number collision");
    for(const auto& [key,value]:bindings.strings)context.strings.emplace(key,value);
    for(const auto& [key,value]:bindings.numbers){context.numbers.emplace(key,value);context.strings.emplace(key,std::to_string(condition_integer(value)));}
-   walk(child,context,emit,depth+1);
+   walk(child,context,emit,depth+1,flags);
    for(const auto& [key,value]:bindings.strings)context.strings.erase(key);
    for(const auto& [key,value]:bindings.numbers){context.numbers.erase(key);context.strings.erase(key);}
+  }else if(child.name=="for"){
+   const auto name=field(child,"src"),from=field(child,"from"),to=field(child,"to"),index=field(child,"index");
+   if(!name||name->empty()||name->size()>1024||name->find('\0')!=std::string_view::npos||name->find("${")!=std::string_view::npos||!from||!to||field(child,"src2")||field(child,"in"))throw std::invalid_argument("for outside single numeric range profile");
+   auto number=[&](std::string_view value){auto expanded=expand_string(value,context.strings,true,true);const double v=LogicalExpression(expanded,context.numbers,context.features,false).evaluate();if(!std::isfinite(v)||v<double(std::numeric_limits<int>::min())||v>double(std::numeric_limits<int>::max()))throw std::invalid_argument("for numeric admission");return condition_integer(v);};
+   const auto first=number(*from),last=number(*to);
+   const auto inclusive=field(child,"inclusive");const bool include_end=!inclusive||literal_boolean(*inclusive);
+   const auto distance=first<=last?std::int64_t(last)-first:std::int64_t(first)-last;
+   if(distance>4095)throw std::invalid_argument("for iteration admission");
+   const std::string key(*name),idx=index?std::string(*index):std::string();
+   if((index&&(idx.empty()||idx.size()>1024||idx.find('\0')!=std::string::npos||idx.find("${")!=std::string::npos||idx==key))||context.strings.contains(key)||context.numbers.contains(key)||(index&&(context.strings.contains(idx)||context.numbers.contains(idx))))throw std::invalid_argument("for binding collision");
+   const auto count=distance+(include_end?1:0);
+   for(std::int64_t i=0;i<count;++i){
+    const auto value=std::int64_t(first)+(first<=last?i:-i);
+    context.strings[key]=std::to_string(value);if(flags&1)context.numbers[key]=double(value);
+    if(index){context.strings[idx]=std::to_string(i+1);if(flags&1)context.numbers[idx]=double(i+1);}
+    walk(child,context,emit,depth+1,flags);
+   }
+   context.strings.erase(key);if(flags&1)context.numbers.erase(key);
+   if(index){
+    if(include_end){context.strings.erase(idx);if(flags&1)context.numbers.erase(idx);}
+    else{context.strings[idx]=std::to_string(count+1);if(flags&1)context.numbers[idx]=double(count+1);}
+   }
   }else{
    if(structural(child.name))throw std::invalid_argument("structural construct outside with profile");
    emit(child,context);
@@ -121,5 +144,5 @@ Bindings collect_with(const Node& node,const Context& context){
  }
  throw std::invalid_argument("with ordinal admission");
 }
-void walk_nodes(const Node& parent,Context& context,const Emit& emit){if(!emit)throw std::invalid_argument("missing terminal receiver");walk(parent,context,emit,1);}
+void walk_nodes(const Node& parent,Context& context,const Emit& emit,unsigned flags){if(!emit)throw std::invalid_argument("missing terminal receiver");walk(parent,context,emit,1,flags);}
 }
