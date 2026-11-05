@@ -1,0 +1,173 @@
+{
+  "source_processor_sha256": "bd036dfa6a0afcfef733c29c73b1b3df969f2c86ca860b0fa535d4492fa8fb74",
+  "source_entries": {
+    "voice_prepare_level_fm": "0x2cd760",
+    "voice_audio": "0x2d81b0",
+    "fm_clip": "0x2e09a0",
+    "mixer_prepare": "0x2cddc0",
+    "interpolator32": "0x2dfac0",
+    "interpolator_constructor": "0x2e6910"
+  },
+  "profile": "Packed prepared routing/member controls on recovered fixed metadata; raw owner-zero constructor numeric state, 32frames at96k; persistent model hooks, no reentry, finite model/controls/intermediates under RN-even/gradual underflow/strictFP.",
+  "constructor": "Four interpolators target0/currentbits2b8cbccc/cursor0/increment0/cache32zero; updated targets restart exact (i+1)*increment ramp, settled cursor>30 retains cached increments.",
+  "implementation": "All six original numerical definitions compiled privately; Interpolator32 is a private nested implementation type. Actor owns no model or original process address.",
+  "bodies": [
+    {
+      "name": "Interpolator32::set_target",
+      "exact": true,
+      "sha256": "4ccc4404ad9049336f4f62d0225e4bb886a587e4736cce3f648156ff8147b10e"
+    },
+    {
+      "name": "Interpolator32::render",
+      "exact": true,
+      "sha256": "3372f1680164d2e31153347f6e89f468569deb7565f5bad4ca01cdbfbf47b06a"
+    },
+    {
+      "name": "clip_fm",
+      "exact": true,
+      "sha256": "0b8ec20f4000e3a81939bceae52c0c901bdc8913f65d6cfef1a4f83ae301f39d"
+    },
+    {
+      "name": "admitted_zero_owner_arena",
+      "exact": true,
+      "sha256": "1dd2eadc3fa0f4bc69e8bf3d27abec05e44f416d921e30a17b2ba529a5384bd7"
+    },
+    {
+      "name": "prepare",
+      "exact": true,
+      "sha256": "719565a36205ecd69a2f48c68e7dfebbff8f43af7f3bfa7360e78bbca701f093"
+    },
+    {
+      "name": "render",
+      "exact": true,
+      "sha256": "c969dc08524101f56b27e849174ef86987178e5f8e62ae159d74d224b747510a"
+    }
+  ],
+  "stream_fixture": {
+    "source_packed_sha256": "ac6b5c6df7a5219d9d2c726b793e8cf03c1d1e8df2a564dc274ba52afe4a3fa7",
+    "source_canonical_sha256": "f162f4608175ed3555a433581a21a7e8a191b59b2d7e38c83d5186234ffef874",
+    "binary_bytes": 182548,
+    "binary_sha256": "4980730fd538bda0cedaa86d0d18d4bdae175f667edc37e866a948553c2a4dab",
+    "method": "Projection of original observed node fields and actual core stream boundary inputs; no candidate outputs",
+    "blocks": 96
+  },
+  "actual_bass_fixture": {
+    "source_original_packed_sha256": "f3ea45b81785db5d314dac8a5b8df40ffc97ce72f2cf86ad12cd39a14f38323b",
+    "source_original_canonical_sha256": "6ff437d90b69d048b23e891dc99f48c748c1eefdbf3cd4f06392034017d86b8a",
+    "bytes": 237440,
+    "sha256": "5bdd3d1c2c9ddec7819a202cd92d343081b52b7568bd1eaef7d3afe9f1036d36",
+    "model_setup_operations": 20,
+    "continuous_blocks": 96,
+    "complete_native_model_bytes_per_snapshot": 256,
+    "semantic_runtime_fields_per_model": 22,
+    "inert_source_fields_verified_unchanged_across_all_observations": true,
+    "no_runtime_state_loading": "Source snapshots are expectations only; actualC++ model constructors+recordedoperations generate runtime states."
+  },
+  "actual_bass_runtime": "Two actual repository Bass instances created once from admitted constructors; replay20 original selection/word/dirty/pitch/trigger/interface-prepare setup calls, then prepare both before rendering each block. Native records/streams are expectations only, never runtime states or audio inputs in this genuine-core suite.",
+  "comparisons": {
+    "continuous_blocks": 96,
+    "mixed_samples": 3072,
+    "fm_samples": 3072,
+    "voice_numeric_fields": 154,
+    "semantic_fields_per_bass": 22,
+    "owner_active_flags": 2,
+    "complete_native_model_record_bytes_retained": 128,
+    "callback_generated_second_input_and_order": "exact",
+    "unrepresented_native_bytes": "Verified invariant across all original observations; no native C++ object ABI claim."
+  },
+  "boundary_test": "Separate stream-injection callback test isolates routing with explicit prepared model-output boundary inputs. It is not the runtime implementation and does not replace the genuine Bass-core test.",
+  "root_negative_controls": {
+    "mutants": [
+      {
+        "mutant": "ramp_origin0",
+        "exit": 1,
+        "result": "blocks 96 state 23733 mixed 1001 FM 250 callbacks 160"
+      },
+      {
+        "mutant": "clip_tie_operand_order",
+        "exit": 1,
+        "result": "blocks 96 state 0 mixed 0 FM 4 callbacks 0"
+      },
+      {
+        "mutant": "move_level_before_model2",
+        "exit": 1,
+        "result": "blocks 96 state 0 mixed 0 FM 0 callbacks 1632"
+      },
+      {
+        "mutant": "skip_second_callback",
+        "exit": 1,
+        "result": "blocks 96 state 0 mixed 2524 FM 1118 callbacks 96"
+      },
+      {
+        "mutant": "wrong_modulation_source",
+        "exit": 1,
+        "result": "blocks 96 state 0 mixed 0 FM 1183 callbacks 0"
+      },
+      {
+        "mutant": "wrong_normal_crossfade",
+        "exit": 1,
+        "result": "blocks 96 state 3446 mixed 476 FM 0 callbacks 0"
+      },
+      {
+        "mutant": "wrong_norm65535",
+        "exit": 1,
+        "result": "blocks 96 state 22309 mixed 2749 FM 2429 callbacks 1118"
+      }
+    ],
+    "malformed": [
+      {
+        "file": "bad_magic.bin",
+        "exit": 2
+      },
+      {
+        "file": "count0.bin",
+        "exit": 2
+      },
+      {
+        "file": "count_huge.bin",
+        "exit": 2
+      },
+      {
+        "file": "empty.bin",
+        "exit": 2
+      },
+      {
+        "file": "short_controls.bin",
+        "exit": 2
+      },
+      {
+        "file": "short_count.bin",
+        "exit": 2
+      },
+      {
+        "file": "short_count_decl.bin",
+        "exit": 2
+      },
+      {
+        "file": "short_ctor.bin",
+        "exit": 2
+      },
+      {
+        "file": "short_magic.bin",
+        "exit": 2
+      },
+      {
+        "file": "short_output.bin",
+        "exit": 2
+      },
+      {
+        "file": "trailing.bin",
+        "exit": 2
+      }
+    ]
+  },
+  "guard_allocation": {
+    "blocks": 2048,
+    "dynamic_allocations": 0,
+    "invalid_lane": "Rejects before numeric/mode mutation",
+    "null_callback": "Rejects before numeric/mode/output-buffer mutation"
+  },
+  "host_release_ctests": 81,
+  "independent_review": "Strict actual-repository all3 tests0, source bodies/order/profiles/bounds approved; original fixture SHAs unchanged.",
+  "remaining": "Filters/rate/FX/master and upstream gates/pitch/controller/real persistent all-model bank adapters need joining. Bass96frame audio prefix is not wholeVoice/fullowner or standalone instrument parity. Basic phase-only trigger/runtime policy APIs and source fullInit vsrawInit remain source-owned continuation."
+}

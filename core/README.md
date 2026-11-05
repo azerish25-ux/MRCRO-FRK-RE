@@ -470,3 +470,13 @@ native scene lowering, without host XML normalization or placeholder components.
 650 XML/323 style cases match locally; immutable-style alias/lifecycle limits
 and the remaining full UI work are explicit in the
 [data-front-end contract](../docs/ui-scene-structure.md).
+
+
+## Common voice audio join
+
+`mfrk::voice_audio::VoiceAudio` composes persistent model callbacks with the
+source32-frame level/FM/mixer interpolation and routing. The genuine Bass-pair
+reference test renders actual ported cores across96 continuous blocks, comparing
+model and routing state, callback inputs/order and mixed/FM samples exactly.
+See the [voice audio contract](../docs/voice-audio-reference.md) for prepared
+inputs and the remaining complete bank/controller/filter/host integration.
