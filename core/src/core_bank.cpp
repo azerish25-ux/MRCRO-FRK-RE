@@ -13,4 +13,17 @@ bool Side::render(Model m,std::array<float,32>&out) noexcept {
  }
  return true;
 }
+bool SlotController::select(Model model) noexcept {
+ if(static_cast<unsigned>(model)>static_cast<unsigned>(Model::bass))return false;
+ if(side_.active(model))return true;
+ side_.active(model,1);
+ side_.reset(selected_);
+ side_.active(selected_,0);
+ selected_=model;
+ side_.bind(model,16384);
+ side_.phase(model,phase_);
+ side_.initialize(model);
+ dirty_={1,1,1};
+ return true;
+}
 }

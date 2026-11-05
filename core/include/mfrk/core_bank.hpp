@@ -70,4 +70,23 @@ public:
  // Failure from checked component domains is explicit, never silent substitute audio.
  bool render(Model m,std::array<float,32>&out)noexcept;
 };
+// Source selection path for an already-initialized Basic slot with empty
+// manager metadata. The outer dirty bytes are distinct from each model's dirty
+// bytes; callers forward them through the native control path separately.
+class SlotController {
+ Side& side_;
+ Model selected_=Model::basic;
+ float phase_=0;
+ std::array<std::uint8_t,3> dirty_{};
+public:
+ explicit SlotController(Side& side) noexcept : side_(side) {}
+ SlotController(const SlotController&)=delete;
+ SlotController& operator=(const SlotController&)=delete;
+ void phase(float value) noexcept { phase_=value; }
+ Model selected() const noexcept { return selected_; }
+ const auto& dirty() const noexcept { return dirty_; }
+ void clear_dirty() noexcept { dirty_={}; }
+ // False means outside this bank's model profile. An already-active model is a no-op.
+ bool select(Model model) noexcept;
+};
 }
