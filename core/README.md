@@ -450,3 +450,13 @@ contract leaves frontend units and the upstream glide/note writer explicit.
 1160 original sequential states/update flags/returned values and137161 original
 math returns match locally. See the [native slot contract](../docs/slot-pitch-reference.md)
 for dispatcher requirements and the remaining common-voice integration.
+
+
+## Master audio output
+
+`mfrk::master` implements the source16-frame48kHz stereo limiter and prepared
+master process, with independent lookahead rings, mono/clip order and gain
+smoothing. Raw constructor and post-owner-Init profiles remain distinct.
+288 limiter,160 prepared-master and112 cold/alias blocks match original output
+and processing state locally. See the [master stage contract](../docs/master-output-reference.md)
+for memory ownership and the remaining normalized-control/full-graph work.

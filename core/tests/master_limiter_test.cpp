@@ -1,0 +1,14 @@
+#include "master_test_access.hpp"
+#include <fstream>
+#include <iostream>
+#include <cstring>
+#include <stdexcept>
+#include <vector>
+using namespace mfrk::master;
+class Reader {std::vector<std::uint8_t> data;std::size_t p=0;public:explicit Reader(const char*path){std::ifstream f(path,std::ios::binary|std::ios::ate);if(!f)throw std::runtime_error("open");auto n=f.tellg();if(n<12||n>2*1024*1024)throw std::runtime_error("size");data.resize(static_cast<std::size_t>(n));f.seekg(0);if(!f.read(reinterpret_cast<char*>(data.data()),n))throw std::runtime_error("read");}template<class T>T read(){T x;if(sizeof x>data.size()-p)throw std::runtime_error("truncated");std::memcpy(&x,data.data()+p,sizeof x);p+=sizeof x;return x;}void end(){if(p!=data.size())throw std::runtime_error("trailing");}};
+int main(int argc,char**argv)try{static_assert(std::endian::native==std::endian::little);if(argc!=2)return 2;Reader r(argv[1]);if(r.read<std::array<char,8>>()!=std::array<char,8>{'L','I','M','T','0','0','0','1'})return 2;auto cases=r.read<std::uint32_t>();if(!cases||cases>16)return 2;std::uint64_t outputs=0,states=0,rings=0,counters=0,blocks=0;
+for(unsigned c=0;c<cases;++c){const auto n=r.read<std::uint16_t>();if(n>64)return 2;for(unsigned i=0;i<n;++i)r.read<char>();const auto coeff=r.read<std::array<std::uint32_t,4>>();if(coeff!=std::array<std::uint32_t,4>{0x3d0bc810,0x38a4e000,0x3b086400,0x33d6bf95})return 2;DelayMemory memory;for(auto&row:memory.samples)for(auto&x:row)x=std::bit_cast<float>(r.read<std::uint32_t>());Limiter limiter(memory);const auto count=r.read<std::uint32_t>();if(!count||count>10000)return 2;
+for(unsigned i=0;i<count;++i){const auto reset=r.read<std::uint8_t>();if(reset>1)return 2;if(reset)limiter.reset();StereoBlock input{},actual{};for(auto&row:input)for(auto&x:row)x=std::bit_cast<float>(r.read<std::uint32_t>());const auto want=r.read<std::array<std::uint32_t,32>>();const auto state=r.read<std::array<std::uint32_t,4>>();const auto cursor=r.read<std::array<std::uint32_t,6>>();const auto ring=r.read<std::array<std::uint32_t,290>>();limiter.process(input,actual);for(unsigned ch=0;ch<2;++ch){for(unsigned j=0;j<16;++j)outputs+=std::bit_cast<std::uint32_t>(actual[ch][j])!=want[ch*16+j];states+=std::bit_cast<std::uint32_t>(LimiterTestAccess::peak(limiter)[ch])!=state[ch];states+=std::bit_cast<std::uint32_t>(LimiterTestAccess::gain_db(limiter)[ch])!=state[ch+2];counters+=LimiterTestAccess::valid(limiter)[ch]!=cursor[ch*3];counters+=cursor[ch*3+1]!=145;counters+=LimiterTestAccess::write(limiter)[ch]!=cursor[ch*3+2];for(unsigned j=0;j<145;++j)rings+=std::bit_cast<std::uint32_t>(memory.samples[ch][j])!=ring[ch*145+j];}++blocks;
+}}
+r.end();std::cout<<"blocks "<<blocks<<" output_mismatches "<<outputs<<" state "<<states<<" counters "<<counters<<" rings "<<rings<<"\n";return outputs||states||counters||rings?1:0;
+}catch(const std::exception&e){std::cerr<<e.what()<<"\n";return 2;}

@@ -175,6 +175,18 @@ jobs:
             adb push core/tests/pitch_powf_vectors.bin /data/local/tmp/pitch_powf_vectors.bin
             adb shell chmod 755 /data/local/tmp/mfrk_pitch_powf_tests
             adb shell /data/local/tmp/mfrk_pitch_powf_tests /data/local/tmp/pitch_powf_vectors.bin
+            adb push build-x86_64/mfrk_master_limiter_tests /data/local/tmp/mfrk_master_limiter_tests
+            adb push core/tests/master_limiter_vectors.bin /data/local/tmp/master_limiter_vectors.bin
+            adb shell chmod 755 /data/local/tmp/mfrk_master_limiter_tests
+            adb shell /data/local/tmp/mfrk_master_limiter_tests /data/local/tmp/master_limiter_vectors.bin
+            adb push build-x86_64/mfrk_master_output_tests /data/local/tmp/mfrk_master_output_tests
+            adb push core/tests/master_output_vectors.bin /data/local/tmp/master_output_vectors.bin
+            adb shell chmod 755 /data/local/tmp/mfrk_master_output_tests
+            adb shell /data/local/tmp/mfrk_master_output_tests /data/local/tmp/master_output_vectors.bin
+            adb push build-x86_64/mfrk_master_cold_alias_tests /data/local/tmp/mfrk_master_cold_alias_tests
+            adb push core/tests/master_cold_alias_vectors.bin /data/local/tmp/master_cold_alias_vectors.bin
+            adb shell chmod 755 /data/local/tmp/mfrk_master_cold_alias_tests
+            adb shell /data/local/tmp/mfrk_master_cold_alias_tests /data/local/tmp/master_cold_alias_vectors.bin
             adb push build-x86_64/mfrk_notepath_tests /data/local/tmp/mfrk_notepath_tests
             adb push core/tests/notepath_vectors.bin /data/local/tmp/notepath_vectors.bin
             adb shell chmod 755 /data/local/tmp/mfrk_notepath_tests

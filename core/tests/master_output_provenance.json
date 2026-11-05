@@ -1,0 +1,153 @@
+{
+  "source_processor_sha256": "bd036dfa6a0afcfef733c29c73b1b3df969f2c86ca860b0fa535d4492fa8fb74",
+  "entries": {
+    "constructor": "0x30e990",
+    "process": "0x30f850",
+    "reset": "0x30f7f0",
+    "prepare_not_ported": "0x30fb20",
+    "limiter": "0x31b9e0",
+    "owner_initialization": "0x30ecf0..0x30eeee",
+    "observed_reset_return": "0x30ee24"
+  },
+  "method": "Unchanged original processor instructions offline; original expected processing/state/resource outputs, no candidate-derived expectations or vendor OS load.",
+  "profile": {
+    "frames": 16,
+    "sample_rate": 48000,
+    "channels": 2,
+    "limiter_delay_samples": 144,
+    "limiter_ring_capacity": 145,
+    "caller_owned_persistent_memory": true,
+    "serialized_owner_calls": true
+  },
+  "initialization": {
+    "raw_lpf_current_bits": "0x2b8cbccc",
+    "ready_lpf_current_bits": 0,
+    "raw_fields": "Source constructor stores with explicit owner-zero arena/workspace profile; ring contents separately caller-provided, not inferred allocator zero.",
+    "ready_factory": "Raw constructor followed by exact source reset/owner-Init audio state, not relabeling raw constructor as ready.",
+    "reset": "Preserves ring memory/capacity, coefficients, pre/mono controls and LPF threshold; SetBoth(stored postgain), fill16 gain words and clear limiter peak/db/cursors."
+  },
+  "supported_api": "Process-boundary prepared pre/post float gains and mono flag; distinct raw/ready factory, limiter/reset/process. Normalized pre-gain powf(10,db*.05), post mapping and caller dirty dispatch remain outside this module.",
+  "gold": [
+    {
+      "file": "core/tests/master_limiter_vectors.bin",
+      "bytes": 423215,
+      "sha256": "64d10ba5039d2c36264b411ebb56347684d81662507a555ca8e3ce5aff999ba5"
+    },
+    {
+      "file": "core/tests/master_output_vectors.bin",
+      "bytes": 249172,
+      "sha256": "6ed78c638f9f114ff03d4f66ed15807459d51767f51e2c31278291ee687ffaf8"
+    },
+    {
+      "file": "core/tests/master_cold_alias_vectors.bin",
+      "bytes": 342628,
+      "sha256": "923f51dd942060fd60a81d396885a4781120e580ca9199451974b79278b06de1"
+    }
+  ],
+  "observations": {
+    "limiter_blocks": 288,
+    "limiter_samples": 9216,
+    "prepared_master_blocks": 160,
+    "cold_alias_blocks": 112,
+    "cold_alias_samples": 3584,
+    "alias_profiles": "raw/ready × distinct/in-place; original input preservation and full typed field/ring/gain comparisons",
+    "master_render_samples": 8704,
+    "host_release_ctests": 75
+  },
+  "body_comparison": [
+    {
+      "name": "Limiter::reset",
+      "exact": true,
+      "sha256": "43b4e61575619118d649c332a037992131a5bfce0e104e3ec176e9257f29eaec"
+    },
+    {
+      "name": "Limiter::process",
+      "exact": true,
+      "sha256": "35d3516b332f8709e12f53206e1cf99cd7ec1c495d3421af8d41c0821e772ed3"
+    },
+    {
+      "name": "Master::set_prepared_pre_gain",
+      "exact": true,
+      "sha256": "7fda96da1383d29c30bbec399f7146fd6ad2c1b9f059b1f4be8e9de3b0f3be5e"
+    },
+    {
+      "name": "Master::set_prepared_post_gain",
+      "exact": true,
+      "sha256": "b74a5a49b7cf071fd0b8f719f8d5e61fcdfc0c831382389b167e6f5ea49ec758"
+    },
+    {
+      "name": "Master::set_mono",
+      "exact": true,
+      "sha256": "9feab593262e1bd683c89c20b92462d72403941b93ed430bbfc046299ab1e17f"
+    },
+    {
+      "name": "Master::reset",
+      "exact": true,
+      "sha256": "5cddba4304c4326dc95209a487a669614a7b85396d313d27791f69c915b7f15f"
+    },
+    {
+      "name": "Master::process",
+      "exact": true,
+      "sha256": "0765228b876c7aca27201a4860e5201d5c571437599b1d6ea8f5b46ce6739894"
+    }
+  ],
+  "cold_projection": {
+    "original_packed_sha256": "bf5e9b184f7a18d3e96699ccfb3dc8014497e5da40e2d78b1946448ab12b90d3",
+    "original_canonical_sha256": "b9ed8d67c08e2b4c05d062c935bce4b9b961ddfe7975553fc603e7727312c058",
+    "projection_bytes": 342628,
+    "projection_sha256": "923f51dd942060fd60a81d396885a4781120e580ca9199451974b79278b06de1",
+    "cases": 4,
+    "blocks": 112,
+    "samples": 3584,
+    "method": "Typed projection of original process fields/controls/coefficients/cursors/rings/gainworkspace and input/output/input-after. No candidate-derived values; raw headers and source input programs retained independently."
+  },
+  "reproduction": "tools/encode_master_lifecycle_fixture.py validates pinned original packed/canonical identities; independent Python projection matches separate Node encoding byte-for-byte.",
+  "root_lifecycle_mutants": [
+    {
+      "mutant": "raw_current_zero",
+      "exit": 1,
+      "stdout": "blocks 112 states 4 rings 0 output 0 input_after 0",
+      "stderr": ""
+    },
+    {
+      "mutant": "reset_erases_rings",
+      "exit": 1,
+      "stdout": "blocks 112 states 0 rings 5056 output 0 input_after 0",
+      "stderr": ""
+    },
+    {
+      "mutant": "reset_recomputes_threshold",
+      "exit": 1,
+      "stdout": "blocks 112 states 50 rings 0 output 0 input_after 0",
+      "stderr": ""
+    }
+  ],
+  "source_author_limiter_mutants": [
+    {
+      "name": "delay143",
+      "exit": 1,
+      "stdout": "blocks 288 output_mismatches 5009 state 0 counters 0 rings 0",
+      "killed": true
+    },
+    {
+      "name": "attack_release_swapped",
+      "exit": 1,
+      "stdout": "blocks 288 output_mismatches 5779 state 480 counters 0 rings 0",
+      "killed": true
+    },
+    {
+      "name": "reset_erases_ring",
+      "exit": 1,
+      "stdout": "blocks 288 output_mismatches 0 state 0 counters 0 rings 3387",
+      "killed": true
+    },
+    {
+      "name": "log_numeric_cast",
+      "exit": 1,
+      "stdout": "blocks 288 output_mismatches 5779 state 480 counters 0 rings 0",
+      "killed": true
+    }
+  ],
+  "independent_review": "Strict actual-repository O2/NDEBUG/Wconversion/Werror all3 suites0; independently projected original raw JSON byte-identical; no required findings.",
+  "remaining": "Normalized control compiler, complete FX/voice scheduling and standalone audio/UI/MIDI/preset equivalence remain required. No full Master control or instrument parity claim."
+}
