@@ -97,7 +97,7 @@ void walk(const Node& parent,Context& context,const Emit& emit,unsigned depth,un
    for(const auto& [key,value]:bindings.numbers){context.numbers.erase(key);context.strings.erase(key);}
   }else if(child.name=="for"){
    const auto name=field(child,"src"),from=field(child,"from"),to=field(child,"to"),index=field(child,"index");
-   if(!name||name->empty()||name->size()>1024||name->find('\0')!=std::string_view::npos||name->find("${")!=std::string_view::npos||!from||!to||field(child,"src2")||field(child,"in"))throw std::invalid_argument("for outside single numeric range profile");
+   if(!name||name->empty()||name->size()>1024||name->find('\0')!=std::string_view::npos||name->find("${")!=std::string_view::npos||!from||!to||field(child,"src3")||field(child,"in"))throw std::invalid_argument("for outside numeric range profile");
    auto number=[&](std::string_view value){auto expanded=expand_string(value,context.strings,true,true);const double v=LogicalExpression(expanded,context.numbers,context.features,false).evaluate();if(!std::isfinite(v)||v<double(std::numeric_limits<int>::min())||v>double(std::numeric_limits<int>::max()))throw std::invalid_argument("for numeric admission");return condition_integer(v);};
    const auto first=number(*from),last=number(*to);
    const auto inclusive=field(child,"inclusive");const bool include_end=!inclusive||literal_boolean(*inclusive);
@@ -106,13 +106,24 @@ void walk(const Node& parent,Context& context,const Emit& emit,unsigned depth,un
    const std::string key(*name),idx=index?std::string(*index):std::string();
    if((index&&(idx.empty()||idx.size()>1024||idx.find('\0')!=std::string::npos||idx.find("${")!=std::string::npos||idx==key))||context.strings.contains(key)||context.numbers.contains(key)||(index&&(context.strings.contains(idx)||context.numbers.contains(idx))))throw std::invalid_argument("for binding collision");
    const auto count=distance+(include_end?1:0);
+   const auto name2=field(child,"src2"),from2=field(child,"from2"),to2=field(child,"to2");
+   std::string key2;int first2=0,last2=0;
+   if(name2){
+    if(index||!from2||!to2||name2->empty()||name2->size()>1024||name2->find('\0')!=std::string_view::npos||name2->find("${")!=std::string_view::npos)throw std::invalid_argument("zipped for admission");
+    key2=std::string(*name2);if(key2==key||context.strings.contains(key2)||context.numbers.contains(key2))throw std::invalid_argument("zipped for binding collision");
+    first2=number(*from2);last2=number(*to2);
+    const auto distance2=first2<=last2?std::int64_t(last2)-first2:std::int64_t(first2)-last2;
+    if(distance2!=distance)throw std::invalid_argument("zipped for range lengths");
+   }else if(from2||to2)throw std::invalid_argument("zipped for missing source");
    for(std::int64_t i=0;i<count;++i){
     const auto value=std::int64_t(first)+(first<=last?i:-i);
     context.strings[key]=std::to_string(value);if(flags&1)context.numbers[key]=double(value);
+    if(name2){const auto value2=std::int64_t(first2)+(first2<=last2?i:-i);context.strings[key2]=std::to_string(value2);if(flags&1)context.numbers[key2]=double(value2);}
     if(index){context.strings[idx]=std::to_string(i+1);if(flags&1)context.numbers[idx]=double(i+1);}
     walk(child,context,emit,depth+1,flags);
    }
    context.strings.erase(key);if(flags&1)context.numbers.erase(key);
+   if(name2){context.strings.erase(key2);if(flags&1)context.numbers.erase(key2);}
    if(index){
     if(include_end){context.strings.erase(idx);if(flags&1)context.numbers.erase(idx);}
     else{context.strings[idx]=std::to_string(count+1);if(flags&1)context.numbers[idx]=double(count+1);}

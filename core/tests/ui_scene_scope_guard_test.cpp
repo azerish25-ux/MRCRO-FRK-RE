@@ -21,6 +21,7 @@ int main(){unsigned guards=0;auto reject=[&](auto action){bool failed=false;try{
  reject([&]{Context c;walk_nodes(parent(node("elseif",{{"constant","1"}})),c,noop);});
  reject([&]{Context c;walk_nodes(parent(node("else")),c,noop);});
  reject([&]{Context c;walk_nodes(parent(node("for")),c,noop);});
+ reject([&]{Context c;walk_nodes(parent(node("for",{{"src","I"},{"from","0"},{"to","2"},{"src2","J"},{"from2","0"},{"to2","1"}})),c,noop);});
  reject([&]{Context c;walk_nodes(parent(node("template:Example")),c,noop);});
  reject([&]{Context c;auto n=node("data");n.type=2;walk_nodes(parent(n),c,noop);});
  reject([&]{Context c;for(unsigned i=0;i<4097;++i)c.strings["K"+std::to_string(i)]="value";collect_with(node("with",{{"src","N"},{"string","literal"}}),c);});
@@ -45,6 +46,9 @@ int main(){unsigned guards=0;auto reject=[&](auto action){bool failed=false;try{
   Context empty;seen.clear();auto equal=parent(node("for",{{"src","I"},{"from","2"},{"to","2"},{"inclusive","false"},{"index","IDX"}},{node("widget")}));
   walk_nodes(equal,empty,[&](const Node&,Context&){seen.push_back("unexpected");},flags);
   if(!seen.empty()||empty.strings.at("IDX")!="1"||((flags&1)&&empty.numbers.at("IDX")!=1.))throw std::runtime_error("empty exclusive range index");
+  Context zipped;seen.clear();auto pair=parent(node("for",{{"src","I"},{"from","0"},{"to","2"},{"src2","J"},{"from2","4"},{"to2","6"}},{node("widget")}));
+  walk_nodes(pair,zipped,[&](const Node&,Context& live){seen.push_back(live.strings.at("I")+":"+live.strings.at("J"));if((flags&1)&&(live.numbers.at("I")!=double(seen.size()-1)||live.numbers.at("J")!=double(seen.size()+3)))throw std::runtime_error("zipped numeric aliases");},flags);
+  if(seen!=std::vector<std::string>{"0:4","1:5","2:6"}||!zipped.strings.empty()||!zipped.numbers.empty())throw std::runtime_error("zipped range output or cleanup");
  }
  std::cout<<guards<<" scope guards and lazy-clause regression passed\n";return 0;
  }catch(const std::exception& error){std::cerr<<error.what()<<'\n';return 1;}

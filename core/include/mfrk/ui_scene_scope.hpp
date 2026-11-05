@@ -20,7 +20,7 @@ struct Bindings {
 Bindings collect_with(const Node&,const Context&);
 // Walk a parent's structural siblings; ordinary nodes are emitted as complete
 // terminal subtrees. The receiver owns subsequent widget/factory traversal.
-// With, if/elseif/else, and a bounded single numeric range are admitted here.
+// With, if/elseif/else, and one or two bounded numeric ranges are admitted here.
 // Bit 0 of flags enables numeric aliases for range and index values. Unsupported
 // loop forms and other structural constructs fail explicitly.
 using Emit=std::function<void(const Node&,Context&)>;

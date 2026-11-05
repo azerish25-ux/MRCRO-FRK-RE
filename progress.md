@@ -343,4 +343,4 @@
 ## Numeric UI loop profile (in progress)
 
 - Added a bounded single numeric range to scoped traversal, including the source flag controlling numeric aliases and the one-based index. Original-instruction probes found that an exclusive range leaves its index at the next value, including for an empty range; an inclusive range removes it. The implementation retains this distinction.
-- The profile intentionally rejects list, alphabetic and multiple zipped ranges; item-list providers, includes, templates and factory ownership remain unfinished. Local probe evidence is retained under `local/evidence/native-ui-source/scene-lowering` on D: and the wider Android verification has not yet run.
+- A two-range zipped numeric profile is also supported; the original processes both ranges in lockstep. List, alphabetic and indexed zipped ranges remain unsupported, as do item-list providers, includes, templates and factory ownership. Local probe evidence is retained under `local/evidence/native-ui-source/scene-lowering` on D: and the wider Android verification has not yet run.
