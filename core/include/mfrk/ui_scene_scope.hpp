@@ -8,6 +8,9 @@ struct Context {
  mfrk::ui::scene::Constants numbers;
  mfrk::ui::scene::StringConstants strings;
  const mfrk::ui::scene::Features* features=nullptr;
+ // Supplies the original parameter's ordered item names to item_list(name).
+ // The caller owns parameter lookup and the lifetime of its underlying data.
+ std::function<std::vector<std::string>(std::string_view)> item_list;
 };
 struct Bindings {
  std::vector<std::pair<std::string,std::string>> strings;
@@ -20,7 +23,8 @@ struct Bindings {
 Bindings collect_with(const Node&,const Context&);
 // Walk a parent's structural siblings; ordinary nodes are emitted as complete
 // terminal subtrees. The receiver owns subsequent widget/factory traversal.
-// With, if/elseif/else, and one or two bounded numeric ranges are admitted here.
+// With, if/elseif/else, bounded numeric ranges, and a nonnumeric parameter
+// item-list profile are admitted here.
 // Bit 0 of flags enables numeric aliases for range and index values. Unsupported
 // loop forms and other structural constructs fail explicitly.
 using Emit=std::function<void(const Node&,Context&)>;

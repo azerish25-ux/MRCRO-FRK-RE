@@ -21,6 +21,7 @@ int main(){unsigned guards=0;auto reject=[&](auto action){bool failed=false;try{
  reject([&]{Context c;walk_nodes(parent(node("elseif",{{"constant","1"}})),c,noop);});
  reject([&]{Context c;walk_nodes(parent(node("else")),c,noop);});
  reject([&]{Context c;walk_nodes(parent(node("for")),c,noop);});
+ reject([&]{Context c;walk_nodes(parent(node("for",{{"src","item"},{"in","item_list(P)"}})),c,noop);});
  reject([&]{Context c;walk_nodes(parent(node("for",{{"src","I"},{"from","0"},{"to","2"},{"src2","J"},{"from2","0"},{"to2","1"}})),c,noop);});
  reject([&]{Context c;walk_nodes(parent(node("template:Example")),c,noop);});
  reject([&]{Context c;auto n=node("data");n.type=2;walk_nodes(parent(n),c,noop);});
@@ -49,6 +50,10 @@ int main(){unsigned guards=0;auto reject=[&](auto action){bool failed=false;try{
   Context zipped;seen.clear();auto pair=parent(node("for",{{"src","I"},{"from","0"},{"to","2"},{"src2","J"},{"from2","4"},{"to2","6"}},{node("widget")}));
   walk_nodes(pair,zipped,[&](const Node&,Context& live){seen.push_back(live.strings.at("I")+":"+live.strings.at("J"));if((flags&1)&&(live.numbers.at("I")!=double(seen.size()-1)||live.numbers.at("J")!=double(seen.size()+3)))throw std::runtime_error("zipped numeric aliases");},flags);
   if(seen!=std::vector<std::string>{"0:4","1:5","2:6"}||!zipped.strings.empty()||!zipped.numbers.empty())throw std::runtime_error("zipped range output or cleanup");
+  Context list;list.strings["param"]="Osc1_Type";list.item_list=[](std::string_view parameter){if(parameter!="Osc1_Type")throw std::runtime_error("wrong parameter");return std::vector<std::string>{"Alpha","one,two","2"};};seen.clear();
+  auto list_loop=parent(node("for",{{"src","item"},{"in","item_list(${param})"},{"index","ITEM_IDX"}},{node("widget")}));
+  walk_nodes(list_loop,list,[&](const Node&,Context& live){seen.push_back(live.strings.at("item")+":"+live.strings.at("ITEM_IDX"));if(live.numbers.contains("item")||((flags&1)&&live.numbers.at("ITEM_IDX")!=double(seen.size())))throw std::runtime_error("item-list numeric aliases");},flags);
+  if(seen!=std::vector<std::string>{"Alpha:1","one:2","two:3","2:4"}||list.strings.size()!=1||!list.numbers.empty())throw std::runtime_error("item-list output or cleanup");
  }
  std::cout<<guards<<" scope guards and lazy-clause regression passed\n";return 0;
  }catch(const std::exception& error){std::cerr<<error.what()<<'\n';return 1;}

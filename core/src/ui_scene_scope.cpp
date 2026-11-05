@@ -96,6 +96,23 @@ void walk(const Node& parent,Context& context,const Emit& emit,unsigned depth,un
    for(const auto& [key,value]:bindings.strings)context.strings.erase(key);
    for(const auto& [key,value]:bindings.numbers){context.numbers.erase(key);context.strings.erase(key);}
   }else if(child.name=="for"){
+   if(const auto in=field(child,"in")){
+    const auto name=field(child,"src"),index=field(child,"index");
+    if(!name||name->empty()||name->size()>1024||name->find('\0')!=std::string_view::npos||name->find("${")!=std::string_view::npos||field(child,"src2")||field(child,"from")||field(child,"to")||field(child,"inclusive"))throw std::invalid_argument("for outside item-list profile");
+    const auto expression=expand_string(*in,context.strings,true,false);
+    if(!expression.starts_with("item_list(")||!expression.ends_with(')')||!context.item_list)throw std::invalid_argument("item-list provider required");
+    const auto parameter=std::string_view(expression).substr(10,expression.size()-11);
+    if(parameter.empty())throw std::invalid_argument("empty item-list parameter");
+    const auto supplied=context.item_list(parameter);std::string joined;
+    for(const auto& item:supplied){if(item.find('\0')!=std::string::npos||item.size()>4096||joined.size()+item.size()+1>65536)throw std::invalid_argument("item-list admission");if(!joined.empty())joined+=',';joined+=item;}
+    std::vector<std::string> items;std::size_t start=0;bool known_nonnumeric=false;
+    while(start<=joined.size()){const auto end=joined.find(',',start);auto item=joined.substr(start,end==std::string::npos?std::string::npos:end-start);if(!item.empty()){const auto first=item.find_first_not_of(" \t\r\n");if(first!=std::string::npos){const char c=item[first];if((c>='A'&&c<='Z'&&c!='I'&&c!='N')||(c>='a'&&c<='z'&&c!='i'&&c!='n'))known_nonnumeric=true;}items.push_back(std::move(item));}if(end==std::string::npos)break;start=end+1;}
+    if(items.empty()||items.size()>4096||!known_nonnumeric)throw std::invalid_argument("item-list numeric or empty profile unsupported");
+    const std::string key(*name),idx=index?std::string(*index):std::string();
+    if((index&&(idx.empty()||idx.size()>1024||idx.find('\0')!=std::string::npos||idx.find("${")!=std::string::npos||idx==key))||context.strings.contains(key)||context.numbers.contains(key)||(index&&(context.strings.contains(idx)||context.numbers.contains(idx))))throw std::invalid_argument("item-list binding collision");
+    for(std::size_t i=0;i<items.size();++i){context.strings[key]=items[i];if(index){context.strings[idx]=std::to_string(i+1);if(flags&1)context.numbers[idx]=double(i+1);}walk(child,context,emit,depth+1,flags);}
+    context.strings.erase(key);if(index){context.strings.erase(idx);if(flags&1)context.numbers.erase(idx);}continue;
+   }
    const auto name=field(child,"src"),from=field(child,"from"),to=field(child,"to"),index=field(child,"index");
    if(!name||name->empty()||name->size()>1024||name->find('\0')!=std::string_view::npos||name->find("${")!=std::string_view::npos||!from||!to||field(child,"src3")||field(child,"in"))throw std::invalid_argument("for outside numeric range profile");
    auto number=[&](std::string_view value){auto expanded=expand_string(value,context.strings,true,true);const double v=LogicalExpression(expanded,context.numbers,context.features,false).evaluate();if(!std::isfinite(v)||v<double(std::numeric_limits<int>::min())||v>double(std::numeric_limits<int>::max()))throw std::invalid_argument("for numeric admission");return condition_integer(v);};
