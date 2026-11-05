@@ -356,3 +356,7 @@
 - Integrated the source-derived persistent bank for Basic Waves, SuperWave, Harmo, Karplus, Virtual Analog, Waveshaper and Bass. Model selection preserves the recovered per-model lifecycle and the slot's shared scratch; this is not yet the complete voice or instrument scheduler.
 - The integrated Windows Release bank matched the retained original 7,738-operation, 2,004-render sequence for every compared audio sample, random state, owner flag and final shared-memory word. The reference fixture is SHA-256 checked before use and the same check is configured for Android CI. Other models, upstream controls, filters, effects and full instrument behavior remain open.
 - Added the source selection order for a previously initialized Basic slot and empty manager metadata: activate the target, reset/deactivate the old model, bind the same resource, forward phase, initialize, and mark the outer control bytes dirty. An already-active selection is a no-op. This bounded actor does not yet represent cold placeholder selection or the whole voice scheduler.
+
+## Android MIDI input boundary (in progress)
+
+- Added an allocation-free MIDI 1 byte-stream decoder with per-port state, running status, split messages, interleaved real-time bytes and streamed SysEx bytes. It is a transport boundary only: Android device discovery, timestamp scheduling, MIDI 2 UMP and routing into the native note/controller graph remain to be connected.
