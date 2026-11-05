@@ -311,5 +311,52 @@
         "sha256": "628e73613128556beb348740548590425d19ea428c293ef691c8cd7569f9d0ef"
       }
     }
+  },
+  "owner_schedule_correction": {
+    "source_processor_sha256": "bd036dfa6a0afcfef733c29c73b1b3df969f2c86ca860b0fa535d4492fa8fb74",
+    "source_mini_process": "0x1802f3760",
+    "source_publication_sink": {
+      "start": "0x1802f36b0",
+      "end": "0x1802f375b",
+      "file_offset": 3091120,
+      "bytes": 171,
+      "sha256": "d4d7c442bc58f9c38cea33e71e2a97ebd66bb9998cb362d52db0b8bdf0c93765"
+    },
+    "source_finish_site": {
+      "start": "0x1802f3b0d",
+      "end": "0x1802f3b1f",
+      "file_offset": 3092237,
+      "bytes": 18,
+      "sha256": "cc944c8a923f5c3ac1c86a4f464cc8c7a8566e9cb359dc41c499c03d72d4b5e9"
+    },
+    "order": [
+      "Immediate publication handoff for each actor operation.",
+      "Original guarded sequencer at Mini+0x20f630.",
+      "Count consumer0x1802f4490 iff either wrapping count byte is nonzero.",
+      "finish_control_block: pending1 andbothcounts0.",
+      "Continuation including postseq0x1802f6d60 and main MNF atMini+0xc9c70."
+    ],
+    "sink_scope": "Copies20byte allocatorrow intoowner mirror and builds distinct24byteMIDI-formatted packet; separatefrom20bytepostseqqueue. Downstreamowner notimplementedbyactor.",
+    "historical_hash_policy": "Independent review hashes/source delivery manifest above retain their ORIGINAL private revision identities, not claims of current example/header byte identity.",
+    "validation": {
+      "regression_red_exit": 4,
+      "focused_notepath_checks": 3,
+      "full_release_ctest": 50,
+      "independent_source_sanity": "wave_tables source-contract review and strict Release actor-flow compile exit0"
+    },
+    "current_files": {
+      "core/include/mfrk/notepath.hpp": {
+        "bytes": 7177,
+        "sha256": "f58e518e9c5e590b914a0a0a555f7ca4a0fd81c7a59420b722a155f752355ec9"
+      },
+      "core/tests/notepath_actor_flow.hpp": {
+        "bytes": 1870,
+        "sha256": "ad47497759002db850fea6e419f87cee19bada203a86dc42619cf9535d193efb"
+      },
+      "core/tests/notepath_actor_flow_test.cpp": {
+        "bytes": 2384,
+        "sha256": "057d99ec46171d1d422f5954b354c29ef2286795d2205b4d30752e79c2f75168"
+      }
+    }
   }
 }

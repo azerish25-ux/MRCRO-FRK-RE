@@ -26,13 +26,16 @@ HoldDispatch receive_hold(Engine& actor,RowSink& sink,float normalized,bool dirt
   // The owner also forwards processed dispatch{id32,value} to its sequencer.
   return dispatch;
 }
-template<class RunVoiceBlock,class ConsumeCounts>
-void finish_voice_block(Engine& actor,RunVoiceBlock&& run_voices,ConsumeCounts&& consume_counts) noexcept {
-  // All earlier operation batches have ALREADY been applied exactly once.
-  // The concrete owner processes its voice/control rows and consumes statuses.
-  run_voices();
-  consume_counts(actor.note_counts());
+template<class ContinueOwnerBlock,class ConsumeCounts>
+void finish_voice_block(Engine& actor,ContinueOwnerBlock&& continue_owner,ConsumeCounts&& consume_counts) noexcept {
+  // The original sequencer/control stage and all publication handoffs have
+  // ALREADY run. Mini2f3760 consumes nonzero counts, marks the NotePath control
+  // boundary, then continues with post-sequencer event fanout and MNF audio.
+  const auto counts=actor.note_counts();
+  if(counts.on||counts.off)consume_counts(counts);
   actor.finish_control_block();
+  continue_owner();
   // published_rows() retains snapshots; do not replay them on the next block.
 }
+
 } // namespace mfrk::notepath::example

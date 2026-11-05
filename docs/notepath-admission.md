@@ -26,7 +26,13 @@ Every public operation starts a new `publications()` batch. Apply each record ex
 
 `published_rows()` plus `published_valid_bits()` is the latest observed snapshot, not a queue and not a command to replay status bytes each tick. It remains useful for inspection after the transient batch is replaced.
 
-For a control block: dispatch each note/control operation and immediately apply its batch; run the concrete owner voice/control processing; consume the wrapping `note_counts()` values; then call `finish_control_block()`. That operation sets the source pending-status flag and clears both counts. The next primary note clears allocator row status bytes; the canonical interface also honors the native suppression flag.
+For a control block, dispatch each note/control operation and immediately perform its owner handoff. Run the original sequencer prepare/process stage and hand off any batches it produces. If either wrapping `note_counts()` byte is nonzero, invoke the source count consumer; skip it when both bytes are zero. Then call `finish_control_block()` BEFORE the remaining owner continuation and main MNF voice audio.
+
+Original Mini Process0x1802f3760 uses the sequencer at Mini+0x20f630, conditionally calls count consumer0x1802f4490 on Mini+0xc2040, then sets pending and clears counts at0x1802f3b0d..0x1802f3b1f. Post-sequencer event fanout0x1802f6d60 and main MNF audio at Mini+0xc9c70 follow. Earlier wording conflated the MNF sequencer with the MNF audio engine; it must not be used to put the boundary after voice rendering. The next primary note clears allocator row status bytes; the canonical interface also honors the native suppression flag.
+
+The actual publication sink0x1802f36b0 copies each20-byte row into the owner mirror and appends a distinct24-byte MIDI-formatted packet. This is not the separate20-byte sequencer continuation queue. The actor/example sink does not implement this full downstream owner. Keep native event formats distinct and do not reinterpret row snapshots as fresh events.
+
+The caller also owns original first/force/dirty preparation and clearing at each owner boundary. Preserve its original guards; repeatedly forcing mode configuration can kill a held note. `finish_control_block()` does not implement those caller flags.
 
 `all_notes_off()` matches the recovered requested status-5 operation and retains shared hold. It is not a generic instrument panic/reset. Smoothing, envelopes, oscillator/filter state and host queues belong to other components.
 

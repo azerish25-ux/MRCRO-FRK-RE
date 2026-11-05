@@ -127,7 +127,8 @@ public:
                                                    bool force = false) noexcept;
   // Matches requested all-notes-off32da70/status5, retaining the shared held flag.
   void all_notes_off(bool requested = true) noexcept;
-  // Original owner2f3b0d..2f3b1f: after voice processing/note-count consumption.
+  // Original owner2f3b0d..2f3b1f: after sequencer/count consumption,
+  // before post-sequencer event fanout and main MNF voice audio.
   void finish_control_block() noexcept;
 private:
   friend struct TestAccess;

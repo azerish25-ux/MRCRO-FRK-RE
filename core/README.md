@@ -340,7 +340,7 @@ source/perturbation evidence; no host-math approximation replaces an audible pat
 ## Whole NotePath actor
 
 `mfrk::notepath::Engine` implements native transforms, allocation, learning, hold,
-mode/legato preparation and the source end-of-control-block boundary. Construction
+mode/legato preparation and the source pre-audio control boundary. Construction
 uses explicit zero-arena admission. [Admission and ownership](../docs/notepath-admission.md)
 defines valid inputs and once-only callback consumption; published row snapshots
 must not be replayed as fresh events. PerNoteKey is an opaque native byte.
