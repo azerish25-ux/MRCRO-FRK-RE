@@ -358,5 +358,9 @@ jobs:
             adb push core/tests/note_pitch_vectors.bin /data/local/tmp/note_pitch_vectors.bin
             adb shell chmod 755 /data/local/tmp/note_pitch_test
             adb shell /data/local/tmp/note_pitch_test /data/local/tmp/note_pitch_vectors.bin
+            adb push build-x86_64/publication_sink_test /data/local/tmp/publication_sink_test
+            adb push core/tests/publication_sink_vectors.bin /data/local/tmp/publication_sink_vectors.bin
+            adb shell chmod 755 /data/local/tmp/publication_sink_test
+            adb shell /data/local/tmp/publication_sink_test /data/local/tmp/publication_sink_vectors.bin
       - name: Compare generated Android table bytes
         run: python3 tools/check_basic_wave_tables.py --dump build-x86_64/basic-wave-tables.bin --expected core/tests/basic_wave_table_hashes.json

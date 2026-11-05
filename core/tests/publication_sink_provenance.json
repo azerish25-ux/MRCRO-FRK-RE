@@ -1,0 +1,8 @@
+{
+  "processor_sha256": "bd036dfa6a0afcfef733c29c73b1b3df969f2c86ca860b0fa535d4492fa8fb74",
+  "source_function": "0x1802f36b0",
+  "fixture_sha256": "34c4d85a4567ba6c2b7f92aa61d31e4e5e23a711ac063225ecdf62225e6f3583",
+  "cases": 48,
+  "scope": "Original instructions on supplied 20-byte rows, valid row indices, queue counts 0/1/255/256, prior packet bytes and an explicit incoming stack byte. The untouched stack byte and packet tail are not given invented native defaults.",
+  "local_evidence": "local/evidence/voice-graph-agent/probe_publication_sink_v1.py and original-publication-sink-v1.json"
+}

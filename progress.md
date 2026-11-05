@@ -369,6 +369,8 @@
 - Added a fixed-capacity single-producer/single-consumer handoff with one decoder per port. Overflow is latched so the future audio consumer can discard queued events and reset notes/controllers rather than silently leaving notes held.
 - The Android device listener now feeds that native decoder and queue through JNI. The future audio host must detach before bridge destruction and consume port-reset/overflow events. The note/controller and audio graphs remain unconnected; remote JNI cross-build and device behavior are pending.
 - Added a bounded note-on/note-off adapter from decoded MIDI 1 events to the recovered NotePath actor, with an explicit channel/omni policy and synchronous publication handoff. This does not yet implement CC, pitch bend, MPE, transport, timestamp scheduling or the downstream voice owner.
+- Recovered the immediate NotePath publication sink `2f36b0`: it copies each row to the owner and appends a separate MIDI-formatted record when the 256-entry queue has room. The original leaves a stack-derived byte and packet tail unspecified; the portable contract preserves them explicitly. Forty-eight original supplied-state cases match locally, including queue saturation. Downstream voice processing remains open.
+- Connected decoded note routing through NotePath into the portable publication sink in a bounded integration check, applying every batch before the next NotePath operation. The app's audio/voice owner is not yet connected to that sink.
 
 ## Android audio output boundary (in progress)
 
