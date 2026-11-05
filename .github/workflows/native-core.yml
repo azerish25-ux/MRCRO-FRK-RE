@@ -381,5 +381,13 @@ jobs:
             adb push core/tests/gate_legato_vectors.bin /data/local/tmp/gate_legato_vectors.bin
             adb shell chmod 755 /data/local/tmp/gate_legato_test
             adb shell /data/local/tmp/gate_legato_test /data/local/tmp/gate_legato_vectors.bin
+            adb push build-x86_64/gate_reset_test /data/local/tmp/gate_reset_test
+            adb push core/tests/gate_reset_vectors.bin /data/local/tmp/gate_reset_vectors.bin
+            adb shell chmod 755 /data/local/tmp/gate_reset_test
+            adb shell /data/local/tmp/gate_reset_test /data/local/tmp/gate_reset_vectors.bin
+            adb push build-x86_64/gate_para_reset_test /data/local/tmp/gate_para_reset_test
+            adb push core/tests/gate_para_reset_vectors.bin /data/local/tmp/gate_para_reset_vectors.bin
+            adb shell chmod 755 /data/local/tmp/gate_para_reset_test
+            adb shell /data/local/tmp/gate_para_reset_test /data/local/tmp/gate_para_reset_vectors.bin
       - name: Compare generated Android table bytes
         run: python3 tools/check_basic_wave_tables.py --dump build-x86_64/basic-wave-tables.bin --expected core/tests/basic_wave_table_hashes.json

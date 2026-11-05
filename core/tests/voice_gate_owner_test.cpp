@@ -5,6 +5,7 @@
 using namespace mfrk;
 struct CyclicLog {unsigned calls=0;bool last=false;};
 static void cyclic(void* p,std::uint8_t voice,std::uint8_t side,bool on) noexcept {auto& log=*static_cast<CyclicLog*>(p);if(voice==0&&side==0){++log.calls;log.last=on;}}
+static void reset(void* p,gate_dispatch::Kind,std::uint8_t,std::uint8_t) noexcept {++*static_cast<unsigned*>(p);}
 int main(){
  auto tables=std::make_unique<core_bank::Tables>();karplus::SharedRandom random{54321};auto first=std::make_unique<core_bank::Side>(*tables,random,1);auto second=std::make_unique<core_bank::Side>(*tables,random,2);core_bank::SlotController slot0(*first),slot1(*second);
  Adsr env;AdsrState initial{};initial.phase=AdsrPhase::sustain;initial.accumulator=0x40000000;initial.hold=1;AdsrTestAccess::load_explicit_fixture(env,initial);
@@ -22,4 +23,9 @@ int main(){
  if(!voice_gate::process_rows(owner,state,published.rows,false,0,false)||state.active_count!=1||env.snapshot().phase!=AdsrPhase::attack||log.calls!=3)return 7;
  publication_sink::finish_voice_block(published);
  if(!voice_gate::process_rows(owner,state,published.rows,false,0,false)||state.active_count!=1||log.calls!=3)return 8;
+ std::array<std::unique_ptr<core_bank::Side>,12> sides;std::array<std::unique_ptr<core_bank::SlotController>,12> slots;std::array<std::unique_ptr<Adsr>,12> envs;voice_gate::Owner startup;unsigned resets=0;startup.reset=reset;startup.reset_context=&resets;
+ for(unsigned i=0;i<12;++i){sides[i]=std::make_unique<core_bank::Side>(*tables,random,i+10);slots[i]=std::make_unique<core_bank::SlotController>(*sides[i]);envs[i]=std::make_unique<Adsr>();initial={};initial.phase=AdsrPhase::sustain;initial.accumulator=0x40000000;AdsrTestAccess::load_explicit_fixture(*envs[i],initial);startup.slots[i]=slots[i].get();startup.main_envelopes[i]=envs[i].get();}
+ std::array<notepath::NoteRow,12> reset_rows{};for(auto& row:reset_rows)row.bytes[7]=5;gate_dispatch::State startup_state;
+ if(!voice_gate::process_rows(startup,startup_state,reset_rows,false,0,false)||resets!=36)return 9;
+ for(const auto& e:envs)if(e->snapshot().phase!=AdsrPhase::idle)return 10;
 }

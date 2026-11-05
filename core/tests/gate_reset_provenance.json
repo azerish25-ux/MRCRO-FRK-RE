@@ -1,0 +1,8 @@
+{
+  "processor_sha256": "bd036dfa6a0afcfef733c29c73b1b3df969f2c86ca860b0fa535d4492fa8fb74",
+  "source_function": "0x1802dcb90",
+  "fixture_sha256": "276626666e09a0c9dbf2940ba3ed653fde8168ba5abe45660583d7235730f81e",
+  "cases": 18,
+  "scope": "Original status-5 dispatcher on shared-mode row fixtures for both lanes, three voices and three active counts. Oscillator and cyclic/LFO resets are observed boundary hooks; main ADSR reset fields execute as original instructions. Paraphonic shared-voice reset dependencies remain outside this profile.",
+  "local_evidence": "local/evidence/envelope-agent/integration-001/gate-dispatch-reset-v1.json"
+}

@@ -1,0 +1,8 @@
+{
+  "processor_sha256": "bd036dfa6a0afcfef733c29c73b1b3df969f2c86ca860b0fa535d4492fa8fb74",
+  "source_function": "0x1802dcb90",
+  "fixture_sha256": "089289073b7906c64a5a08533fe45fe3a86e9988985505f9c955bdd46941d287",
+  "cases": 48,
+  "scope": "Original paraphonic status-5 dispatcher with explicit other-lane active and row-mask conditions, both lanes and three voices. Oscillator/shared-voice/cyclic/LFO resets are observed boundary hooks; main ADSR reset fields execute as original instructions. Full reset implementations and the rest of the voice graph remain separate.",
+  "local_evidence": "local/evidence/envelope-agent/integration-001/probe_para_reset_v2.py and gate-dispatch-para-reset-v2.json"
+}
