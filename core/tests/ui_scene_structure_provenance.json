@@ -1,0 +1,166 @@
+{
+  "utc": "2026-11-05T02:06:52.007410+00:00",
+  "wrapper_sha256": "354c26c58e4c8c671b50f88d070452b47c9cd6b6505b1ea18391724929b3d19e",
+  "functions": {
+    "0x1806f6a90": {
+      "requested_address": "0x1806f6a90",
+      "parent_evidence_id": "ev_107bf03eb3458b28aeb43252d1b70a351f5ef1b1d686e4ad8f57ef73d8923624",
+      "pseudocode": "pseudocode/0x1806f6a90.c",
+      "batch_file": "rea\\scene-native-xml-parser-entry-recovery-030.json"
+    },
+    "0x180722ab0": {
+      "requested_address": "0x180722ab0",
+      "parent_evidence_id": "ev_886ac21cab5b64562e98d1ae85ee5f6d47011eb49ea075e26fbef09fadfbdec0",
+      "pseudocode": "pseudocode/0x180722ab0.c",
+      "batch_file": "rea\\scene-xml-parser-modes-recovery-031.json"
+    },
+    "0x18072a340": {
+      "requested_address": "0x18072a340",
+      "parent_evidence_id": "ev_d9bbc77da71c8c5ccb3d09a725de0a441d6d74fb5f5e00aa85b3d543cbec82dc",
+      "pseudocode": "pseudocode/0x18072a340.c",
+      "batch_file": "rea\\scene-native-parser-file-loader-recovery-040.json"
+    },
+    "0x18072e930": {
+      "requested_address": "0x18072e930",
+      "parent_evidence_id": "ev_673311f28ade6470a173a138fa6d09d1e8bb4b8970465982a89738994adbc3a7",
+      "pseudocode": "pseudocode/0x18072e930.c",
+      "batch_file": "rea\\scene-native-element-parser-recovery-041.json"
+    },
+    "0x18072f050": {
+      "requested_address": "0x18072f050",
+      "parent_evidence_id": "ev_b938de9cfea4c3ea9346a8d54b015b3626c1236632fbc234509290e10a3774fd",
+      "pseudocode": "pseudocode/0x18072f050.c",
+      "batch_file": "rea\\scene-native-attributes-content-recovery-042.json"
+    },
+    "0x18072f5d0": {
+      "requested_address": "0x18072f5d0",
+      "parent_evidence_id": "ev_b938de9cfea4c3ea9346a8d54b015b3626c1236632fbc234509290e10a3774fd",
+      "pseudocode": "pseudocode/0x18072f5d0.c",
+      "batch_file": "rea\\scene-native-attributes-content-recovery-042.json"
+    },
+    "0x18072f9f0": {
+      "requested_address": "0x18072f9f0",
+      "parent_evidence_id": "ev_a13f6393357102008757ba5f4af41e583e9b4b174708985baf91ab8cf67c59ea",
+      "pseudocode": "pseudocode/0x18072f9f0.c",
+      "batch_file": "rea\\scene-native-entity-decoders-recovery-043.json"
+    },
+    "0x18072fc50": {
+      "requested_address": "0x18072fc50",
+      "parent_evidence_id": "ev_a13f6393357102008757ba5f4af41e583e9b4b174708985baf91ab8cf67c59ea",
+      "pseudocode": "pseudocode/0x18072fc50.c",
+      "batch_file": "rea\\scene-native-entity-decoders-recovery-043.json"
+    },
+    "0x180730350": {
+      "requested_address": "0x180730350",
+      "parent_evidence_id": "ev_a13f6393357102008757ba5f4af41e583e9b4b174708985baf91ab8cf67c59ea",
+      "pseudocode": "pseudocode/0x180730350.c",
+      "batch_file": "rea\\scene-native-entity-decoders-recovery-043.json"
+    },
+    "0x180730000": {
+      "requested_address": "0x180730000",
+      "parent_evidence_id": "ev_90939b42bbd8f72940b739220bda36e5e9ca797cf979ad66c1cee59860658fdf",
+      "pseudocode": "pseudocode/0x180730000.c",
+      "batch_file": "rea\\scene-native-utf8-emitter-recovery-044.json"
+    },
+    "0x1809abd40": {
+      "requested_address": "0x1809abd40",
+      "parent_evidence_id": "ev_2bf9f352392b4d123f9c0a54dc831fcb17e859ab1f5abaf9aa99a54228ecf597",
+      "pseudocode": "pseudocode/0x1809abd40.c",
+      "batch_file": "rea\\scene-style-definition-and-condition-evaluation-046.json"
+    },
+    "0x1813139a0": {
+      "requested_address": "0x1813139a0",
+      "parent_evidence_id": "ev_b1575460a526d60ff43f4816e6d2c4ffabcebeb50447e554c99e6b3450cf5488",
+      "pseudocode": "pseudocode/0x1813139a0.c",
+      "batch_file": "rea\\scene-style-clone-helpers-recovery-029.json"
+    },
+    "0x1813138a0": {
+      "requested_address": "0x1813138a0",
+      "parent_evidence_id": "ev_3e3d2b0a77508b6be2bb1107e7baae99045e6cf19ba993c0445756951523009c",
+      "pseudocode": "pseudocode/0x1813138a0.c",
+      "batch_file": "rea\\scene-scopes-style-clone-recovery-032.json"
+    },
+    "0x1809bf9e0": {
+      "requested_address": "0x1809bf9e0",
+      "parent_evidence_id": "ev_b1575460a526d60ff43f4816e6d2c4ffabcebeb50447e554c99e6b3450cf5488",
+      "pseudocode": "pseudocode/0x1809bf9e0.c",
+      "batch_file": "rea\\scene-style-clone-helpers-recovery-029.json"
+    },
+    "0x180653710": {
+      "requested_address": "0x180653710",
+      "parent_evidence_id": "ev_b1575460a526d60ff43f4816e6d2c4ffabcebeb50447e554c99e6b3450cf5488",
+      "pseudocode": "pseudocode/0x180653710.c",
+      "batch_file": "rea\\scene-style-clone-helpers-recovery-029.json"
+    },
+    "0x1805c98e0": {
+      "requested_address": "0x1805c98e0",
+      "parent_evidence_id": "ev_aaa80310422b71d7ea610f81ce887d90230a30776b9c5ee16fa65e8f96c1c008",
+      "pseudocode": "pseudocode/0x1805c98e0.c",
+      "batch_file": "rea\\scene-attribute-context-recovery-001.json"
+    }
+  },
+  "evidence_records": {
+    "rea\\scene-native-xml-parser-entry-recovery-030.json": "ev_107bf03eb3458b28aeb43252d1b70a351f5ef1b1d686e4ad8f57ef73d8923624",
+    "rea\\scene-xml-parser-modes-recovery-031.json": "ev_886ac21cab5b64562e98d1ae85ee5f6d47011eb49ea075e26fbef09fadfbdec0",
+    "rea\\scene-native-parser-file-loader-recovery-040.json": "ev_d9bbc77da71c8c5ccb3d09a725de0a441d6d74fb5f5e00aa85b3d543cbec82dc",
+    "rea\\scene-native-element-parser-recovery-041.json": "ev_673311f28ade6470a173a138fa6d09d1e8bb4b8970465982a89738994adbc3a7",
+    "rea\\scene-native-attributes-content-recovery-042.json": "ev_b938de9cfea4c3ea9346a8d54b015b3626c1236632fbc234509290e10a3774fd",
+    "rea\\scene-native-entity-decoders-recovery-043.json": "ev_a13f6393357102008757ba5f4af41e583e9b4b174708985baf91ab8cf67c59ea",
+    "rea\\scene-native-utf8-emitter-recovery-044.json": "ev_90939b42bbd8f72940b739220bda36e5e9ca797cf979ad66c1cee59860658fdf",
+    "rea\\scene-style-definition-and-condition-evaluation-046.json": "ev_2bf9f352392b4d123f9c0a54dc831fcb17e859ab1f5abaf9aa99a54228ecf597",
+    "rea\\scene-style-clone-helpers-recovery-029.json": "ev_b1575460a526d60ff43f4816e6d2c4ffabcebeb50447e554c99e6b3450cf5488",
+    "rea\\scene-scopes-style-clone-recovery-032.json": "ev_3e3d2b0a77508b6be2bb1107e7baae99045e6cf19ba993c0445756951523009c",
+    "rea\\scene-attribute-context-recovery-001.json": "ev_aaa80310422b71d7ea610f81ce887d90230a30776b9c5ee16fa65e8f96c1c008"
+  },
+  "xml_original_fixture_sha256": "087638b9d95b1926839a2eb26bbefe2c2ab794f6a275e9a1aafeecb1010023f8",
+  "xml_wrapper_preserves_original_bytes": true,
+  "style_historical_red_original_outputs_unchanged": true,
+  "style_red_comparator_differences": 254,
+  "style_green_comparator_differences": 0,
+  "authoritative_oracle_directory": "D:\\MAIN SOFTWARE\\Synths\\MFRK\\main synth\\MiniFreak V\\android-port\\local\\evidence\\native-ui-source\\scene-lowering",
+  "oracle_dependencies": "D:\\MAIN SOFTWARE\\Synths\\MFRK\\main synth\\MiniFreak V\\android-port\\local\\evidence\\native-ui-source\\scene-builder",
+  "models": "Original oracle executes wrapper instructions on owned layouts. Only named allocator/free/CRT byte imports and terminal C++throw observation modeled; no hostXMLparser or numeric parser generates expected records.",
+  "scope": "Mode0 parser body and immutable element-style data snapshots; not whole scene or lifecycle",
+  "with_include_continuation": "native-ui-source/scene-lowering/PROGRESS.md",
+  "repository_integration": {
+    "implementation": "core/src/ui_scene_structure.cpp",
+    "public_header": "core/include/mfrk/ui_scene_structure.hpp",
+    "tables": "core/src/ui_scene_xml_tables.inc",
+    "library": "mfrk_ui; PIC ON, IPO FALSE, strict FP; no arithmetic/raster substitute",
+    "cpp_sha256": "ba3d92eb6e587c86ec72d7a36b51ed35ddcd8c6c04abc728f811faa0812d0c85",
+    "exact_source_definitions": 5,
+    "source_character_tables": "Byte-identical frozen source facts",
+    "xml_cases": 650,
+    "style_cases": 323,
+    "host_release_ctests": 78,
+    "guards": {
+      "exit": 0,
+      "result": "14 structure guards and element/style join passed"
+    },
+    "altered_fixtures_rejected": 14,
+    "same_crc_different_sha_rejections": 2,
+    "semantic_mutants_rejected": 11,
+    "fixtures": [
+      {
+        "kind": "xml",
+        "count": 650,
+        "magic": "UIXM0001",
+        "filename": "ui_scene_xml_vectors.bin",
+        "bytes": 6091020,
+        "sha256": "6cc5a6b866241ff6745e18b49223580a53152eaa78b72fdc78267fa206d10728",
+        "crc32": 3539947945
+      },
+      {
+        "kind": "style",
+        "count": 323,
+        "magic": "UISD0001",
+        "filename": "ui_scene_style_vectors.bin",
+        "bytes": 514564,
+        "sha256": "66892c483f61975c48ed9df50605ce4feb4a95faed8da05f756a2e68a86563bd",
+        "crc32": 2497842474
+      }
+    ],
+    "root_actual_repo_verification_sha256": "441267209107f4dcf020dcc7a25a353d74fdbf4ef045c4acde40f8307e25e56e",
+    "scope": "Owning mode0 parser-body output and immutable element-style snapshots; not native pointer aliases, whole document constructor/lifetime, with/include/factory/event/paint/touch or full instrument."
+  }
+}

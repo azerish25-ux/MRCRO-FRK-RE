@@ -1,0 +1,13 @@
+# Native XML and style data front end
+
+The UI library now parses source mode0 XML into owning byte records and performs the original element-style registration operation. It retains ordered duplicate attributes, raw colon names, literal attribute whitespace, adjacent top-level records, native entity/text behavior and unchecked closing names. It composes with the existing expression/property/geometry producers; it does not instantiate or paint Components.
+
+Inherited styles remove only the first existing same-name attribute before each derived attribute is prepended. Duplicate remnants and final reversed insertion order remain intact. Derived children append deep clones; clone values are cleared by the source helper. Inheritance consumes input attributes while preserving its children. Plain definitions are immutable data snapshots here; native XML-node pointer aliases and later external mutation are outside this operation's contract. The caller separately resolves the first title with the actual source context before registration.
+
+The original XML corpus covers all110 installed resource inputs,36 controls,500 seeded trees and4 direct-parser empty controls. The86 standalone documents match returned ASTs; the24 comma-framed editor compounds match native standalone errors and need their real consumer framing. Duplicate attributes are accepted. The separate empty-string document constructor remains an unmodeled lifecycle path; direct parser-body acceptance is not used to claim that constructor's behavior.
+
+All400 canonical predefined-style subtrees fit the measured element-only profile. Parser caps cover the measured raw documents; scoped expansion, hidden/deferred dimensions, aliases and final scene lifetime still need their native lowering audit. Invalid input is surfaced, and unknown directives are not silently converted to generic widgets or discarded.
+
+All78 host Release CTests pass, including650 XML and323 complete style reference cases plus14 guards and a typed parser/style join. Root independently checked five preserved definitions, source tables,14 altered fixtures including2 same-CRC/different-SHA cases and11 semantic mutants. Readers authenticate length/CRC/SHA before record decoding. Source and fixture identities are in core/tests/ui_scene_structure_provenance.json; exact remote target validation will follow.
+
+See the [admission contract](ui-scene-structure-admission.md) and [source order](ui-scene-structure-source-order.md). Complete with/include/for/template lowering, widget factories/events, localization, fonts/paint/raster, touch and standalone audio/MIDI remain active work. Native data parsing is not complete UI parity.

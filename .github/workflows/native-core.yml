@@ -295,5 +295,16 @@ jobs:
             adb push core/tests/fixtures/builtin-expression-vectors.bin /data/local/tmp/builtin-expression-vectors.bin
             adb shell /data/local/tmp/mfrk_ui_scene_expressions builtins /data/local/tmp/builtin-expression-vectors.bin
             adb shell /data/local/tmp/mfrk_ui_scene_guards
+            adb push build-x86_64/ui_scene_xml_test /data/local/tmp/ui_scene_xml_test
+            adb push core/tests/fixtures/ui_scene_xml_vectors.bin /data/local/tmp/ui_scene_xml_vectors.bin
+            adb shell chmod 755 /data/local/tmp/ui_scene_xml_test
+            adb shell /data/local/tmp/ui_scene_xml_test /data/local/tmp/ui_scene_xml_vectors.bin
+            adb push build-x86_64/ui_scene_style_test /data/local/tmp/ui_scene_style_test
+            adb push core/tests/fixtures/ui_scene_style_vectors.bin /data/local/tmp/ui_scene_style_vectors.bin
+            adb shell chmod 755 /data/local/tmp/ui_scene_style_test
+            adb shell /data/local/tmp/ui_scene_style_test /data/local/tmp/ui_scene_style_vectors.bin
+            adb push build-x86_64/ui_scene_structure_guard_test /data/local/tmp/ui_scene_structure_guard_test
+            adb shell chmod 755 /data/local/tmp/ui_scene_structure_guard_test
+            adb shell /data/local/tmp/ui_scene_structure_guard_test
       - name: Compare generated Android table bytes
         run: python3 tools/check_basic_wave_tables.py --dump build-x86_64/basic-wave-tables.bin --expected core/tests/basic_wave_table_hashes.json

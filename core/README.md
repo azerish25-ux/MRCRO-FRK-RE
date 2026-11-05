@@ -460,3 +460,13 @@ smoothing. Raw constructor and post-owner-Init profiles remain distinct.
 288 limiter,160 prepared-master and112 cold/alias blocks match original output
 and processing state locally. See the [master stage contract](../docs/master-output-reference.md)
 for memory ownership and the remaining normalized-control/full-graph work.
+
+
+## Native XML and style data
+
+`mfrk::ui::scene::structure` preserves source mode0 XML bytes/order/errors and
+element-style inheritance snapshots. It supplies owning records to subsequent
+native scene lowering, without host XML normalization or placeholder components.
+650 XML/323 style cases match locally; immutable-style alias/lifecycle limits
+and the remaining full UI work are explicit in the
+[data-front-end contract](../docs/ui-scene-structure.md).
