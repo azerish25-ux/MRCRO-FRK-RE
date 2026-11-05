@@ -167,6 +167,14 @@ jobs:
             adb push core/tests/slot_alias_vectors.krzp /data/local/tmp/slot_alias_vectors.krzp
             adb shell chmod 755 /data/local/tmp/mfrk_slot_alias_tests
             adb shell /data/local/tmp/mfrk_slot_alias_tests /data/local/tmp/slot_alias_vectors.krzp
+            adb push build-x86_64/mfrk_slot_pitch_tests /data/local/tmp/mfrk_slot_pitch_tests
+            adb push core/tests/slot_pitch_vectors.bin /data/local/tmp/slot_pitch_vectors.bin
+            adb shell chmod 755 /data/local/tmp/mfrk_slot_pitch_tests
+            adb shell /data/local/tmp/mfrk_slot_pitch_tests /data/local/tmp/slot_pitch_vectors.bin
+            adb push build-x86_64/mfrk_pitch_powf_tests /data/local/tmp/mfrk_pitch_powf_tests
+            adb push core/tests/pitch_powf_vectors.bin /data/local/tmp/pitch_powf_vectors.bin
+            adb shell chmod 755 /data/local/tmp/mfrk_pitch_powf_tests
+            adb shell /data/local/tmp/mfrk_pitch_powf_tests /data/local/tmp/pitch_powf_vectors.bin
             adb push build-x86_64/mfrk_notepath_tests /data/local/tmp/mfrk_notepath_tests
             adb push core/tests/notepath_vectors.bin /data/local/tmp/notepath_vectors.bin
             adb shell chmod 755 /data/local/tmp/mfrk_notepath_tests

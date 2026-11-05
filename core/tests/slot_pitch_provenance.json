@@ -1,0 +1,195 @@
+{
+  "source_sha256": "bd036dfa6a0afcfef733c29c73b1b3df969f2c86ca860b0fa535d4492fa8fb74",
+  "method": "Original complete Slotprepare2cdad0 on actual constructor-only owner slot with DefaultFreakModule active. Explicit raw packed pitch words/dirty bytes/base-note/force fields; original323700 composite transform/quantizer and actualSHA-pinnedUCRT powf run unchanged. No model body or math return substituted by candidate. Same owner once; no state restore between records.",
+  "cases": 1160,
+  "bytes": 168324,
+  "sha256": "cb84e5b48d7f6cadb5c0a3b5e3b22ec1969ccaa4ae32bf3068b157b4224b01e9",
+  "pointer_normalization": "Only opaque immutable metadata pointer PC+28..2f→0; numeric/vtable fields preserved.",
+  "initial_state": "c8335580010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+  "native_cache_write_observer": "Updated flag iff original wrote source cachedHz PC+5c.",
+  "repository_fixture": "core/tests/slot_pitch_vectors.bin",
+  "source_entries": {
+    "slot_prepare": "0x2cdad0",
+    "pitch_computer_prepare": "0x323700",
+    "composite_mapping": "0x2a8bd0",
+    "pitch_powf_callsite": "0x2cdce9",
+    "sum_order": "0x2cdbaa..0x2cdbd0",
+    "pitch_counts": "0x553400",
+    "pitch_classes": "0x553450"
+  },
+  "metadata": "Fixed recovered shared prototype for both sides; raw nine words/dirty/base-note/force field ABI, not frontend units or MIDI/public setters.",
+  "production_adaptation": {
+    "method_bodies": [
+      {
+        "name": "Pitch",
+        "exact": true,
+        "sha256": "deb79d28d4c112a9d701eee048530b416a16715bae0e5f7be53f563020023db5"
+      },
+      {
+        "name": "dirty",
+        "exact": true,
+        "sha256": "661348ebf2436c5de5416d53378cd4c098bd849019e9059d152c96033533c8f1"
+      },
+      {
+        "name": "norm",
+        "exact": true,
+        "sha256": "a8bde9dad4fa08c249f43566bec4a7ca7472c89bdcaa79b440e822db61760d3c"
+      },
+      {
+        "name": "affine",
+        "exact": true,
+        "sha256": "2b11a1afecb3ae62f22ef55f2076f2c5b775c905cb5d759c4bf0eb258d39ef1b"
+      },
+      {
+        "name": "prepare_records",
+        "exact": true,
+        "sha256": "08fe21f0c044124df05ca34767c8c8db445e810fe3164269c4e692b73de88e8e"
+      },
+      {
+        "name": "admitted_zero_owner_arena",
+        "exact": true,
+        "sha256": "86aa63ad8a7445a0e60b0bf65b8d2d0982186b176c9f945bb8fc4f26944da56e"
+      },
+      {
+        "name": "try_prepare",
+        "exact": true,
+        "sha256": "b532e96f0bca9aaaf06752ef46b23289c5fb7387051e2140e0aa7da23d73c0cc"
+      }
+    ],
+    "private_metadata_and_quantizer_tables": true,
+    "public_numerical_definitions": false,
+    "host_release_ctests": 72,
+    "source_returned_note_hz_assertions": "Compared to original cached fields58/5c in every held/recomputed reference case; dispatch flag observed independently by native cachedHz write.",
+    "new_result_mutation": {
+      "cases": 1160,
+      "result_errors": 2320,
+      "state_errors": 0,
+      "updated_errors": 0
+    },
+    "malformed_fixtures_rejected": 22,
+    "independent_review": "No required findings; actual repo strict1160 state/update/result/admission0 plus137161 powf/Hz/admission0",
+    "powf_linkage": "Original numerical definitions unchanged; namespace adapted and coefficient array given inline constexpr linkage for one-definition safety across consumers."
+  },
+  "powf": {
+    "original_source_sha256": "dedb7611e1abc1ff3852dcac3d4c93a048d729e25b061973b9969f22698f14ca",
+    "export_rva": "0xa9f20",
+    "dispatcher": 3,
+    "fma_branch_rva": "0xaa6d6",
+    "fixed_base": 2,
+    "exponent_interval": [
+      "-5.75",
+      "floatbits409aaaab"
+    ],
+    "fixture": "core/tests/pitch_powf_vectors.bin",
+    "bytes": 1645944,
+    "cases": 137161,
+    "sha256": "ad705df08f8d1d8af41b05cf4f34395e14d15dda1ef2cfd4ddcf9b11292f7707",
+    "actual_owner_producer_calls_included": 7680,
+    "root_fresh_original_replay": {
+      "source_sha256": "dedb7611e1abc1ff3852dcac3d4c93a048d729e25b061973b9969f22698f14ca",
+      "dispatcher": 3,
+      "cases": 137161,
+      "powf_mismatches": 0,
+      "hz_mismatches": 0,
+      "fixture_sha256": "ad705df08f8d1d8af41b05cf4f34395e14d15dda1ef2cfd4ddcf9b11292f7707",
+      "method": "Fresh independent direct original System UCRT powf float ABI, then separate float Hz multiply; no vendor DLL load"
+    },
+    "root_independent_table": {
+      "method": "Independent Decimal250 exp(ln(2)*j/64) then nearest-even binary64 conversion",
+      "coefficients": 64,
+      "mismatches": []
+    },
+    "scope": "Explicit correctly rounded double FMA, RN-even, gradual underflow and fixed base/range. No hostpowf/exp2f substitution, general powf, other dispatcher branches, errno/fenv side-effects."
+  },
+  "source_author_mutants": {
+    "slot": [
+      {
+        "mutant": "flatten_pair_sum",
+        "exit": 1,
+        "stdout": "cases 1160 statebytes 3 updated 0 admission 0",
+        "first_errors": [
+          "case 376 offset 58 expected d0 got c8",
+          "case 678 offset 58 expected 52 got 50",
+          "case 678 offset 5c expected 5d got 53"
+        ]
+      },
+      {
+        "mutant": "wrong_normalization",
+        "exit": 1,
+        "stdout": "cases 1160 statebytes 22082 updated 0 admission 0",
+        "first_errors": [
+          "case 0 offset 36 expected 0 got b4",
+          "case 0 offset 37 expected 0 got bb",
+          "case 0 offset 46 expected 0 got 40",
+          "case 0 offset 47 expected 0 got b8"
+        ]
+      },
+      {
+        "mutant": "held_dirty",
+        "exit": 1,
+        "stdout": "cases 1160 statebytes 5768 updated 0 admission 0",
+        "first_errors": [
+          "case 0 offset 1a expected 0 got 1",
+          "case 0 offset 1b expected 0 got 1",
+          "case 0 offset 1c expected 0 got 1",
+          "case 0 offset 1d expected 0 got 1"
+        ]
+      },
+      {
+        "mutant": "quantizer_truncation",
+        "exit": 1,
+        "stdout": "cases 1160 statebytes 144 updated 0 admission 0",
+        "first_errors": [
+          "case 26 offset 5a expected 70 got 6c",
+          "case 26 offset 5c expected 12 got 10",
+          "case 26 offset 5d expected d0 got f1",
+          "case 26 offset 5e expected 82 got 76"
+        ]
+      },
+      {
+        "mutant": "always_recompute",
+        "exit": 1,
+        "stdout": "cases 1160 statebytes 0 updated 4 admission 0",
+        "first_errors": []
+      },
+      {
+        "mutant": "skip_composite_transform",
+        "exit": 1,
+        "stdout": "cases 1160 statebytes 7689 updated 0 admission 0",
+        "first_errors": [
+          "case 124 offset 3c expected 79 got 4c",
+          "case 124 offset 3d expected 11 got 12",
+          "case 124 offset 3e expected 87 got 9b",
+          "case 124 offset 58 expected e got 36"
+        ]
+      }
+    ],
+    "powf": [
+      {
+        "mutant": "wrong_cubic_coefficient",
+        "exit": 1,
+        "stdout": "cases 137161 powf 12555 hz 11048 admission 0",
+        "stderr": ""
+      },
+      {
+        "mutant": "truncate_negative_scale",
+        "exit": 1,
+        "stdout": "cases 137161 powf 73321 hz 73321 admission 0",
+        "stderr": ""
+      },
+      {
+        "mutant": "substitute_exp2f",
+        "exit": 1,
+        "stdout": "cases 137161 powf 105 hz 97 admission 0",
+        "stderr": ""
+      },
+      {
+        "mutant": "float_ln2",
+        "exit": 1,
+        "stdout": "cases 137161 powf 8477 hz 7453 admission 0",
+        "stderr": ""
+      }
+    ]
+  },
+  "remaining": "Actual upstream base-note/dirty writer, model-word forwarding/dispatch and complete slot/model-bank/common voice graph need integration. No full instrument/preset/UI/audio standalone equivalence."
+}

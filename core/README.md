@@ -440,3 +440,13 @@ Eleven original corpora cover7582 cases, with explicit finite-field versus
 nonfinite-control domains and strict source-reader order. See the
 [scene contract](../docs/ui-scene-prefix.md) for inputs and remaining full
 scene/widget/event/paint/touch work.
+
+
+## Native slot pitch preparation
+
+`slot_pitch::Pitch` preserves source nine-record mapping, dirty/cache ordering,
+quantization and exact fixed-base UCRT powf frequency calculation. Its field-ABI
+contract leaves frontend units and the upstream glide/note writer explicit.
+1160 original sequential states/update flags/returned values and137161 original
+math returns match locally. See the [native slot contract](../docs/slot-pitch-reference.md)
+for dispatcher requirements and the remaining common-voice integration.
