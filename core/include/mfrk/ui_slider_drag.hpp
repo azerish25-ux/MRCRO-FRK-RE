@@ -19,7 +19,7 @@ struct SliderDragConfig {
  std::int32_t orientation;float fine_threshold;
  bool wrap,flag1640,custom_info;
 };
-struct SliderDragEvent {std::int32_t x,y;};
+struct SliderDragEvent {std::int32_t x,y;std::uint32_t modifiers=0;};
 struct SliderBeginBoundary {
  virtual ~SliderBeginBoundary()=default;
  virtual void prepare(std::uint32_t id)=0;
