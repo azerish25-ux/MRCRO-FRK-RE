@@ -1,0 +1,10 @@
+{
+  "wrapper_sha256": "354c26c58e4c8c671b50f88d070452b47c9cd6b6505b1ea18391724929b3d19e",
+  "source": "5e1b90",
+  "cases": 880,
+  "differences": 0,
+  "source_gold_sha256": "a8b461f1cc0209907e543f0f3979991a142492a836fb8be277dfc40ba307e6a1",
+  "scope": "Stable supplied distinct four-ID wheel pair bindings; source origin0/3 early return, supplied suppression policy, busy guard, ordered paired writes, raw bits and final busy state. Getter/write boundaries only. Direct typed bank-notification command join checked separately. No constructor, suppression-policy derivation, receiver coercion, reentry, exceptions, cascading listeners or DSP claim.",
+  "local_harness": "local/build/production_wheels_listener_test.cpp",
+  "private_source_gold": "local/evidence/preset-library-agent/migrations/loader-wt/ownership/original-wheels-listener-v1.json"
+}

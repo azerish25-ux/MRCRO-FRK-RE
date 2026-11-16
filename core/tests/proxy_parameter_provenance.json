@@ -1,0 +1,11 @@
+{
+  "wrapper_sha256": "354c26c58e4c8c671b50f88d070452b47c9cd6b6505b1ea18391724929b3d19e",
+  "source": "71c1a0",
+  "profiles": 14,
+  "cases": 4483,
+  "differences": 0,
+  "source_gold_sha256": "73e804a7b9fb108ac9495d48b81e80ba8006104acf10524cc5c2980e0b1d88e8",
+  "scope": "Tag-1 ProxyParam raw binary32 listener routing through stable supplied alias lists and getter/write boundaries. Production command join from emitted preset-bank notifications checked separately. No registry/constructor, receiver coercion, cascading listener, other callback families, FP exception flags, GUI or DSP claim.",
+  "local_harness": "local/build/production_proxy_parameter_test.cpp",
+  "private_source_gold": "local/evidence/preset-library-agent/migrations/loader-wt/ownership/original-proxy-parameter-routing-v2.json"
+}
