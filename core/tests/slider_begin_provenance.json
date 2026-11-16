@@ -1,0 +1,12 @@
+{
+  "source_wrapper_sha256": "354c26c58e4c8c671b50f88d070452b47c9cd6b6505b1ea18391724929b3d19e",
+  "source_functions": [
+    "0x180c451d0",
+    "0x180c42dd0"
+  ],
+  "source_report_sha256": "eb7e7b5e07b3d1eb66e8659a8f616d45a434f8f8a72b97bfbfa4b27f3932212d",
+  "fixture_sha256": "a937d8ef27772e98156fa54b35162cb678e8706afe0885e52946f161670b6f68",
+  "fixture_bytes": 31756,
+  "cases": 256,
+  "scope": "Original begin body and precision offset, actual conversion/format/parse with identity curve and real UCRT services. Controller/lock metadata/sensitivity/global coordinates supplied; no outer phase gate or physical touch claim."
+}

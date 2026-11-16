@@ -4,6 +4,28 @@
 #include <cassert>
 #include <cmath>
 namespace mfrk::ui {
+float slider_start_offset(SliderValueInfo& info,float view_value){
+ const auto mapped=slider_to_mapped(info,view_value);
+ const auto normal=slider_format_roundtrip(mapped,info.precision);
+ const auto fine=slider_format_roundtrip(mapped,info.fine_precision);
+ return fine-normal;
+}
+void slider_begin(SliderDragState& state,SliderDragConfig& config,SliderValueConfig& value_config,
+ const SliderDragEvent& event,std::uint32_t modifiers,std::uint32_t id,float view_value,
+ SliderBeginBoundary& boundary){
+ boundary.prepare(id);
+ auto& info=boundary.info(id,config.custom_info);
+ value_config.offset=slider_start_offset(info,view_value);
+ boundary.edit(id,(modifiers>>5)&0xffffff01u,false);
+ if(boundary.blocked(id))return;
+ state.value_anchor=view_value;state.parameter_id=id;
+ state.sensitivity=boundary.sensitivity(event,id);
+ const bool horizontal=config.orientation==1;
+ const auto point=boundary.global_position(event);
+ state.global_anchor=static_cast<float>(point[horizontal?0:1]);
+ state.global_tracking=false;
+ state.local_anchor=static_cast<float>(config.orientation==1?event.x:event.y);
+}
 float slider_sensitivity(const SliderSensitivity& p) noexcept {
  if(std::abs(p.override_value)!=1000.f)return p.override_value;
  float result;

@@ -462,5 +462,9 @@ jobs:
             adb push core/tests/slider_curves_vectors.bin /data/local/tmp/slider_curves_vectors.bin
             adb shell chmod 755 /data/local/tmp/slider_curves_test
             adb shell /data/local/tmp/slider_curves_test /data/local/tmp/slider_curves_vectors.bin
+            adb push build-x86_64/slider_begin_test /data/local/tmp/slider_begin_test
+            adb push core/tests/slider_begin_vectors.bin /data/local/tmp/slider_begin_vectors.bin
+            adb shell chmod 755 /data/local/tmp/slider_begin_test
+            adb shell /data/local/tmp/slider_begin_test /data/local/tmp/slider_begin_vectors.bin
       - name: Compare generated Android table bytes
         run: python3 tools/check_basic_wave_tables.py --dump build-x86_64/basic-wave-tables.bin --expected core/tests/basic_wave_table_hashes.json
