@@ -404,5 +404,8 @@ jobs:
             adb push core/tests/preset_data_apply_vectors.bin /data/local/tmp/preset_data_apply_vectors.bin
             adb shell chmod 755 /data/local/tmp/preset_data_apply_test
             adb shell /data/local/tmp/preset_data_apply_test /data/local/tmp/preset_data_apply_vectors.bin
+            adb push build-x86_64/preset_program_test /data/local/tmp/preset_program_test
+            adb shell chmod 755 /data/local/tmp/preset_program_test
+            adb shell /data/local/tmp/preset_program_test
       - name: Compare generated Android table bytes
         run: python3 tools/check_basic_wave_tables.py --dump build-x86_64/basic-wave-tables.bin --expected core/tests/basic_wave_table_hashes.json

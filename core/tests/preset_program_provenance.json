@@ -1,0 +1,13 @@
+{
+  "wrapper_sha256": "354c26c58e4c8c671b50f88d070452b47c9cd6b6505b1ea18391724929b3d19e",
+  "source_stage": "6cf840 group0 prepared context1, mask2/mode4",
+  "empty_programs": 2,
+  "empty_descriptors": 31174,
+  "empty_writes": 25545,
+  "post_migration_archive_inputs": 1210,
+  "prepared_writes_compared": 15454120,
+  "differences": 0,
+  "scope": "Production prepare_group0 compared with original prepared writes using source-captured post-migration maps and supplied initialized descriptors. This comparison does not execute migration in the production code, activate banks, deliver listeners or process audio.",
+  "local_harness": "local/build/preset_program_corpus_test.cpp",
+  "local_source_fixture": "local/evidence/preset-library-agent/migrations/loader-wt/nonempty/installed-composition-vectors.bin"
+}
