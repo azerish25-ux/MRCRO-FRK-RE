@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
 import android.view.View;
+import android.view.MotionEvent;
 import org.json.JSONObject;
 import org.json.JSONArray;
 
@@ -21,6 +22,19 @@ public final class RendererComparisonView extends View {
     private final String[] centerTexts = new String[]{"", "", ""};
     private float scale = 1, offsetX = 0, offsetY = 0;
     private int drawnFrames;
+    private final SourceTouchRouter.Target[] touchTargets=new SourceTouchRouter.Target[3];
+    private final SourceTouchRouter touchRouter=new SourceTouchRouter(new SourceTouchRouter.Surface() {
+        @Override public SourceTouchRouter.Target hit(float x,float y) {
+            if (scale<=0) return null;
+            float sx=(x-offsetX)/scale+source.crop.left,sy=(y-offsetY)/scale+source.crop.top;
+            for (int i=touchTargets.length-1;i>=0;--i)
+                if (touchTargets[i]!=null && bounds[i]!=null && bounds[i].contains(sx,sy)) return touchTargets[i];
+            return null;
+        }
+        @Override public void captureChanged(boolean captured) {
+            if (getParent()!=null) getParent().requestDisallowInterceptTouchEvent(captured);
+        }
+    });
 
     public RendererComparisonView(Context context) {
         super(context);
@@ -61,7 +75,40 @@ public final class RendererComparisonView extends View {
     public long mapControlWheel(int index, float vertical, boolean wheelReversed, boolean inertial, boolean reverse) {
         return mappings[index].wheel(parameters[index], vertical, wheelReversed, inertial, reverse);
     }
+    /** Borrow actual controller targets. Replacing a binding first ends captures;
+     * the application owns target lifetimes and closes native attachments. */
+    public void setTouchTargets(SourceTouchRouter.Target[] targets) {
+        if (targets!=null && targets.length!=touchTargets.length) throw new IllegalArgumentException("Three source controls required");
+        if (targets!=null) for (int i=0;i<targets.length;++i) for (int j=0;j<i;++j)
+            if (targets[i]!=null && targets[i]==targets[j]) throw new IllegalArgumentException("Independent controller per widget required");
+        touchRouter.cancel();
+        for (int i=0;i<touchTargets.length;++i) touchTargets[i]=targets==null?null:targets[i];
+    }
+    public NativeSliderController.Coordinates controlCoordinates(int index) {
+        if (index<0 || index>=bounds.length) throw new IllegalArgumentException("Source control index");
+        return new NativeSliderController.Coordinates() {
+            @Override public float localX(float x,float y) { return (x-offsetX)/scale+source.crop.left-bounds[index].left; }
+            @Override public float localY(float x,float y) { return (y-offsetY)/scale+source.crop.top-bounds[index].top; }
+        };
+    }
+    public RectF controlPixels(int index) {
+        if (index<0 || index>=bounds.length) throw new IllegalArgumentException("Source control index");
+        RectF b=bounds[index];
+        return new RectF(offsetX+(b.left-source.crop.left)*scale,offsetY+(b.top-source.crop.top)*scale,
+            offsetX+(b.right-source.crop.left)*scale,offsetY+(b.bottom-source.crop.top)*scale);
+    }
+    @Override public boolean onTouchEvent(MotionEvent event) {
+        boolean handled=touchRouter.onTouchEvent(event);
+        if (handled && touchRouter.completedTap()) performClick();
+        return handled || super.onTouchEvent(event);
+    }
+    @Override public boolean performClick() { super.performClick();return true; }
+    @Override public void onWindowFocusChanged(boolean focused) {
+        if (!focused) touchRouter.cancel();super.onWindowFocusChanged(focused);
+    }
+    @Override protected void onDetachedFromWindow() { touchRouter.cancel();super.onDetachedFromWindow(); }
     @Override protected void onSizeChanged(int width,int height,int oldWidth,int oldHeight) {
+        touchRouter.cancel();
         scale = Math.min(width/source.crop.width(), height/source.crop.height());
         offsetX = (width-source.crop.width()*scale)*0.5f;
         offsetY = (height-source.crop.height()*scale)*0.5f;
@@ -110,7 +157,9 @@ public final class RendererComparisonView extends View {
             }
             result.put("assignments",assignments);result.put("drawn_frames",drawnFrames);
             result.put("value_mapping","explicit normalized endpoints/center; arbitrary native magnetic mapping unverified");
-            result.put("gesture_dispatch","not implemented in comparison harness");return result;
+            int bound=0;for (SourceTouchRouter.Target target:touchTargets) if (target!=null) ++bound;
+            result.put("gesture_dispatch","Android capture adapter; actual controller attachments are supplied by host");
+            result.put("bound_touch_controls",bound);result.put("captured_touch_pointers",touchRouter.capturedPointers());return result;
         } catch (Exception e) { throw new IllegalStateException("Comparison metadata",e); }
     }
 }

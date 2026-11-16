@@ -38,6 +38,19 @@ public final class ComparisonInstrumentation extends Instrumentation {
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             RendererComparisonActivity activity=(RendererComparisonActivity)startActivitySync(intent);
             RendererComparisonView view=activity.getComparisonView();
+            CountDownLatch laidOut=new CountDownLatch(1);
+            runOnMainSync(() -> {
+                if (view.getWidth()>0 && view.getHeight()>0) { laidOut.countDown();return; }
+                ViewTreeObserver.OnGlobalLayoutListener[] listener=new ViewTreeObserver.OnGlobalLayoutListener[1];
+                listener[0]=() -> {
+                    if (view.getWidth()==0 || view.getHeight()==0) return;
+                    view.getViewTreeObserver().removeOnGlobalLayoutListener(listener[0]);laidOut.countDown();
+                };
+                view.getViewTreeObserver().addOnGlobalLayoutListener(listener[0]);
+            });
+            if (!laidOut.await(10,TimeUnit.SECONDS)) throw new AssertionError("Initial touch layout timeout");
+            waitForIdleSync();
+            runOnMainSync(() -> TouchRoutingVerification.verify(view));
             runOnMainSync(() -> {
                 view.assignNormalized(.5f, .5f, .5f);
                 view.controlPhase(2, 0, true, false);
@@ -105,7 +118,8 @@ public final class ComparisonInstrumentation extends Instrumentation {
             runOnMainSync(activity::finish);waitForIdleSync();
             if (unique.size()!=4) throw new AssertionError("Indicator endpoint/center frames did not change");
             JSONObject report=new JSONObject();report.put("passed",true);report.put("cases",cases);
-            report.put("assertions","required asset hashes, native draw, assignments, crop bounds, distinct positions, repeat stability");
+            report.put("assertions","required asset hashes, native draw, assignments, crop bounds, distinct positions, repeat stability; MotionEvent capture, stable IDs, history, fine modifiers, native observer controller routing and owned teardown");
+            report.put("touch_profile","debug observer metadata only; production widget metadata/controller bindings remain required");
             try (FileOutputStream output=new FileOutputStream(new File(directory,"comparison-report.json"))) {
                 output.write(report.toString(2).getBytes(StandardCharsets.UTF_8));
             }
