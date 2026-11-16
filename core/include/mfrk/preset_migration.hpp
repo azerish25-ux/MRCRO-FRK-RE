@@ -3,6 +3,7 @@
 #include <cstdint>
 #include <span>
 #include <optional>
+#include <vector>
 #include <string_view>
 
 namespace mfrk::preset {
@@ -28,4 +29,10 @@ struct NumericApplyResult {std::uint32_t bits;bool dirty;std::optional<NumericNo
 // original comparison/notification policy, including signed zero and unordered
 // values. Registry selection, defaults and downstream delivery are caller-owned.
 NumericApplyResult apply_numeric(NumericApplyInput) noexcept;
+struct DataApplyResult {std::uint32_t tag;std::vector<std::uint8_t> payload;bool dirty;};
+// Selected internal data descriptor and valid mode-4 receiver. Declared fallback
+// and saved payloads are bounded to 512 bytes in this recovered profile.
+// Missing, present-empty and reset inputs retain their distinct source behavior.
+std::optional<DataApplyResult> apply_data(std::span<const std::uint8_t> fallback,
+ std::optional<std::span<const std::uint8_t>> saved,bool reset,bool variable);
 }

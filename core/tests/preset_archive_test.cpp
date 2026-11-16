@@ -1,4 +1,5 @@
 #include "mfrk/preset_archive.hpp"
+#include "mfrk/preset_migration.hpp"
 #include <stdexcept>
 #include <string>
 using namespace mfrk::preset_archive;
@@ -6,6 +7,9 @@ int main(){
  std::string source="22 serialization::archive 10 0 7 0 7 4 Test 4 Bank 66 1 A 1 U 0 0 0 0 1 0 0  0 0  0 1 0 0 0 3 Key 5 Value 0 0 0 7 0 0 0 0 0 0 1 0 0 0 3 Foo 0.5 1 0 4 Blob 3 ";source.append("a\0b",3);
  const auto view=parse(std::as_bytes(std::span(source)));
  if(view.name!="Test"||view.bank!="Bank"||view.product!=66||view.properties.size()!=1||view.properties[0].key!="Key"||view.properties[0].value!="Value"||view.parameters.size()!=1||view.parameters[0].key!="Foo"||view.parameters[0].value!="0.5"||view.blobs.size()!=1||view.blobs[0].key!="Blob"||view.blobs[0].value!=std::string_view("a\0b",3))return 1;
+ const std::array<std::uint8_t,4> fallback{255,255,255,255};const auto blob=view.blobs[0].value;
+ auto applied=mfrk::preset::apply_data(fallback,std::span(reinterpret_cast<const std::uint8_t*>(blob.data()),blob.size()),false,false);
+ if(!applied||applied->tag!=3||applied->payload!=std::vector<std::uint8_t>{'a',0,'b',0})return 14;
  auto reject=[](const std::string& text){try{parse(std::as_bytes(std::span(text)));return false;}catch(const std::invalid_argument&){return true;}};
  auto bad=source;bad[3]='X';if(!reject(bad))return 2;bad=source;bad.pop_back();if(!reject(bad))return 3;bad=source;bad+=" garbage";if(!reject(bad))return 4;
  std::string empty="22 serialization::archive 10 0 7 0 7 4 Init 4 Bank 66 1 A 1 U 0 0 0 0 1 0 0  0 0  0 1 0 0 0 3 Key 5 Value 0 0 0 7 0 0 0 0 0 0 0 0 0 0";

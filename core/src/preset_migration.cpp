@@ -2,6 +2,7 @@
 #include <algorithm>
 #include <cmath>
 #include <stdexcept>
+#include <utility>
 
 namespace mfrk::preset {
 Version parse_version(std::string_view text) {
@@ -49,5 +50,14 @@ NumericApplyResult apply_numeric(NumericApplyInput in) noexcept {
  const bool equal=in.current==value||((in.current&0x7fffffffu)==0&&(value&0x7fffffffu)==0)||nan(in.current)||nan(value);
  if(!in.reset&&in.optimize&&in.context_word==0&&equal)return{in.current,in.dirty,std::nullopt};
  return{value,true,NumericNotification{4,1,4,value}};
+}
+std::optional<DataApplyResult> apply_data(std::span<const std::uint8_t> fallback,std::optional<std::span<const std::uint8_t>> saved,bool reset,bool variable){
+ if(fallback.size()>512||(saved&&saved->size()>512))return std::nullopt;
+ std::vector<std::uint8_t> payload;
+ if(reset||!saved)payload.assign(fallback.begin(),fallback.end());
+ else if(saved->empty())payload.resize(fallback.size(),0);
+ else{payload.assign(saved->begin(),saved->end());if(!variable)payload.resize(fallback.size(),0);}
+ const auto tag=payload.size()<=16?3u:2u;
+ return DataApplyResult{tag,std::move(payload),true};
 }
 }

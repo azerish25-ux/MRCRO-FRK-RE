@@ -1,0 +1,8 @@
+{
+  "wrapper_sha256": "354c26c58e4c8c671b50f88d070452b47c9cd6b6505b1ea18391724929b3d19e",
+  "source_functions": ["0x1806cbf30", "0x1806cc510", "0x1806682f0", "0x180784e90", "0x18064b530"],
+  "fixture_sha256": "047846129f40c2c9cfd11af3783e4d03622c85033d59a4bde99fbf9b191b3e79",
+  "cases": 675,
+  "scope": "Selected internal mode-4 data descriptor with supplied fallback/saved data up to 512 bytes. Covers missing/present-empty/reset, fixed/variable length and inline tag boundary. Registry construction, listeners, async delivery and full preset state remain separate.",
+  "local_source": "local/evidence/preset-library-agent/migrations/loader-wt/cpp/ordinary_data_apply.hpp"
+}
