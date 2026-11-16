@@ -1,5 +1,20 @@
 # Progress
 
+## 2026-11-16 preset-bank GUI read integration
+
+- Added source raw-scalar GUI reads, preserving signed zero/nonfinite bits;
+  null/data values return +0 in the diagnostics-disabled profile. All 224
+  original-body read cases match locally; all 576 existing write cases remain
+  matched after the interface extension.
+- Connected those reads to actual preset-bank storage. Archive loading,
+  preparation, staging, activation and subsequent GUI reads now execute in the
+  same integration check, including a second bank switch and raw/cache separation.
+- Captured the full live editor's descriptor mapping census: 2,342 VST / 13,245
+  internal, no missing curves or read failures. Widget custom mappings remain
+  separate. Master volume and 19 exponential defaults still need exact mappings.
+- Prior head6728faf passed Native43932467482 (126 Linux checks, both Android
+  cross-builds and API35 emulator comparisons) and Analysis43932467404.
+
 ## 2026-11-16 live GUI controller bindings
 
 - Restored the original standalone editor using D: resources and product data.

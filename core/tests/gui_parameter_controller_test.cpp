@@ -17,6 +17,7 @@ struct Backend:GuiParameterBackend {
  GuiParameterState& state;const Row& input;std::uint32_t index;
  Backend* next=nullptr;Observer* first;Observer* second;
  Backend(GuiParameterState& s,const Row& c,std::uint32_t i,Observer& a,Observer& b):state(s),input(c),index(i),first(&a),second(&b){}
+ GuiParameterValue& parameter(std::uint32_t)override{throw std::logic_error("Write fixture has no read service");}
  void mutate(){if(input[3]&1)state={next,114,112,901,second};}
  void begin(std::uint32_t origin,std::uint32_t id)override{events.push_back({1,index,origin,id,0,0});mutate();}
  void end(std::uint32_t origin,std::uint32_t id)override{events.push_back({2,index,origin,id,0,0});mutate();}

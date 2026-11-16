@@ -1,0 +1,12 @@
+{
+  "wrapper_sha256": "354c26c58e4c8c671b50f88d070452b47c9cd6b6505b1ea18391724929b3d19e",
+  "entries": [
+    "0x1806620e0",
+    "0x18064b7e0"
+  ],
+  "scope": "Original current-value/controller accessor plus raw scalar extraction with diagnostics disabled. Backend lookup and parameter value pointers are explicit observer services. Null, scalar, heap and inline values; raw signed zero/nonfinite bits, both ID signs, changed live backend/ID during lookup. No normalized-cache, ownership or full backend lookup implementation claim.",
+  "cases": 224,
+  "fixture_bytes": 10764,
+  "fixture_sha256": "470694a3f3a0e9070132fced97c140def3e8e9c929c6c96ffbbcc9071596d623",
+  "producer_sha256": "f0f62d19d96b4c777c1617f81e184d19e02ba6848a0f7a76fea3fde1ae5be2c8"
+}

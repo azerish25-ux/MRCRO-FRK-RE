@@ -1,0 +1,170 @@
+{
+  "schema": 1,
+  "wrapper_sha256": "354c26c58e4c8c671b50f88d070452b47c9cd6b6505b1ea18391724929b3d19e",
+  "observation": "Read-only original standalone registry66 after the full editor was constructed, 2026-11-16",
+  "counts": {
+    "vst": 2342,
+    "internal": 13245
+  },
+  "missing": 0,
+  "failures": 0,
+  "mappings": {
+    ".?AVLinearPotardMapping@MappingTools@Arturia@@": {
+      "vtable": "0x181bab808",
+      "vst": 2341,
+      "internal": 13226,
+      "examples": [
+        {
+          "collection": "vst",
+          "index": 0,
+          "name": "Osc1_CoarseTune"
+        },
+        {
+          "collection": "vst",
+          "index": 1,
+          "name": "Osc1_Type"
+        },
+        {
+          "collection": "vst",
+          "index": 2,
+          "name": "Osc1_Param1"
+        },
+        {
+          "collection": "vst",
+          "index": 3,
+          "name": "Osc1_Param2"
+        },
+        {
+          "collection": "vst",
+          "index": 4,
+          "name": "Osc1_Param3"
+        },
+        {
+          "collection": "vst",
+          "index": 5,
+          "name": "Osc1_Volume"
+        },
+        {
+          "collection": "vst",
+          "index": 6,
+          "name": "Osc2_CoarseTune"
+        },
+        {
+          "collection": "vst",
+          "index": 7,
+          "name": "Osc2_Type"
+        },
+        {
+          "collection": "vst",
+          "index": 8,
+          "name": "Osc2_Param1"
+        },
+        {
+          "collection": "vst",
+          "index": 9,
+          "name": "Osc2_Param2"
+        },
+        {
+          "collection": "vst",
+          "index": 10,
+          "name": "Osc2_Param3"
+        },
+        {
+          "collection": "vst",
+          "index": 11,
+          "name": "Osc2_Volume"
+        }
+      ]
+    },
+    ".?AVBipolarVariableCenterInvPowPotardMapping@MappingTools@Arturia@@": {
+      "vtable": "0x181baa020",
+      "vst": 1,
+      "internal": 0,
+      "examples": [
+        {
+          "collection": "vst",
+          "index": 159,
+          "name": "MasterVolume"
+        }
+      ],
+      "master_volume_fields": {
+        "exponent_bits": "0x40000000",
+        "center_bits": "0x3f000000",
+        "from_bits": "0xc28c0000",
+        "to_bits": "0x40c00000",
+        "precision": -1,
+        "fine_precision": -1,
+        "direct": 0,
+        "reverse": 0
+      }
+    },
+    ".?AVExponentialPotardMapping@MappingTools@Arturia@@": {
+      "vtable": "0x181badfd8",
+      "vst": 0,
+      "internal": 19,
+      "examples": [
+        {
+          "collection": "internal",
+          "index": 2794,
+          "name": "Dummy_FX_Delay_LPFreq"
+        },
+        {
+          "collection": "internal",
+          "index": 2810,
+          "name": "ParamEq1_LFShelvCutoff"
+        },
+        {
+          "collection": "internal",
+          "index": 2813,
+          "name": "ParamEq1_PeakCutoff1"
+        },
+        {
+          "collection": "internal",
+          "index": 2815,
+          "name": "ParamEq1_PeakBandwidth1"
+        },
+        {
+          "collection": "internal",
+          "index": 2816,
+          "name": "ParamEq1_HFShelvCutoff"
+        },
+        {
+          "collection": "internal",
+          "index": 2828,
+          "name": "ParamEq2_LFShelvCutoff"
+        },
+        {
+          "collection": "internal",
+          "index": 2831,
+          "name": "ParamEq2_PeakCutoff1"
+        },
+        {
+          "collection": "internal",
+          "index": 2833,
+          "name": "ParamEq2_PeakBandwidth1"
+        },
+        {
+          "collection": "internal",
+          "index": 2834,
+          "name": "ParamEq2_HFShelvCutoff"
+        },
+        {
+          "collection": "internal",
+          "index": 2846,
+          "name": "ParamEq3_LFShelvCutoff"
+        },
+        {
+          "collection": "internal",
+          "index": 2849,
+          "name": "ParamEq3_PeakCutoff1"
+        },
+        {
+          "collection": "internal",
+          "index": 2851,
+          "name": "ParamEq3_PeakBandwidth1"
+        }
+      ]
+    }
+  },
+  "scope": "Descriptor GuiInfo defaults only. Widget-local custom info and value-display mappings remain separate. Contains no current/default/preset values or runtime object pointers."
+}
