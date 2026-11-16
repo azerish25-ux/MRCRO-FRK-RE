@@ -29,7 +29,8 @@ inline float master_power(float x,bool inverse){
   const double logarithm=t+((b*high+a*low)-v*t);
   exponent=y*logarithm;
  }else{
-  const auto xb=std::bit_cast<std::uint64_t>(xd),mantissa=xb&0x000fffffffffffffull;
+  const std::uint64_t xb=std::bit_cast<std::uint64_t>(xd);
+  const std::uint64_t mantissa=xb&0x000fffffffffffffull;
   const auto index=static_cast<unsigned>((mantissa>>44)+((mantissa>>43)&1));
   const double center=master_double((std::uint64_t(index)|0x3fe00ull)<<44);
   const double normalized=master_double(mantissa|0x3fe0000000000000ull);

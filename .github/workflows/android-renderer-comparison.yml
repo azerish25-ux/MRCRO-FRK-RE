@@ -1,9 +1,9 @@
 name: Native renderer comparison
 on:
   push:
-    paths: ['android/renderer-comparison/**', 'core/include/mfrk/ui.hpp', 'core/src/ui_primitives.cpp', 'core/include/mfrk/ui_slider_*.hpp', 'core/src/ui_slider_*.cpp', '.github/workflows/android-renderer-comparison.yml']
+    paths: ['android/renderer-comparison/**', 'core/include/mfrk/ui.hpp', 'core/src/ui_primitives.cpp', 'core/include/mfrk/ui_slider_*.hpp', 'core/src/ui_slider_*.cpp', 'core/src/ui_master_*.hpp', '.github/workflows/android-renderer-comparison.yml']
   pull_request:
-    paths: ['android/renderer-comparison/**', 'core/include/mfrk/ui.hpp', 'core/src/ui_primitives.cpp', 'core/include/mfrk/ui_slider_*.hpp', 'core/src/ui_slider_*.cpp', '.github/workflows/android-renderer-comparison.yml']
+    paths: ['android/renderer-comparison/**', 'core/include/mfrk/ui.hpp', 'core/src/ui_primitives.cpp', 'core/include/mfrk/ui_slider_*.hpp', 'core/src/ui_slider_*.cpp', 'core/src/ui_master_*.hpp', '.github/workflows/android-renderer-comparison.yml']
   workflow_dispatch:
 permissions:
   contents: read
