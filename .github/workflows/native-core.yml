@@ -474,6 +474,10 @@ jobs:
             adb push core/tests/mixer_time_mapping_vectors.bin /data/local/tmp/mixer_time_mapping_vectors.bin
             adb shell chmod 755 /data/local/tmp/mixer_time_mapping_test
             adb shell /data/local/tmp/mixer_time_mapping_test /data/local/tmp/mixer_time_mapping_vectors.bin
+            adb push build-x86_64/master_volume_mapping_test /data/local/tmp/master_volume_mapping_test
+            adb push core/tests/master_volume_mapping_vectors.bin /data/local/tmp/master_volume_mapping_vectors.bin
+            adb shell chmod 755 /data/local/tmp/master_volume_mapping_test
+            adb shell /data/local/tmp/master_volume_mapping_test /data/local/tmp/master_volume_mapping_vectors.bin
             adb push build-x86_64/slider_controller_test /data/local/tmp/slider_controller_test
             adb push core/tests/slider_controller_vectors.bin /data/local/tmp/slider_controller_vectors.bin
             adb shell chmod 755 /data/local/tmp/slider_controller_test

@@ -1,0 +1,22 @@
+{
+  "wrapper_sha256": "354c26c58e4c8c671b50f88d070452b47c9cd6b6505b1ea18391724929b3d19e",
+  "source": [
+    "0x18059e550",
+    "0x18059e5e0"
+  ],
+  "runtime_sha256": "dedb7611e1abc1ff3852dcac3d4c93a048d729e25b061973b9969f22698f14ca",
+  "runtime_version": "10.0.26100.9711",
+  "runtime_powf": "0x1800a9f20",
+  "runtime_fma_dispatch_flag": 3,
+  "source_mxcsr": "0x1f80",
+  "fields_bits": {
+    "exponent": "0x40000000",
+    "center": "0x3f000000"
+  },
+  "cases": 14836,
+  "input_values_per_direction": 3709,
+  "fixture_bytes": 178044,
+  "fixture_sha256": "1bc2fa694f9b77bd860b3c87e5667c887262dbff0bee123b923e6d80fba63cdb",
+  "producer_sha256": "d09d3f8c8cfbbefa40888d8788d05837dcda513d1ac6b2bfffd80793d06e5d6c",
+  "scope": "Whole original master-volume forward/inverse bodies with real pinned source UCRT powf service, plus direct original powf exponent2/.5 results. Inputs0..1, signed zero/subnormals, table boundaries, near-one branch and source underflow threshold neighborhoods, failed shortcut examples and random interiors. Value bits only; errno/FP flags, other fields/runtime dispatch modes and full synth/UI host remain separate."
+}

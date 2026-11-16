@@ -1,5 +1,18 @@
 # Progress
 
+## 2026-11-16 master-volume mapping
+
+- Added the observed MasterVolume mapping (exponent2, center.5) to the shared
+  source curve factory. The native source functions and pinned UCRT FMA math
+  path are reconstructed; no Android-host powf or square/root shortcut is used.
+- Preserved the separate unfused near-one path, exact constants/tables, source
+  underflow policy and binary32 outer mapping operations. All 14,836 original
+  mapping/helper results match locally, including table/center/underflow edges.
+  Existing 1,818 curve and 840 writer comparisons remain0differences.
+- Exact metadata/control-host registration, the full scene, sound graph and
+  standalone Android delivery remain unfinished. This is mapping parity for
+  the observed fields/runtime profile, not proof of whole-application fidelity.
+
 ## 2026-11-16 source GUI edit gate
 
 - Added source edit-mode/link/selection routing662ce0 to the same controller as
