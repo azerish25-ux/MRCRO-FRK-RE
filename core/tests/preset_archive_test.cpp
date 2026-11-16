@@ -4,6 +4,8 @@
 #include <string>
 using namespace mfrk::preset_archive;
 int main(){
+ if(numeric_bits("-0")!=0x80000000u||numeric_bits("+5e-1")!=0x3f000000u||numeric_bits("1.401298464324817e-45")!=1u||numeric_bits("1.000000059604644775390625")!=0x3f800000u)return 15;
+ for(auto token:{"nan","inf","0x1p0","1e39","", "1 2"})if(numeric_bits(token))return 16;
  std::string source="22 serialization::archive 10 0 7 0 7 4 Test 4 Bank 66 1 A 1 U 0 0 0 0 1 0 0  0 0  0 1 0 0 0 3 Key 5 Value 0 0 0 7 0 0 0 0 0 0 1 0 0 0 3 Foo 0.5 1 0 4 Blob 3 ";source.append("a\0b",3);
  const auto view=parse(std::as_bytes(std::span(source)));
  if(view.name!="Test"||view.bank!="Bank"||view.product!=66||view.properties.size()!=1||view.properties[0].key!="Key"||view.properties[0].value!="Value"||view.parameters.size()!=1||view.parameters[0].key!="Foo"||view.parameters[0].value!="0.5"||view.blobs.size()!=1||view.blobs[0].key!="Blob"||view.blobs[0].value!=std::string_view("a\0b",3))return 1;

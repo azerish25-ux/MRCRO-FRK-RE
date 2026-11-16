@@ -3,6 +3,13 @@
 #include <bit>
 #include <utility>
 namespace mfrk::preset_prepare {
+std::optional<State> from_archive(const preset_archive::View& view,std::int32_t word194){
+ if(view.product!=66||view.parameters.size()>10000||view.blobs.size()>1000)return std::nullopt;
+ State state;state.creator=view.creator_version;state.word194=word194;
+ for(const auto& entry:view.parameters){auto bits=preset_archive::numeric_bits(entry.value);if(!bits||!state.numeric.emplace(entry.key,*bits).second)return std::nullopt;}
+ for(const auto& entry:view.blobs){if(!state.data.emplace(entry.key,std::vector<std::uint8_t>(entry.value.begin(),entry.value.end())).second)return std::nullopt;}
+ return state;
+}
 std::optional<Result> prepare(State input,std::span<const preset_program::Descriptor> internal,std::span<const preset_program::Descriptor> vst,std::span<const Versioned> versioned){
  if(internal.size()>16384||vst.size()>16384||versioned.size()>16||input.numeric.size()>10000||input.data.size()>1000)return std::nullopt;
  const auto version=preset::parse_version(input.creator);

@@ -3,6 +3,7 @@
 #include <cstddef>
 #include <cstdint>
 #include <span>
+#include <optional>
 #include <string_view>
 #include <vector>
 namespace mfrk::preset_archive {
@@ -21,6 +22,9 @@ struct View {
 // attachment decoding and audio behavior remain separate. Throws invalid_argument
 // on unsupported or malformed inputs. Input is limited to 64 MiB.
 View parse(std::span<const std::byte>,bool allow_attachment_archive=false);
+// Decimal token to native binary32 in the isolated C locale. Keeps signed zero;
+// rejects unsupported syntax and nonfinite results.
+std::optional<std::uint32_t> numeric_bits(std::string_view);
 // Owns immutable archive bytes for background loading and subsequent staging.
 // Moving preserves all views in the destination and empties the moved-from view.
 class Owned {

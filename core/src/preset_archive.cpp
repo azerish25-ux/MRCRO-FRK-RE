@@ -1,5 +1,6 @@
 #include "mfrk/preset_archive.hpp"
 #include <charconv>
+#include <bit>
 #include <cmath>
 #include <cstdlib>
 #include <locale.h>
@@ -68,6 +69,18 @@ bool numeric(std::string_view text) {
  return end==terminated.c_str()+terminated.size()&&std::isfinite(value);
 }
 struct Candidate {std::size_t start=0,entries=0,end=0,slots_end=0;std::vector<Entry> properties;};
+}
+std::optional<std::uint32_t> numeric_bits(std::string_view text){
+ if(!numeric(text))return std::nullopt;
+ static const NumericLocale locale;if(!locale.value)return std::nullopt;
+ const std::string terminated(text);char* end=nullptr;
+#ifdef _WIN32
+ const float value=_strtof_l(terminated.c_str(),&end,locale.value);
+#else
+ const float value=strtof_l(terminated.c_str(),&end,locale.value);
+#endif
+ if(end!=terminated.c_str()+terminated.size()||!std::isfinite(value))return std::nullopt;
+ return std::bit_cast<std::uint32_t>(value);
 }
 View parse(std::span<const std::byte> input,bool allow_attachment_archive){
  require(!input.empty()&&input.size()<=64u*1024u*1024u,"archive size");
