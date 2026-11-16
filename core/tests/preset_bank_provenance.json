@@ -1,0 +1,57 @@
+{
+  "wrapper_sha256": "354c26c58e4c8c671b50f88d070452b47c9cd6b6505b1ea18391724929b3d19e",
+  "source_stages": [
+    "64b600",
+    "64b460",
+    "64b530",
+    "64b350",
+    "64b2d0",
+    "859650",
+    "784190",
+    "7883c0",
+    "5fea60",
+    "85dae0",
+    "6d78b0"
+  ],
+  "typed_values": {
+    "cases": 94,
+    "differences": 0,
+    "sha256": "4779266cae40fbd762cdc7f4ff53a0c3a7dd00bd8d2d6b509e1a898ccff795d1",
+    "bytes": 425260
+  },
+  "positive_ownership": {
+    "profiles": 5,
+    "objects": 4717,
+    "snapshots": 30,
+    "differences": 0,
+    "sha256": "907526e35b68ee58a6d706554c1346736087643b0825e588d78dfc4c1054e34d",
+    "bytes": 570136
+  },
+  "prepared_join": {
+    "programs": 2,
+    "writes": 25545,
+    "active_fields": 31174,
+    "differences": 0
+  },
+  "raw_archive_join": {
+    "archives": 1210,
+    "empty_control_maps": 256,
+    "nonempty_control_maps": 954,
+    "writes": 15454120,
+    "case_differences": 0,
+    "metadata_differences": 0,
+    "write_differences": 0,
+    "bank_activations": 1210,
+    "notification_commands": 15454120,
+    "harness_sha256": "4d90859bac950d5c1d25dcd1fcf89f02dfb5b1bcb2681e30438e31c9bea725d6",
+    "source_fixture_sha256": "dab6a4a42fbb0f353699ae721daa93594b6f1ec24ac93268afa639e2621d92ce"
+  },
+  "fresh_source_swap": {
+    "cases": 128,
+    "activations": 256,
+    "differences": 0,
+    "local_harness": "local/build/probe_group0_bank_swap.py"
+  },
+  "scope": "Serial supplied-initialized main/group-0 banks and unique-ID positive receivers, owned logical ParamValue data <=8192, finite positive prepared writes <=512. Original deleting-destructor terminal boundary was modeled/observed. Native internal destructor body, complete constructors, dispatcher listener transfer, listener callbacks, asynchronous work, other group metadata, nonzero parts, resource completion and DSP playback are not implemented by this stage. Runtime raw archive join uses source descriptor metadata supplied privately; original installed values remain private. Public binary fixtures contain synthetic owned values and IDs only.",
+  "private_origin": "local/evidence/preset-library-agent/migrations/loader-wt/ownership/cpp/persistent_banks.hpp; diagnostic mutation branches removed, includes/namespace adapted; actual production stage/notification join added."
+}
