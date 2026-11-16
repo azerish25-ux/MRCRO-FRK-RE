@@ -1,5 +1,16 @@
 # Progress
 
+## 2026-11-16 GUI registration bridge
+
+- Joined the owned reverse registry, source controller and notification handler
+  with descriptor-driven registration/cleanup and concrete notifier services.
+  Selector lookup retains context/part bounds and invalid-ID semantics.
+- All192 original constructor/destructor cases and2,139 events match locally,
+  using real bank receiver checks, context/descriptor mutations and origin wrap.
+- GUI notification checkpointec0e4f9 passed Native43973126429 and
+  Analysis43973126481, including640 cases/4,249 events on Android.
+- Real scene/view binding and complete backend/application graph remain open.
+
 ## 2026-11-16 GUI notification callback
 
 - Added the full source callback6616b0, control-info/feature state updates,

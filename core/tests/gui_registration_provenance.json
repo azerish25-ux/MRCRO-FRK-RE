@@ -1,0 +1,35 @@
+{
+  "wrapper_sha256": "354c26c58e4c8c671b50f88d070452b47c9cd6b6505b1ea18391724929b3d19e",
+  "source": [
+    "0x1806612b0",
+    "0x1806614c0",
+    "0x18067d450",
+    "0x180699f00",
+    "0x1806d1280",
+    "0x1806d1330",
+    "0x18064f800"
+  ],
+  "scope": "Original GUI controller constructor/destructor, both selector table lookups and concrete owned notifier operations execute. Backend lifecycle calls are service observers delegating to actual native notifier; raw allocation and selector mode are supplied. Descriptor mutation, missing selectors, context changes, invalid own-ID sentinel and counter wrap are covered. Complete application bank services and callback/rendering policies remain separate.",
+  "cases": 192,
+  "events": 2139,
+  "fixture_bytes": 54208,
+  "fixture_sha256": "3239b46d86093dc3abe634f70865c7d32bdb6345a36ff62d6d42b0f7d1caaad2",
+  "original_capture_sha256": "6831023982f5fe5e4da09b2d8d4ad951a15c2306ed78d3a9c1227dfe22144ae1",
+  "original_producer_sha256": "7d0a1437acbf29faea01e096b8d65f206326a53abc882f70bc3d833559b411ce",
+  "packer_sha256": "c5626f5cd13945f97c3b0d6316dd0fded409f1fbb2589ad2d4fb81f94f9999b3",
+  "input_fields": [
+    "id",
+    "counter",
+    "ctor_mode",
+    "dtor_mode",
+    "flags20",
+    "flagsd0",
+    "count48",
+    "flags204",
+    "dtor_flags204",
+    "features",
+    "properties",
+    "mutation",
+    "negative"
+  ]
+}
