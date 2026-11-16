@@ -1,0 +1,22 @@
+{
+  "wrapper_sha256": "354c26c58e4c8c671b50f88d070452b47c9cd6b6505b1ea18391724929b3d19e",
+  "notification": {
+    "source": "677540",
+    "programs": 4,
+    "commands": 51086,
+    "differences": 0,
+    "fixture_sha256": "0486106776c4713dfcfa3b70c881d67243a496c2777eae70df04f27bd60655c7",
+    "fixture_size": 1634682,
+    "local_harness": "local/build/production_notifications_test.cpp",
+    "scope": "Post-activation group-0 ordinary-origin commands from supplied current bank/descriptor flags. No bank swap, listener, async or DSP execution."
+  },
+  "packet_scaling": {
+    "source": "75da30",
+    "cases": 3555,
+    "differences": 0,
+    "fixture_sha256": "2094682dfe304dd8af55ef0b9547a96bd2593f39e9d10bddc5391cd0498ea143",
+    "fixture_size": 1839247,
+    "local_harness": "local/build/production_packet_scaling_test.cpp",
+    "scope": "Current frontend enum/ordinal/backend-count normalized conversion or continuous bit passthrough. Supplied metadata; no archived migration, receiver lookup, physical-unit conversion or delivery."
+  }
+}

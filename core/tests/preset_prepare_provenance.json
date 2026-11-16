@@ -16,10 +16,19 @@
   "case_differences": 0,
   "metadata_differences": 0,
   "write_differences": 0,
-  "scope": "Production raw archive decoding to binary32 numeric maps and counted binary blobs, version/custom migration, product-66 root release stamp and group-0 prepared writes compared against captured source-stage results. All 1210 raw decoded states also match captured input states before migration. Original descriptor metadata and opaque native word194 remain supplied. Descriptor construction, opaque metadata extraction, persistent-bank activation, listeners, asynchronous work and DSP playback remain separate.",
-  "local_harness": "local/build/production_raw_composed_test.cpp",
+  "scope": "Owning production load from all 1210 raw archives, isolated-C-locale binary32 conversion, counted binary blobs, source-bound HardwareVersion extraction, version/custom migration, product-66 root release stamp and group-0 prepared writes. Raw input states and final migrated states/writes match captured source-stage results. Original descriptor metadata is supplied. Installed HardwareVersion profile is absent or canonical 49; other values require the explicit native-word API. Descriptor construction, persistent-bank activation, listeners, asynchronous work and DSP playback remain separate.",
+  "local_harness": "local/build/production_owned_composed_test.cpp",
   "local_source_fixture": "local/evidence/preset-library-agent/migrations/loader-wt/nonempty/installed-composition-vectors.bin",
   "private_codec_origin": "local/evidence/preset-library-agent/migrations/loader-wt/cpp; mutation-only preprocessor branches removed, namespaces/includes adapted",
   "source_fixture_sha256": "dab6a4a42fbb0f353699ae721daa93594b6f1ec24ac93268afa639e2621d92ce",
-  "source_fixture_size": 44110335
+  "source_fixture_size": 44110335,
+  "metadata_binding": {
+    "serializer": "8e7950",
+    "integer_accessor": "6594f0",
+    "key_initializer": "54a000",
+    "literal_va": "181c03598",
+    "global_stdstring": "1820c5378",
+    "absent": 1004,
+    "canonical_49": 206
+  }
 }

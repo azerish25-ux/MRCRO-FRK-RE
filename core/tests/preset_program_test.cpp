@@ -17,4 +17,12 @@ int main(){
  if(numeric.at("Unknown")!=42||saved.at("Unknown")!=std::vector<std::uint8_t>{1,2})return 5;
  const std::array<Descriptor,1> bad{{{2,0,3,data,"Data"}}};if(prepare_group0({},bad,{},{}))return 6;
  auto empty=prepare_group0(internal,vst,{},{});if(!empty||empty->size()!=5||(*empty)[2].payload!=std::vector<std::uint8_t>{4,5,6})return 7;
+ std::array<std::uint32_t,5> internal_flags{0,2,256,514,2};const std::array<std::uint32_t,2> vst_flags{2,0};
+ auto commands=notifications_group0(internal_flags,vst_flags,*program);if(!commands||commands->size()!=4)return 8;
+ const std::array<std::uint32_t,4> notified{0x80000001u,0x80000003u,0x80000004u,0};for(unsigned i=0;i<4;++i)if((*commands)[i].wrapper_id!=notified[i]||(*commands)[i].origin!=4)return 9;
+ if((*commands)[1].tag!=3||(*commands)[1].payload!=std::vector<std::uint8_t>{0,0,0})return 10;
+ internal_flags[3]|=16;internal_flags[4]|=2048;(*program)[3].dirty=false;
+ commands=notifications_group0(internal_flags,vst_flags,*program);if(!commands||commands->size()!=2||(*commands)[0].wrapper_id!=0x80000001u||(*commands)[1].wrapper_id!=0)return 11;
+ program->push_back((*program)[0]);if(notifications_group0(internal_flags,vst_flags,*program))return 12;program->pop_back();
+ program->erase(program->begin());if(notifications_group0(internal_flags,vst_flags,*program))return 13;
 }

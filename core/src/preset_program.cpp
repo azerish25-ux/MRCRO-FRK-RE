@@ -3,6 +3,23 @@
 #include <bit>
 #include <cmath>
 namespace mfrk::preset_program {
+std::optional<std::vector<Command>> notifications_group0(std::span<const std::uint32_t> internal,std::span<const std::uint32_t> vst,std::span<const Write> values){
+ if(internal.size()>16384||vst.size()>16384||values.size()>internal.size()+vst.size())return std::nullopt;
+ std::vector<const Write*> iv(internal.size()),vv(vst.size());
+ for(const auto& value:values){auto& bank=(value.wrapper_id&0x80000000u)?iv:vv;const auto index=value.wrapper_id&0x7fffffffu;
+  if(index>=bank.size()||bank[index]||value.payload.size()>512||(value.tag!=1&&value.tag!=2&&value.tag!=3)||(value.tag==1&&value.payload.size()!=4)||(value.tag==3&&value.payload.size()>16))return std::nullopt;
+  bank[index]=&value;
+ }
+ std::vector<Command> result;
+ auto append=[&](std::span<const std::uint32_t> flags,const auto& bank){for(std::size_t i=0;i<flags.size();++i){
+  if((flags[i]&2)==0||(flags[i]&16)!=0)continue;
+  const auto* value=bank[i];if(!value)return false;
+  if((flags[i]&2048)!=0&&!value->dirty)continue;
+  result.push_back({value->wrapper_id,value->tag,4,value->payload});
+ }return true;};
+ if(!append(internal,iv)||!append(vst,vv))return std::nullopt;
+ return result;
+}
 std::optional<std::vector<Write>> prepare_group0(std::span<const Descriptor> internal,std::span<const Descriptor> vst,const Numeric& numeric,const Data& data){
  if(internal.size()>16384||vst.size()>16384||numeric.size()>10000||data.size()>1000)return std::nullopt;
  std::vector<Write> writes;

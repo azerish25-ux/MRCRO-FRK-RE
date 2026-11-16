@@ -5,10 +5,16 @@ using namespace mfrk;
 int main(){
  const std::string source="22 serialization::archive 10 0 7 0 7 4 Test 4 Bank 66 1 A 1 U 0 0 0 0 1 0 0  0 0  0 1 0 0 0 3 Key 5 Value 0 0 0 7 0 0 0 0 0 0 1 0 0 0 3 Foo -0 1 0 4 Blob 3 "+std::string("a\0b",3);
  auto view=preset_archive::parse(std::as_bytes(std::span(source)));auto decoded=preset_prepare::from_archive(view,49);
+ auto bound=preset_prepare::from_archive(view);if(!bound||bound->word194!=-1)return 16;
+ auto hardware=view;hardware.properties.push_back({"HardwareVersion","49"});bound=preset_prepare::from_archive(hardware);if(!bound||bound->word194!=49)return 17;
+ hardware.properties.back().value="50";if(preset_prepare::from_archive(hardware))return 18;
  if(!decoded||decoded->word194!=49||decoded->numeric.at("Foo")!=0x80000000u||decoded->data.at("Blob")!=std::vector<std::uint8_t>{'a',0,'b'})return 9;
  auto duplicate=view;duplicate.parameters.push_back(view.parameters[0]);if(preset_prepare::from_archive(duplicate,49))return 10;
  auto unsupported=view;unsupported.product=67;if(preset_prepare::from_archive(unsupported,49))return 11;
  auto joined=preset_prepare::prepare(std::move(*decoded),{},{},{});if(!joined||joined->migrated.numeric.at("Foo")!=0x80000000u||joined->migrated.data.at("Blob")!=std::vector<std::uint8_t>{'a',0,'b'}||!view.creator_version.empty())return 12;
+ auto loaded=preset_prepare::load(preset_archive::Owned(std::as_bytes(std::span(source))),49,{},{},{});if(!loaded)return 13;
+ auto retained=std::move(*loaded);if(!loaded->archive.view().raw.empty()||retained.archive.view().name!="Test"||retained.archive.view().properties[0].value!="Value"||retained.prepared.migrated.data.at("Blob")!=std::vector<std::uint8_t>{'a',0,'b'})return 14;
+ if(retained.archive.view().raw.size()!=source.size()||std::string_view(reinterpret_cast<const char*>(retained.archive.view().raw.data()),source.size())!=source||retained.prepared.migrated.creator!="5.1.1.6945")return 15;
  const std::array<std::uint8_t,4> zero{};const std::array<std::string_view,2> old{"A","B"};const std::array<std::string_view,3> current{"B","A","C"};const std::array<preset::Record,2> records{{{{0,0,0},old},{{2,0,0},current}}};
  const std::array<preset_prepare::Versioned,1> versions{{{"Choice",{records,3,0.f},0,0}}};
  const std::array<preset_program::Descriptor,1> vst{{{2,0,1,zero,"Choice"}}};
