@@ -1,0 +1,24 @@
+{
+  "wrapper_sha256": "354c26c58e4c8c671b50f88d070452b47c9cd6b6505b1ea18391724929b3d19e",
+  "source_stages": [
+    "c45b50",
+    "c454f0",
+    "c45aa0",
+    "f59930",
+    "f5a5c0",
+    "b66d90"
+  ],
+  "sensitivity_cases": 1600,
+  "drag_cases": 1800,
+  "sensitivity_differences": 0,
+  "drag_differences": 0,
+  "fixture_bytes": 342647,
+  "fixture_sha256": "b7e07be26ba5e30f0a5282226bffd7c2f36534319de6e1fb2e8f534afe4ca703",
+  "source_gold_sha256": "5663efd48a20ca0781654d34a52da44ff13852018435f7d38fdcc0610d2d1afe",
+  "scope": "Original complete sensitivity calculation with supplied override/enum metadata. Original drag coordinator/coordinate difference with actual native WithMagnetism mapper through an owner-adjustment ABI thunk, native selected-ID/zone lookup and real UCRT fmodf. Global coordinate transform and terminal slider writer are supplied observed service boundaries. Writer echoes or returns a supplied processed value and may change orientation. Checks state fields and ordered drag boundary events; portable sensitivity accepts immutable manager metadata, not live query execution. Disabled diagnostics, serial finite supplied state. Actual edit-begin/phase dispatch, coordinate transform, slider conversion/formatter/controller delivery, physical touch adapter and full UI remain separate. Public fixture contains synthetic states only.",
+  "local_oracle": "local/build/probe_slider_drag.py",
+  "local_source_gold": "local/evidence/native-ui-source/slider-drag-source-v2.json",
+  "local_packer": "local/build/pack_slider_drag.py",
+  "recovered_source": "local/evidence/slider-writer-20261116",
+  "correction": "Source flag is owner+1640 (pointer-index2c8), not1620. Initial private fixture/source adapter error retained as v1; corrected v2 is authoritative."
+}
