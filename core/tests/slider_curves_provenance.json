@@ -1,0 +1,28 @@
+{
+  "wrapper_sha256": "354c26c58e4c8c671b50f88d070452b47c9cd6b6505b1ea18391724929b3d19e",
+  "mapping_classes": [
+    "LinearPotardMapping",
+    "ReversePotardMapping",
+    "InversePotardMapping",
+    "PiecewiseLinearPotardMapping",
+    "HarmonicMapping",
+    "TablePotardMapping"
+  ],
+  "curve_cases": 1818,
+  "curve_differences": 0,
+  "joined_writer_cases": 840,
+  "writer_differences": 0,
+  "fixture_bytes": 141844,
+  "fixture_sha256": "63265402629e99ca33750a0ae2761bf4a53bc372b4c236b5694840b75bbc38ee",
+  "source_gold_sha256": "7689419fe075beed296161d3e410cda4049fe40274cf76f8c58fc6d7764a4e16",
+  "scope": "Actual six source curve vtables/functions with owned supplied fields and strictly increasing guarded tables. Whole original slider writer executes those actual curves with supplied GUI/terminal signal services and real UCRT formatter/min/max services. Runtime factory recognizes exact six native RTTI names and rejects unsupported classes/invalid definitions without linear fallback. Finite valid-domain/intermediate profile only. Native constructors, full parameter registry/curve metadata acquisition, other mapping classes, actual controller and physical touch/full UI remain separate. Public fixture contains synthetic definitions only.",
+  "local_oracle": "local/build/probe_slider_curves.py",
+  "local_source_gold": "local/evidence/native-ui-source/slider-curves-source-v1.json",
+  "source_vtable_index": "local/evidence/slider-writer-20261116/mapping-vtables.json",
+  "notable_rules": [
+    "Table forward scale is size-2 and retains a final guard entry.",
+    "Table inverse keeps native multiply/add/subtract order.",
+    "Piecewise inverse canonicalizes zero to positive zero like source UCRT max/min."
+  ],
+  "android_status": "Configured for remote builds and emulator; runtime pending."
+}
