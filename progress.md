@@ -1,5 +1,18 @@
 # Progress
 
+## 2026-11-16 exponential descriptor mappings
+
+- Added source exponential forward/inverse mapping and the pinned runtime's
+  FMA expf/logf value paths, including portable single-rounding float-FMA
+  correction. All20,874 original comparisons match locally.
+- Captured all19 actual exponential descriptor configurations: three exact
+  exponent/scale pairs for delay, EQ and multiband compressor controls. The
+  curve factory now supports all classes/fields observed in the default
+  descriptor census. Widget custom/display mappings and full UI remain open.
+- Prior master checkpoint1a0c42a passed Native43942862826 on retry after an ADB
+  pull failure, Renderer43942862895 and Analysis43942862777. Its14,836 original
+  mapping/helper comparisons executed on Android with0differences.
+
 ## 2026-11-16 master-volume mapping
 
 - Added the observed MasterVolume mapping (exponent2, center.5) to the shared

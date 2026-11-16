@@ -1,0 +1,37 @@
+{
+  "wrapper_sha256": "354c26c58e4c8c671b50f88d070452b47c9cd6b6505b1ea18391724929b3d19e",
+  "source": [
+    "0x18059d900",
+    "0x18059d930"
+  ],
+  "runtime_sha256": "dedb7611e1abc1ff3852dcac3d4c93a048d729e25b061973b9969f22698f14ca",
+  "runtime_version": "10.0.26100.9711",
+  "runtime_exp_log": [
+    "0x1800a8740",
+    "0x1800a9d40"
+  ],
+  "runtime_fma_dispatch_flag": 3,
+  "source_mxcsr": "0x1f80",
+  "fields_bits": [
+    [
+      1086324736,
+      992139750
+    ],
+    [
+      1084227584,
+      1004423532
+    ],
+    [
+      1092354048,
+      947160338
+    ]
+  ],
+  "cases": 20874,
+  "normalized_inputs_per_profile": 2572,
+  "exp_inputs": 1675,
+  "log_inputs": 3767,
+  "fixture_bytes": 333996,
+  "fixture_sha256": "c07c48d255315383c260c183da2b64b4a4e9f809bbe5d8b733572e2ab00dbe65",
+  "producer_sha256": "c71ebd8b06fc17ec3ca20955821c3f9cb6bae38cf4e1c4c49fbd58ece5b4584e",
+  "scope": "Whole original exponential forward/inverse bodies for all three observed live descriptor field pairs plus direct original expf/logf results. Source FMA dispatch3, RN-even and gradual underflow. Inputs cover signed zero, subnormals, native range-reduction/table/near-one boundaries, float-FMA fallback failures and random interiors. Value bits only; errno/FP flags, other runtime profiles, host registration and full UI/synth remain separate."
+}

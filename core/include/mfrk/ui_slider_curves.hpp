@@ -5,7 +5,7 @@
 #include <string_view>
 #include <vector>
 namespace mfrk::ui {
-enum class SliderCurveKind:std::uint8_t {linear,reverse,inverse,piecewise,harmonic,table,envelope_time,mixer_time,master_volume};
+enum class SliderCurveKind:std::uint8_t {linear,reverse,inverse,piecewise,harmonic,table,envelope_time,mixer_time,master_volume,exponential};
 // Fields correspond to source curve offsets+8/+c/+10/+14. Table includes the
 // final guard entry: the forward scale is size-2, not size-1.
 struct SliderCurveDefinition {SliderCurveKind kind;std::array<float,4> fields{};std::vector<float> table;};
@@ -17,6 +17,8 @@ struct SliderCurveDefinition {SliderCurveKind kind;std::array<float,4> fields{};
 // Master volume admits the observed exponent2 / center.5 fields[0]/[2], and
 // normalized inputs0..1. It reconstructs the pinned source FMA runtime's value
 // path; alternate exponents/centers and runtime dispatch modes are unsupported.
+// Exponential uses positive fields[0]<88 and positive fields[1], inputs0..1
+// and finite inverse argument. It shares the pinned runtime value profile.
 std::unique_ptr<SliderCurve> make_slider_curve(const SliderCurveDefinition&);
 std::unique_ptr<SliderCurve> make_slider_curve(std::string_view native_rtti,
  std::array<float,4> fields={},std::vector<float> table={});

@@ -1,5 +1,6 @@
 #include "mfrk/ui_slider_curves.hpp"
 #include "ui_master_power.hpp"
+#include "ui_exponential_math.hpp"
 #include <algorithm>
 #include <bit>
 #include <cmath>
@@ -24,6 +25,11 @@ public:
   switch(data_.kind){
    case SliderCurveKind::linear:return value;
    case SliderCurveKind::reverse:return 1.f-value;
+   case SliderCurveKind::exponential:{
+    if(!std::isfinite(value)||value<0.f||value>1.f)throw std::invalid_argument("exponential mapping profile");
+    const float result=detail::exponential_exp(value*p[0]);
+    return (result-1.f)*p[1];
+   }
    case SliderCurveKind::master_volume:{
     if(!std::isfinite(value)||value<0.f||value>1.f)throw std::invalid_argument("master volume mapping profile");
     const float center=p[2];
@@ -61,6 +67,12 @@ public:
   switch(data_.kind){
    case SliderCurveKind::linear:return value;
    case SliderCurveKind::reverse:return 1.f-value;
+   case SliderCurveKind::exponential:{
+    if(!std::isfinite(value)||value<0.f||value>1.f)throw std::invalid_argument("exponential mapping profile");
+    const float argument=value/p[1]+1.f;
+    if(!std::isfinite(argument))throw std::invalid_argument("exponential inverse profile");
+    return detail::exponential_log(argument)/p[0];
+   }
    case SliderCurveKind::master_volume:{
     if(!std::isfinite(value)||value<0.f||value>1.f)throw std::invalid_argument("master volume mapping profile");
     const float center=p[2];
@@ -102,6 +114,7 @@ std::unique_ptr<SliderCurve> make_slider_curve(const SliderCurveDefinition& defi
  switch(definition.kind){
   case SliderCurveKind::linear:case SliderCurveKind::reverse:case SliderCurveKind::envelope_time:case SliderCurveKind::mixer_time:break;
   case SliderCurveKind::master_volume:if(definition.fields[0]!=2.f||definition.fields[2]!=.5f)return nullptr;break;
+  case SliderCurveKind::exponential:if(definition.fields[0]<=0.f||definition.fields[0]>=88.f||definition.fields[1]<=0.f)return nullptr;break;
   case SliderCurveKind::inverse:if(definition.fields[2]==definition.fields[0]||definition.fields[3]==definition.fields[1])return nullptr;break;
   case SliderCurveKind::piecewise:if(definition.fields[0]<=0.f||definition.fields[0]>=1.f)return nullptr;break;
   case SliderCurveKind::harmonic:if(definition.fields[0]<=0.f||definition.fields[0]==1.f)return nullptr;break;
@@ -114,6 +127,7 @@ std::unique_ptr<SliderCurve> make_slider_curve(std::string_view name,std::array<
  constexpr std::string_view names[]{".?AVLinearPotardMapping@MappingTools@Arturia@@",".?AVReversePotardMapping@MappingTools@Arturia@@",".?AVInversePotardMapping@MappingTools@Arturia@@",".?AVPiecewiseLinearPotardMapping@MappingTools@Arturia@@",".?AVHarmonicMapping@MappingTools@Arturia@@",".?AVTablePotardMapping@MappingTools@Arturia@@",".?AVEnveloppeTimeMapping@MappingTools@Arturia@@",".?AVMixerTimeMapping@MappingTools@Arturia@@"};
  for(unsigned i=0;i<8;++i)if(name==names[i])return make_slider_curve({static_cast<SliderCurveKind>(i),fields,std::move(table)});
  if(name==".?AVBipolarVariableCenterInvPowPotardMapping@MappingTools@Arturia@@")return make_slider_curve({SliderCurveKind::master_volume,fields,{}});
+ if(name==".?AVExponentialPotardMapping@MappingTools@Arturia@@")return make_slider_curve({SliderCurveKind::exponential,fields,{}});
  return nullptr;
 }
 }

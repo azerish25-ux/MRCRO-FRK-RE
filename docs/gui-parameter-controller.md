@@ -74,9 +74,11 @@ MasterVolume uses BipolarVariableCenterInvPowPotardMapping, while 19 internal
 descriptors use ExponentialPotardMapping. The class counts, examples and actual
 master-volume curve fields are recorded in `resources/gui-mapping-census.json`.
 These are descriptor defaults; widget custom mappings and display mappings
-must still be resolved separately. The 19 exponential descriptor mappings are
-still unsupported. Master volume now has its observed field profile implemented
-in the shared curve factory; see `master-volume-mapping.md`.
+must still be resolved separately. Master volume and the 19 exponential
+descriptor mappings now have their observed field profiles implemented in the
+shared curve factory; see `master-volume-mapping.md` and
+`exponential-mapping.md`. This covers the classes in the descriptor-default
+census, not the full collection of widget custom/display mappings.
 
 The live master-volume exponent is 2 and center is 0.5, but even a square/square
 root substitution changes the reference results. A private comparison against
