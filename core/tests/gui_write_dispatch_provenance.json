@@ -1,10 +1,10 @@
 {
   "scope": "Original678050,64ea00 and64b2d0 execute. Queue, thread ID, part preparation, receiver and678190 are explicit observers. No full backend/write policy claim. Queued source value moves; applied value may be consumed by the policy. Invalid parts do not resolve receivers.",
   "wrapper_sha256": "354c26c58e4c8c671b50f88d070452b47c9cd6b6505b1ea18391724929b3d19e",
-  "producer_sha256": "94b3b3db08a33712179ce6336db33d475191c379e1d7521a9aa5ddcd7786fd72",
-  "original_json_sha256": "0fd723f5adc900871fe491bc6f9bc547b13324cdffa5a92c589d72569339cb50",
-  "fixture_sha256": "e3c77f3412b0a022dcb05fca6b88a45351ad1311e481f88f324e53b8b3d12de0",
-  "bytes": 34572,
+  "producer_sha256": "6773c717c3d5df42a983efa19e7f51582861e34aa61c5d519ad15e8f765b7bb4",
+  "original_json_sha256": "6fa928dc26a6688b7ec8232aed0ac2a1b7b5d351a519a596fbb4fa33390485e6",
+  "fixture_sha256": "41facae7ddb166ba18c9a7b39264ce2547a95f99622ed831068cbfc849b0deda",
+  "bytes": 36300,
   "cases": 216,
   "events": 432
 }

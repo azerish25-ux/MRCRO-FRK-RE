@@ -1,5 +1,15 @@
 # Progress
 
+## 2026-11-16 GUI write return contract
+
+- Assembly resolved a decompiler ambiguity: `678190` returns a boolean. The
+  router now preserves it alongside route diagnostics, including false after
+  a synchronous policy call. The refreshed original-instruction fixture matches
+  all 216 cases, 432 events and return bytes locally. Current thread IDs retain
+  the source API's 32-bit width. Full backend policy integration remains open.
+- Prior routing commit `589ab9d` passed Linux and Android in native run
+  43980039992, and analysis run 43980039975. Version 2 is a separate check.
+
 ## 2026-11-16 GUI write message routing
 
 - Recovered backend `678050` queue-before-lookup routing with owned typed-value
