@@ -1,5 +1,17 @@
 # Progress
 
+## 2026-11-16 listener registration ownership
+
+- Added owned IParamListener reverse registration, native FNV/list ordering,
+  bucket growth/rehash, duplicate preservation, lookup/removal and cleanup.
+  The destroying guard keeps registrations stable during notifier callbacks.
+- All1,187 original insert/duplicate operations,19 removals and1,044 cleanup
+  callbacks match locally, including growth beyond512buckets. Original aligned
+  allocation/deallocation guards execute in the native capture unchanged.
+- Forward notifier ownership, application registration policies and the complete
+  GUI host remain open. Exponential checkpoint4b64d81 passed allthree workflows,
+  including20,874 original comparisons on Android.
+
 ## 2026-11-16 exponential descriptor mappings
 
 - Added source exponential forward/inverse mapping and the pinned runtime's

@@ -1,0 +1,22 @@
+{
+  "wrapper_sha256": "354c26c58e4c8c671b50f88d070452b47c9cd6b6505b1ea18391724929b3d19e",
+  "source": [
+    "0x18064b0d0",
+    "0x180586a50",
+    "0x180654740",
+    "0x1805933f0",
+    "0x18064f880",
+    "0x1806d1510",
+    "0x18064f800"
+  ],
+  "scope": "Original IParamListener construction, aligned allocation wrapper, reverse-map insertion/rehash/lookup, guarded erasure and destructor. Raw new/free and outer notifier lookup/listener-set removal are explicit observer services; destructor RemoveListener is a callback observer. No notifier-map implementation or full GUI ownership claim.",
+  "cases": 4,
+  "operations": 1187,
+  "erasures": 19,
+  "close_callbacks": 1044,
+  "fixture_bytes": 221628,
+  "fixture_sha256": "3d401e099cd282836d5c36976ee68551d2cbd277136e214dc4113d519406e500",
+  "original_capture_sha256": "8060151be6ab7765c57b8746ff6dd0d89232b16304b257495a7dd2a99a9d32e7",
+  "original_producer_sha256": "51e94eb89dee00fd24f4b64cec567d5617fbb3461e05cff5b1900ffe77eaa8d9",
+  "packer_sha256": "f8858c57e9f94e4fa34b27db54ea92e843ea619f1be325d0ea1c4f7f456d1461"
+}
