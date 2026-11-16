@@ -1,0 +1,21 @@
+{
+  "wrapper_sha256": "354c26c58e4c8c671b50f88d070452b47c9cd6b6505b1ea18391724929b3d19e",
+  "source": [
+    "0x18064b0d0",
+    "0x180586a50",
+    "0x180654740",
+    "0x1805933f0",
+    "0x18064f920",
+    "0x18064f800"
+  ],
+  "scope": "Original reverse-map forget-all-for-notifier, including shared/null/missing/repeated notifier values and supplied destroying-state guard. Original construction/insertion/aligned-wrapper/destruction; raw allocator/free and outer notifier removal observers as in reverse-registry capture. Forget itself must issue no notifier callbacks. Not a complete notifier or GUI factory claim.",
+  "cases": 4,
+  "registrations": 593,
+  "forget_calls": 16,
+  "close_callbacks": 410,
+  "fixture_bytes": 53580,
+  "fixture_sha256": "aa6dc1ee662d21beb2a772a828eb6a2de612795e371a8a945ed4d091e8d3c0b9",
+  "original_capture_sha256": "c1b7531c70b3380bd86e4e26eee551abf0bc92fbc2a48b3e11ece0fab5037e93",
+  "original_producer_sha256": "bf790cbf1e61597dc2bfc837d08dd0bd8b9b65514051203e48eaa5667345920e",
+  "packer_sha256": "249d41135c05405520e6f4451e29ca45533427ad712dd21e3c30ad3236da9919"
+}

@@ -71,6 +71,15 @@ public:
   }
   rows_.erase(current);index_.erase(at);return true;
  }
+ // Source64f920: a notifier being cleared severs every reverse association
+ // with itself. It must not call that notifier again while doing so.
+ void forget_notifier(std::uint64_t notifier){
+  if(destroying_)return;
+  for(auto it=rows_.begin();it!=rows_.end();){
+   const auto current=it++;
+   if(current->notifier==notifier)erase(current->id);
+  }
+ }
  void close()noexcept{
   if(destroying_)return;
   destroying_=true;

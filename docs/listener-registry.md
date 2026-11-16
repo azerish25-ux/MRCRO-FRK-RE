@@ -6,8 +6,9 @@ FNV hash/list order, preserves the first notifier on duplicate insertion, and
 reproduces bucket growth and rehash order. Lookup and removal use a separate
 index whose iteration order does not affect the native registration order.
 
-The supplied notifier-removal service and notifier objects must outlive this
-owner. On cleanup, the registry sets its destroying flag before issuing removal
+The supplied notifier-removal service must outlive this owner. A notifier must
+remain valid until its registrations are removed or explicitly forgotten. On
+listener cleanup, the registry sets its destroying flag before issuing removal
 calls in source order, skips null notifier entries, and keeps the reverse map
 stable until callbacks finish. Guarded reverse removal during this phase is a
 no-op, as in the original. Cleanup releases the owned storage afterwards; the
@@ -26,6 +27,14 @@ guarded reverse erasure and destructor. It also executes the original aligned
 allocation wrapper so large-vector headers and deallocation guards remain
 intact. Raw allocation/free and the outer notifier's lookup/set operations are
 explicit observer services. No synth code or runtime guard was patched.
+
+`forget_notifier` supplies the complementary source path (`64f920`): when a
+notifier is being cleared, remove every reverse association with that notifier
+without issuing callbacks into it. Shared notifier values, null entries,
+missing/repeated removal and the listener's destroying guard match the original.
+The separate comparison covers 593 registrations, 16 forget operations and
+410 remaining cleanup callbacks, with zero differences locally. This enables
+the notifier owner to sever its references before freeing itself.
 
 This supplies listener-side ownership for the GUI host. The notifier's forward
 registry, application registration policies, bank transfer and full UI host

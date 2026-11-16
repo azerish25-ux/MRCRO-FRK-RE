@@ -1,5 +1,15 @@
 # Progress
 
+## 2026-11-16 notifier-to-listener detachment
+
+- Added source64f920 to forget all reverse registrations for a notifier without
+  calling back into it. Shared/null/missing/repeated notifier cases and the
+  destroying guard match593 registrations,16 operations and410 cleanup callbacks
+  locally; the prior reverse-registry comparisons remain0differences.
+- The notifier's own forward maps and complete UI host still need integration.
+  Prior listener checkpointa976c5e passed Analysis43951636587 and
+  Native43951636580, including Android execution.
+
 ## 2026-11-16 listener registration ownership
 
 - Added owned IParamListener reverse registration, native FNV/list ordering,

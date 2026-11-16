@@ -502,5 +502,9 @@ jobs:
             adb push core/tests/listener_registry_vectors.bin /data/local/tmp/listener_registry_vectors.bin
             adb shell chmod 755 /data/local/tmp/listener_registry_test
             adb shell /data/local/tmp/listener_registry_test /data/local/tmp/listener_registry_vectors.bin
+            adb push build-x86_64/listener_forget_test /data/local/tmp/listener_forget_test
+            adb push core/tests/listener_forget_vectors.bin /data/local/tmp/listener_forget_vectors.bin
+            adb shell chmod 755 /data/local/tmp/listener_forget_test
+            adb shell /data/local/tmp/listener_forget_test /data/local/tmp/listener_forget_vectors.bin
       - name: Compare generated Android table bytes
         run: python3 tools/check_basic_wave_tables.py --dump build-x86_64/basic-wave-tables.bin --expected core/tests/basic_wave_table_hashes.json
