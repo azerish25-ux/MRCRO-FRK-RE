@@ -1,0 +1,19 @@
+{
+  "wrapper_sha256": "354c26c58e4c8c671b50f88d070452b47c9cd6b6505b1ea18391724929b3d19e",
+  "source_stages": [
+    "6d1ae0",
+    "64b710",
+    "64b530",
+    "570cb0",
+    "5705c0"
+  ],
+  "cases": 860,
+  "notifications": 300,
+  "differences": 0,
+  "fixture_bytes": 717812,
+  "fixture_sha256": "1281e4c9a5815504cf49e68a0bf14c158a3efe715dfab99c40cb216a8312d7e4",
+  "source_gold_sha256": "f2dcf7e92ecbaa341a85310421c4b5c8c8c18306524a719d18a670d09d6c658e",
+  "scope": "Whole original initialized InternalParam setter, actual scalar comparison, typed move, immediate no-op and getter. Terminal dispatcher is an observer/model-return boundary. Checks logical value, consumed input, dirty state at notification and return, heap release/transfer, self-alias, scalar NaN/zero/denormal/infinity classes, canonical data through8192 bytes and modes0/1/2/3/255. MXCSR1f80, successful allocations, serial no-exception profile. Production recursive receiver-to-snapshot-dispatch join checked separately; no whole-native cascading graph proof. Positive VST immediate/cache/update-handler behavior, registry, actual callback families and GUI/DSP delivery remain separate. Public fixture contains synthetic values only.",
+  "local_oracle": "local/build/probe_internal_receiver.py",
+  "local_source_gold": "local/evidence/preset-library-agent/internal-receiver-source.json"
+}
