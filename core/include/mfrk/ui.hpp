@@ -34,6 +34,7 @@ std::array<float,4> center_marker_points(std::int32_t width,std::int32_t height,
 
 struct MagneticZone {float position_from,position_to,value_from,value_to;bool skip_at_drag_start;};
 struct MagneticResult {float value;bool skip;};
+struct MagneticWheelResult {bool handled,has_target;float target;};
 struct MagneticGesture {float held_value;bool flag20,flag21;};
 // Source f59680 state projection with supplied selected-ID comparison/current
 // scalar getter result. Raw phases 0 and 2 are not Android MotionEvent meanings.
@@ -47,6 +48,13 @@ void magnetic_phase(MagneticGesture&,std::uint32_t phase,bool matches,
 // that final endpoint is the source fmodf period. Clamp/setter/pointer units are separate.
 MagneticResult magnetic_delta(std::span<const MagneticZone> zones,
     float value,float delta,bool flag20,bool flag21,bool wrap=false,bool matches=true) noexcept;
+// Source f59770 with supplied raw current GUI value and finite vertical delta.
+// Inertial/zero events are ignored. Wheel reversal affects direction; value
+// reversal affects the zone lookup. A target is in view space for c45d10.
+// handled may be true without a target at an outer boundary. Default wheel
+// handlers, physical event adaptation and the slider setter are separate.
+MagneticWheelResult magnetic_wheel(std::span<const MagneticZone>,float current,
+    float vertical,bool wheel_reversed,bool inertial,bool reverse) noexcept;
 
 // Source0x181071293 edge projection. Coordinates and separately rounded float
 // endpoint sums must truncate to signed32; endpoint differences must also fit.

@@ -119,6 +119,26 @@ std::array<float,4> center_marker_points(std::int32_t width,std::int32_t height,
             center_x-sine*end,end*cosine+center_y};
 }
 
+MagneticWheelResult magnetic_wheel(std::span<const MagneticZone> zones,float value,float vertical,bool wheel_reversed,bool inertial,bool reverse) noexcept {
+ if(inertial||vertical==0.f)return {false,false,0.f};
+ if(wheel_reversed)vertical=-vertical;
+ const bool down=vertical<=0.f;if(reverse)value=1.f-value;
+ const auto* before=zone_for_value(zones,value);if(!before||before->position_from==before->position_to)return {false,false,0.f};
+ if(before->value_from!=before->value_to&&(before->value_from!=value||!down)){
+  if(value!=before->value_to||down)return {false,false,0.f};
+ }
+ const MagneticZone* target=nullptr;float best=0.f;
+ for(const auto& zone:zones){
+  if(&zone==before)continue;
+  if(down){if(zone.position_to>before->position_from)continue;const float distance=before->position_from-zone.position_to;if(!target||distance<best){target=&zone;best=distance;}}
+  else {if(zone.position_from<before->position_to)continue;const float distance=zone.position_from-before->position_to;if(!target||distance<best){target=&zone;best=distance;}}
+ }
+ if(!target)return {true,false,0.f};
+ const float next=down?target->value_to:target->value_from;
+ if((down&&value<=next)||(!down&&next<=value))return {false,false,0.f};
+ return {true,true,next};
+}
+
 void magnetic_phase(MagneticGesture& state,std::uint32_t phase,bool matches,float current,bool reverse) noexcept {
  if(!matches){state.held_value=-1.f;return;}
  if(reverse)current=1.f-current;

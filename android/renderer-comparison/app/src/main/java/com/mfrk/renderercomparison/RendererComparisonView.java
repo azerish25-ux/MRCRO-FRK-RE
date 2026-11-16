@@ -58,6 +58,9 @@ public final class RendererComparisonView extends View {
         float current = reverse ? 1f - parameters[index] : parameters[index];
         return mappings[index].delta(current, delta, wrap, matches);
     }
+    public long mapControlWheel(int index, float vertical, boolean wheelReversed, boolean inertial, boolean reverse) {
+        return mappings[index].wheel(parameters[index], vertical, wheelReversed, inertial, reverse);
+    }
     @Override protected void onSizeChanged(int width,int height,int oldWidth,int oldHeight) {
         scale = Math.min(width/source.crop.width(), height/source.crop.height());
         offsetX = (width-source.crop.width()*scale)*0.5f;

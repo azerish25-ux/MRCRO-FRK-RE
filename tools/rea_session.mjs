@@ -19,11 +19,20 @@ const sessionName = process.argv[2] ?? 'session';
 if (!/^[a-zA-Z0-9_-]+$/.test(sessionName)) throw new Error('Invalid session directory name');
 const output = path.join(storage, 'local/evidence', sessionName);
 await fs.mkdir(output, { recursive: true });
+// Scope REA's user/config paths to this project without changing the account.
+const taskProfile = path.join(storage, 'local/data/rea-user');
+const taskAppData = path.join(taskProfile, 'AppData/Roaming');
+const taskLocalAppData = path.join(taskProfile, 'AppData/Local');
+const taskConfig = path.join(storage, 'local/data/rea-config');
+const taskNodeCache = path.join(storage, 'local/cache/node-compile');
+await Promise.all([taskProfile, taskAppData, taskLocalAppData, taskConfig, taskNodeCache].map(directory => fs.mkdir(directory, { recursive: true })));
 const transport = new StdioClientTransport({
   command: process.execPath,
   args: [path.join(prefix, 'node_modules/rea-agents/scripts/rea.mjs'), 'mcp'],
   cwd: storage,
-  env: { ...process.env, REA_GHIDRA_STARTUP_TIMEOUT_MS: '1800000' },
+  env: { ...process.env, USERPROFILE: taskProfile, APPDATA: taskAppData,
+    LOCALAPPDATA: taskLocalAppData, XDG_CONFIG_HOME: taskConfig,
+    NODE_COMPILE_CACHE: taskNodeCache, REA_GHIDRA_STARTUP_TIMEOUT_MS: '1800000' },
   stderr: 'pipe',
 });
 const client = new Client({ name: 'minifreak-analysis', version: '0.1.0' });

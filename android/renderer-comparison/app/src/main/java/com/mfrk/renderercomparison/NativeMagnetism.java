@@ -15,6 +15,13 @@ public final class NativeMagnetism {
      *  plus flag20/flag21 in bits32/33. */
     public static native long phase(int phase, boolean matches, boolean reverse,
         float current, float held, boolean flag20, boolean flag21);
+    /** Current is raw parameter space. Bit32 means handled, bit33 means a target
+     *  exists; only then do the low float bits contain a view-space target.
+     *  A handled event with no target must not change the parameter. */
+    public static native long wheel(float[] zones, float current, float vertical,
+        boolean wheelReversed, boolean inertial, boolean reverse);
     public static float value(long packed) { return Float.intBitsToFloat((int)packed); }
     public static boolean skip(long packed) { return (packed & (1L << 32)) != 0; }
+    public static boolean handled(long packed) { return (packed & (1L << 32)) != 0; }
+    public static boolean hasTarget(long packed) { return (packed & (1L << 33)) != 0; }
 }

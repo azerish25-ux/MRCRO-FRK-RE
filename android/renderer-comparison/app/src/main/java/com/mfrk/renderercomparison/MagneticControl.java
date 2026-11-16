@@ -38,6 +38,9 @@ final class MagneticControl {
     long delta(float viewValue, float change, boolean wrap, boolean matches) {
         return NativeMagnetism.delta(zones, viewValue, change, flag20, flag21, wrap, matches);
     }
+    long wheel(float current, float vertical, boolean wheelReversed, boolean inertial, boolean reverse) {
+        return NativeMagnetism.wheel(zones, current, vertical, wheelReversed, inertial, reverse);
+    }
     JSONObject audit() throws org.json.JSONException {
         JSONObject result = new JSONObject();
         result.put("held", held); result.put("flag20", flag20); result.put("flag21", flag21);

@@ -1,0 +1,20 @@
+{
+  "wrapper_sha256": "354c26c58e4c8c671b50f88d070452b47c9cd6b6505b1ea18391724929b3d19e",
+  "source_stages": [
+    "f59770",
+    "f5a5c0",
+    "c55780"
+  ],
+  "cases": 3744,
+  "handled_events": 110,
+  "view_targets": 14,
+  "differences": 0,
+  "fixture_bytes": 183524,
+  "fixture_sha256": "a8605f6f4555a7f9a777d093277af12abbb8a9cf96be07a5107d63d5f56f52fd",
+  "source_gold_sha256": "a56b01906110aebd58c51a5759c3e5df9d1dc68f8e247664b2c0f03ccb14af63",
+  "scope": "Whole original magnetic wheel feature, owner thunk and native zone selection. GUI-controller lookup/current scalar getter and terminal c45d10 setter are supplied observed/model boundaries. Finite supplied records/current/vertical values. Direction reversal, guard byte10, zero delta, value reversal, point zones, nearest adjacent zones and handled-without-write boundaries. Pure runtime math takes the supplied getter value; caller owns actual getter effects, physical event adaptation, fallback handlers and slider setter conversion. Public fixture contains synthetic states only.",
+  "event_layout": "Observed vertical float at+4, reversal byte+8 and early-return guard byte+10; interpreted as JUCE-style wheel details. Android event adaptation is not inferred.",
+  "local_oracle": "local/build/probe_magnetic_wheel.py",
+  "local_source_gold": "local/evidence/native-ui-source/magnetic-wheel-source-v1.json",
+  "android_join": "Packed handled/has-target flags with view-space target only when present; current comparison control wrappers and remote instrumentation. Android build/runtime pending."
+}

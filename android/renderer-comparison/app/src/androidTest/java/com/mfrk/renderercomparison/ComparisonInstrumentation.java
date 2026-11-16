@@ -137,6 +137,16 @@ public final class ComparisonInstrumentation extends Instrumentation {
         try { NativeMagnetism.delta(new float[0], .5f, .1f, false, false, true, true); }
         catch (IllegalArgumentException expected) { rejected = true; }
         if (!rejected) throw new AssertionError("Empty wrapped magnetic profile");
+        float[] gaps = {0f,.2f,0f,.25f,0f, .4f,.6f,.5f,.75f,0f, .8f,1f,.9f,1f,0f};
+        long step = NativeMagnetism.wheel(gaps, .25f, .1f, false, false, false);
+        if (!NativeMagnetism.handled(step) || !NativeMagnetism.hasTarget(step) || NativeMagnetism.value(step) != .5f)
+            throw new AssertionError("Native magnetic wheel gap");
+        long edge = NativeMagnetism.wheel(new float[]{0f,1f,0f,1f,0f}, 0f, -.1f, false, false, false);
+        if (!NativeMagnetism.handled(edge) || NativeMagnetism.hasTarget(edge))
+            throw new AssertionError("Native magnetic wheel boundary");
+        long ignored = NativeMagnetism.wheel(null, Float.NaN, Float.NaN, false, true, false);
+        if (NativeMagnetism.handled(ignored) || NativeMagnetism.hasTarget(ignored))
+            throw new AssertionError("Native magnetic inertial guard");
     }
     private static void verifyNativeGeometry() {
         float[] bounds=NativeGeometry.center(125,125,1f,.69f);

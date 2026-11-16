@@ -446,5 +446,9 @@ jobs:
             adb push core/tests/magnetic_control_vectors.bin /data/local/tmp/magnetic_control_vectors.bin
             adb shell chmod 755 /data/local/tmp/magnetic_control_test
             adb shell /data/local/tmp/magnetic_control_test /data/local/tmp/magnetic_control_vectors.bin
+            adb push build-x86_64/magnetic_wheel_test /data/local/tmp/magnetic_wheel_test
+            adb push core/tests/magnetic_wheel_vectors.bin /data/local/tmp/magnetic_wheel_vectors.bin
+            adb shell chmod 755 /data/local/tmp/magnetic_wheel_test
+            adb shell /data/local/tmp/magnetic_wheel_test /data/local/tmp/magnetic_wheel_vectors.bin
       - name: Compare generated Android table bytes
         run: python3 tools/check_basic_wave_tables.py --dump build-x86_64/basic-wave-tables.bin --expected core/tests/basic_wave_table_hashes.json
