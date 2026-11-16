@@ -1,0 +1,36 @@
+{
+  "source_head": "ece168bee813eec5e08aa913b8a5539ad1fd3958",
+  "workflow_run": 43882334393,
+  "workflow_job": 133351211485,
+  "workflow_url": "https://github.com/azerish25-ux/MRCRO-FRK-RE/actions/runs/43882334393",
+  "conclusion": "success",
+  "remote_build": ["arm64-v8a", "x86_64", "debug instrumentation APK", "lintDebug"],
+  "emulator": "API35 x86_64 google_apis, pixel_2, workflow-pinned tools/actions",
+  "touch_assertions": [
+    "source coordinate nearest-even ties, including negative halves",
+    "two independently owned native controllers with reordered pointer indexes and stable IDs",
+    "lifting one finger preserves the other controller capture",
+    "cancel ends each edit once without extra parameter writes",
+    "historical samples execute before the current position",
+    "Ctrl fine adjustment switches without a value jump at rest",
+    "scaled source View hit and local coordinate conversion reaches the native controller",
+    "active attachment disposal ends and destroys its owner once; stale handles reject"
+  ],
+  "renderer_assertions": "Five explicit assignment captures: distinct four positions and exact repeated-frame stability, asset identities and crop bounds. No original-pixel oracle.",
+  "controller_profile": "Debug-only literal observer metadata, identity curve, linear magnetic zone, absent hover/reset timers; actual recovered core controller/sensitivity/magnetic math/writer bodies.",
+  "default_application_bindings": 0,
+  "remaining": [
+    "actual MiniFreak GUI host and widget metadata/controller registration",
+    "full scene, active timers, hover/tooltip/menus and complete touch interactions",
+    "full preset, DSP, MIDI and audio integration",
+    "original pixel and sound comparison",
+    "finished standalone Android application"
+  ],
+  "artifact": {
+    "id": 14232587663,
+    "name": "renderer-comparison-api35",
+    "size_in_bytes": 13443218,
+    "digest": "sha256:574d382377755d98990b69864daa7110ea86327d09bf5c818b23a2f6d1bc4332"
+  },
+  "local_execution": "Asset-free source checker and strict Windows C++ JNI compilation using D: portable tools only. Android SDK/build/emulator ran only in GitHub Actions."
+}
