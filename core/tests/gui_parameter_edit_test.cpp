@@ -7,7 +7,7 @@ using namespace mfrk::ui;
 using Input=std::array<std::uint32_t,10>;
 using Event=std::array<std::uint32_t,6>;
 std::vector<Event> events;
-struct Observer:GuiParameterObserver {void changed(std::uint32_t)override{throw std::logic_error("Edit observer notification");}};
+struct Observer:GuiParameterObserver {void changed(std::uint32_t)override{throw std::logic_error("Edit observer notification");}void scalar_changed(std::uint32_t,float)override{throw std::logic_error("Edit scalar notification");}};
 struct Mode:GuiParameterValue {
  const mfrk::preset_bank::Value* value=nullptr;
  const mfrk::preset_bank::Value* current()override{events.push_back({2,0,0,0,0,0});return value;}

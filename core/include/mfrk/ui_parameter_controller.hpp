@@ -35,8 +35,17 @@ struct GuiParameterObserver {
  // Source observer+40 points to a linked controller whose ID is at+8.
  // Link lifetime is owned by the application, not this callback interface.
  const std::uint32_t* linked_parameter=nullptr;
+ struct AliasRow {bool enabled;std::uint32_t id;};
+ std::vector<AliasRow> aliases;
  virtual ~GuiParameterObserver()=default;
  virtual void changed(std::uint32_t id)=0;
+ virtual void scalar_changed(std::uint32_t id,float value)=0;
+};
+struct GuiControlInfo {
+ bool flag08=false,flag09=false,flag0a=false,flag0b=false,flag0c=false,flag0d=false,flag0e=false;
+ std::uintptr_t view=0;
+ bool flag20=false,flag21=false,flag22=false,flag23=false,flag24=false;
+ std::int32_t midi28=0,midi2c=0;
 };
 struct GuiParameterDescriptor {
  std::uint32_t flags20=0;
@@ -51,6 +60,7 @@ struct GuiParameterState {
  std::uintptr_t context;
  GuiParameterObserver* observer;
  const GuiParameterDescriptor* descriptor=nullptr;
+ GuiControlInfo* control_info=nullptr;
 };
 // Source 6620e0/662900/662940/662980, diagnostics-disabled profile. Live, nonnull
 // backend, stable controller lifetime and serial callbacks required. Logging,

@@ -9,6 +9,7 @@ using namespace mfrk::ui;
 std::vector<Row> events;
 void freed(const void*){events.push_back({8,0,0,0,0,0});}
 struct Observer:GuiParameterObserver {
+ void scalar_changed(std::uint32_t,float)override{throw std::logic_error("Writer scalar notification");}
  std::uint32_t index;
  explicit Observer(std::uint32_t i):index(i){}
  void changed(std::uint32_t id)override{events.push_back({7,index,0,id,0,0});}

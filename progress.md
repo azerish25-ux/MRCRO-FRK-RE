@@ -1,5 +1,16 @@
 # Progress
 
+## 2026-11-16 GUI notification callback
+
+- Added the full source callback6616b0, control-info/feature state updates,
+  macro/MIDI data handling, linked typed-value alias propagation and source
+  changed/scalar delivery. The observed non-null control-info path is retained.
+- All640 original cases/4,249 events match locally; prior576 writer and384 edit
+  cases remain0differences. Real application services are required, not replaced
+  by false/default policy or empty callbacks.
+- Owned notifier checkpoint51df852 passed Native43965752803 and
+  Analysis43965752807, including600 steps/3,141 callbacks on Android.
+
 ## 2026-11-16 concrete parameter notifier
 
 - Added owned primary/alternate registration across three parts, directory

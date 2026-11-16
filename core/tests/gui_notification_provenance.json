@@ -1,0 +1,41 @@
+{
+  "wrapper_sha256": "354c26c58e4c8c671b50f88d070452b47c9cd6b6505b1ea18391724929b3d19e",
+  "source": [
+    "0x1806616b0",
+    "0x180661640",
+    "0x180661660",
+    "0x18064b210",
+    "0x180b66d90"
+  ],
+  "scope": "Whole original GUI parameter callback with real changed/scalar deliveries and typed alias copies. GUI parameter/feature/hardware/repaint/observer/write services are explicit observers. Non-null control info is exercised; selection, learn, macro/MIDI flags, valid data8/24, own-origin suppression, direct scalar origin6, linked origin5 and live state mutations covered. No concrete hardware services, scene renderer or full host claim.",
+  "cases": 640,
+  "events": 4249,
+  "fixture_bytes": 372936,
+  "fixture_sha256": "e14b4b90f3c12ca79eef9a2b27256f0b668d4fb9eb1b66074a10b9c817abaa60",
+  "original_capture_sha256": "9f5b01cfb38bfa272f51ef89eab29a8a62f1363fb0aa3dce148f4497453b0122",
+  "original_producer_sha256": "672e44a44bad573f12cae6b202aa842d566d863136bd526d67f9d5309d700f9f",
+  "packer_sha256": "6d9f1bdf5fe328f3c6bd7487e67f1ae173622fb1375a5297a3d3caf7003b580d",
+  "input_fields": [
+    "event",
+    "origin",
+    "descriptor_flags",
+    "info",
+    "config",
+    "initial",
+    "view",
+    "properties",
+    "learn",
+    "features",
+    "selected_bits",
+    "mapped",
+    "mapped_id",
+    "mappable",
+    "active_id",
+    "allowed",
+    "hardware_selected",
+    "linked",
+    "linked_id",
+    "aliases",
+    "mutation"
+  ]
+}
