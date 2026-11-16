@@ -1,5 +1,15 @@
 # Progress
 
+## 2026-11-16 source GUI edit gate
+
+- Added source edit-mode/link/selection routing662ce0 to the same controller as
+  value reads and writes. Linked selection preserves both flags and context;
+  live descriptor/backend fields reload after callbacks. All 384 original-body
+  comparisons match locally; prior 224 reads and 576 writer sequences remain0.
+- Preset-bank GUI read checkpointae0eb5d passed Native43936354255, including both
+  Android cross-builds and API35 original-vector execution. Full standalone
+  parameter host, listener lifetime, scene and sound/MIDI integration remain open.
+
 ## 2026-11-16 preset-bank GUI read integration
 
 - Added source raw-scalar GUI reads, preserving signed zero/nonfinite bits;

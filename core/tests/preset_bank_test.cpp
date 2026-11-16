@@ -11,6 +11,10 @@ struct ReadBank final:ui::GuiParameterBackend {
  BankPair& banks;std::optional<ui::GuiBankParameterView> view;
  explicit ReadBank(BankPair& b):banks(b){}
  ui::GuiParameterValue& parameter(std::uint32_t id)override{view=ui::GuiBankParameterView::resolve(banks.active(),id);if(!view)throw std::logic_error("Missing bank parameter");return *view;}
+ ui::GuiParameterValue* mode_parameter(std::uint32_t,std::uint32_t)override{throw std::logic_error("Read owner edit service");}
+ void select(std::uint32_t,bool,bool,std::uintptr_t)override{throw std::logic_error("Read owner edit service");}
+ ui::GuiParameterOwner& owner()override{throw std::logic_error("Read owner edit service");}
+ std::optional<std::uint32_t> selection(std::uint32_t,std::uint32_t)override{throw std::logic_error("Read owner edit service");}
  void begin(std::uint32_t,std::uint32_t)override{throw std::logic_error("Read owner");}
  void end(std::uint32_t,std::uint32_t)override{throw std::logic_error("Read owner");}
  void write(std::uint32_t,std::uint32_t,Value&)override{throw std::logic_error("Read owner");}

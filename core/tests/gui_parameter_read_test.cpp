@@ -14,6 +14,10 @@ struct Backend:GuiParameterBackend {
  GuiParameterState& state;Parameter& result;Backend* other=nullptr;bool mutate;std::uint32_t index;
  Backend(GuiParameterState& s,Parameter& p,bool m,std::uint32_t i):state(s),result(p),mutate(m),index(i){}
  GuiParameterValue& parameter(std::uint32_t id)override{events.push_back({1,index,id});if(mutate){state.backend=other;state.id=114;}return result;}
+ GuiParameterValue* mode_parameter(std::uint32_t,std::uint32_t)override{throw std::logic_error("Read fixture edit service");}
+ void select(std::uint32_t,bool,bool,std::uintptr_t)override{throw std::logic_error("Read fixture edit service");}
+ GuiParameterOwner& owner()override{throw std::logic_error("Read fixture edit service");}
+ std::optional<std::uint32_t> selection(std::uint32_t,std::uint32_t)override{throw std::logic_error("Read fixture edit service");}
  void begin(std::uint32_t,std::uint32_t)override{throw std::logic_error("Read fixture write");}
  void end(std::uint32_t,std::uint32_t)override{throw std::logic_error("Read fixture write");}
  void write(std::uint32_t,std::uint32_t,mfrk::preset_bank::Value&)override{throw std::logic_error("Read fixture write");}

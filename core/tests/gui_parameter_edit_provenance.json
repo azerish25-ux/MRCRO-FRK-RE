@@ -1,0 +1,12 @@
+{
+  "wrapper_sha256": "354c26c58e4c8c671b50f88d070452b47c9cd6b6505b1ea18391724929b3d19e",
+  "entries": [
+    "0x180662ce0",
+    "0x18064b7e0"
+  ],
+  "scope": "Original edit gate with explicit backend/parameter/owner selection observers and disabled diagnostics. Normal/linked selection flags and context, nullable mode/value/descriptor, NaN/negative/data modes, capability/optional selected ID, and callback mutations of backend/ID/context/link/descriptor. Live observer is required. No application mode policies or GUI service factory claim.",
+  "cases": 384,
+  "fixture_bytes": 65580,
+  "fixture_sha256": "fa5b18c15c2904a4a1fbc5b8af846ce723bfdb4a36fe6d2436ed917526e15ce2",
+  "producer_sha256": "20fe62aca60daa964d7f323ce62e402604c2e1118bacc4d0449b05a7f030f265"
+}

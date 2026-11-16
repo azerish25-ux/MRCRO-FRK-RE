@@ -12,8 +12,17 @@ The 576 original-instruction cases include both notification flags, null and
 changed observers, backend/ID/context replacement during callbacks, raw float
 bits and replacement heap cleanup. Local C++ comparison reports zero differences.
 The checked fixture and its provenance accompany the implementation. This does
-not establish backend write/undo behavior, registration lifetime, edit-mode
-selection or a complete Android parameter factory.
+not establish backend write/undo behavior, registration lifetime, application
+selection policies or a complete Android parameter factory.
+
+The source edit gate (`662ce0`) now queries mode parameter 11, handles a linked
+control, forwards both selection flags and context, and checks the live owner's
+selection capability and optional selected ID. Assembly confirms that the
+linked-control branch also forwards the flags/context omitted in the decompiler
+display. Descriptor and controller fields are read again after callbacks.
+All 384 original-body edit comparisons match locally, including callback changes
+to backend, ID, link and descriptor. A live observer is required; the actual
+application's mode/selection services and registration remain backend-owned.
 
 The read side (`6620e0` / `64b7e0`) resolves the parameter once and returns its
 stored scalar bits, including signed zero and nonfinite values. A null or data
