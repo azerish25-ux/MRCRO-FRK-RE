@@ -87,6 +87,7 @@ public:
   index_.clear();rows_.clear();std::vector<Iterator>().swap(first_);
  }
  bool destroying()const noexcept{return destroying_;}
+ std::uint64_t identity()const noexcept{return identity_;}
  std::size_t size()const noexcept{return rows_.size();}
  std::size_t bucket_count()const noexcept{return first_.size();}
  const Rows& registrations()const noexcept{return rows_;}

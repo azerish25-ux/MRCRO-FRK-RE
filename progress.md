@@ -1,5 +1,16 @@
 # Progress
 
+## 2026-11-16 concrete parameter notifier
+
+- Added owned primary/alternate registration across three parts, directory
+  routing, native listener-set order/growth, duplicate preservation, removal,
+  shared-payload primary dispatch and integrated cleanup in both directions.
+- All600 original native ownership/dispatch steps and3,141 callbacks match
+  locally, including520listeners and notifier closure during active dispatch.
+- Actual GUI callback families, feature-ID mapping, edit/write policy, bank
+  transfer and full application services remain open. No placeholder scalar
+  backend is substituted for those owners.
+
 ## 2026-11-16 live UI dispatcher capacity
 
 - Live source inspection found4,958 notifier keys/11,036 memberships, including

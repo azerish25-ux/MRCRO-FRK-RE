@@ -1,0 +1,21 @@
+{
+  "wrapper_sha256": "354c26c58e4c8c671b50f88d070452b47c9cd6b6505b1ea18391724929b3d19e",
+  "source": [
+    "0x1806d1280",
+    "0x1806d1330",
+    "0x1806d1510",
+    "0x1806d16a0",
+    "0x18064f800",
+    "0x18064f920",
+    "0x1806d10e0"
+  ],
+  "scope": "Original owned forward/reverse registration, primary dispatch and both cleanup directions execute from supplied live-validated empty notifier layouts. Native RobinHood lookup and pointer-set insert/remove/clone execute. Raw allocation services and actual listener callbacks are observers; callback actions remove membership, recurse into a missing key, mutate scalar data or close the notifier. Forward-key iteration canonicalized by key because physical outer-map layout is not an application interface; member/reverse list order and every callback field remain exact. No complete GUI callback-family/factory or full application claim.",
+  "cases": 2,
+  "steps": 600,
+  "callbacks": 3141,
+  "fixture_bytes": 55400,
+  "fixture_sha256": "fbab0c6a3fcf4431f9e8a9f0f71dd2ba9599309eb6f3ea5aad73581e01ff88df",
+  "original_capture_sha256": "7ceeec11a21f6e0e41fd91de6f0925d86dcc5c2e368aa69fc98b8191e9e3aa90",
+  "original_producer_sha256": "50307543d7ab43016aea0665b39d60ed19bae4c745bd8b9d12db0605be02b56b",
+  "packer_sha256": "98602f13a1f6607268c68590cb36a5897378add085530131774c65b9ec2dabfb"
+}
