@@ -1,0 +1,22 @@
+{
+  "wrapper_sha256": "354c26c58e4c8c671b50f88d070452b47c9cd6b6505b1ea18391724929b3d19e",
+  "source_stages": [
+    "f59680",
+    "f59930",
+    "f5a5c0",
+    "c55780",
+    "b66d90"
+  ],
+  "phase_cases": 5040,
+  "delta_cases": 6674,
+  "phase_differences": 0,
+  "delta_differences": 0,
+  "fixture_bytes": 491272,
+  "fixture_sha256": "8d8cf77ed81f9fc61c80e1c38105c53e78330f50760e6cb287cd5232d6c2f181",
+  "source_gold_sha256": "9fccd37923faf2c53964ff4470b27fb0fb6e62e5ce6fca6f3a5b9c85501f96ec",
+  "reference_ucrt_sha256": "dedb7611e1abc1ff3852dcac3d4c93a048d729e25b061973b9969f22698f14ca",
+  "scope": "Whole original magnetic gesture-state function and whole delta/zone-selection path, including wrapping and mismatched parameter IDs. Selected-ID lookup/owner thunks execute. Phase GUI-controller lookup/current-scalar getter are supplied boundaries; wrapped delta calls identified real UCRT fmodf. Valid supplied finite state/zone profiles only; no FP-status, constructor, full widget lifecycle, pointer sensitivity, final clamp/reverse writeback, actual setter/gesture dispatch, tooltip or renderer-pixel claim. Raw phase integers are not inferred Android MotionEvent actions. Public fixture contains synthetic control states only.",
+  "local_oracle": "local/build/probe_magnetic_control.py",
+  "local_source_gold": "local/evidence/native-ui-source/magnetic-control-source-v1.json",
+  "android_join": "Renderer comparison JNI, raw magnetic control state and literal resolved zone bindings for the existing three source controls. Argument guards and exact packed values are checked in remote instrumentation; Android build/runtime pending."
+}

@@ -13,6 +13,7 @@ import org.json.JSONArray;
 public final class RendererComparisonView extends View {
     private final SourceScene source;
     private final SilverSoftKnob[] widgets = new SilverSoftKnob[3];
+    private final MagneticControl[] mappings = new MagneticControl[3];
     private final RectF[] bounds = new RectF[3], labels = new RectF[3];
     private final Paint labelPaint = new Paint(Paint.ANTI_ALIAS_FLAG | Paint.SUBPIXEL_TEXT_FLAG);
     private final Paint bitmapPaint = new Paint(Paint.ANTI_ALIAS_FLAG | Paint.FILTER_BITMAP_FLAG);
@@ -34,6 +35,8 @@ public final class RendererComparisonView extends View {
                 labels[i] = SourceScene.rectangle(node.getJSONObject("label").getJSONArray("bounds"));
                 widgets[i] = new SilverSoftKnob(node.getJSONObject("style"), bounds[i].width());
                 parameters[i] = (float)node.getDouble("factory_normalized");
+                // Explicit comparison initial state; factory lifecycle is separate.
+                mappings[i] = new MagneticControl(node.getJSONArray("zones"), -1f, false, false);
             }
         } catch (Exception e) { throw new IllegalStateException("Source knobs", e); }
     }
@@ -45,6 +48,15 @@ public final class RendererComparisonView extends View {
     }
     public void assignExplicitCenterTexts(String cutoff, String resonance, String envelope) {
         centerTexts[0]=cutoff; centerTexts[1]=resonance; centerTexts[2]=envelope; invalidate();
+    }
+    /** Logical source phase only; MotionEvent dispatch remains a separate join. */
+    public void controlPhase(int index, int phase, boolean matches, boolean reverse) {
+        mappings[index].phase(phase, matches, parameters[index], reverse);
+    }
+    /** Returns the native view-space result; caller owns clamp/reverse/setter policy. */
+    public long mapControlDelta(int index, float delta, boolean reverse, boolean wrap, boolean matches) {
+        float current = reverse ? 1f - parameters[index] : parameters[index];
+        return mappings[index].delta(current, delta, wrap, matches);
     }
     @Override protected void onSizeChanged(int width,int height,int oldWidth,int oldHeight) {
         scale = Math.min(width/source.crop.width(), height/source.crop.height());
@@ -60,8 +72,8 @@ public final class RendererComparisonView extends View {
         canvas.drawBitmap(source.background,null,source.backgroundBounds,bitmapPaint);
         try {
             for (int i=0;i<3;++i) {
-                // Endpoints/center vectors are unambiguous. General native magnetic
-                // inverse mapping is deliberately not guessed by this drawing primitive.
+                // Explicit comparison assignments feed the recovered marker geometry.
+                // Full native getter/paint lifecycle remains a separate join.
                 widgets[i].draw(canvas,bounds[i].left,bounds[i].top,parameters[i],centerTexts[i],source.valueFont);
                 JSONObject label = source.knobs[i].getJSONObject("label");
                 labelPaint.setColor(SourceScene.color(label.getString("color")));
@@ -91,6 +103,7 @@ public final class RendererComparisonView extends View {
                 n.put("source_id",source.knobs[i].getString("source_id"));
                 n.put("source_bounds",source.knobs[i].getJSONArray("bounds"));
                 n.put("center_text",centerTexts[i]);assignments.put(n);
+                n.put("magnetic_state",mappings[i].audit());
             }
             result.put("assignments",assignments);result.put("drawn_frames",drawnFrames);
             result.put("value_mapping","explicit normalized endpoints/center; arbitrary native magnetic mapping unverified");

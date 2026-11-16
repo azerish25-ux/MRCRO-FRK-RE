@@ -30,6 +30,7 @@ public final class ComparisonInstrumentation extends Instrumentation {
             if (!directory.isDirectory() && !directory.mkdirs()) throw new AssertionError("Output directory");
             verifyAssets();
             verifyNativeGeometry();
+            verifyNativeMagnetism();
             String[] names={"minimum","center","factory-default","maximum","factory-repeat"};
             float[][] values={{0,0,0},{0.5f,0.5f,0.5f},{1,0,0.5f},{1,1,1},{1,0,0.5f}};
             JSONArray cases=new JSONArray(); HashSet<String> unique=new HashSet<>(); String factoryHash=null;
@@ -37,6 +38,20 @@ public final class ComparisonInstrumentation extends Instrumentation {
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             RendererComparisonActivity activity=(RendererComparisonActivity)startActivitySync(intent);
             RendererComparisonView view=activity.getComparisonView();
+            runOnMainSync(() -> {
+                view.assignNormalized(.5f, .5f, .5f);
+                view.controlPhase(2, 0, true, false);
+                long mapped = view.mapControlDelta(2, .1f, false, false, true);
+                if (Float.floatToRawIntBits(NativeMagnetism.value(mapped)) != 0x3f10b216 || NativeMagnetism.skip(mapped))
+                    throw new AssertionError("Source envelope zone mapping");
+                view.assignNormalized(.5f, .5f, NativeMagnetism.value(mapped));
+                view.controlPhase(2, 2, true, false);
+                try {
+                    JSONObject state = view.audit().getJSONArray("assignments").getJSONObject(2).getJSONObject("magnetic_state");
+                    if (state.getBoolean("flag20") || !state.getBoolean("flag21") || state.getDouble("held") != .5 || state.getInt("zone_count") != 3)
+                        throw new AssertionError("Source magnetic phase state");
+                } catch (org.json.JSONException error) { throw new AssertionError(error); }
+            });
             for (int index=0;index<names.length;++index) {
                 final float[] assigned=values[index];
                 CountDownLatch frame=new CountDownLatch(1);
@@ -100,6 +115,28 @@ public final class ComparisonInstrumentation extends Instrumentation {
             android.util.Log.e("RendererComparison","Instrumentation failure",error);
             result.putString("stream","Renderer comparison failed: "+error+"\n");finish(Activity.RESULT_CANCELED,result);
         }
+    }
+    private static void verifyNativeMagnetism() {
+        float[] zones = {0f,.46f,0f,.5f,0f, .46f,.54f,.5f,.5f,0f, .54f,1f,.5f,1f,0f};
+        long phase = NativeMagnetism.phase(0, true, false, .5f, -1f, false, false);
+        if (Float.floatToRawIntBits(NativeMagnetism.value(phase)) != 0x3f000000 || (phase >>> 32) != 1)
+            throw new AssertionError("Native magnetic phase0");
+        long mapped = NativeMagnetism.delta(zones, .5f, .1f, true, false, false, true);
+        if (Float.floatToRawIntBits(NativeMagnetism.value(mapped)) != 0x3f10b216 || NativeMagnetism.skip(mapped))
+            throw new AssertionError("Native magnetic delta");
+        phase = NativeMagnetism.phase(2, true, false, NativeMagnetism.value(mapped), .5f, true, false);
+        if (Float.floatToRawIntBits(NativeMagnetism.value(phase)) != 0x3f000000 || (phase >>> 32) != 2)
+            throw new AssertionError("Native magnetic phase2");
+        long wrapped = NativeMagnetism.delta(new float[]{0f,.25f,0f,1f,0f}, .75f, .1f, false, false, true, true);
+        if (Float.floatToRawIntBits(NativeMagnetism.value(wrapped)) != 0x3e199998)
+            throw new AssertionError("Native magnetic wrap");
+        long unmatched = NativeMagnetism.delta(null, .5f, .1f, true, true, true, false);
+        if (NativeMagnetism.value(unmatched) != -1f || NativeMagnetism.skip(unmatched))
+            throw new AssertionError("Native magnetic unmatched parameter");
+        boolean rejected = false;
+        try { NativeMagnetism.delta(new float[0], .5f, .1f, false, false, true, true); }
+        catch (IllegalArgumentException expected) { rejected = true; }
+        if (!rejected) throw new AssertionError("Empty wrapped magnetic profile");
     }
     private static void verifyNativeGeometry() {
         float[] bounds=NativeGeometry.center(125,125,1f,.69f);

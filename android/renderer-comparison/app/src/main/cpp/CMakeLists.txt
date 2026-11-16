@@ -5,3 +5,4 @@ add_library(mfrk_knob_geometry SHARED knob_geometry_jni.cpp "${REPO_ROOT}/core/s
 target_include_directories(mfrk_knob_geometry PRIVATE "${REPO_ROOT}/core/include")
 target_compile_features(mfrk_knob_geometry PRIVATE cxx_std_20)
 target_compile_options(mfrk_knob_geometry PRIVATE -fno-fast-math -ffp-contract=off)
+target_link_libraries(mfrk_knob_geometry PRIVATE m)

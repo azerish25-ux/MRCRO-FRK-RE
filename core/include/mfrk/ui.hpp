@@ -34,11 +34,19 @@ std::array<float,4> center_marker_points(std::int32_t width,std::int32_t height,
 
 struct MagneticZone {float position_from,position_to,value_from,value_to;bool skip_at_drag_start;};
 struct MagneticResult {float value;bool skip;};
-// Source0x180f59930 matching-param/non-wrapping branch. Finite value/delta and
+struct MagneticGesture {float held_value;bool flag20,flag21;};
+// Source f59680 state projection with supplied selected-ID comparison/current
+// scalar getter result. Raw phases 0 and 2 are not Android MotionEvent meanings.
+// Finite current/held values; reverse transforms the raw current value first.
+void magnetic_phase(MagneticGesture&,std::uint32_t phase,bool matches,
+    float current_value,bool reverse) noexcept;
+// Source0x180f59930. A mismatched parameter returns {-1,false}. Finite value/delta and
 // sorted native zone records; intermediates finite, nonzero interpolated spans.
 // Endpoint/plateau/point zones are admitted. Caller owns zone lifetime and flags.
+// Wrapping requires nonempty zones and a finite positive final position_to;
+// that final endpoint is the source fmodf period. Clamp/setter/pointer units are separate.
 MagneticResult magnetic_delta(std::span<const MagneticZone> zones,
-    float value,float delta,bool flag20,bool flag21) noexcept;
+    float value,float delta,bool flag20,bool flag21,bool wrap=false,bool matches=true) noexcept;
 
 // Source0x181071293 edge projection. Coordinates and separately rounded float
 // endpoint sums must truncate to signed32; endpoint differences must also fit.

@@ -119,8 +119,16 @@ std::array<float,4> center_marker_points(std::int32_t width,std::int32_t height,
             center_x-sine*end,end*cosine+center_y};
 }
 
+void magnetic_phase(MagneticGesture& state,std::uint32_t phase,bool matches,float current,bool reverse) noexcept {
+ if(!matches){state.held_value=-1.f;return;}
+ if(reverse)current=1.f-current;
+ if(phase==0){state.held_value=current;state.flag20=true;state.flag21=false;}
+ else if(phase==2){const bool previous=state.flag20;state.flag20=previous&&current==state.held_value;state.flag21=previous&&!state.flag20;}
+}
+
 MagneticResult magnetic_delta(std::span<const MagneticZone> zones,
-    float value,float delta,bool flag20,bool flag21) noexcept {
+    float value,float delta,bool flag20,bool flag21,bool wrap,bool matches) noexcept {
+ if(!matches)return {-1.f,false};
  const auto* before=zone_for_value(zones,value);float position=value;
  if(before){
   const auto& z=*before;
@@ -136,7 +144,9 @@ MagneticResult magnetic_delta(std::span<const MagneticZone> zones,
    position=ratio*output_span+z.position_from;
   }
  }
- position=position+delta;float result=position;
+ position=position+delta;
+ if(wrap){assert(!zones.empty()&&zones.back().position_to>0.f);const auto period=zones.back().position_to;position=std::fmod(position,period);if(position<0.f)position=position+period;}
+ float result=position;
  for(const auto& z:zones){
   if(z.position_from==position||(z.position_from<position&&position<z.position_to)){
    if(z.position_from!=z.position_to&&z.value_from!=z.value_to){
