@@ -2,6 +2,7 @@
 #include <array>
 #include <cstdint>
 #include <span>
+#include <optional>
 #include <string_view>
 
 namespace mfrk::preset {
@@ -17,4 +18,14 @@ struct NumericWrite { std::uint32_t id, origin, tag; std::uint64_t length; std::
 // Selected tag-1 descriptor, mode 2 and eligible scope only; raw float bits.
 NumericWrite select_numeric(std::uint32_t id, bool present, std::uint32_t saved,
                             std::uint32_t fallback, bool reset, std::uint32_t reset_bits);
+struct NumericApplyInput {
+ std::uint32_t saved,fallback,reset_value,current,context_word;
+ bool present,reset,optimize,dirty;
+};
+struct NumericNotification {std::uint32_t origin,tag,length,bits;};
+struct NumericApplyResult {std::uint32_t bits;bool dirty;std::optional<NumericNotification> notification;};
+// Selected saved-in-preset tag-1 descriptor and valid receiver. Preserves the
+// original comparison/notification policy, including signed zero and unordered
+// values. Registry selection, defaults and downstream delivery are caller-owned.
+NumericApplyResult apply_numeric(NumericApplyInput) noexcept;
 }

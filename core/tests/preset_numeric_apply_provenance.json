@@ -1,0 +1,8 @@
+{
+  "source_functions": ["0x1806c6160", "0x1806cbf30", "0x1806cc510"],
+  "wrapper_sha256": "354c26c58e4c8c671b50f88d070452b47c9cd6b6505b1ea18391724929b3d19e",
+  "fixture_sha256": "78ddd619d92c1fbe35228d81f8bdd2ca5a81b36f9ce2fd2b018a24362097fb6d",
+  "cases": 3840,
+  "scope": "Selected saved-in-preset numeric descriptor and valid receiver; raw storage, dirty state and notification selection. Original unordered comparison includes NaNs and signed zero. Registry eligibility, defaults, actual listener delivery and DSP remain separate.",
+  "local_source": "local/evidence/preset-library-agent/migrations/loader-wt/cpp/ordinary_numeric_apply.hpp"
+}

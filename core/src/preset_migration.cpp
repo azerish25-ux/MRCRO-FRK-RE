@@ -43,4 +43,11 @@ Value convert_discrete(const Definition& definition,Version version,Value value,
 NumericWrite select_numeric(std::uint32_t id,bool present,std::uint32_t saved,std::uint32_t fallback,bool reset,std::uint32_t reset_bits){
  return {id,2,1,4,reset?reset_bits:present?saved:fallback};
 }
+NumericApplyResult apply_numeric(NumericApplyInput in) noexcept {
+ const auto value=in.reset?in.reset_value:in.present?in.saved:in.fallback;
+ const auto nan=[](std::uint32_t v){return(v&0x7f800000u)==0x7f800000u&&(v&0x007fffffu)!=0;};
+ const bool equal=in.current==value||((in.current&0x7fffffffu)==0&&(value&0x7fffffffu)==0)||nan(in.current)||nan(value);
+ if(!in.reset&&in.optimize&&in.context_word==0&&equal)return{in.current,in.dirty,std::nullopt};
+ return{value,true,NumericNotification{4,1,4,value}};
+}
 }
