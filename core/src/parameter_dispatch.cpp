@@ -9,14 +9,27 @@ std::uint64_t hash(std::uint64_t identity) noexcept {
 }
 }
 std::optional<std::vector<std::uint64_t>> snapshot(const ListenerSet& source){
- if(source.buckets<8||source.buckets>512||(source.buckets&(source.buckets-1))!=0||source.iteration.size()>128||source.iteration.size()>source.buckets)return std::nullopt;
- std::vector<std::uint64_t> result;result.reserve(source.iteration.size());const auto mask=source.buckets-1;
- for(auto identity:source.iteration){
-  if(!identity||std::find(result.begin(),result.end(),identity)!=result.end())return std::nullopt;
-  const auto bucket=hash(identity)&mask;
-  const auto position=std::find_if(result.begin(),result.end(),[&](auto other){return (hash(other)&mask)==bucket;});
-  result.insert(position,identity);
+ if(source.buckets<8||source.buckets>65536||(source.buckets&(source.buckets-1))!=0||source.iteration.size()>16384||source.iteration.size()>source.buckets)return std::nullopt;
+ auto result=source.iteration;
+ std::sort(result.begin(),result.end());
+ if(!result.empty()&&(result.front()==0||std::adjacent_find(result.begin(),result.end())!=result.end()))return std::nullopt;
+ result.clear();
+ const auto end=source.iteration.size();if(!end)return result;
+ struct Link {std::size_t previous,next;};
+ std::vector<Link> links(end);std::vector<std::size_t> first(source.buckets,end);
+ std::size_t head=end,tail=end;const auto mask=source.buckets-1;
+ // Reproduce native list insertion before the first node of a populated
+ // bucket, or before the list sentinel for an empty bucket. Index links avoid
+ // repeatedly moving or hashing the entire list for large real UI fanouts.
+ for(std::size_t i=0;i<end;++i){
+  auto& position=first[hash(source.iteration[i])&mask];
+  const auto previous=position==end?tail:links[position].previous;
+  links[i]={previous,position};
+  if(position==end)tail=i;else links[position].previous=i;
+  if(previous==end)head=i;else links[previous].next=i;
+  position=i;
  }
+ for(auto i=head;i!=end;i=links[i].next)result.push_back(source.iteration[i]);
  return result;
 }
 }

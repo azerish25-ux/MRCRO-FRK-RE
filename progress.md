@@ -1,5 +1,16 @@
 # Progress
 
+## 2026-11-16 live UI dispatcher capacity
+
+- Live source inspection found4,958 notifier keys/11,036 memberships, including
+  a499-listener UI set. Expanded the earlier128-listener adapter admission to
+  16,384listeners and65,536buckets before full host attachment.
+- Preserved source clone ordering using index links rather than repeated list
+  moves/hash scans. All136,472 original callbacks in44large profiles match
+  locally; all3,336 callbacks in134older profiles remain matched.
+- Source reverse-owner checkpoint024c313 passed Native43954015135 and
+  Analysis43954015036. Full forward notifier and UI host remain in progress.
+
 ## 2026-11-16 notifier-to-listener detachment
 
 - Added source64f920 to forget all reverse registrations for a notifier without

@@ -5,7 +5,7 @@
 namespace mfrk::parameter_dispatch {
 // Current native unordered listener-set iteration and capacity, before dispatch.
 // Identities are opaque native-address-equivalent tokens, not owned objects.
-// Supplied max-load-factor-1 profile: 8..512 power-of-two buckets, <=128 unique
+// Supplied max-load-factor-1 profile: 8..65536 power-of-two buckets, <=16384 unique
 // nonzero identities, count <= buckets. These are adapter admissions.
 struct ListenerSet {std::uint32_t buckets=8;std::vector<std::uint64_t> iteration;};
 std::optional<std::vector<std::uint64_t>> snapshot(const ListenerSet&);

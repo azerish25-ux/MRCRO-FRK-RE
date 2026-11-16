@@ -434,6 +434,10 @@ jobs:
             adb push core/tests/parameter_dispatch_vectors.bin /data/local/tmp/parameter_dispatch_vectors.bin
             adb shell chmod 755 /data/local/tmp/parameter_dispatch_test
             adb shell /data/local/tmp/parameter_dispatch_test /data/local/tmp/parameter_dispatch_vectors.bin
+            adb push build-x86_64/parameter_dispatch_large_test /data/local/tmp/parameter_dispatch_large_test
+            adb push core/tests/parameter_dispatch_large_vectors.bin /data/local/tmp/parameter_dispatch_large_vectors.bin
+            adb shell chmod 755 /data/local/tmp/parameter_dispatch_large_test
+            adb shell /data/local/tmp/parameter_dispatch_large_test /data/local/tmp/parameter_dispatch_large_vectors.bin
             adb push build-x86_64/parameter_receiver_test /data/local/tmp/parameter_receiver_test
             adb push core/tests/parameter_receiver_vectors.bin /data/local/tmp/parameter_receiver_vectors.bin
             adb shell chmod 755 /data/local/tmp/parameter_receiver_test

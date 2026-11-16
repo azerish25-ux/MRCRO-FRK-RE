@@ -39,6 +39,6 @@ int main(int argc,char**argv)try{
   differences+=!accepted||boundary.events!=expected||boundary.lookups!=expected_lookups||boundary.source.iteration.size()!=remaining||state.dispatching!=bool(busy_after)||payload!=payload_after;
  }
  if(position!=bytes.size()||callbacks!=3336)return 2;
- for(const ListenerSet& bad:std::vector<ListenerSet>{{7,{}},{9,{}},{1024,{}},{8,{0}},{8,{1,1}},{8,std::vector<std::uint64_t>(9,1)}})if(snapshot(bad))return 3;
+ for(const ListenerSet& bad:std::vector<ListenerSet>{{7,{}},{9,{}},{131072,{}},{8,{0}},{8,{1,1}},{8,std::vector<std::uint64_t>(9,1)}})if(snapshot(bad))return 3;
  std::cout<<"{\"cases\":134,\"callbacks\":"<<callbacks<<",\"differences\":"<<differences<<"}\n";return differences?1:0;
 }catch(const std::exception& error){std::cerr<<error.what();return 2;}

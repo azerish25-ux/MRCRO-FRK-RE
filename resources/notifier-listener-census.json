@@ -1,0 +1,32 @@
+{
+  "schema": 1,
+  "wrapper_sha256": "354c26c58e4c8c671b50f88d070452b47c9cd6b6505b1ea18391724929b3d19e",
+  "observation": "Read-only original standalone Advanced page primary notifier, 2026-11-16",
+  "parameter_keys": 4958,
+  "total_listener_memberships": 11036,
+  "histogram": {
+    "1": 3222,
+    "2": 1017,
+    "3": 632,
+    "4": 32,
+    "5": 2,
+    "6": 11,
+    "7": 3,
+    "8": 7,
+    "10": 1,
+    "11": 3,
+    "12": 6,
+    "16": 13,
+    "36": 1,
+    "39": 1,
+    "229": 1,
+    "492": 2,
+    "497": 1,
+    "498": 2,
+    "499": 1
+  },
+  "max_members": 499,
+  "max_parameter_id": "0x80003382",
+  "max_set_buckets": 512,
+  "scope": "Observed live registration sizes only, not complete scenario coverage. Contains no parameter/preset values or live listener pointers."
+}

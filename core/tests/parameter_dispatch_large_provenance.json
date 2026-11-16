@@ -1,0 +1,15 @@
+{
+  "wrapper_sha256": "354c26c58e4c8c671b50f88d070452b47c9cd6b6505b1ea18391724929b3d19e",
+  "source": "0x1806d16a0",
+  "cases": 44,
+  "callbacks": 136472,
+  "scope": "Original dispatcher, pointer-set insertion/clone/destruction and aligned allocator execute for129..16384listeners,512..65536buckets. Exact-key lookup/callback actions are observers; callbacks can clear original membership, recurse into a missing dispatch, or change shared scalar data. Raw allocation arena is16MiB with native large-allocation guards unchanged. No concrete callback/GUI factory or full notifier-map claim.",
+  "observed_live_max_listeners": 499,
+  "observed_live_max_set_buckets": 512,
+  "fixture_bytes": 276752,
+  "fixture_sha256": "652fcf08d1e0f72fc2fe97804afcc7b0941bf9e6afe4c25269b66d58374bad51",
+  "original_capture_sha256": "ca17276e1355742808adb5406660d72ffc303e05dfb2f5489b68500f31330453",
+  "original_producer_sha256": "84746b73181bd44d04a94636703b117827dd646f78917d0b4cd916f06da3a81d",
+  "packer_sha256": "933f0d1b9796b1f7bcba051a925937d77fd549c6a7cadd5ac594418c12fd40dc",
+  "encoding": "Synthetic pointer identities encoded as base+16*uint16slot; complete callback identity/key/origin/busy/payload event streams verified by SHA256 of little-endian Q4I records."
+}
