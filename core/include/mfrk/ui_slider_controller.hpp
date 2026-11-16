@@ -4,8 +4,9 @@ namespace mfrk::ui {
 struct SliderPointerConfig {
  bool disabled_bit40,has_parent,enabled_override,suppress_drag,button_gate;
  std::uint32_t drag_phase;
+ bool wheel_enabled=false;
 };
-struct SliderPointerState {bool dragged;std::uint32_t parameter_to_paint;};
+struct SliderPointerState {bool dragged;std::uint32_t parameter_to_paint;float wheel_position=0;};
 // Host owns actual controller/metadata, coordinate transform, pointer capture
 // and feature dispatch. info(...,true) must return the owner's custom info.
 // blocked(0xffffffff) queries selected-parameter metadata, as in source drag.
@@ -18,8 +19,17 @@ struct SliderControllerHost:SliderBeginBoundary,SliderValueBoundary {
  virtual MagneticResult map(float value,float delta,std::uint32_t id)=0;
  virtual void after_down(const SliderDragEvent&)=0;
  virtual void after_drag(const SliderDragEvent&)=0;
+ // Source release's desktop cursor restoration and hover-timer prelude.
+ // Touch hosts use their non-mouse pointer mode; no cursor warp is implied.
+ virtual void before_up(const SliderDragEvent&,bool dragged)=0;
+ virtual void end_edit(std::uint32_t id)=0;
+ // Query the live timer owner after end_edit and perform its source reset/start
+ // sequence if present. A null timer owner is a no-op, not a scheduled write.
+ virtual void reset_timer()=0;
+ virtual void after_up(const SliderDragEvent&)=0;
 };
-// ISlider source routing c450e0/c45370, c45db0/c45d10 plus recovered
+// ISlider source routing c450e0/c45370 and c46f30 after its platform/hover
+// prelude, c45db0/c45d10 plus recovered
 // begin/drag/value bodies. Supplied state/config remain live across callbacks.
 // The host must implement real GUI services; no plain-assignment substitute is
 // installed here. finite component profiles, serial access, stable host lifetime.
@@ -37,6 +47,7 @@ public:
   :pointer_config_(p),pointer_state_(s),drag_config_(d),drag_state_(t),value_config_(v),host_(h){}
  void down(const SliderDragEvent&);
  void drag(const SliderDragEvent&);
+ void up(const SliderDragEvent&);
  float write(float view_value,std::uint32_t id,bool request_custom,bool precise);
  float write_selected(float view_value);
 };

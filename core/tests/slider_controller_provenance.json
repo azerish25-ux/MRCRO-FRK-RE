@@ -7,12 +7,13 @@
     "c454f0",
     "c45db0",
     "c45d10",
-    "c45ec0"
+    "c45ec0",
+    "c46f30"
   ],
-  "source_report_sha256": "d71e27899874d6496ad7d97b883c9cd2bbd2ce664e9daf8bf53bc6b783d219af",
-  "fixture_sha256": "7dec43c3ddb4280c63a01cb432e28cebe3591d0d94572c1e33b0169ff5e87369",
-  "fixture_bytes": 191196,
+  "source_report_sha256": "9c25928a0db7c43da48cbcffffb688d5517126d31d547d8caf0232a7c6431178",
+  "fixture_sha256": "82eeec940371389a39021a216aa066d85766f1dbf5a122a09a2131775e80e753",
+  "fixture_bytes": 213372,
   "cases": 192,
-  "events": 5676,
-  "scope": "Original whole pointer-down then drag bodies, explicit/selected writes, original begin/drag/metadata dispatch/value conversion+writer, actual WithMagnetism delta and UCRT formatting. Identity curves and supplied parent/pointer/phase/controller/lock/sensitivity/global/post services. No release, physical Android pointer or full GUI/controller claim."
+  "events": 6084,
+  "scope": "Original whole pointer-down/drag/non-mouse release bodies, explicit/selected writes, original begin/drag/metadata dispatch/value conversion+writer, actual WithMagnetism delta and UCRT formatting. Identity curves and supplied parent/pointer/phase/controller/lock/sensitivity/global/post services. Release profile has disabled hover/reset timers and non-mouse pointer mode; no desktop warp, active timer, physical Android pointer or full GUI/controller claim."
 }

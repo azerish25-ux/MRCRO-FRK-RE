@@ -46,4 +46,14 @@ void SliderController::drag(const SliderDragEvent& event){
  }
  host_.after_drag(event);
 }
+void SliderController::up(const SliderDragEvent& event){
+ host_.before_up(event,pointer_state_.dragged);
+ pointer_state_.dragged=false;
+ if(!allowed())return;
+ auto id=host_.selected_id();
+ if(!host_.phase(1,event,id)){host_.end_edit(id);host_.reset_timer();}
+ pointer_state_.wheel_position=0.f;
+ if(pointer_config_.wheel_enabled)drag_state_.parameter_id=0xffffffffu;
+ host_.after_up(event);
+}
 }
