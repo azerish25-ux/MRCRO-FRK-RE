@@ -1,0 +1,20 @@
+{
+  "wrapper_sha256": "354c26c58e4c8c671b50f88d070452b47c9cd6b6505b1ea18391724929b3d19e",
+  "source_stages": [
+    "6d16a0",
+    "6d66f0",
+    "581560",
+    "6a00d0",
+    "5bd050"
+  ],
+  "cases": 134,
+  "callbacks": 3336,
+  "differences": 0,
+  "fixture_bytes": 100892,
+  "fixture_sha256": "c0f965fa67dc28663d0f4497216302e6e456a64f7693a48346c3169bcac0da79",
+  "source_gold_sha256": "093b2ae687d5ee2d091bc5a53159be28e3239e2ad0ac1db3bb4951936adc46eb",
+  "scope": "Source dispatcher and native listener-set insertion/clone/destruction executed against supplied valid owned max-load-factor-1 sets. Exact-key RobinHood lookup is a supplied found/missing boundary; callbacks are modeled observers/actions. Checks native pointer-hash clone order, lookup/callback busy flag, missing lookup, prior busy state, clearing original subscriptions during dispatch, nested missing dispatch and mutations of the shared scalar payload. Public fixture contains synthetic tokens and values only. Runtime uses caller-supplied current listener-set iteration/capacity and callback boundary. Does not construct/register native listeners, implement lookup ownership/transfer, execute actual Arturia callback families, or prove full controller/GUI/DSP parity.",
+  "local_oracle": "local/build/probe_listener_snapshot.py",
+  "local_source_gold": "local/evidence/preset-library-agent/dispatcher-snapshot-source-v3.json",
+  "allocator_boundary": "Original 586a50 aligned allocation body executes; identified operator-new allocation and CRT free are owned memory service boundaries. No host vendor code called."
+}

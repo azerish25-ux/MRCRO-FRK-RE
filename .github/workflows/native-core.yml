@@ -430,5 +430,9 @@ jobs:
             adb push build-x86_64/wheels_listener_test /data/local/tmp/wheels_listener_test
             adb shell chmod 755 /data/local/tmp/wheels_listener_test
             adb shell /data/local/tmp/wheels_listener_test
+            adb push build-x86_64/parameter_dispatch_test /data/local/tmp/parameter_dispatch_test
+            adb push core/tests/parameter_dispatch_vectors.bin /data/local/tmp/parameter_dispatch_vectors.bin
+            adb shell chmod 755 /data/local/tmp/parameter_dispatch_test
+            adb shell /data/local/tmp/parameter_dispatch_test /data/local/tmp/parameter_dispatch_vectors.bin
       - name: Compare generated Android table bytes
         run: python3 tools/check_basic_wave_tables.py --dump build-x86_64/basic-wave-tables.bin --expected core/tests/basic_wave_table_hashes.json
