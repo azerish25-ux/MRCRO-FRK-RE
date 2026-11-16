@@ -21,4 +21,17 @@ struct View {
 // attachment decoding and audio behavior remain separate. Throws invalid_argument
 // on unsupported or malformed inputs. Input is limited to 64 MiB.
 View parse(std::span<const std::byte>,bool allow_attachment_archive=false);
+// Owns immutable archive bytes for background loading and subsequent staging.
+// Moving preserves all views in the destination and empties the moved-from view.
+class Owned {
+ std::vector<std::byte> storage_;
+ View view_;
+public:
+ explicit Owned(std::span<const std::byte>,bool allow_attachment_archive=false);
+ explicit Owned(std::vector<std::byte>,bool allow_attachment_archive=false);
+ Owned(const Owned&)=delete;Owned& operator=(const Owned&)=delete;
+ Owned(Owned&&) noexcept;
+ Owned& operator=(Owned&&) noexcept;
+ const View& view() const noexcept {return view_;}
+};
 }

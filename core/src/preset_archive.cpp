@@ -1,6 +1,8 @@
 #include "mfrk/preset_archive.hpp"
 #include <charconv>
 #include <cmath>
+#include <cstdlib>
+#include <locale.h>
 #include <stdexcept>
 #include <string>
 #include <system_error>
@@ -39,10 +41,31 @@ struct Cursor {
 };
 void require(bool value,const char* message){if(!value)throw std::invalid_argument(message);}
 void append_counted(std::string& out,std::string_view text){out+=std::to_string(text.size());out+=' ';out.append(text);}
-bool numeric(std::string_view text) noexcept {
- if(text.empty())return false;if(text.front()=='+')text.remove_prefix(1);if(text.empty())return false;
- double value=0;const auto r=std::from_chars(text.data(),text.data()+text.size(),value,std::chars_format::general);
- return r.ec==std::errc{}&&r.ptr==text.data()+text.size()&&std::isfinite(value);
+struct NumericLocale {
+#ifdef _WIN32
+ _locale_t value=_create_locale(LC_NUMERIC,"C");
+ ~NumericLocale(){if(value)_free_locale(value);}
+#else
+ locale_t value=newlocale(LC_NUMERIC_MASK,"C",nullptr);
+ ~NumericLocale(){if(value)freelocale(value);}
+#endif
+};
+bool numeric(std::string_view text) {
+ if(text.empty())return false;
+ std::size_t p=0;if(text[p]=='+'||text[p]=='-')++p;unsigned digits=0;
+ while(p<text.size()&&digit(text[p])){++p;++digits;}
+ if(p<text.size()&&text[p]=='.'){++p;while(p<text.size()&&digit(text[p])){++p;++digits;}}
+ if(!digits)return false;
+ if(p<text.size()&&(text[p]=='e'||text[p]=='E')){++p;if(p<text.size()&&(text[p]=='+'||text[p]=='-'))++p;const auto start=p;while(p<text.size()&&digit(text[p]))++p;if(p==start)return false;}
+ if(p!=text.size())return false;
+ static const NumericLocale locale;if(!locale.value)return false;
+ const std::string terminated(text);char* end=nullptr;
+#ifdef _WIN32
+ const double value=_strtod_l(terminated.c_str(),&end,locale.value);
+#else
+ const double value=strtod_l(terminated.c_str(),&end,locale.value);
+#endif
+ return end==terminated.c_str()+terminated.size()&&std::isfinite(value);
 }
 struct Candidate {std::size_t start=0,entries=0,end=0,slots_end=0;std::vector<Entry> properties;};
 }
@@ -79,4 +102,8 @@ View parse(std::span<const std::byte> input,bool allow_attachment_archive){
  std::string encoded;for(const auto& entry:view.parameters){encoded+=' ';append_counted(encoded,entry.key);encoded+=' ';encoded.append(entry.value);}encoded+=' ';encoded+=std::to_string(blob_count);encoded+=" 0";for(const auto& entry:view.blobs){encoded+=' ';append_counted(encoded,entry.key);encoded+=' ';append_counted(encoded,entry.value);}
  require(data.substr(numeric_entries,blob_end-numeric_entries)==encoded,"map representation");return view;
 }
+Owned::Owned(std::span<const std::byte> input,bool attachments):storage_(input.begin(),input.end()),view_(parse(storage_,attachments)){}
+Owned::Owned(std::vector<std::byte> input,bool attachments):storage_(std::move(input)),view_(parse(storage_,attachments)){}
+Owned::Owned(Owned&& other) noexcept:storage_(std::move(other.storage_)),view_(std::move(other.view_)){other.view_=View{};}
+Owned& Owned::operator=(Owned&& other) noexcept {if(this!=&other){storage_=std::move(other.storage_);view_=std::move(other.view_);other.view_=View{};}return *this;}
 }

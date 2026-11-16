@@ -6,7 +6,8 @@
   "comparison_errors": 0,
   "comparison": "Independent prior Python byte-counted decoder versus freshly compiled portable C++ views; header, metadata, lexical numeric tokens, binary data and retained sections compared by canonical SHA-256.",
   "scope": "Decoding only. Preset migration, parameter application, factory defaults, DSP and all-presets sound parity remain unfinished.",
-  "local_report": "local/evidence/preset-library-agent/cpp-archive-corpus-verification-resume.json",
-  "source_sha256": "cb465bde7c832c1e132c04acaa34c0a50399b626b590b1bd1ba60956d8b5ca9f",
-  "header_sha256": "a1c602e763f2048cb4ac62a4d911221771e6a72c9d658447eb21f4dc5f1d772a"
+  "local_report": "local/evidence/preset-library-agent/cpp-archive-corpus-verification-portable.json",
+  "source_sha256": "da9f31e3439138f1dc5d2b97f8fb7bc45b422ac925a9e71f71b9ce8865eedf9f",
+  "header_sha256": "977092661557a65d763314402a279bde0cc7ff4c4febfb70aa8561536e895708",
+  "ownership": "Owned storage preserves views after source-buffer destruction and move construction/assignment; tested with embedded NUL payload."
 }

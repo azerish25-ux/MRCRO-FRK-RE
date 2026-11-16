@@ -13,4 +13,11 @@ int main(){
  auto attached=source+"\n22 serialization::archive 10 opaque";if(!reject(attached))return 6;
  auto attachment=parse(std::as_bytes(std::span(attached)),true);if(attachment.trailing!="\n22 serialization::archive 10 opaque"||attachment.raw.size()!=attached.size())return 7;
  bad=source;bad.replace(bad.find("0.5"),3,"nan");if(!reject(bad))return 8;
+ bad=source;bad.replace(bad.find("0.5"),3,"0x1p0");if(!reject(bad))return 11;
+ bad=source;bad.replace(bad.find("0.5"),3,"1e9999");if(!reject(bad))return 12;
+ auto exponent=source;exponent.replace(exponent.find("0.5"),3,"+5e-1");if(parse(std::as_bytes(std::span(exponent))).parameters[0].value!="+5e-1")return 13;
+ Owned stored(std::as_bytes(std::span(source)));source.assign(source.size(),'x');
+ Owned moved(std::move(stored));if(!stored.view().raw.empty()||moved.view().name!="Test"||moved.view().blobs[0].value!=std::string_view("a\0b",3))return 9;
+ Owned assigned(std::as_bytes(std::span(empty)));assigned=std::move(moved);
+ if(!moved.view().raw.empty()||assigned.view().name!="Test"||assigned.view().parameters[0].value!="0.5"||assigned.view().blobs[0].value!=std::string_view("a\0b",3))return 10;
 }
