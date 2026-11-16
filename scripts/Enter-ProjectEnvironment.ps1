@@ -37,3 +37,6 @@ if (Test-Path -LiteralPath $taskJdkDirectory) {
     $env:JAVA_HOME = $taskJdkDirectory
 }
 Write-Output "Project storage: $taskStorageRoot"
+if (Test-Path -LiteralPath "$taskLocalRoot\tools\w64devkit\bin\g++.exe") {
+    $env:PATH = "$taskLocalRoot\tools\w64devkit\bin;" + $env:PATH
+}

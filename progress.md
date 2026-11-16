@@ -351,6 +351,9 @@
 
 ## Preset discrete migration integration (in progress)
 
+- 2026-11-16: resumed the interrupted archive loader. A freshly compiled C++ decoder matched the independent Python decoder for all 1,210 hash-checked archives, 2,298,969 numeric entries and 15,648 binary entries. Header fields, retained unknown sections, numeric lexical tokens and binary payloads were compared by canonical SHA-256. The loader preserves input bytes and exposes views; it does not yet apply presets to the instrument. Empty maps, counted NUL bytes, attachment retention and malformed input checks pass locally. Android verification is configured but pending.
+- Restored a portable compiler entirely under `local/tools/w64devkit` on D: after the former compiler installation disappeared. Project TEMP/cache/output paths remain under `android-port/local`.
+
 - Integrated the supplied-descriptor discrete version converter and eligible numeric write selector into the strict-FP core. The installed wrapper identity is SHA-256 `354c26c58e4c8c671b50f88d070452b47c9cd6b6505b1ea18391724929b3d19e`; the original-instruction evidence and private fixture are retained on D: in `local/evidence/preset-library-agent/migrations`.
 - The actual integrated source matched 10,440 discrete cases, 518 additional 129-entry cases and 800 raw numeric write cases on the local Windows Release build. Synthetic edge cases are included in the repository and configured for Android CI. These helpers do not load preset archives, construct descriptors, run instrument-specific migrations or apply values to the audio graph.
 

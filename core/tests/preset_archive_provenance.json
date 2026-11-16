@@ -1,0 +1,12 @@
+{
+  "profile": "Observed Boost text archive version 10, class metadata 0/7/0/7",
+  "library_archives": 1210,
+  "numeric_entries": 2298969,
+  "binary_entries": 15648,
+  "comparison_errors": 0,
+  "comparison": "Independent prior Python byte-counted decoder versus freshly compiled portable C++ views; header, metadata, lexical numeric tokens, binary data and retained sections compared by canonical SHA-256.",
+  "scope": "Decoding only. Preset migration, parameter application, factory defaults, DSP and all-presets sound parity remain unfinished.",
+  "local_report": "local/evidence/preset-library-agent/cpp-archive-corpus-verification-resume.json",
+  "source_sha256": "cb465bde7c832c1e132c04acaa34c0a50399b626b590b1bd1ba60956d8b5ca9f",
+  "header_sha256": "a1c602e763f2048cb4ac62a4d911221771e6a72c9d658447eb21f4dc5f1d772a"
+}

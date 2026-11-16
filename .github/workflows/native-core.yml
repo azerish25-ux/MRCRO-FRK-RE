@@ -393,5 +393,8 @@ jobs:
             adb push core/tests/phase_reset_vectors.bin /data/local/tmp/phase_reset_vectors.bin
             adb shell chmod 755 /data/local/tmp/phase_reset_test
             adb shell /data/local/tmp/phase_reset_test /data/local/tmp/phase_reset_vectors.bin
+            adb push build-x86_64/preset_archive_test /data/local/tmp/preset_archive_test
+            adb shell chmod 755 /data/local/tmp/preset_archive_test
+            adb shell /data/local/tmp/preset_archive_test
       - name: Compare generated Android table bytes
         run: python3 tools/check_basic_wave_tables.py --dump build-x86_64/basic-wave-tables.bin --expected core/tests/basic_wave_table_hashes.json
