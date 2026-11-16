@@ -4,7 +4,7 @@ namespace {
 bool valid_bank(const Bank& bank){
  if(bank.internal.size()>16384||bank.positive.size()>16384)return false;
  for(std::size_t i=0;i<bank.internal.size();++i)if(bank.internal[i].id!=(0x80000000u|i))return false;
- for(std::size_t i=0;i<bank.positive.size();++i){const auto* r=bank.positive.at(i);if(!r||r->id()!=i||!std::isfinite(std::bit_cast<double>(r->cached_bits())))return false;}
+ for(std::size_t i=0;i<bank.positive.size();++i){const auto* r=bank.positive.at(i);if(!r||r->id()!=i)return false;}
  return true;
 }
 std::uint32_t scalar(std::span<const std::uint8_t> bytes){std::uint32_t bits=0;for(unsigned i=0;i<4;++i)bits|=std::uint32_t(bytes[i])<<(8*i);return bits;}

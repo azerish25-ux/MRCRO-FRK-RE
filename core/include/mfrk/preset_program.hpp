@@ -10,6 +10,9 @@ namespace mfrk::preset_program {
 using Numeric=std::map<std::string,std::uint32_t,std::less<>>;
 using Data=std::map<std::string,std::vector<std::uint8_t>,std::less<>>;
 struct Descriptor {std::uint32_t flags,reset_bits,default_tag;std::span<const std::uint8_t> fallback;std::string_view name{};};
+// cached_normalized_double_bits projects the fresh +0-cache reference
+// profile. Persistent receivers apply their own cache history; this field must
+// never overwrite an owner's cache during staging or activation.
 struct Write {std::uint32_t wrapper_id,tag;std::vector<std::uint8_t> payload;bool dirty;std::optional<std::uint64_t> cached_normalized_double_bits;};
 struct Command {std::uint32_t wrapper_id,tag,origin;std::vector<std::uint8_t> payload;};
 // Original group-0 prepared context: internal writes precede positive VST IDs.

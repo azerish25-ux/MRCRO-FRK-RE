@@ -438,5 +438,9 @@ jobs:
             adb push core/tests/parameter_receiver_vectors.bin /data/local/tmp/parameter_receiver_vectors.bin
             adb shell chmod 755 /data/local/tmp/parameter_receiver_test
             adb shell /data/local/tmp/parameter_receiver_test /data/local/tmp/parameter_receiver_vectors.bin
+            adb push build-x86_64/positive_receiver_test /data/local/tmp/positive_receiver_test
+            adb push core/tests/positive_receiver_vectors.bin /data/local/tmp/positive_receiver_vectors.bin
+            adb shell chmod 755 /data/local/tmp/positive_receiver_test
+            adb shell /data/local/tmp/positive_receiver_test /data/local/tmp/positive_receiver_vectors.bin
       - name: Compare generated Android table bytes
         run: python3 tools/check_basic_wave_tables.py --dump build-x86_64/basic-wave-tables.bin --expected core/tests/basic_wave_table_hashes.json

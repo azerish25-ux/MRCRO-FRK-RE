@@ -1,0 +1,31 @@
+{
+  "wrapper_sha256": "354c26c58e4c8c671b50f88d070452b47c9cd6b6505b1ea18391724929b3d19e",
+  "source_stages": [
+    "6d1ae0",
+    "64b710",
+    "64b530",
+    "64a930",
+    "64b030",
+    "85dbf0",
+    "570cb0",
+    "5705c0"
+  ],
+  "cases": 11620,
+  "changed_events": 4714,
+  "notifications": 6270,
+  "differences": 0,
+  "fixture_bytes": 674144,
+  "fixture_sha256": "feac1a2bc06ff2f8df72ba7c8fc5b7e6fa526ffdac89e9088c31bbd83f2ce0bb",
+  "source_gold_sha256": "daeceddd1188b8a34072ff6758c33be0656edfc1dd43eb285f491b67d26fbc8a",
+  "scope": "Whole original initialized positive scalar receiver lifecycle and cache hooks. FObject changed executes with global UpdateHandler NULL and actual no-op fallback; its entry is observed. Terminal Arturia dispatch is an observed/model-return boundary. Raw scalar/cache bit classes, origins0/1/2/4/ffffffff, dirty state, modes0/1/2/255, aliases and 256 random promotion controls. MXCSR1f80, FP status excluded. No nonempty host UpdateHandler, constructors, actual Arturia callback bodies, controller queue, GUI or DSP claim. Public fixture contains synthetic scalar states only.",
+  "local_oracle": "local/build/probe_positive_receiver.py",
+  "local_source_gold": "local/evidence/preset-library-agent/positive-receiver-source.json",
+  "additional_checks": {
+    "internal_receiver_cases": 860,
+    "internal_differences": 0,
+    "raw_archives": 1210,
+    "active_writes_and_commands": 15454120,
+    "archive_join_differences": 0,
+    "persistent_cache_guard": "Source old NaN caches retained; staging and notification no longer reject those valid cache states."
+  }
+}

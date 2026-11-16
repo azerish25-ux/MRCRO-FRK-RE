@@ -1,5 +1,6 @@
 #pragma once
 #include "mfrk/preset_program.hpp"
+#include "mfrk/parameter_value_bits.hpp"
 #include <array>
 #include <algorithm>
 #include <atomic>
@@ -81,7 +82,22 @@ public:
  std::uint32_t id()const noexcept{return id_;}const Value&value()const noexcept{return value_;}std::uint64_t cached_bits()const noexcept{return cached_;}bool dirty()const noexcept{return dirty_;}
  // Validated loader6cc510 write, before later Arturia callback delivery. This
  // finite-positive profile includes native64a930/64b030 cache clamp only.
- bool apply_prepared(Value&&incoming){if(incoming.tag()!=1)return false;const auto bits=incoming.scalar_bits();if((bits&0x7f800000u)==0x7f800000u)return false;const float x=std::bit_cast<float>(bits);const double next=x<=0?0.0:x>=1?1.0:static_cast<double>(x);const double old=std::bit_cast<double>(cached_);if(!std::isfinite(old))return false;dirty_=true;value_=std::move(incoming);if(next!=old)cached_=std::bit_cast<std::uint64_t>(next);return true;}
+ bool apply_prepared(Value&&incoming){if(incoming.tag()!=1)return false;const auto bits=incoming.scalar_bits();if((bits&0x7f800000u)==0x7f800000u)return false;dirty_=true;value_=std::move(incoming);parameter_value_bits::update_cache(cached_,bits,4);return true;}
+ // Complete scalar 6d1ae0 lifecycle for this positive receiver. changed(owner,1)
+ // supplies the FObject update boundary; notify(id,sharedValue,origin) supplies
+ // Arturia dispatch. No nonempty host UpdateHandler or callback-body claim.
+ // Nullopt rejects non-scalar input without mutation; otherwise bool reports
+ // whether Arturia notification ran. Distinct incoming is consumed, including
+ // raw NaNs; a self-move retains the value. Serial/no-exception profile.
+ template<class Boundary>
+ std::optional<bool> set_current(Value&& incoming,std::uint32_t origin,std::uint8_t mode,Boundary& boundary){
+  if(incoming.tag()!=1)return std::nullopt;
+  dirty_=dirty_||!parameter_value_bits::equal_scalar(value_.scalar_bits(),incoming.scalar_bits());
+  value_=std::move(incoming);
+  if(parameter_value_bits::update_cache(cached_,value_.scalar_bits(),origin))boundary.changed(*this,1);
+  if(mode==1||(mode==2&&dirty_)){dirty_=false;boundary.notify(id_,value_,origin);return true;}
+  return false;
+ }
 };
 inline Ref Ref::retain(Receiver*p){if(p)p->add_ref();return Ref(p);}
 inline Ref::~Ref(){reset();}
