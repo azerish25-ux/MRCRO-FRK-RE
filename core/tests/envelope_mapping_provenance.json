@@ -1,0 +1,36 @@
+{
+  "wrapper_sha256": "354c26c58e4c8c671b50f88d070452b47c9cd6b6505b1ea18391724929b3d19e",
+  "source": [
+    "0x18059e9a0",
+    "0x18059ea40"
+  ],
+  "table_address": "0x181bac750",
+  "table_bits": [
+    0,
+    965752839,
+    982100440,
+    990811260,
+    996718464,
+    1001670153,
+    1006917202,
+    1011052245,
+    1016057636,
+    1020420912,
+    1025177932,
+    1028319491,
+    1033875326,
+    1035791811,
+    1041877952,
+    1045037970,
+    1050189363,
+    1052932354,
+    1057524492,
+    1060081623,
+    1065353216
+  ],
+  "cases": 758,
+  "producer_sha256": "64739784dadcc0bbf6544d079f706da937aa2baeb27ef33fa2bf3a7d9bf40173",
+  "fixture_sha256": "b8e3bd3ecaee3606fbef4ead20f5853ff426e535fe719006702b9aaa173a3b63",
+  "fixture_bytes": 9108,
+  "scope": "Actual original forward/inverse bodies and fixed knots, finite endpoint/adjacent-knot/interior cases. No libm substitutions, curve constructor, parameter registry or full UI claim."
+}
