@@ -1,0 +1,20 @@
+{
+  "wrapper_sha256": "354c26c58e4c8c671b50f88d070452b47c9cd6b6505b1ea18391724929b3d19e",
+  "source_stages": [
+    "c45ec0",
+    "649c30",
+    "649d00",
+    "649f70"
+  ],
+  "cases": 2400,
+  "formatted_cases": 380,
+  "differences": 0,
+  "fixture_bytes": 193772,
+  "fixture_sha256": "ae93b539e6e4c2ff704cf42ac3757ac2085a41727fd83920af9165fc4f2f426c",
+  "source_gold_sha256": "e2a045aebf417426147f68ef4d88c6d62031b96b237ca08c13c3bdea1c2248d7",
+  "scope": "Whole original slider writer, physical/normalized wrappers, numeric formatter and SSO lifetime execute. Exact identity curve is an explicit ABI service; GUI lookup/count and terminal setter/signals are supplied observers. Real C-locale UCRT roundf/strtof/vsprintf services, owned errno bookkeeping. Compares stored normalized arguments, mapped/normalized/id-value signals, index updates and raw view-space return. Finite supplied metadata, precision0..6/negative auto, representable CVTT, serial no-exception valid profile. Arbitrary concrete curves, constructors, actual GUI/controller delivery, source error behavior, physical touch and full UI/pixel parity remain separate. Public fixture contains synthetic metadata only.",
+  "local_oracle": "local/build/probe_slider_value.py",
+  "local_source_gold": "local/evidence/native-ui-source/slider-value-source-v1.json",
+  "locale_policy": "Windows uses isolated actual UCRT locale with direct locale-specific formatting/parsing; POSIX scopes a C numeric locale to the calling thread and restores it. No global locale modification.",
+  "android_status": "Configured for remote Linux/Android builds and emulator; new writer runtime pending."
+}
