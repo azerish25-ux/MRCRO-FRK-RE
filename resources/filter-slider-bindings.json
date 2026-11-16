@@ -1,0 +1,204 @@
+{
+  "schema": 1,
+  "wrapper_sha256": "354c26c58e4c8c671b50f88d070452b47c9cd6b6505b1ea18391724929b3d19e",
+  "observation": "Original standalone editor, Home page, 2026-11-16; read-only metadata hooks and ordinary left/right click input",
+  "descriptor_stages_agree": [
+    "registered-descriptor",
+    "actual-controller-constructor",
+    "actual-gui-info-accessor"
+  ],
+  "descriptors": [
+    {
+      "name": "Vcf_Cutoff",
+      "id": 13,
+      "item_count": 0,
+      "gui_info": {
+        "curve_vtable": "0x181bab808",
+        "curve_type": ".?AVLinearPotardMapping@MappingTools@Arturia@@",
+        "fields_projection": "fixed mapping has no fields",
+        "fields_bits": [],
+        "table_bits": [],
+        "from_bits": "0x00000000",
+        "to_bits": "0x3f800000",
+        "precision": -1,
+        "fine_precision": -1,
+        "direct_byte": 0,
+        "reverse_byte": 0
+      }
+    },
+    {
+      "name": "Vcf_Resonance",
+      "id": 14,
+      "item_count": 0,
+      "gui_info": {
+        "curve_vtable": "0x181bab808",
+        "curve_type": ".?AVLinearPotardMapping@MappingTools@Arturia@@",
+        "fields_projection": "fixed mapping has no fields",
+        "fields_bits": [],
+        "table_bits": [],
+        "from_bits": "0x00000000",
+        "to_bits": "0x3f800000",
+        "precision": -1,
+        "fine_precision": -1,
+        "direct_byte": 0,
+        "reverse_byte": 0
+      }
+    },
+    {
+      "name": "Vcf_EnvAmount",
+      "id": 15,
+      "item_count": 0,
+      "gui_info": {
+        "curve_vtable": "0x181bab808",
+        "curve_type": ".?AVLinearPotardMapping@MappingTools@Arturia@@",
+        "fields_projection": "fixed mapping has no fields",
+        "fields_bits": [],
+        "table_bits": [],
+        "from_bits": "0xbf800000",
+        "to_bits": "0x3f800000",
+        "precision": -1,
+        "fine_precision": -1,
+        "direct_byte": 0,
+        "reverse_byte": 0
+      }
+    }
+  ],
+  "widgets": [
+    {
+      "name": "Vcf_Cutoff",
+      "id": 13,
+      "bounds": [
+        0,
+        0,
+        100,
+        100
+      ],
+      "orientation": 0,
+      "custom_info": 0,
+      "fine_enabled": 1,
+      "normal_bits": "0x3b83126f",
+      "fine_bits": "0x3983126f",
+      "enum_adjust": 1,
+      "by_size": 0,
+      "reverse": 0,
+      "wrap": 0,
+      "wheel_enabled": 0,
+      "flag1640": 1,
+      "mapping_mode": 0,
+      "drag_phase": 2,
+      "manager_field20": -1,
+      "value_signals": {
+        "index": false,
+        "normalized": false,
+        "id_value": false
+      },
+      "backend_vtable": "0x181bc0298",
+      "backend_functions": {
+        "28": "0x18067a760",
+        "30": "0x18067ab80",
+        "38": "0x180817fb0",
+        "40": "0x18066ec40",
+        "48": "0x18066ec20",
+        "50": "0x18066ec00",
+        "78": "0x18067aff0",
+        "80": "0x18067b860",
+        "90": "0x18067c9b0"
+      }
+    },
+    {
+      "name": "Vcf_Resonance",
+      "id": 14,
+      "bounds": [
+        0,
+        0,
+        100,
+        100
+      ],
+      "orientation": 0,
+      "custom_info": 0,
+      "fine_enabled": 1,
+      "normal_bits": "0x3b83126f",
+      "fine_bits": "0x3983126f",
+      "enum_adjust": 1,
+      "by_size": 0,
+      "reverse": 0,
+      "wrap": 0,
+      "wheel_enabled": 0,
+      "flag1640": 1,
+      "mapping_mode": 0,
+      "drag_phase": 2,
+      "manager_field20": -1,
+      "value_signals": {
+        "index": false,
+        "normalized": false,
+        "id_value": false
+      },
+      "backend_vtable": "0x181bc0298",
+      "backend_functions": {
+        "28": "0x18067a760",
+        "30": "0x18067ab80",
+        "38": "0x180817fb0",
+        "40": "0x18066ec40",
+        "48": "0x18066ec20",
+        "50": "0x18066ec00",
+        "78": "0x18067aff0",
+        "80": "0x18067b860",
+        "90": "0x18067c9b0"
+      }
+    },
+    {
+      "name": "Vcf_EnvAmount",
+      "id": 15,
+      "bounds": [
+        0,
+        0,
+        100,
+        100
+      ],
+      "orientation": 0,
+      "custom_info": 0,
+      "fine_enabled": 1,
+      "normal_bits": "0x3b83126f",
+      "fine_bits": "0x3983126f",
+      "enum_adjust": 1,
+      "by_size": 0,
+      "reverse": 0,
+      "wrap": 0,
+      "wheel_enabled": 0,
+      "flag1640": 1,
+      "mapping_mode": 0,
+      "drag_phase": 2,
+      "manager_field20": -1,
+      "value_signals": {
+        "index": false,
+        "normalized": false,
+        "id_value": false
+      },
+      "backend_vtable": "0x181bc0298",
+      "backend_functions": {
+        "28": "0x18067a760",
+        "30": "0x18067ab80",
+        "38": "0x180817fb0",
+        "40": "0x18066ec40",
+        "48": "0x18066ec20",
+        "50": "0x18066ec00",
+        "78": "0x18067aff0",
+        "80": "0x18067b860",
+        "90": "0x18067c9b0"
+      }
+    }
+  ],
+  "pointer_begin": [
+    {
+      "parameter": "Vcf_Cutoff",
+      "modifiers": 16,
+      "sensitivity_bits": "0x3b83126f"
+    },
+    {
+      "parameter": "Vcf_Cutoff",
+      "modifiers": 32,
+      "sensitivity_bits": "0x3983126f"
+    }
+  ],
+  "scope": "Semantic configuration only. No preset values, raw assets, native pointers, backend implementation, full renderer or complete Android host."
+}

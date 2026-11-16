@@ -1,0 +1,13 @@
+{
+  "wrapper_sha256": "354c26c58e4c8c671b50f88d070452b47c9cd6b6505b1ea18391724929b3d19e",
+  "entries": [
+    "0x180662900",
+    "0x180662940",
+    "0x180662980"
+  ],
+  "scope": "Original controller bodies with disabled diagnostic logger, real name getter ABI and supplied backend/observer services. Callback mutation of backend, ID, origin, context, observer; typed scalar delivery and replaced-heap destruction before notification. No backend-body, registration, edit-mode, GUI scene or full Android claim.",
+  "cases": 576,
+  "fixture_bytes": 46956,
+  "fixture_sha256": "57d1a60c65a5beb11f4150977ea8bbac5cefb962bec2be358e7a0a6cb61e5b8e",
+  "producer_sha256": "df3a44abd5c923ac04b2b2d93e78f332bb3026e93346e1124e0ddd546105ff5d"
+}

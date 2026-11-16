@@ -1,5 +1,20 @@
 # Progress
 
+## 2026-11-16 live GUI controller bindings
+
+- Restored the original standalone editor using D: resources and product data.
+  Observed its Home screen and normal/fine cutoff pointer setup; no notes played.
+  The previously proposed C: directory links are unnecessary and were not created.
+- Captured actual filter descriptor/widget configuration. Envelope amount uses
+  -1..1; cutoff/resonance use 0..1. Normal/fine sensitivity bits are 0x3b83126f /
+  0x3983126f, confirmed by original pointer-begin callbacks.
+- Added Juced begin/end/scalar controller delivery with live callback field
+  reloads and temporary cleanup before notifications. All 576 original-body
+  comparisons match locally. Full backend/host ownership remains separate.
+- Mixer mapping checkpoint 471bdda passed native core 43921543646, Android
+  renderer comparison 43921543598 and analysis tools 43921544218 on GitHub Actions.
+  These results do not establish the finished standalone synth or 1:1 parity.
+
 ## 2026-11-04
 - Started authorized inspection. Kept installation unchanged.
 - Created android-port/local/{tmp,cache,tools,evidence} on D:.
