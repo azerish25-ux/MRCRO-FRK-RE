@@ -5,6 +5,7 @@ add_library(mfrk_knob_geometry SHARED knob_geometry_jni.cpp slider_controller_jn
     "${REPO_ROOT}/core/src/ui_primitives.cpp"
     "${REPO_ROOT}/core/src/ui_slider_controller.cpp"
     "${REPO_ROOT}/core/src/ui_slider_drag.cpp"
+    "${REPO_ROOT}/core/src/ui_slider_curves.cpp"
     "${REPO_ROOT}/core/src/ui_slider_value.cpp")
 target_include_directories(mfrk_knob_geometry PRIVATE "${REPO_ROOT}/core/include")
 target_compile_features(mfrk_knob_geometry PRIVATE cxx_std_20)

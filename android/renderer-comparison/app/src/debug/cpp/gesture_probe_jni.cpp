@@ -1,4 +1,5 @@
 #include "../../main/cpp/controller_attachment.hpp"
+#include "mfrk/ui_slider_curves.hpp"
 #include <jni.h>
 #include <cmath>
 #include <stdexcept>
@@ -7,10 +8,10 @@ unsigned total_ends=0,total_destroyed=0;
 // An explicit observer host, compiled only into the Debug comparison library.
 // The production attachment API requires the actual application controller host.
 struct Probe final:mfrk::androidui::ControllerAttachment,mfrk::ui::SliderControllerHost {
- struct Identity:mfrk::ui::SliderCurve {float forward(float v)override{return v;}float inverse(float v)override{return v;}} curve;
+ std::unique_ptr<mfrk::ui::SliderCurve> curve=mfrk::ui::make_slider_curve({mfrk::ui::SliderCurveKind::linear,{},{}});
  float value;unsigned prepares=0,ends=0,writes=0;
  mfrk::ui::MagneticGesture gesture{-1,false,false};
- mfrk::ui::SliderValueInfo metadata{curve,0,1,-1,-1,false,false};
+ mfrk::ui::SliderValueInfo metadata{*curve,0,1,-1,-1,false,false};
  mfrk::ui::SliderPointerConfig pc{false,false,false,false,false,2,false};
  mfrk::ui::SliderPointerState ps{false,0xffffffffu,0};
  mfrk::ui::SliderDragConfig dc{0,.001f,false,false,false};
