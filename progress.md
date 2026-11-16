@@ -1,5 +1,15 @@
 # Progress
 
+## 2026-11-16 GUI write message routing
+
+- Recovered backend `678050` queue-before-lookup routing with owned typed-value
+  moves and actual part-count/receiver/policy services. Original instructions
+  match 216 cases and 432 events locally. Android CI includes the hash-bound
+  fixture. Queue delivery, outer wrapper, full write policy and real scene/app
+  binding remain unfinished.
+- Registration bridge commit `7d7eef3` passed native run 43978920212 on Linux
+  and Android and analysis run 43978920798. These are scoped component results.
+
 ## 2026-11-16 GUI registration bridge
 
 - Joined the owned reverse registry, source controller and notification handler

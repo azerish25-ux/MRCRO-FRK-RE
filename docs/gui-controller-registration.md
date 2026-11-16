@@ -34,3 +34,20 @@ This joins recovered registration, controller and callback ownership. Actual
 backend write/edit policy, association services, scene/view binding, timers,
 touch coordinate calibration, full sound graph and standalone assembly remain
 unfinished.
+
+`gui_dispatch_write` preserves backend `678050` routing: when a message thread
+exists and differs from the caller, it moves the typed value into an owned queue
+message before looking up a part or receiver. With no message thread, or on that
+thread, it validates the sign-masked million-ID part against the actual part
+count, prepares it, resolves its receiver and calls the actual write policy.
+A null receiver is passed through to that policy. No scalar assignment or
+successful-receiver substitute is introduced. The explicit route enum is a
+portable diagnostic; the native synchronous return register is not treated as
+a success flag.
+
+The original `678050`, `64ea00` and typed move `64b2d0` match 216 local cases and
+432 events, including scalar/inline/heap values, absent/same/other message
+threads, negative IDs, invalid parts, null receivers and policy consumption.
+Queue/thread/part preparation/receiver/full write policy are observer services
+in that proof. The Android queue consumer, outer `817fb0` wrapper and complete
+`678190` policy remain unfinished; this is not an installed app write backend.
