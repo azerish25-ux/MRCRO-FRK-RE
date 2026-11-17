@@ -1,5 +1,17 @@
 # Progress
 
+## 2026-11-17 Pointer-source state and queued refresh
+
+- Added source target transitions, move/drag routing, button transitions,
+  event-serial guards, complete press history and unbounded offset/cursor logic.
+  Its real queued update target preserves the source clock clamp and uses the
+  retained Android message word. All384cases/1370events match original entry
+  bodies locally. Six real queued Android scenarios and native CI are configured;
+  remote validation is pending.
+- Real hit/transform/component-event/cursor implementations and scene/touch
+  factory bindings remain required. This advances the full1:1 goal without
+  installing successful placeholder services.
+
 ## 2026-11-17 Desktop focus Android validation
 
 - Corrected observer commit a04474874c9f5d8810dd91e5e526633e077384db passed

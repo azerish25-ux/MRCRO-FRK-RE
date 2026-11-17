@@ -1,0 +1,10 @@
+{
+  "wrapper_sha256": "354c26c58e4c8c671b50f88d070452b47c9cd6b6505b1ea18391724929b3d19e",
+  "producer_sha256": "4fc575a383557e1d16b396de9cedc762eefb4adbfac650b22952626543ff14a4",
+  "scope": "Originalffab60/ffa920/ffa580/ffb0d0/ffb150/ffb280 and weak reference accounting execute. Hit/local/global/display/clock/peer/cursor and component mouse event endpoints observed, with callback mutations. Finite static service geometry, retained expired node storage, no full hit testing/transform/peer/event/component destructor or scene proof.",
+  "cases": 384,
+  "events": 1370,
+  "bytes": 326188,
+  "fixture_sha256": "a1ce068be53026a8be970000859c9bb60628cd5939a5a3df032795b7a92daf8a",
+  "original_json_sha256": "8712c0356f38bb2a955ed5eef8fac668c6e1fd3bc62672bda56c5dbaac4fcd10"
+}

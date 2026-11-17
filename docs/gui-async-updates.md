@@ -40,5 +40,7 @@ together with the six existing queue cases and five focused comparison frames.
 Native run44050389269 also passed the original-code fixture on Android.
 Exact source/artifact identities are in `validation/async-android-20261117.json`.
 The [Desktop focus notification target](gui-desktop-focus.md) now supplies actual
-registered-listener dispatch. Actual mouse callbacks, peer/input services and
+registered-listener dispatch. The [mouse source target](gui-mouse-source.md) now
+supplies queued position/drag state routing. Actual component mouse-event bodies,
+hit/coordinate/cursor and peer/input services and
 the complete scene still need their application implementations.
