@@ -46,6 +46,9 @@ struct GuiVisibilityPeer:GuiRepaintPeer {
  virtual bool minimized()=0;
  virtual void set_visible(bool)=0;
 };
+// Native accessibility event identities. Platform adapters deliver the semantic
+// event through their actual accessibility API.
+enum class GuiAccessibilityEvent:std::uint32_t {structure_changed=0x4e22u,focus_changed=0x4e25u};
 struct GuiComponentVisibilityBoundary:GuiRepaintBoundary {
  virtual GuiVisibilityPeer* peer(GuiRepaintComponent&)override=0;
  virtual void fake_mouse_move(GuiVisibilityComponent&)=0;
@@ -54,8 +57,8 @@ struct GuiComponentVisibilityBoundary:GuiRepaintBoundary {
  virtual void give_away_keyboard_focus(GuiVisibilityComponent&,bool notify)=0;
  virtual void visibility_changed(GuiVisibilityComponent&)=0;
  virtual void hierarchy_changed(GuiVisibilityComponent&)=0;
- virtual std::uintptr_t hierarchy_peer_handle(GuiVisibilityComponent&)=0;
- virtual void post_hierarchy_message(std::uintptr_t peer,std::uint32_t message)=0;
+ virtual std::uintptr_t accessibility_handler(GuiVisibilityComponent&)=0;
+ virtual void notify_accessibility(std::uintptr_t handler,GuiAccessibilityEvent)=0;
  virtual void effective_visibility_changed(GuiVisibilityComponent&,bool)=0;
  virtual void emit_visibility(std::uintptr_t signal,bool)=0;
  virtual void emit(std::uintptr_t signal)=0;
@@ -119,7 +122,7 @@ inline void gui_component_hierarchy_changed(GuiVisibilityComponent& component,Gu
   if(component.children.size()<static_cast<std::size_t>(index))index=static_cast<std::int32_t>(component.children.size());
   --index;
  }
- if((component.flags&1u)!=0)if(const auto peer=boundary.hierarchy_peer_handle(component))boundary.post_hierarchy_message(peer,0x4e22u);
+ if((component.flags&1u)!=0)if(const auto handler=boundary.accessibility_handler(component))boundary.notify_accessibility(handler,GuiAccessibilityEvent::structure_changed);
 }
 // Source ff2710. Serial acyclic live trees, bool requests, stable component
 // storage through pre-notification services and signed32-sized arrays required.

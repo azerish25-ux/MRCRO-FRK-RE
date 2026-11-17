@@ -90,14 +90,21 @@ are read at their actual delivery points.
 
 The concrete knob display boundary now invokes this widget state path. Feature
 state checks borrow the same component flag byte, preventing a divergent display
-copy. The joined native comparison covers 512 cases/1,535 events, including veto,
+copy. The joined native comparison covers 512 cases/1,526 events, including veto,
 listener mutations, 94 weak-expiration cases and callback-time signal changes.
 The fixture retains component storage while expiring its weak token; it does not
 prove final native destructor behavior. Child arrays remain stable during cached
 resource release; ordinary children have no desktop-peer flag and parent mapping
 remains stable through visible-bound callbacks.
 
-Mouse/focus bodies, image-cache implementation, platform peer, registered bounds
+The hierarchy tail resolves the component's actual accessibility handler and
+emits a structure-change notification. Source `ff9d80/1076fe0` confirms handler
+construction/type ownership and native accessibility-client dispatch. The
+platform boundary now exposes typed accessibility events. `COMPVS02` also covers
+accessibility being unavailable while a peer is present; handler/event bodies
+remain required platform services.
+
+Mouse/focus/accessibility bodies, image-cache implementation, platform peer, registered bounds
 providers, style getters and real scene construction remain required services.
 Upstream [JUCE Component source](https://github.com/juce-framework/JUCE/blob/6.1.6/modules/juce_gui_basics/components/juce_Component.cpp)
 helped identify cache and listener terminology; it does not identify the installed

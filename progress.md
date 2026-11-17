@@ -1,5 +1,16 @@
 # Progress
 
+## 2026-11-17 Accessibility structure notifications
+
+- Identified the hierarchy notification's actual accessibility-handler/event
+  services from ff9d80/1076fe0. The visibility bridge now names and types those
+  services correctly. COMPVS02 adds accessibility-unavailable/peer-present
+  cases; all512cases/1526events match locally. Actual platform accessibility
+  creation/client gating remains required.
+- Visibility/cache-payload commit49273693de94b1f7b0bb727a8466c241b266b229
+  passed Native44036883896 (Linux133881793432/Android133882477457) and
+  Analysis44036883931. The expanded accessibility profile awaits Android CI.
+
 ## 2026-11-17 Widget visibility and cached-image payloads
 
 - Corrected partial cache invalidation to receive the actual dirty rectangle.
