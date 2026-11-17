@@ -1,0 +1,11 @@
+{
+  "wrapper_sha256": "354c26c58e4c8c671b50f88d070452b47c9cd6b6505b1ea18391724929b3d19e",
+  "producer_sha256": "73fc82597773376324b6e115dd7450d4ed5c47c3a1cef4e866517c0092aca280",
+  "repaint_producer_sha256": "925511d333a16f8820682f7f56dae9faa7842d2cd14dd0c111826f176f0f25db",
+  "scope": "Originalb6eab0/ff2710/ff2880/ff5740/ff2930/ff20e0, real repaint/cache-payload/visible-bound propagation and weak guard/reference accounting execute. Mouse/focus services, cache and listeners/hooks/signals, peer setters/minimized/native-handle/message endpoints observed. Expired weak tokens retain fixture component storage. No actual peer, mouse/focus body, final destructor or full scene parity.",
+  "cases": 512,
+  "events": 1535,
+  "bytes": 301020,
+  "fixture_sha256": "463ddf165250a4f91735b263624a98eb143221754fa9bc244f3f16a487f319f0",
+  "original_json_sha256": "44b6c1ace501d53247b5c88daf413b708d77085547e9b7b98172bc86cb599f70"
+}

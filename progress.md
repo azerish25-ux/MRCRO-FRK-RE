@@ -1,5 +1,23 @@
 # Progress
 
+## 2026-11-17 Widget visibility and cached-image payloads
+
+- Corrected partial cache invalidation to receive the actual dirty rectangle.
+  Native ff6120 preserves the rectangle pointer in RDX for cached-image v18;
+  v10 invalidates the whole cache. Earlier gate-only proofs did not observe
+  that payload. Expanded COMPRP03 retains384cases/1847events with exact payload
+  comparison; all match locally.
+- Added actual widget requested/visible state routing, all veto hooks, original
+  repaint/resource-release ordering, reverse live listener dispatch, weak-token
+  expiration, hierarchy propagation and requested/transition signals. The knob
+  display boundary now invokes this state path and shares the actual flag byte
+  with feature-state checks. All512cases/1535events match original execution
+  locally. Focus/mouse/peer/cache bodies and real scene construction remain
+  required; their observer endpoints are not successful placeholder services.
+- Previous visible-bounds commit9686b1181c05b8a80bd06b3dbf8e0e4567e6c71d
+  passed Native44032353697 (Android133867623868) and Analysis44032354038.
+  The corrected cache payload and new visibility fixture await Android CI.
+
 ## 2026-11-17 Knob visible bounds and full repaint
 
 - Added the actual knob visible-bound method, including fractional double

@@ -6,17 +6,20 @@
 namespace mfrk::ui {
 // Compile callers with strict floating point and contraction disabled.
 using GuiDirtyBounds=std::array<std::int32_t,4>;
-struct GuiRepaintGate {
- virtual ~GuiRepaintGate()=default;
- // Source gate v18 for ordinary repaint, v10 for the immediate path.
- virtual bool allow(bool immediate)=0;
+struct GuiComponentImageCache {
+ virtual ~GuiComponentImageCache()=default;
+ // Source cached image v10/v18/v20. A partial invalidation receives the actual
+ // rectangle in RDX; the whole-component call has no rectangle argument.
+ virtual bool invalidate_all()=0;
+ virtual bool invalidate(const GuiDirtyBounds& bounds)=0;
+ virtual void release_resources()=0;
 };
 struct GuiRepaintComponent {
  std::uint8_t flags;
  GuiDirtyBounds bounds;
  GuiRepaintComponent* parent;
  const std::array<float,6>* transform;
- GuiRepaintGate* gate;
+ GuiComponentImageCache* cached_image;
 };
 struct GuiRepaintPeer {
  virtual ~GuiRepaintPeer()=default;
@@ -52,14 +55,14 @@ inline GuiDirtyBounds gui_dirty_transform(const GuiDirtyBounds& r,const std::arr
  return gui_dirty_outward(left,top,right_edge-left,bottom_edge-top);
 }
 inline void gui_component_repaint(GuiRepaintComponent&,GuiDirtyBounds&,GuiRepaintBoundary&);
-// Source ff6120. Live serial component/peer/gate ownership and acyclic parents
+// Source ff6120. Live serial component/peer/cache ownership and acyclic parents
 // are required. Integer translations/edges must not overflow; finite affine
 // fields and nonzero peer-component dimensions when a positive root request
 // reaches the peer. Platform peer operations are mandatory actual services.
 inline void gui_component_propagate_repaint(GuiRepaintComponent& component,
  const GuiDirtyBounds& request,bool immediate,GuiRepaintBoundary& boundary){
  if((component.flags&2u)==0)return;
- if(auto* gate=component.gate)if(!gate->allow(immediate))return;
+ if(auto* cache=component.cached_image)if(!(immediate?cache->invalidate_all():cache->invalidate(request)))return;
  if(request[2]<=0||request[3]<=0)return;
  if((component.flags&1u)==0){
   if(auto* parent=component.parent){
@@ -91,7 +94,7 @@ inline void gui_component_repaint(GuiRepaintComponent& component,GuiDirtyBounds&
  if(request[2]>0&&request[3]>0)gui_component_propagate_repaint(component,request,false,boundary);
 }
 // Source ff5ee0: use the actual visible bounds, subtract current component
-// position and enter the immediate gate path without an extra clipping call.
+// position and invalidate the whole cache without an extra clipping call.
 inline void gui_component_full_repaint(GuiRepaintComponent& component,GuiRepaintBoundary& boundary){
  auto request=boundary.visible_bounds(component);
  request[0]-=component.bounds[0];request[1]-=component.bounds[1];

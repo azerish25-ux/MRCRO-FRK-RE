@@ -7,6 +7,10 @@ struct GuiSliderPresentation {
  float scalar_cache=-1.f,view_cache=0.f;
  std::uint32_t feature_flags=0;
  std::uint8_t component_flags=0;
+ // The scene binds the actual component byte when both owners are joined.
+ // Unbound comparison fixtures retain their explicit local byte.
+ const std::uint8_t* component_flags_source=nullptr;
+ std::uint8_t live_component_flags()const noexcept{return component_flags_source?*component_flags_source:component_flags;}
 };
 struct GuiControlFeatureState {
  bool reverse=false,flag09=false,flag3c=false,active=true,disabled_data=false;
@@ -103,7 +107,7 @@ public:
    if(state_.disabled_data){const auto bytes=boundary_.data(event);if(state_.disabled_offset>=bytes.size())throw std::out_of_range("Feature disabled byte");enabled=bytes[static_cast<std::size_t>(state_.disabled_offset)]!=0;}
    else{float value=boundary_.current(event);if(view_.reverse)value=1.f-value;enabled=value>.5f;}
    active(enabled);
-   if(state_.flag3c&&enabled!=((view_.component_flags&2u)!=0))boundary_.set_component_state(enabled);
+   if(state_.flag3c&&enabled!=((view_.live_component_flags()&2u)!=0))boundary_.set_component_state(enabled);
   }
  }
 };

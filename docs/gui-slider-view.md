@@ -47,7 +47,7 @@ outward and unions the previous/current integer bounds. Packed trigonometry
 retains the different two-angle and scalar entry paths. `GuiKnobFeatureBinding`
 connects registered parameter rows and the existing feature history to this
 calculation and the component's actual repaint scheduler. The component supplies
-current resolved style getters and visibility services.
+current resolved style getters and actual component services.
 All 512 native full-callback cases match locally through this binding.
 
 The same binding now executes the scalar `f67c80/f67800/f84300` callback.
@@ -59,28 +59,52 @@ callbacks.
 
 `GuiKnobComponentDisplayBoundary` joins both dirty callbacks to the source
 component tree's `ff6020/ff6120` path. It clips in place to actual visible bounds,
-retains zero-area edge locations, observes enabled/gate checks, translates
+retains zero-area edge locations, checks visibility/cache invalidation, translates
 through parents, applies the source affine corner calculation, scales root-peer
-requests and schedules the actual peer. All 384 native component cases and 944
-service events matched the initial clipping/propagation fixture, including three-level trees, absent peers/parents,
-gate denial, flags, reflection/shear and fractional peer dimensions. Visible
-bounds, gate implementations and the native/Android peer remain actual services
-required from the scene. The fixture uses static callbacks and finite bounded
-geometry; it does not prove a complete platform scene or rendered pixels.
+requests and schedules the actual peer. Cache invalidation distinguishes
+`invalidateAll()` from `invalidate(actualDirtyBounds)`; the partial call receives
+the source rectangle. The cache's boolean return determines whether propagation
+continues. `COMPRP03` authenticates those payloads; the earlier gate-only
+projection omitted them. All 384 cases and 1,847 events match locally, including
+three-level trees, absent peers/parents, cache refusal, reflection/shear and
+fractional peer dimensions.
 
-The expanded `COMPRP02` fixture also executes the knob's actual `b70010/5a0600`
+The component fixture also executes the knob's actual `b70010/5a0600`
 visible-bound methods and `ff5ee0` full repaint. `GuiKnobVisibleBounds` retains
 binary64 fractional-bound truncation and unions from registered bounds providers.
 The actual cutoff vtable's final override returns an empty rectangle; this
 specific method is source-confirmed, not a default for unrelated widget types.
-Full repaint subtracts the current component position and selects the immediate
-gate method without another clipping call. The knob component boundary now owns
-that full repaint as well as its range/scalar dirty requests. All 384 expanded
-cases and 1,847 events match locally. Actual provider bounds, gate bodies,
-component state, platform peer and scene construction remain supplied services.
+Full repaint subtracts the current component position and invalidates the whole
+cache without another clipping call. The knob component boundary owns that full
+repaint as well as its range/scalar dirty requests.
+
+`ui_component_visibility.hpp` follows `b6eab0/ff2710/ff2880/ff5740/ff2930/ff20e0`.
+It stores requested visibility before running every veto hook, updates the actual
+flag only through the admitted transition, repaints, releases cached resources
+recursively, routes focus changes and invokes visibility/hierarchy notifications.
+Listener traversal retains reverse order and live-size checks. Weak guards retain
+their token without retaining the component; expired guards stop subsequent
+notifications. Widget signals retain requested-state delivery even after veto,
+with transition signals selected from the flag captured at entry. Signal targets
+are read at their actual delivery points.
+
+The concrete knob display boundary now invokes this widget state path. Feature
+state checks borrow the same component flag byte, preventing a divergent display
+copy. The joined native comparison covers 512 cases/1,535 events, including veto,
+listener mutations, 94 weak-expiration cases and callback-time signal changes.
+The fixture retains component storage while expiring its weak token; it does not
+prove final native destructor behavior. Child arrays remain stable during cached
+resource release; ordinary children have no desktop-peer flag and parent mapping
+remains stable through visible-bound callbacks.
+
+Mouse/focus bodies, image-cache implementation, platform peer, registered bounds
+providers, style getters and real scene construction remain required services.
+Upstream [JUCE Component source](https://github.com/juce-framework/JUCE/blob/6.1.6/modules/juce_gui_basics/components/juce_Component.cpp)
+helped identify cache and listener terminology; it does not identify the installed
+JUCE version. Original instructions remain the behavioral comparison source.
 
 This is source view state, not a completed widget factory or paint oracle.
-Bounds-provider/visibility services, timers, scene
+Bounds-provider/platform services, timers, scene
 construction, native scale/raster calibration and full synth bindings remain
 unfinished. Packet data must not alias the feature history; incoming sample
 count must fit capacity. Finite view/history values and bounded geometry are
