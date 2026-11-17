@@ -18,8 +18,11 @@ final class DesktopFocusVerification {
                 instrumentation.waitForIdleSync();
                 instrumentation.runOnMainSync(() -> state[0]=NativeDesktopFocusProbe.snapshot(handle[0]));
                 int[] values=state[0],events=expected[mode];
-                if(values.length!=5+events.length||values[0]!=events.length/2||values[1]!=0||values[2]!=1||values[3]!=0||values[4]!=0)
-                    throw new AssertionError("Desktop focus dispatch: "+names[mode]);
+                // Retriggering in the first listener sets the word for the two
+                // remaining listeners; the next queued dispatch clears it.
+                int pendingNotifications=mode==2||mode==5?2:0;
+                if(values.length!=5+events.length||values[0]!=events.length/2||values[1]!=0||values[2]!=1||values[3]!=pendingNotifications||values[4]!=0)
+                    throw new AssertionError("Desktop focus dispatch: "+names[mode]+" "+new JSONArray(values));
                 for(int i=0;i<events.length;++i)if(values[5+i]!=events[i])throw new AssertionError("Desktop focus snapshot/order: "+names[mode]);
                 cases.put(new JSONObject().put("name",names[mode]).put("state",new JSONArray(values)));
             } finally {

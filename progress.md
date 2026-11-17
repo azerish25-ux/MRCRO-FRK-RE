@@ -1,5 +1,15 @@
 # Progress
 
+## 2026-11-17 Desktop listener retrigger assertion
+
+- Desktop focus code c0ab46b3cb5c4faf529f8f96f93831e62d4b354f passed
+  Native44058451547, including112cases/200notifications on Android. Renderer
+  44058451436 built but its new observer incorrectly required pending0 at every
+  listener. A retrigger sets pending1 for the remaining listeners in that same
+  dispatch. Corrected that assertion to the original sequence and included the
+  actual state in future failure output. Production behavior is unchanged;
+  the corrected remote observer awaits CI.
+
 ## 2026-11-17 Concrete Desktop focus notifications
 
 - Added the actual Desktop focus callback with one weak component snapshot,

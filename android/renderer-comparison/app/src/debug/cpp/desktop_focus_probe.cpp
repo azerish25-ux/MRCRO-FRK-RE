@@ -16,7 +16,7 @@ struct Probe {
  std::array<Listener,4> objects;
  std::vector<ui::GuiGlobalFocusListener*> listeners;
  std::unique_ptr<ui::GuiDesktopFocusUpdates> updates;
- unsigned mode,notified=0,wrong_thread=0,depth=0,maximum_depth=0,pending_in_callback=0;
+ unsigned mode,notified=0,wrong_thread=0,depth=0,maximum_depth=0,pending_during_notifications=0;
  std::vector<jint> events;
  explicit Probe(unsigned scenario):mode(scenario){
   for(auto& node:nodes)node=std::make_unique<ui::GuiVisibilityComponent>();
@@ -26,7 +26,7 @@ struct Probe {
  void notification(unsigned id,ui::GuiVisibilityComponent* node){
   ++depth;maximum_depth=std::max(depth,maximum_depth);
   if(static_cast<std::uint32_t>(gettid())!=android_ui::main_thread_id())++wrong_thread;
-  if(state.live_update_pending().load()!=0)++pending_in_callback;
+  if(state.live_update_pending().load()!=0)++pending_during_notifications;
   jint index=-1;if(node){if(node==nodes[0].get())index=0;else if(node==nodes[1].get())index=1;else throw std::logic_error("Expired focus snapshot passed to listener");}
   events.push_back(static_cast<jint>(id));events.push_back(index);
   if(notified++==0){
@@ -49,7 +49,7 @@ extern "C" JNIEXPORT jlong JNICALL Java_com_mfrk_renderercomparison_NativeDeskto
  try{main_thread();if(mode<0||mode>5)throw std::invalid_argument("Desktop focus observer mode");auto probe=std::make_shared<Probe>(static_cast<unsigned>(mode));std::uint64_t id;{std::lock_guard lock(mutex);id=next++;probes.emplace(id,probe);}probe->updates->trigger();return static_cast<jlong>(id);}catch(const std::exception& error){fail(env,error.what());return 0;}
 }
 extern "C" JNIEXPORT jintArray JNICALL Java_com_mfrk_renderercomparison_NativeDesktopFocusProbe_snapshot(JNIEnv* env,jclass,jlong id){
- try{main_thread();const auto p=find(id);std::vector<jint> values{static_cast<jint>(p->notified),static_cast<jint>(p->wrong_thread),static_cast<jint>(p->maximum_depth),static_cast<jint>(p->pending_in_callback),static_cast<jint>(p->state.live_update_pending().load())};values.insert(values.end(),p->events.begin(),p->events.end());auto out=env->NewIntArray(values.size());if(out)env->SetIntArrayRegion(out,0,values.size(),values.data());return out;}catch(const std::exception& error){fail(env,error.what());return nullptr;}
+ try{main_thread();const auto p=find(id);std::vector<jint> values{static_cast<jint>(p->notified),static_cast<jint>(p->wrong_thread),static_cast<jint>(p->maximum_depth),static_cast<jint>(p->pending_during_notifications),static_cast<jint>(p->state.live_update_pending().load())};values.insert(values.end(),p->events.begin(),p->events.end());auto out=env->NewIntArray(values.size());if(out)env->SetIntArrayRegion(out,0,values.size(),values.data());return out;}catch(const std::exception& error){fail(env,error.what());return nullptr;}
 }
 extern "C" JNIEXPORT void JNICALL Java_com_mfrk_renderercomparison_NativeDesktopFocusProbe_close(JNIEnv* env,jclass,jlong id){
  try{main_thread();std::shared_ptr<Probe> removed;{std::lock_guard lock(mutex);const auto at=probes.find(static_cast<std::uint64_t>(id));if(at!=probes.end()){removed=std::move(at->second);probes.erase(at);}}}catch(const std::exception& error){fail(env,error.what());}
