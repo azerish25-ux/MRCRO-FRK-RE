@@ -1,0 +1,9 @@
+{
+  "wrapper_sha256": "354c26c58e4c8c671b50f88d070452b47c9cd6b6505b1ea18391724929b3d19e",
+  "producer_sha256": "1608bfc73c42894066953ab958d33390995c562c25e9225423a13ad11d5bf11c",
+  "scope": "Originalf67ea0/f681f0, radius/thickness interpolation getters, packed trig, outward rectangle conversion and security cookie execute. Only final ff6020 invalidation is observed. Finite bounded controls, static resolved radius/thickness supplied to both animation endpoints. No raster or full scene proof.",
+  "cases": 512,
+  "bytes": 40972,
+  "fixture_sha256": "52a545660462ec063069f00fb8ed1ae2885125e623e81996ad6e3856c929f44f",
+  "original_json_sha256": "c8873e97a947ebf9101d74eb41404fc5794f6c5e93366201acef515366a5d6a1"
+}

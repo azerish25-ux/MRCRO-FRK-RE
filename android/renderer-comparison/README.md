@@ -61,6 +61,13 @@ The native bridge returns packed bits, retaining signed zeros. JNI rejects malfo
 
 The bridge also exposes the source magnetic wheel feature. It retains separate `handled` and `hasTarget` flags: a consumed event at the outer boundary can have no write target. Reversed-wheel direction, raw-value reversal, inertial/zero filtering and nearest adjacent zone jumps match 3,744 original cases locally. This feature alone does not implement default wheel handling or Android wheel/touch adaptation.
 
+The capture instrumentation requires API29+ hardware-window frame submission
+before taking each screenshot, using
+[registerFrameCommitCallback](https://developer.android.com/reference/android/view/ViewTreeObserver#registerFrameCommitCallback(java.lang.Runnable)).
+The knobs retain their software layer. A drawing callback runs before layer
+raster/upload and previously allowed the previous assignment's pixels into the
+next capture. The five-frame distinctness and repeat checks remain required.
+
 ## Android touch capture and controller attachment
 
 `SourceTouchRouter` captures stable Android pointer IDs independently for different controls, retains ownership outside the hit rectangle, processes historical movement before the current sample and releases each edit once on up/cancel. A second finger cannot take an already captured control. Coordinate conversion retains source `a67f10`: binary64 addition of 6755399441055744 followed by low-word extraction, including nearest-even half-pixel ties. Android keyboard/button state is translated to JUCE modifier bits separately from pointer action routing.

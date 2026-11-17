@@ -40,8 +40,18 @@ configuration with synthetic packets, prior native state carried forward,
 finite dense arithmetic, callback-time reversal/geometry/signal changes and
 raw scalar-cache NaN bits. The hash-bound fixture is configured for Android CI.
 
+The knob's buffered modulation range callback now follows `f67ea0/f681f0`.
+It bounds both clamped endpoint points and crossed extrema, retains the raw
+range comparisons, expands by half the source stroke plus three pixels, rounds
+outward and unions the previous/current integer bounds. Packed trigonometry
+retains the different two-angle and scalar entry paths. `GuiKnobFeatureBinding`
+connects registered parameter rows and the existing feature history to this
+calculation and the component's actual repaint scheduler. The component supplies
+current resolved style getters, scalar callback and visibility services.
+All 512 native full-callback cases match locally through this binding.
+
 This is source view state, not a completed widget factory or paint oracle.
-Actual widget-specific dirty-region/visibility-hook bodies, timers, scene
+Scalar dirty-region/visibility-hook bodies, timers, scene
 construction, native scale/raster calibration and full synth bindings remain
 unfinished. Packet data must not alias the feature history; incoming sample
 count must fit capacity. Finite view/history values and bounded geometry are

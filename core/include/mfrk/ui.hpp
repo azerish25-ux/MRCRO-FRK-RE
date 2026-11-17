@@ -18,6 +18,16 @@ std::array<float,4> interpolated_center_bounds(std::int32_t width,
 // Large/special/upper-lane paths and floating-environment side effects excluded.
 std::array<float,2> packed_sine_cosine(float x) noexcept;
 
+// Source f67ea0/f681f0 modulation-range invalidation before ff6020.
+// Resolved radius/thickness are the source style getters' current values.
+// Nonnegative bounded dimensions, finite values/intermediates, positive angle
+// sum and abs(trig arguments)<=64; integer edges/differences must fit signed32.
+// The scene schedules the returned dirty rectangle; this does not paint it.
+std::array<std::int32_t,4> knob_modulation_dirty_bounds(std::int32_t width,
+    std::int32_t height,float right_angle,float left_angle,float radius,
+    float thickness,const std::array<float,5>& previous,
+    const std::array<float,5>& current) noexcept;
+
 // Source0x180f64500 gradient-enabled/follow-value-false branch. Nonnegative
 // dimensions; resolved finite radius/state; all computed sine arguments abs<=64.
 // gradient_angle is multiplied by the source binary32 pi, not radians directly.

@@ -77,6 +77,71 @@ std::array<float,2> packed_sine_cosine(float x) noexcept {
     return {lane(x),lane(shifted)};
 }
 
+std::array<std::int32_t,4> knob_modulation_dirty_bounds(std::int32_t width,
+    std::int32_t height,float right_angle,float left_angle,float radius,
+    float thickness,const std::array<float,5>& previous,
+    const std::array<float,5>& current) noexcept {
+    const float half=static_cast<float>(std::min(width/2,height/2));
+    const float outer=radius*half;
+    const float ring_radius=(1.f-thickness*.5f)*outer;
+    const float stroke_half=(thickness*outer)*.5f;
+    const float total=left_angle+right_angle;
+    const float inverse=1.f/total;
+    const float pi_half=value(0x3fc90fdbu);
+    const std::array<float,3> crossings{(left_angle-pi_half)*inverse,.5f,(left_angle+pi_half)*inverse};
+    const float center_x=static_cast<float>(width)*.5f,center_y=static_cast<float>(height)*.5f;
+    const float negative_radius=-ring_radius;
+    std::array<std::array<float,2>,3> extrema{};
+    // Source dd423 computes both first angles together with its packed lane
+    // path, including the midpoint's cosine lane (no scalar tiny shortcut).
+    for(unsigned i=0;i<2;++i){
+        const float angle=crossings[i]*total-left_angle;
+        extrema[i]={(-lane(angle))*negative_radius+center_x,
+                    lane(angle+pi_half)*negative_radius+center_y};
+    }
+    const auto last=packed_sine_cosine(crossings[2]*total-left_angle);
+    extrema[2]={(-last[0])*negative_radius+center_x,last[1]*negative_radius+center_y};
+    const auto one=[&](const std::array<float,5>& statistics){
+        const auto point=[&](float position){
+            position=std::clamp(position,0.f,1.f);
+            const auto trig=packed_sine_cosine(total*position-left_angle);
+            return std::array<float,2>{(-trig[0])*negative_radius+center_x,
+                                      trig[1]*negative_radius+center_y};
+        };
+        const auto first=point(statistics[0]),second=point(statistics[1]);
+        float x=std::min(second[0],first[0]),y=std::min(second[1],first[1]);
+        float w=first[0]-second[0],h=first[1]-second[1];
+        if(w<0.f)w=-w;
+        if(h<0.f)h=second[1]-first[1];
+        for(unsigned i=0;i<3;++i)if(statistics[0]<crossings[i]&&crossings[i]<statistics[1]){
+            const auto p=extrema[i];
+            if(w>0.f&&h>0.f){
+                const float nx=std::min(x,p[0]),ny=std::min(p[1],y);
+                w=std::max(x+w,p[0]+1.f)-nx;
+                h=std::max(y+h,p[1]+1.f)-ny;x=nx;y=ny;
+            }else{x=p[0];y=p[1];w=1.f;h=1.f;}
+        }
+        const float expansion=stroke_half+3.f;
+        x=x-expansion;y=y-expansion;
+        w=std::max((expansion+expansion)+w,0.f);
+        h=std::max((expansion+expansion)+h,0.f);
+        const auto left=static_cast<std::int32_t>(std::floor(x));
+        const auto top=static_cast<std::int32_t>(std::floor(y));
+        const auto right=static_cast<std::int32_t>(std::ceil(x+w));
+        const auto bottom=static_cast<std::int32_t>(std::ceil(y+h));
+        return std::array<std::int32_t,4>{left,top,right-left,bottom-top};
+    };
+    auto old=one(previous);const auto next=one(current);
+    if(next[2]>0&&next[3]>0){
+        if(old[2]<=0||old[3]<=0)return next;
+        const auto x=std::min(old[0],next[0]),y=std::min(old[1],next[1]);
+        const auto right=std::max(old[0]+old[2],next[0]+next[2]);
+        const auto bottom=std::max(old[1]+old[3],next[1]+next[3]);
+        old={x,y,right-x,bottom-y};
+    }
+    return old;
+}
+
 std::array<float,4> outline_gradient_points(std::int32_t width,
     std::int32_t height,float right_angle,float left_angle,
     float gradient_angle,float center_radius) noexcept {

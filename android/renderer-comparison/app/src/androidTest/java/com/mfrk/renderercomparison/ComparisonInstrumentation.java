@@ -73,15 +73,12 @@ public final class ComparisonInstrumentation extends Instrumentation {
                 final float[] assigned=values[index];
                 CountDownLatch frame=new CountDownLatch(1);
                 runOnMainSync(() -> {
-                    boolean[] queued={false};
-                    ViewTreeObserver.OnDrawListener[] listener=new ViewTreeObserver.OnDrawListener[1];
-                    listener[0]=() -> {
-                        if (queued[0]) return;
-                        queued[0]=true;
-                        view.post(() -> view.getViewTreeObserver().removeOnDrawListener(listener[0]));
-                        view.postOnAnimation(() -> view.postOnAnimation(frame::countDown));
-                    };
-                    view.getViewTreeObserver().addOnDrawListener(listener[0]);
+                    // The software knob layer still belongs to a hardware window.
+                    // OnDraw precedes raster/upload; it is not a submitted-frame
+                    // fence and previously allowed a screenshot of the old value.
+                    if (android.os.Build.VERSION.SDK_INT<29 || !view.isHardwareAccelerated())
+                        throw new AssertionError("Capture requires API29 hardware frame commit");
+                    view.getViewTreeObserver().registerFrameCommitCallback(frame::countDown);
                     view.assignNormalized(assigned[0],assigned[1],assigned[2]);
                 });
                 if (!frame.await(10,TimeUnit.SECONDS)) throw new AssertionError("Frame timeout");
@@ -108,6 +105,7 @@ public final class ComparisonInstrumentation extends Instrumentation {
                 save(screen,new File(directory,names[index]+"-viewport.png"));
                 save(crop,new File(directory,names[index]+"-crop.png"));
                 audit[0].put("window_focused",focused[0]);
+                audit[0].put("frame_fence","ViewTreeObserver frame commit before screenshot");
                 audit[0].put("scenario",names[index]);audit[0].put("crop_argb_sha256",hash);
                 audit[0].put("capture_pixels",new JSONArray(new int[]{x,y,width,height}));
                 audit[0].put("pixel_oracle","none: original native raster is not verified");cases.put(audit[0]);

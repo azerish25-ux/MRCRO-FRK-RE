@@ -1,5 +1,21 @@
 # Progress
 
+## 2026-11-17 Modulation repaint bounds and frame submission
+
+- Added the original knob modulation range dirty-region calculation and a
+  binding from registered controller rows/history to the component scheduler.
+  All 512 full native callback cases match locally; Android check is pending.
+- Slider view/history commit `56b4190dad822fa6e17ad023e3b707c17e9214ba`
+  passed Native engine core run 44027824441, including 928 cases/1,397 events
+  on Android, and Analysis tools run 44027824468.
+- Renderer run 44027824481 built but exposed a stale screenshot: factory-default
+  still displayed the previous center assignment while its audit recorded new
+  values. Artifact 14304162049, ZIP SHA256
+  `8fb5f72ef0c8579d970ccd0359c42743869235ae169ade11e2d676e7a8ac353d`,
+  is retained privately on D:. The capture now requires an actual frame-commit
+  callback instead of treating OnDraw plus animation posts as submission.
+  This fix awaits its remote rerun; no pixel parity claim is made.
+
 ## 2026-11-17 Source slider view and modulation state
 
 - Reconstructed actual slider observer refresh/cache behavior and the full

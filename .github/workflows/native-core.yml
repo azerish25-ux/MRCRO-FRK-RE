@@ -230,6 +230,10 @@ jobs:
             adb shell chmod 755 /data/local/tmp/mfrk_ui_primitives_tests /data/local/tmp/mfrk_ui_fixture_guard_tests
             adb push core/tests/fixtures/center_geometry_vectors.bin /data/local/tmp/center_geometry_vectors.bin
             adb shell /data/local/tmp/mfrk_ui_primitives_tests center /data/local/tmp/center_geometry_vectors.bin
+            adb push build-x86_64/knob_dirty_test /data/local/tmp/knob_dirty_test
+            adb shell chmod +x /data/local/tmp/knob_dirty_test
+            adb push core/tests/knob_dirty_vectors.bin /data/local/tmp/knob_dirty_vectors.bin
+            adb shell /data/local/tmp/knob_dirty_test /data/local/tmp/knob_dirty_vectors.bin
             adb push core/tests/fixtures/native_packed_trig_vectors.bin /data/local/tmp/native_packed_trig_vectors.bin
             adb shell /data/local/tmp/mfrk_ui_primitives_tests trig /data/local/tmp/native_packed_trig_vectors.bin
             adb push core/tests/fixtures/outline_gradient_vectors.bin /data/local/tmp/outline_gradient_vectors.bin
