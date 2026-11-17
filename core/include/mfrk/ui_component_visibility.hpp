@@ -23,6 +23,7 @@ struct GuiWidgetVisibilityListener {
 // Actual parent nodes and child pointers retain their scene-owned lifetimes.
 struct GuiVisibilityComponent:GuiRepaintComponent {
  bool requested_visible=false;
+ std::uint8_t focus_flags=0; // Source component+d1; shared by focus/enable routing.
  std::vector<GuiVisibilityComponent*> children;
  std::vector<GuiComponentVisibilityListener*> component_listeners;
  std::map<std::uintptr_t,GuiVisibilityHook*> visibility_hooks;

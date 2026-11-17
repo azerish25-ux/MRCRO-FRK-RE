@@ -1,0 +1,11 @@
+{
+  "wrapper_sha256": "354c26c58e4c8c671b50f88d070452b47c9cd6b6505b1ea18391724929b3d19e",
+  "producer_sha256": "1e7c4cc284635e1f93db219daa8db89bb3a6e26e976c9e56f8a05687f83be1f3",
+  "visibility_producer_sha256": "6bdf629640806874ab345077703a27311fb4164304dbb05ff41e68dab312d1f0",
+  "scope": "Originalff92b0/ff90d0/ff9450/ff8e60/ff8f30/ff9780/ff2ed0, integrated widget visibility/repaint/weak guards and Desktop update-pending atomics execute. Actual peer methods, traverser factory/default/destructor, focus callbacks, accessibility and queue post endpoints observed. Lifetime expiration retains fixture storage. No native peer/accessibility/traverser policy, async delivery, final destructor or full scene proof.",
+  "cases": 768,
+  "events": 1750,
+  "bytes": 280620,
+  "fixture_sha256": "5996bf5c270549adfaea57e3f106a2fb0741f7a54397e77eedff99fa3a582e8a",
+  "original_json_sha256": "b0439180e57323ea64d467fd315a1168ee0687cd7263c44e6680ead75342c28c"
+}

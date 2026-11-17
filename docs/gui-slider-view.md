@@ -104,7 +104,10 @@ platform boundary now exposes typed accessibility events. `COMPVS02` also covers
 accessibility being unavailable while a peer is present; handler/event bodies
 remain required platform services.
 
-Mouse/focus/accessibility bodies, image-cache implementation, platform peer, registered bounds
+The [component focus owner](gui-component-focus.md) now supplies the visibility
+path's focus routing, ancestor state and notification sequencing. Real peer,
+traverser, focus/accessibility callbacks and AsyncUpdater delivery remain required.
+Mouse/accessibility bodies, image-cache implementation, registered bounds
 providers, style getters and real scene construction remain required services.
 Upstream [JUCE Component source](https://github.com/juce-framework/JUCE/blob/6.1.6/modules/juce_gui_basics/components/juce_Component.cpp)
 helped identify cache and listener terminology; it does not identify the installed

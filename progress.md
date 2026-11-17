@@ -1,5 +1,18 @@
 # Progress
 
+## 2026-11-17 Concrete component focus owner
+
+- Added actual shared focus ownership: ancestor enablement, peer selection,
+  default-component traversal/owned disposal, parent fallback, old/new focus
+  notifications, weak lifetime checks, child-focus propagation and coalesced
+  Desktop update posting. Widget visibility now uses these concrete operations
+  in the joined comparison. All768cases/1750service events match original
+  execution locally. Native peer/traverser/accessibility policy and actual
+  AsyncUpdater delivery remain required; the full scene is unfinished.
+- Accessibility commit19b202e41f17ec3d04bbe634dcbb79f9afa956ca passed
+  Native44038316195 (Linux133886481301/Android133887069920) and
+  Analysis44038316207. The new focus fixture awaits Android CI.
+
 ## 2026-11-17 Accessibility structure notifications
 
 - Identified the hierarchy notification's actual accessibility-handler/event
