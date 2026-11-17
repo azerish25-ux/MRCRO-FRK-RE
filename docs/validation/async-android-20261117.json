@@ -1,0 +1,22 @@
+{
+  "source_commit": "ebd46a378270dd09a22e1c8876ca308f30388355",
+  "source_tree": "e53efc27b8f3441b5edd4116065ccc72ae8379d0",
+  "native_run": 44050389269,
+  "native_linux_job": 133926435932,
+  "native_android_job": 133927037368,
+  "renderer_run": 44050389250,
+  "renderer_job": 133926435854,
+  "artifact_id": 14313806430,
+  "artifact_zip_sha256": "14d168c19c8508bd52498fe03c14c2283b4043e6f162e8958a2dd98e167fd5d2",
+  "debug_apk_sha256": "d6c597d5ab0836e186c13559da601a849cfaa146f0f9a63658435a92f5d0f991",
+  "built_abis": ["arm64-v8a", "x86_64"],
+  "runtime_abi": "x86_64",
+  "renderer_android_api": 35,
+  "async_native_cases": 64,
+  "async_native_steps": 547,
+  "async_native_callbacks": 67,
+  "android_async_cases": 8,
+  "existing_queue_cases": 6,
+  "focused_comparison_frames": 5,
+  "scope": "Original-code async ownership comparison and real Android Handler/JNI callback coalescing, cancellation, nested/self-deleting/replacement owners and worker posting. Actual focus/mouse callback bodies, full scene, original raster, audio and complete instrument parity remain unfinished."
+}

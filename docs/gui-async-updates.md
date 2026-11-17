@@ -35,6 +35,9 @@ through the existing real Handler/JNI transport. Its process dispatcher retains
 no Activity, scene, updater or target. Debug instrumentation adds eight real
 main-loop cases: coalescing, cancellation, deleted owner, nested updates,
 cancel/retrigger, replacement owner, self-deletion and worker coalescing. These
-checks and the existing frame captures run remotely; Android validation is
-pending for this change. Actual Desktop focus-listener/mouse callbacks and the
+checks passed in [renderer run44050389250](https://github.com/azerish25-ux/MRCRO-FRK-RE/actions/runs/44050389250),
+together with the six existing queue cases and five focused comparison frames.
+Native run44050389269 also passed the original-code fixture on Android.
+Exact source/artifact identities are in `validation/async-android-20261117.json`.
+Actual Desktop focus-listener/mouse callbacks and the
 complete scene still need their application implementations.

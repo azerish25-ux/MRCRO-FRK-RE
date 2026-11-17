@@ -1,5 +1,15 @@
 # Progress
 
+## 2026-11-17 Async Android validation
+
+- Commit ebd46a378270dd09a22e1c8876ca308f30388355 passed Native44050389269,
+  Renderer44050389250 and Analysis44050389366. The emulator passed all eight
+  async ownership/thread cases, six existing queue cases and five focused frames.
+  The native Android job passed all64async cases/547steps/67callbacks.
+  Artifact14313806430 and its extracted reports/APKs are retained on D:;
+  exact identities are recorded in docs/validation/async-android-20261117.json.
+  This completes these scoped runtime checks; full instrument parity is ongoing.
+
 ## 2026-11-17 Owned async updates and Android delivery
 
 - Added source pending-message admission, delivery-before-callback clearing,
