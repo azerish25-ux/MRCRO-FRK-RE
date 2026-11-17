@@ -1,5 +1,18 @@
 # Progress
 
+## 2026-11-17 Owned async updates and Android delivery
+
+- Added source pending-message admission, delivery-before-callback clearing,
+  cancellation and retained-message destruction semantics, including mouse
+  filtering. Bound the focus owner's actual pending word to its queued message.
+  All64cases/547steps/67callbacks match original code locally.
+- Added a production async queue adapter over the existing Android Handler/JNI
+  transport, plus eight debug main-loop ownership/thread/retrigger scenarios.
+  Real focus/mouse callback bodies and the full scene remain required.
+- Focus commit66250a93d07f2c7514707f8d1ace8942da8f0d5e passed
+  Native44043405678 and Analysis44043405648. The new async/native/Android
+  checks await CI.
+
 ## 2026-11-17 Concrete component focus owner
 
 - Added actual shared focus ownership: ancestor enablement, peer selection,

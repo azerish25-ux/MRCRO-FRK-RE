@@ -1,0 +1,11 @@
+{
+  "wrapper_sha256": "354c26c58e4c8c671b50f88d070452b47c9cd6b6505b1ea18391724929b3d19e",
+  "producer_sha256": "bb4a694b4021b9e7443a2058a272e7d7bda0fa92605b88945121fa07239cde76",
+  "scope": "Originalff8b50 trigger/filter, f7b9b0 native post/refcount, f7c7c0 callback and f7c8a0/f7c7e0 destruction execute. Owned queue reserved16; driver models dequeue/ref release and explicit cancellation. Target callback may tail-trigger original code or destroy owner. Native platform locks/wake/free are modeled external services. No real mouse/peer or full scene proof.",
+  "cases": 64,
+  "steps": 547,
+  "callbacks": 67,
+  "bytes": 25316,
+  "fixture_sha256": "82096b1404db2a879dd1c8159751f0c1c77de9876228c7b86bb50fa6a235291d",
+  "original_json_sha256": "254f5fec32a5ace211400ec5fb5d3439975de91309a4dbbfbf7930d083ad7584"
+}

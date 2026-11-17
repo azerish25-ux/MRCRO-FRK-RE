@@ -16,9 +16,10 @@ recursion precedes their destruction, which precedes parent fallback. Returning
 an ineligible default component does not invent a second fallback attempt.
 
 The Desktop focus-update flag coalesces posts with the original atomic 0-to-1
-transition. A failed post resets it. Actual AsyncUpdater delivery/cancellation
-and focus-listener dispatch remain the queue owner's responsibility; there is
-no synchronous fake callback. Accessibility loss, gain requests and descendant
+transition. A failed post resets it. The [owned asynchronous update channel](gui-async-updates.md)
+now supplies actual message retention, delivery/cancellation and Android posting.
+Desktop focus-listener dispatch remains an application responsibility.
+Accessibility loss, gain requests and descendant
 focus checks use the same shared accessibility-focus identity as the source.
 
 The native comparison executes these original focus bodies together with widget

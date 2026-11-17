@@ -1,11 +1,16 @@
 #pragma once
 #include "mfrk/ui_component_visibility.hpp"
+#include "mfrk/ui_async_updater.hpp"
 #include <atomic>
+#include <stdexcept>
 namespace mfrk::ui {
 struct GuiComponentFocusState {
  GuiVisibilityComponent* focused=nullptr;
  std::uintptr_t accessibility_focused=0;
  std::atomic<std::uint32_t> update_pending{0};
+ std::atomic<std::uint32_t>* update_pending_source=nullptr;
+ std::atomic<std::uint32_t>& live_update_pending()noexcept{return update_pending_source?*update_pending_source:update_pending;}
+ const std::atomic<std::uint32_t>& live_update_pending()const noexcept{return update_pending_source?*update_pending_source:update_pending;}
 };
 struct GuiFocusPeer:GuiVisibilityPeer {
  virtual void grab_focus()=0;
@@ -62,7 +67,7 @@ inline GuiFocusPeer* gui_component_focus_peer(GuiVisibilityComponent& component,
 }
 inline void gui_trigger_focus_update(GuiComponentFocusState& state,GuiComponentFocusBoundary& boundary){
  std::uint32_t expected=0;
- if(state.update_pending.compare_exchange_strong(expected,1))if(!boundary.post_focus_update())state.update_pending.exchange(0);
+ if(state.live_update_pending().compare_exchange_strong(expected,1))if(!boundary.post_focus_update())state.live_update_pending().exchange(0);
 }
 // Source ff8f30. The supplied token is checked after a changed-focus callback;
 // unchanged flags still propagate to the current parent, as in the source.
@@ -144,4 +149,26 @@ inline void gui_component_give_away_focus(GuiVisibilityComponent& component,bool
  auto* losing=state.focused;
  if(losing){state.focused=nullptr;if(notify)gui_component_focus_lost(*losing,2,state,boundary);gui_trigger_focus_update(state,boundary);}
 }
+// Binds the Desktop's logical focus flag to the actual queued message word.
+// The state and target outlive the channel; queued cancelled messages may
+// outlive all three without retaining or dereferencing the target.
+class GuiComponentFocusUpdate final {
+ GuiComponentFocusState& state_;GuiAsyncUpdater updater_;
+public:
+ GuiComponentFocusUpdate(GuiComponentFocusState& state,GuiAsyncUpdateTarget& target,GuiAsyncUpdateQueue& queue)
+  :state_(state),updater_(target,queue){
+  if(state_.update_pending_source||state_.update_pending.load()!=0)throw std::logic_error("Focus update owner must bind before posting");
+  state_.update_pending_source=&updater_.pending_word();
+ }
+ GuiComponentFocusUpdate(const GuiComponentFocusUpdate&)=delete;
+ GuiComponentFocusUpdate& operator=(const GuiComponentFocusUpdate&)=delete;
+ ~GuiComponentFocusUpdate(){
+  updater_.cancel();
+  if(state_.update_pending_source==&updater_.pending_word()){state_.update_pending.store(0);state_.update_pending_source=nullptr;}
+ }
+ // Called by the concrete focus boundary after its source atomic admission.
+ bool post_message(){return updater_.post_message();}
+ void trigger(){updater_.trigger();}
+ void cancel()noexcept{updater_.cancel();}
+};
 }
