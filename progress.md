@@ -1,5 +1,16 @@
 # Progress
 
+## 2026-11-17 Pointer Android checks and capture focus
+
+- Renderer44065798502 built both ABIs and passed the six new queued mouse-source
+  checks, but first capture sampled a not-yet-focused startup window. Saved image
+  shows the app visible and logcat shows no app crash; focus had not stabilized.
+  Artifact14320233018/ZIP SHA256
+  e7d56ec2f4246105a261c1a39aa627c333d4c60b74198c64b9ff4937118a08e1
+  is verified on D:. Added explicit window-focus synchronization before capture,
+  with automation connected before launch; per-frame focus checks remain required.
+  The capture follow-up awaits Android CI.
+
 ## 2026-11-17 Pointer-source state and queued refresh
 
 - Added source target transitions, move/drag routing, button transitions,

@@ -50,6 +50,9 @@ public final class ComparisonInstrumentation extends Instrumentation {
             String[] names={"minimum","center","factory-default","maximum","factory-repeat"};
             float[][] values={{0,0,0},{0.5f,0.5f,0.5f},{1,0,0.5f},{1,1,1},{1,0,0.5f}};
             JSONArray cases=new JSONArray(); HashSet<String> unique=new HashSet<>(); String factoryHash=null;
+            // Establish automation before launch so its initial connection is
+            // outside the window-focus/frame capture sequence.
+            getUiAutomation();
             Intent intent=new Intent(getTargetContext(),RendererComparisonActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             RendererComparisonActivity activity=(RendererComparisonActivity)startActivitySync(intent);
@@ -65,6 +68,7 @@ public final class ComparisonInstrumentation extends Instrumentation {
                 view.getViewTreeObserver().addOnGlobalLayoutListener(listener[0]);
             });
             if (!laidOut.await(10,TimeUnit.SECONDS)) throw new AssertionError("Initial touch layout timeout");
+            awaitWindowFocus(view);
             waitForIdleSync();
             runOnMainSync(() -> TouchRoutingVerification.verify(view));
             runOnMainSync(() -> {
@@ -82,6 +86,7 @@ public final class ComparisonInstrumentation extends Instrumentation {
                 } catch (org.json.JSONException error) { throw new AssertionError(error); }
             });
             for (int index=0;index<names.length;++index) {
+                awaitWindowFocus(view);
                 final float[] assigned=values[index];
                 CountDownLatch frame=new CountDownLatch(1);
                 runOnMainSync(() -> {
@@ -126,7 +131,7 @@ public final class ComparisonInstrumentation extends Instrumentation {
                     output.write(partial.toString(2).getBytes(StandardCharsets.UTF_8));
                 }
                 if (crop!=screen) crop.recycle();screen.recycle();
-                if (!audit[0].getBoolean("window_focused")) throw new AssertionError("Comparison obscured by another window");
+                if (!audit[0].getBoolean("window_focused")) throw new AssertionError("Comparison lost window focus during capture");
                 if (index==4 && !hash.equals(factoryHash)) throw new AssertionError("Repeated assignment not deterministic");
             }
             runOnMainSync(activity::finish);waitForIdleSync();
@@ -142,6 +147,23 @@ public final class ComparisonInstrumentation extends Instrumentation {
         } catch (Throwable error) {
             android.util.Log.e("RendererComparison","Instrumentation failure",error);
             result.putString("stream","Renderer comparison failed: "+error+"\n");finish(Activity.RESULT_CANCELED,result);
+        }
+    }
+    private void awaitWindowFocus(RendererComparisonView view) throws Exception {
+        CountDownLatch focused=new CountDownLatch(1);
+        ViewTreeObserver.OnWindowFocusChangeListener[] listener=new ViewTreeObserver.OnWindowFocusChangeListener[1];
+        runOnMainSync(() -> {
+            if (view.hasWindowFocus()) { focused.countDown();return; }
+            listener[0]=hasFocus -> { if (hasFocus) focused.countDown(); };
+            view.getViewTreeObserver().addOnWindowFocusChangeListener(listener[0]);
+        });
+        try {
+            if (!focused.await(10,TimeUnit.SECONDS)) throw new AssertionError("Comparison window focus timeout");
+        } finally {
+            runOnMainSync(() -> {
+                if (listener[0]!=null && view.getViewTreeObserver().isAlive())
+                    view.getViewTreeObserver().removeOnWindowFocusChangeListener(listener[0]);
+            });
         }
     }
     private static void verifyNativeMagnetism() {
