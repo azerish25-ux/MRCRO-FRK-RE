@@ -1,0 +1,22 @@
+{
+  "renderer_commit": "a04474874c9f5d8810dd91e5e526633e077384db",
+  "renderer_tree": "e07e2b1bcd52f001d20aa97a6597ec6a81eb2c34",
+  "native_code_commit": "c0ab46b3cb5c4faf529f8f96f93831e62d4b354f",
+  "native_run": 44058451547,
+  "native_android_job": 133954615820,
+  "renderer_run": 44059974616,
+  "renderer_job": 133959011234,
+  "artifact_id": 14317543044,
+  "artifact_zip_sha256": "09e3a4680f810ee359f9a05944d540beca043a43bdccb312aa70b6917e342013",
+  "debug_apk_sha256": "891666be98acdba5ff340a8fe5b6f946c7432d4df029c5d311f89ae55a3c5964",
+  "built_abis": ["arm64-v8a", "x86_64"],
+  "runtime_abi": "x86_64",
+  "renderer_android_api": 35,
+  "native_cases": 112,
+  "native_notifications": 200,
+  "desktop_focus_cases": 6,
+  "existing_async_cases": 8,
+  "existing_queue_cases": 6,
+  "focused_comparison_frames": 5,
+  "scope": "Original Desktop callback plus real Android retained delivery, weak snapshot, actual focused-node deletion, redirection and listener mutations. App listeners are debug observers. Full scene, original raster, sound, MIDI and complete instrument parity remain unfinished."
+}

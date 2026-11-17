@@ -1,5 +1,18 @@
 # Progress
 
+## 2026-11-17 Desktop focus Android validation
+
+- Corrected observer commit a04474874c9f5d8810dd91e5e526633e077384db passed
+  Renderer44059974616/job133959011234 and Analysis44059974668. All six new
+  Desktop focus scenarios passed with source listener order/snapshots/pending
+  state, plus the existing eight async/six queue cases/five focused captures.
+  Artifact14317543044 was downloaded, hash-verified and retained on D:.
+  docs/validation/desktop-focus-android-20261117.json records exact identities.
+- Historical reference evidence confirms DPI192 and logical knob100x100; its
+  parent-chain probe truncates at12 ancestors and records no affine matrices.
+  Physical/raster mapping from declaration125x125 remains unproven; no guessed
+  geometry correction was applied to the renderer.
+
 ## 2026-11-17 Desktop listener retrigger assertion
 
 - Desktop focus code c0ab46b3cb5c4faf529f8f96f93831e62d4b354f passed

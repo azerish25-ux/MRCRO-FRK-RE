@@ -25,5 +25,11 @@ application responsibility.
 Six remote Android cases additionally check reverse order, actual focused-node
 deletion, redirected snapshots, earlier-listener removal, clear and append with
 retrigger. They use the production Desktop target and Handler/JNI transport;
-listener callbacks are explicit debug observers. Remote validation is pending.
+listener callbacks are explicit debug observers. All six cases passed in
+[renderer run44059974616](https://github.com/azerish25-ux/MRCRO-FRK-RE/actions/runs/44059974616),
+alongside eight async cases, six existing queue cases and five focused captures.
+Native run44058451547 passed112cases/200notifications on Android. A retrigger's
+pending word correctly remains1 during the remaining listeners in that dispatch,
+then clears before the next queued callback. Exact code/artifact identities are
+in `validation/desktop-focus-android-20261117.json`.
 The full scene and original raster/audio/MIDI/preset integration remain unfinished.
