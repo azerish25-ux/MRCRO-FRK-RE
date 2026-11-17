@@ -29,9 +29,10 @@ component destruction. Coordinates/intermediates are finite and bounded, button
 state uses the source mask, access is serial, and component storage survives
 coordinate/cursor service calls.
 
-Hit resolution, local/global/display transforms, component event bodies, peer,
-clock and cursor services are observed endpoints and mandatory application
-implementations. The scene factory and real Android touch/hit bindings remain
+Hit resolution and component coordinate transforms now have the concrete
+source-derived [geometry binding](gui-pointer-geometry.md). Platform peer/display
+mapping, component event bodies, clock and cursor remain mandatory application
+services. The scene factory and real Android touch/hit bindings remain
 unfinished. Six queued Android checks cover forced refresh, both sides of the
 drag threshold, actual target deletion, target transition and clock regression.
 All six passed in [renderer run44066971096](https://github.com/azerish25-ux/MRCRO-FRK-RE/actions/runs/44066971096),

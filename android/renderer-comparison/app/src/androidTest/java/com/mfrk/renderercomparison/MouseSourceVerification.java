@@ -22,6 +22,6 @@ final class MouseSourceVerification {
                 cases.put(new JSONObject().put("name",names[mode]).put("state",new JSONArray(values)));
             }finally{if(handle[0]!=0)instrumentation.runOnMainSync(() -> NativeMouseSourceProbe.close(handle[0]));}
         }
-        return new JSONObject().put("passed",true).put("cases",cases).put("scope","real queued source state owner; hit/coordinate/event services are observers, full scene remains unfinished");
+        return new JSONObject().put("passed",true).put("cases",cases).put("scope","real queued source owner and source hit/coordinate binding; platform peer/hit/event services are observers, full scene remains unfinished");
     }
 }

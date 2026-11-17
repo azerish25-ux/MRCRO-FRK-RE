@@ -830,3 +830,13 @@
 
 - Added a fixed-block adapter and Android AAudio output boundary for the recovered 48 kHz stereo profile. It requires a real graph callback and handles variable callback sizes without allocating on the audio thread. The stream owner must handle disconnect/reopen and lifecycle off the callback thread.
 - This boundary is not yet connected to the synth graph, MIDI queue or a standalone Activity. Audio focus, automatic recovery, other sample rates and physical-device behavior are not established.
+# Pointer geometry continuation — 2026-11-17
+
+Implemented original component/global point conversion, affine inversion,
+ancestor clipping, reverse child hit traversal and pointer peer lookup in the
+production core. The original executable comparison matches all 560 cases and
+1,030 service events locally. The six queued Android pointer scenarios now use
+this geometry binding; platform peer/hit/event endpoints remain observers.
+Native and renderer Android CI verification is pending for this change. Full
+scene/widget construction, touch/controller application binding, raster, sound,
+MIDI and preset parity remain unfinished. See `docs/gui-pointer-geometry.md`.

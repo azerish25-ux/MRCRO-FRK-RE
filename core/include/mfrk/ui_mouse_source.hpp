@@ -7,6 +7,7 @@
 namespace mfrk::ui {
 struct GuiMousePoint {float x,y;};
 using GuiMouseExtra=std::array<std::uint32_t,5>;
+struct GuiPointerPeer;
 struct GuiMouseSourceState {
  GuiMousePoint position{},offset{};
  std::uint32_t modifiers=0,source_type=0,event_serial=0;
@@ -15,6 +16,7 @@ struct GuiMouseSourceState {
  bool unbounded=false,keep_cursor_visible=false,dragged=false;
  std::shared_ptr<GuiComponentLifetime> target;
  std::shared_ptr<GuiComponentLifetime> auxiliary_target; // Source weak slot+50.
+ GuiPointerPeer* peer=nullptr; // Actual non-owning source peer, validated before hit lookup.
  std::int64_t last_time=0;
  std::atomic<std::uint32_t> pending{0};
  std::atomic<std::uint32_t>* pending_source=nullptr;

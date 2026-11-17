@@ -1,0 +1,10 @@
+{
+  "wrapper_sha256": "354c26c58e4c8c671b50f88d070452b47c9cd6b6505b1ea18391724929b3d19e",
+  "producer_sha256": "cc2c23eb4d3cfc294fd2fae59501641cd59b52b7ec840efa95764706eb9230e6",
+  "scope": "Original108d350/108dbe0/10911f0/108da30/f81c50/ff4ed0/ff5210/ffa390/ffa210 and desktop scaling/rounding execute. Native peer mapping/validity/contains and virtual component scale/hit endpoints observed. Finite static five-node trees and service geometry, no real platform/scene/raster proof.",
+  "cases": 560,
+  "events": 1030,
+  "bytes": 268172,
+  "fixture_sha256": "a5da181daf46e7bf8951eba68208141a54db8f798a024f642c2349a464d37445",
+  "original_json_sha256": "281605b1067a936c5031e1479597560fdc7e7d716dceb72e86b6e6bdb2e9b91e"
+}
