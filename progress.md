@@ -1,5 +1,14 @@
 # Progress
 
+## 2026-11-17 Queued controller delivery
+
+- Added weak listener/owner delivery and an owned typed-message envelope.
+  Controller messages reenter the full recovered write owner; other valid
+  message kinds require actual handlers. The native callback/write-chain
+  comparison matches 356 cases and all 373 observed events locally. Android
+  CI includes the hash-bound fixture. Android scheduling and real scene/preset
+  handler integration are still unfinished.
+
 ## 2026-11-17 Outer GUI write composition
 
 - Joined source `817fb0` ownership/hardware policy to the recovered router and,
