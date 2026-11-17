@@ -1,0 +1,23 @@
+{
+  "native_code_commit": "b1dadf181933e17d93486d61f8ecfcd30fc089b3",
+  "renderer_commit": "1f865c0b8ff013dbf5fcdaa48e0c132d216834f0",
+  "renderer_tree": "67c303e6668c05bb3715678fcd8009bf7e5c54d0",
+  "native_run": 44065798500,
+  "native_android_job": 133979697924,
+  "renderer_run": 44066971096,
+  "renderer_job": 133983035794,
+  "artifact_id": 14321426391,
+  "artifact_zip_sha256": "1fbd8fa4a7a131e097e9a1ad8bcbe4b679533a74fbf5febe7b1b48f8c5bcc378",
+  "debug_apk_sha256": "9ffbbc60025d0a9da833bdec3b574b69148f1bdd6faa53dfea0c1c19ba92d775",
+  "built_abis": ["arm64-v8a", "x86_64"],
+  "runtime_abi": "x86_64",
+  "renderer_android_api": 35,
+  "native_cases": 384,
+  "native_events": 1370,
+  "mouse_source_cases": 6,
+  "desktop_focus_cases": 6,
+  "async_cases": 8,
+  "existing_queue_cases": 6,
+  "focused_comparison_frames": 5,
+  "scope": "Original pointer-source state comparison and actual Android queued refresh/drag threshold/weak-target/clock scenarios. Hit, coordinate, cursor and component-event services are observers. Full scene, original raster, audio, MIDI, preset activation and complete instrument parity remain unfinished."
+}

@@ -33,6 +33,12 @@ Hit resolution, local/global/display transforms, component event bodies, peer,
 clock and cursor services are observed endpoints and mandatory application
 implementations. The scene factory and real Android touch/hit bindings remain
 unfinished. Six queued Android checks cover forced refresh, both sides of the
-drag threshold, actual target deletion, target transition and clock regression;
-remote validation is pending. Full scene/raster/audio/MIDI/preset parity remains
+drag threshold, actual target deletion, target transition and clock regression.
+All six passed in [renderer run44066971096](https://github.com/azerish25-ux/MRCRO-FRK-RE/actions/runs/44066971096),
+alongside the existing queue/async/focus checks and five focused captures. Native
+run44065798500 passed384cases/1370events on Android. Exact code/artifact identities
+are in `validation/mouse-source-android-20261117.json`. Capture instrumentation
+now waits for [window focus](https://developer.android.com/reference/android/view/ViewTreeObserver.OnWindowFocusChangeListener)
+before requesting frames and retains per-capture focus assertions.
+Full scene/raster/audio/MIDI/preset parity remains
 the active objective.

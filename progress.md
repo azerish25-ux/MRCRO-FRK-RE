@@ -1,5 +1,16 @@
 # Progress
 
+## 2026-11-17 Pointer source Android validation
+
+- Production pointer-source commitb1dadf181933e17d93486d61f8ecfcd30fc089b3
+  passed Native44065798500, including384cases/1370events on Android. Capture
+  follow-up1f865c0b8ff013dbf5fcdaa48e0c132d216834f0 passed Renderer44066971096
+  and Analysis44066971167: six pointer cases, prior queue/async/focus cases and
+  five focused captures all passed. Artifact14321426391 was downloaded and
+  hash-verified on D:. Exact identities are in
+  docs/validation/mouse-source-android-20261117.json. Full synth parity remains
+  unfinished; these validate the state owner and its supplied service profile.
+
 ## 2026-11-17 Pointer Android checks and capture focus
 
 - Renderer44065798502 built both ABIs and passed the six new queued mouse-source
