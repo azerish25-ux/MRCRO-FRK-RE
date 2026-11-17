@@ -848,3 +848,14 @@ Android pointer instrumentation now uses these actual bodies; modal, repaint,
 Desktop timer/cursor and widget endpoints remain services. Android CI is pending
 for this addition. Drag/down/up and complete scene/controller integration remain
 open. See `docs/gui-component-mouse.md`.
+
+Implemented source component down/drag/up delivery and click history, retaining
+modal-attempt unblocking, ancestor stacking/focus order, press coordinates and
+time, release modifiers, pen data and the separate double-click listener pass.
+All 384 original cases and 2,351 events match locally. The production
+`GuiMouseComponentBinding` now joins source pointer state, geometry and all six
+component event bodies; the Android queued probe uses this join. Actual widget,
+modal/stacking/focus/timer/cursor services and full application scene remain open.
+Native Android hover checks passed in run44072355216. Renderer run44072355145
+attempt1 stopped before compilation on Maven HTTP429; its retry is running.
+Android CI for the button-event addition is pending.

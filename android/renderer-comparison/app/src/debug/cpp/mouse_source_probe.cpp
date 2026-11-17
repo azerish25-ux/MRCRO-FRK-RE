@@ -23,7 +23,7 @@ struct Peer:ui::GuiPointerPeer {
  void grab_focus()override{throw std::logic_error("Unexpected peer focus");}
  bool focused()override{throw std::logic_error("Unexpected peer focus");}
 };
-struct Probe:ui::GuiPointerGeometryBoundary,ui::GuiMouseGeometryBinding,ui::GuiComponentMouseBoundary {
+struct Probe:ui::GuiPointerGeometryBoundary,ui::GuiComponentMouseButtonBoundary,ui::GuiMouseComponentBinding {
  ui::GuiMouseSourceState state;
  ui::GuiVisibilityComponent root;
  Peer window{*this};
@@ -32,7 +32,7 @@ struct Probe:ui::GuiPointerGeometryBoundary,ui::GuiMouseGeometryBinding,ui::GuiC
  std::vector<ui::GuiComponentMouseListener*> listeners;
  unsigned mode,moves=0,drags=0,enters=0,exits=0,finds=0,cursors=0,wrong_thread=0,pending_in_event=0;
  std::int64_t event_time=0;
- explicit Probe(unsigned scenario):ui::GuiMouseGeometryBinding(static_cast<ui::GuiPointerGeometryBoundary&>(*this)),mode(scenario){
+ explicit Probe(unsigned scenario):ui::GuiMouseComponentBinding(static_cast<ui::GuiPointerGeometryBoundary&>(*this),static_cast<ui::GuiComponentMouseButtonBoundary&>(*this)),mode(scenario){
   for(auto& node:nodes)node=std::make_unique<ui::GuiVisibilityComponent>();
   root.flags=3;root.bounds={0,0,200,160};
   for(auto& node:nodes){node->parent=&root;node->bounds={0,0,100,80};node->flags=2;root.children.push_back(node.get());}
@@ -50,22 +50,19 @@ struct Probe:ui::GuiPointerGeometryBoundary,ui::GuiMouseGeometryBinding,ui::GuiC
  bool hit_test(ui::GuiVisibilityComponent& node,std::int32_t,std::int32_t)override{return &node!=&root||mode!=3;}
  std::uint32_t global_modifiers()override{throw std::logic_error("Unexpected mouse-up lookup");}
  void increment_mouse_down_count()override{throw std::logic_error("Unexpected mouse-down count");}
- void mouse_enter(ui::GuiVisibilityComponent& n,ui::GuiMouseSourceState& s,ui::GuiMousePoint p,std::int64_t t)override{ui::gui_component_mouse_hover(n,s,p,t,ui::GuiComponentMouseKind::enter,*this);}
- void mouse_exit(ui::GuiVisibilityComponent& n,ui::GuiMouseSourceState& s,ui::GuiMousePoint p,std::int64_t t)override{ui::gui_component_mouse_hover(n,s,p,t,ui::GuiComponentMouseKind::exit,*this);}
- void mouse_move(ui::GuiVisibilityComponent& n,ui::GuiMouseSourceState& s,ui::GuiMousePoint p,std::int64_t t)override{ui::gui_component_mouse_hover(n,s,p,t,ui::GuiComponentMouseKind::move,*this);}
  bool modal_blocked(ui::GuiVisibilityComponent&)override{return false;}
  void repaint(ui::GuiVisibilityComponent&)override{throw std::logic_error("Unexpected hover repaint");}
  std::uint32_t global_mouse_modifiers()override{return 0;}
  void component_mouse_event(ui::GuiVisibilityComponent&,ui::GuiComponentMouseKind kind,const ui::GuiComponentMouseEvent& e)override{
-  if(kind==ui::GuiComponentMouseKind::enter)++enters;else if(kind==ui::GuiComponentMouseKind::exit)++exits;else ++moves;event(e.time);
+  if(kind==ui::GuiComponentMouseKind::enter)++enters;else if(kind==ui::GuiComponentMouseKind::exit)++exits;else if(kind==ui::GuiComponentMouseKind::move)++moves;else if(kind==ui::GuiComponentMouseKind::drag)++drags;else throw std::logic_error("Unexpected mouse button event");event(e.time);
  }
  void desktop_mouse_prepare()override{}
  void desktop_mouse_blocked_move()override{throw std::logic_error("Unexpected modal move");}
  void hide_cursor(ui::GuiMouseSourceState&)override{throw std::logic_error("Unexpected modal cursor");}
  std::vector<ui::GuiComponentMouseListener*>& global_mouse_listeners()override{return listeners;}
- void mouse_drag(ui::GuiVisibilityComponent&,ui::GuiMouseSourceState&,ui::GuiMousePoint,std::int64_t t,const ui::GuiMouseExtra&)override{++drags;event(t);}
- void mouse_down(ui::GuiVisibilityComponent&,ui::GuiMouseSourceState&,ui::GuiMousePoint,std::int64_t,const ui::GuiMouseExtra&)override{throw std::logic_error("Unexpected mouse down");}
- void mouse_up(ui::GuiVisibilityComponent&,ui::GuiMouseSourceState&,ui::GuiMousePoint,std::int64_t,std::uint32_t,const ui::GuiMouseExtra&)override{throw std::logic_error("Unexpected mouse up");}
+ void modal_input_attempt()override{throw std::logic_error("Unexpected modal attempt");}
+ void to_front(ui::GuiVisibilityComponent&,bool)override{throw std::logic_error("Unexpected stacking request");}
+ void grab_mouse_keyboard_focus(ui::GuiVisibilityComponent&)override{throw std::logic_error("Unexpected pointer focus");}
  void update_cursor(ui::GuiMouseSourceState&,bool)override{++cursors;}
  ui::GuiDirtyBounds global_bounds(ui::GuiVisibilityComponent&)override{throw std::logic_error("Unexpected cursor bounds");}
  ui::GuiDirtyBounds display_bounds(const ui::GuiDirtyBounds&)override{throw std::logic_error("Unexpected display bounds");}

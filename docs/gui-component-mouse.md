@@ -23,5 +23,16 @@ The admission uses an existing Desktop owner and weak tokens, complete acyclic
 ancestors, signed32 listener counts, valid deep prefixes, surviving registration
 objects and retained component storage through enter's callback/flag write.
 Modal policy, repaint, Desktop timer/blocked notifications, cursor and actual
-widget callbacks remain explicit services. Drag/down/up delivery and full
-scene/touch/widget/controller integration remain unfinished.
+widget callbacks remain explicit services. Full scene/touch/widget/controller
+integration remains unfinished.
+
+Source `ff7c80/ff8330/ff8050/ffb750` down, drag, release and click history are now
+implemented too. This retains modal-attempt/unblocking behavior, ancestor
+stacking/focus order, press-coordinate rebasing, pre-release modifiers, pen data,
+long-press movement status and the separate double-click callback/listener pass.
+The original comparison matches all 384 cases and 2,351 events locally, including
+time/distance/touch thresholds, packed peer/modifier comparisons and callback
+mutations. `component_mouse_buttons_provenance.json` records identities.
+Signed64 times, their differences and the source 300ms addition must fit; actual
+coordinate service admission also applies. `GuiMouseComponentBinding` now joins
+the real pointer state owner to geometry and all six component event bodies.

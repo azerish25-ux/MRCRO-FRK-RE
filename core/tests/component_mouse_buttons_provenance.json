@@ -1,0 +1,10 @@
+{
+  "wrapper_sha256": "354c26c58e4c8c671b50f88d070452b47c9cd6b6505b1ea18391724929b3d19e",
+  "producer_sha256": "6b153eece39bea12f162947d7c5c2255f28eb9415ea140e07b02b590252a0e60",
+  "scope": "Original ff7c80/ff8330/ff8050/ffb750,108e330, native coordinate traversal, weak accounting and event rounding execute. Modal/repaint/Desktop timer preparation/cursor, toFront/focus, scale getter and virtual widget handlers observed. Pre-existing Desktop and weak tokens, retained expired node storage, stable registration objects; finite coordinate and bounded signed time profile. No full scene/platform/destruction proof.",
+  "cases": 384,
+  "events": 2351,
+  "bytes": 322476,
+  "fixture_sha256": "02f9c1402e29c2daf1a3b8c6ad97ac231c97ae130645e9c607f38829063eaa60",
+  "original_json_sha256": "05b813b6ccd169cb8bbf5bdf1a21dbb1fb08877ce6b60cbcb806aa653ff9d2a9"
+}
