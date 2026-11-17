@@ -1,5 +1,16 @@
 # Progress
 
+## 2026-11-17 Component repaint propagation
+
+- Added source visible-bound clipping, repaint gates, parent propagation,
+  affine corner bounds and root peer scaling/repaint. A knob component boundary
+  now connects scalar/range dirty requests to this path. Actual visible bounds,
+  gate bodies, component visibility, style and Android peer/factory remain
+  supplied services. All 384 native cases/944 service events match locally;
+  Android execution is pending.
+- Commit `726ddce885a8797ffc604773e5d1ab8ac14d745c` passed Native engine
+  core run 44029299187, including all 512 modulation dirty cases on Android.
+
 ## 2026-11-17 Scalar modulation repaint requests
 
 - Reconstructed the original scalar display's narrow sampled arc, path bounds,

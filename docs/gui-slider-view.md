@@ -55,10 +55,21 @@ Its narrow arc retains the original 0.05-radian line sampling and endpoint
 clamping, stored path extrema, full stroke expansion and separate old/new
 outward-rounded repaint requests. All 384 native full-callback cases match
 locally. This profile requires stable style/dimensions across both scheduler
-callbacks; component clipping and propagation after `ff6020` remain separate.
+callbacks.
+
+`GuiKnobComponentDisplayBoundary` joins both dirty callbacks to the source
+component tree's `ff6020/ff6120` path. It clips in place to actual visible bounds,
+retains zero-area edge locations, observes enabled/gate checks, translates
+through parents, applies the source affine corner calculation, scales root-peer
+requests and schedules the actual peer. All 384 native component cases and 944
+service events match locally, including three-level trees, absent peers/parents,
+gate denial, flags, reflection/shear and fractional peer dimensions. Visible
+bounds, gate implementations and the native/Android peer remain actual services
+required from the scene. The fixture uses static callbacks and finite bounded
+geometry; it does not prove a complete platform scene or rendered pixels.
 
 This is source view state, not a completed widget factory or paint oracle.
-Component dirty-region clipping/propagation, visibility hooks, timers, scene
+Visible-bounds/visibility services, timers, scene
 construction, native scale/raster calibration and full synth bindings remain
 unfinished. Packet data must not alias the feature history; incoming sample
 count must fit capacity. Finite view/history values and bounded geometry are

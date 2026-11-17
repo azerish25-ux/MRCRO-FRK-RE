@@ -1,0 +1,10 @@
+{
+  "wrapper_sha256": "354c26c58e4c8c671b50f88d070452b47c9cd6b6505b1ea18391724929b3d19e",
+  "producer_sha256": "6f1180af15b304c9d0a3492e44474d0684f78e62106ed3fdb6ddec757d02c25f",
+  "scope": "Originalff6020/ff6120, child translation108df60, affineb7d8b0 and outward rectangle conversion execute. Actual component visible-bounds, repaint gates, native-peer lookup/client bounds and peer repaint are observed services. Three-level finite acyclic component trees, bounded edges, static callbacks. No platform paint/scene parity.",
+  "cases": 384,
+  "events": 944,
+  "bytes": 157708,
+  "fixture_sha256": "da0fae35e630d717beea377ef4e6b6900b8c776967b1f6bd2a4af5e52ce657d0",
+  "original_json_sha256": "bbcd2ecd34196135d64fa4aec1a5e25c3c6114d39547dc10569b20695aadd7f1"
+}
