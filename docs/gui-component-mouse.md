@@ -36,3 +36,9 @@ mutations. `component_mouse_buttons_provenance.json` records identities.
 Signed64 times, their differences and the source 300ms addition must fit; actual
 coordinate service admission also applies. `GuiMouseComponentBinding` now joins
 the real pointer state owner to geometry and all six component event bodies.
+
+Native run44073597170 passed all three pointer/geometry/component suites on the
+Android emulator with zero differences. Renderer run44073596748 passed six
+queued pointer cases, the existing focus/async/queue checks and five focused
+captures. Exact commit/tree/artifact identities and the preceding hover retry
+are in `validation/component-mouse-android-20261117.json`.

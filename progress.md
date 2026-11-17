@@ -845,9 +845,9 @@ Component enter/exit/move delivery now retains the original hover-bit timing,
 event fields, live Desktop/local/ancestor listener order and weak-token checks.
 All 288 original-code cases and 2,250 service events match locally. Queued
 Android pointer instrumentation now uses these actual bodies; modal, repaint,
-Desktop timer/cursor and widget endpoints remain services. Android CI is pending
-for this addition. Drag/down/up and complete scene/controller integration remain
-open. See `docs/gui-component-mouse.md`.
+Desktop timer/cursor and widget endpoints remain services. Android hover CI
+passed, and the later button-event join extends these bodies. Complete
+scene/controller integration remains open. See `docs/gui-component-mouse.md`.
 
 Implemented source component down/drag/up delivery and click history, retaining
 modal-attempt unblocking, ancestor stacking/focus order, press coordinates and
@@ -857,5 +857,8 @@ All 384 original cases and 2,351 events match locally. The production
 component event bodies; the Android queued probe uses this join. Actual widget,
 modal/stacking/focus/timer/cursor services and full application scene remain open.
 Native Android hover checks passed in run44072355216. Renderer run44072355145
-attempt1 stopped before compilation on Maven HTTP429; its retry is running.
-Android CI for the button-event addition is pending.
+attempt1 stopped before compilation on Maven HTTP429; attempt2 passed.
+Button-event native run44073597170 and renderer run44073596748 passed. All three
+new native suites matched on Android; six queued pointer cases and all existing
+focus/async/queue/focused capture checks passed. Exact identities are in
+`docs/validation/component-mouse-android-20261117.json`.

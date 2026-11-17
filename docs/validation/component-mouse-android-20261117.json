@@ -1,0 +1,31 @@
+{
+  "commit": "f265277c6bd204896c32cf8b627bedaa00121ea1",
+  "tree": "168c2c3cc2e9a5b90e763b4cbcdf22444a632ea6",
+  "native_run": 44073597170,
+  "native_android_job": 134006591546,
+  "renderer_run": 44073596748,
+  "renderer_job": 134005752434,
+  "renderer_artifact": 14323473730,
+  "artifact_sha256": "c114ea0b4aa92c56c2a4fb2be26be580ee994b9b70cb0d2efe0c6ff81b946c14",
+  "apk_sha256": "46804df7811cad9ad5ff6584ea156af7d7fdf650dd54f1ce65a219dd778ef20b",
+  "native_results": [
+    {"suite": "pointer_geometry", "cases": 560, "events": 1030, "differences": 0},
+    {"suite": "component_mouse_hover", "cases": 288, "events": 2250, "differences": 0},
+    {"suite": "component_mouse_buttons", "cases": 384, "events": 2351, "differences": 0}
+  ],
+  "renderer_reports": {"mouse_source": 6, "desktop_focus": 6, "async_updates": 8, "ui_message_queue": 6, "focused_frames": 5},
+  "result": "All native and renderer jobs and extracted reports passed.",
+  "preceding_hover_validation": {
+    "commit": "503028fbdb68ec7970d650f5dce03e271a4aa54d",
+    "native_run": 44072355216,
+    "native_android_job": 134002268438,
+    "renderer_run": 44072355145,
+    "renderer_attempt": 2,
+    "renderer_job": 134004115525,
+    "renderer_artifact": 14322134845,
+    "artifact_sha256": "1dace3dc001780b6ff3ac1d74933ea8360f4f5bcb0b023ea4e65ecbd66f0b703",
+    "apk_sha256": "d800f7ec453257d8d2accc84ba18c89ec215ac6a77d24cf9a7bfbd795c2daf2a",
+    "first_attempt": "Maven HTTP429 dependency fetch failed before compilation; attempt2 passed."
+  },
+  "scope": "Production pointer/coordinate/component event bodies execute. Platform and actual widget/modal/repaint/stacking/focus/timer/cursor service endpoints remain observers. No full scene, pixel, sound, MIDI, preset or standalone-app parity claim. Complete evidence is on D: under local/evidence/android-component-buttons-20261117 and android-component-mouse-20261117."
+}
