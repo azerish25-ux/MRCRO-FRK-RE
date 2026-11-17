@@ -5,6 +5,7 @@
 #include <vector>
 namespace mfrk::ui {
 struct GuiVisibilityComponent;
+struct GuiComponentMouseListeners;
 struct GuiComponentLifetime {GuiVisibilityComponent* component;};
 struct GuiComponentVisibilityListener {
  virtual ~GuiComponentVisibilityListener()=default;
@@ -24,6 +25,8 @@ struct GuiWidgetVisibilityListener {
 struct GuiVisibilityComponent:GuiRepaintComponent {
  bool requested_visible=false;
  std::uint8_t focus_flags=0; // Source component+d1; shared by focus/enable routing.
+ std::uint8_t interaction_flags=0; // Source component+d2; pointer hover/modal state.
+ GuiComponentMouseListeners* mouse_listeners=nullptr; // Scene-owned registration.
  std::vector<GuiVisibilityComponent*> children;
  std::vector<GuiComponentVisibilityListener*> component_listeners;
  std::map<std::uintptr_t,GuiVisibilityHook*> visibility_hooks;

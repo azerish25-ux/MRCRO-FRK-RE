@@ -17,7 +17,8 @@ with zero local differences. It includes five-node trees, common/foreign roots,
 overlapping children, hidden children, clipping, missing peers, half-point edges,
 scales and affine matrices. Exact fixture/producer identities are recorded in
 `core/tests/pointer_geometry_provenance.json`. Native and Android workflow checks
-are configured; their results must be recorded separately.
+passed in native run44070901499 and renderer run44070901589. Exact identities
+are recorded in `validation/pointer-geometry-android-20261117.json`.
 
 This admission requires strict nearest floating point with contraction disabled,
 finite scales/coordinates/matrices/intermediates, representable rounded points,

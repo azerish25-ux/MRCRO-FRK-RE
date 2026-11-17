@@ -1,0 +1,10 @@
+{
+  "wrapper_sha256": "354c26c58e4c8c671b50f88d070452b47c9cd6b6505b1ea18391724929b3d19e",
+  "producer_sha256": "b4a302c3e889d28c935483816d3d0f0e502a7971f7221d4c5e9a66d0d1e9e110",
+  "scope": "Original ff78a0/ff7a90/ff8570,108e330, weak accounting and event rounding execute. Modal/repaint/Desktop timer preparation/blocked move/cursor hide and actual virtual event handlers observed. Pre-existing Desktop and weak tokens, retained expired node storage, stable registration objects; no full scene/platform/body destruction proof.",
+  "cases": 288,
+  "events": 2250,
+  "bytes": 239052,
+  "fixture_sha256": "2e7df0faabe4ca9822e27ba3683415d603e0699e07735a102cdccd537578f2b6",
+  "original_json_sha256": "400dadbe6bb3bd5a268a167db2fca3f4a2736a4c2b46f9b83898af25d46c3a08"
+}

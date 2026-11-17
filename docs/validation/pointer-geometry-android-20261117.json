@@ -1,0 +1,14 @@
+{
+  "commit": "e33d9ddf32f8a53482398a7d25444a8d765ac438",
+  "tree": "5b9b281f00117dfe1632904df5f04c5871f56b17",
+  "native_run": 44070901499,
+  "native_android_job": 133997249328,
+  "renderer_run": 44070901589,
+  "renderer_job": 133996551923,
+  "renderer_artifact": 14322462996,
+  "artifact_sha256": "bc1a6584dfd5944afc21a8aafc9e18e0abad63a74aa91173e42ca1c55c4c9d1b",
+  "apk_sha256": "8f57bf4f1737822c895ba16b48b8dc5fe3cae0d0028bd602274fbd3a71a0880c",
+  "queued_pointer_scenarios": 6,
+  "result": "Native and renderer jobs succeeded; all six queued pointer scenarios use the production hit/coordinate binding and pass unchanged expectations.",
+  "scope": "Platform peer mapping and virtual hit/event endpoints observed. No full scene, raster, sound, MIDI, preset or standalone application parity claim. Evidence retained under local/evidence/android-pointer-geometry-20261117 on D:."
+}

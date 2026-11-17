@@ -837,6 +837,14 @@ ancestor clipping, reverse child hit traversal and pointer peer lookup in the
 production core. The original executable comparison matches all 560 cases and
 1,030 service events locally. The six queued Android pointer scenarios now use
 this geometry binding; platform peer/hit/event endpoints remain observers.
-Native and renderer Android CI verification is pending for this change. Full
+Native run44070901499 and renderer run44070901589 passed for this change. Full
 scene/widget construction, touch/controller application binding, raster, sound,
 MIDI and preset parity remain unfinished. See `docs/gui-pointer-geometry.md`.
+
+Component enter/exit/move delivery now retains the original hover-bit timing,
+event fields, live Desktop/local/ancestor listener order and weak-token checks.
+All 288 original-code cases and 2,250 service events match locally. Queued
+Android pointer instrumentation now uses these actual bodies; modal, repaint,
+Desktop timer/cursor and widget endpoints remain services. Android CI is pending
+for this addition. Drag/down/up and complete scene/controller integration remain
+open. See `docs/gui-component-mouse.md`.
