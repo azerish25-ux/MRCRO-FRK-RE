@@ -28,6 +28,14 @@ std::array<std::int32_t,4> knob_modulation_dirty_bounds(std::int32_t width,
     float thickness,const std::array<float,5>& previous,
     const std::array<float,5>& current) noexcept;
 
+// Source f67c80/f67800/f84300 scalar modulation display callback. Returns the
+// two repaint requests in source order, retaining 0.05-radian path sampling.
+// Same bounded finite profile as above, with nonnegative span and positive
+// left/right angles. Style and dimensions stay stable during both requests.
+std::array<std::array<std::int32_t,4>,2> knob_scalar_dirty_bounds(
+    std::int32_t width,std::int32_t height,float right_angle,float left_angle,
+    float radius,float thickness,float span,float previous,float current) noexcept;
+
 // Source0x180f64500 gradient-enabled/follow-value-false branch. Nonnegative
 // dimensions; resolved finite radius/state; all computed sine arguments abs<=64.
 // gradient_angle is multiplied by the source binary32 pi, not radians directly.

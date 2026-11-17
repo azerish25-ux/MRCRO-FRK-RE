@@ -47,11 +47,18 @@ outward and unions the previous/current integer bounds. Packed trigonometry
 retains the different two-angle and scalar entry paths. `GuiKnobFeatureBinding`
 connects registered parameter rows and the existing feature history to this
 calculation and the component's actual repaint scheduler. The component supplies
-current resolved style getters, scalar callback and visibility services.
+current resolved style getters and visibility services.
 All 512 native full-callback cases match locally through this binding.
 
+The same binding now executes the scalar `f67c80/f67800/f84300` callback.
+Its narrow arc retains the original 0.05-radian line sampling and endpoint
+clamping, stored path extrema, full stroke expansion and separate old/new
+outward-rounded repaint requests. All 384 native full-callback cases match
+locally. This profile requires stable style/dimensions across both scheduler
+callbacks; component clipping and propagation after `ff6020` remain separate.
+
 This is source view state, not a completed widget factory or paint oracle.
-Scalar dirty-region/visibility-hook bodies, timers, scene
+Component dirty-region clipping/propagation, visibility hooks, timers, scene
 construction, native scale/raster calibration and full synth bindings remain
 unfinished. Packet data must not alias the feature history; incoming sample
 count must fit capacity. Finite view/history values and bounded geometry are

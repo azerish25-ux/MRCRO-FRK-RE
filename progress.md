@@ -1,5 +1,21 @@
 # Progress
 
+## 2026-11-17 Scalar modulation repaint requests
+
+- Reconstructed the original scalar display's narrow sampled arc, path bounds,
+  stroke expansion and two repaint requests. The existing knob feature binding
+  now owns both range and scalar callback geometry, leaving the actual component
+  clipping/scheduler and visibility services with the scene. All 384 original
+  full-callback cases match locally. Android execution is pending.
+- Frame-commit fix passed renderer run 44029299216 on commit
+  `726ddce885a8797ffc604773e5d1ab8ac14d745c`: six Handler/JNI queue cases and
+  five focused captures passed. Factory-default and factory-repeat now have
+  identical crop hash `4bb14ef80aaa884fbf856eb996322ddbcda92916a0c2078e6d73aadfb9893143`;
+  all four distinct assignments have distinct images. Artifact 14303904594,
+  ZIP SHA256 `3c98c8dc7c179ac61b47351946c3bab14f34a34e9db4b51cb4105bfbdb63e529`,
+  is retained privately on D:. This establishes correct capture sequencing for
+  this comparison app, not original MiniFreak pixel parity.
+
 ## 2026-11-17 Modulation repaint bounds and frame submission
 
 - Added the original knob modulation range dirty-region calculation and a

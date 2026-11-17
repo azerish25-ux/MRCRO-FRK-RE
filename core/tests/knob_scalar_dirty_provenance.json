@@ -1,0 +1,9 @@
+{
+  "wrapper_sha256": "354c26c58e4c8c671b50f88d070452b47c9cd6b6505b1ea18391724929b3d19e",
+  "producer_sha256": "e861cc4ec9408ef13500fde852ad863bd471749bb67bd812d49a42aed8377a76",
+  "scope": "Originalf67c80/f67800/f84300 and native move/line path bounds, style interpolation, packed trig and outward rectangle conversion execute. Standard malloc/realloc/free memory services use owned emulator storage; final ff6020 invalidations observed. Finite bounded static-style profile. No raster/full scene proof.",
+  "cases": 384,
+  "bytes": 26124,
+  "fixture_sha256": "9bd9d66da2922deea8882d6d2ffc51293f4479fe5b2147d6cc5d0bdcfe310cfb",
+  "original_json_sha256": "831ee6b90621dc02fbee256d6cfa3fc99afb5d8071be0101480249483f255a50"
+}

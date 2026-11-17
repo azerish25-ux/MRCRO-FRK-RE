@@ -142,6 +142,43 @@ std::array<std::int32_t,4> knob_modulation_dirty_bounds(std::int32_t width,
     return old;
 }
 
+std::array<std::array<std::int32_t,4>,2> knob_scalar_dirty_bounds(
+    std::int32_t width,std::int32_t height,float right_angle,float left_angle,
+    float radius,float thickness,float span,float previous,float current) noexcept {
+    const float outer=radius*static_cast<float>(std::min(width/2,height/2));
+    const float arc_radius=(1.f-thickness*.5f)*outer;
+    const float expansion=thickness*outer;
+    const float center_x=static_cast<float>(width)*.5f,center_y=static_cast<float>(height)*.5f;
+    const float total=right_angle+left_angle;
+    const auto one=[&](float position){
+        std::array<float,4> bounds{}; // min-x,max-x,min-y,max-y; empty path is zero.
+        if(arc_radius>0.f){
+            const float start=std::clamp((position-span*.5f)*total-left_angle,-left_angle,right_angle);
+            const float end=std::clamp((span*.5f+position)*total-left_angle,-left_angle,right_angle);
+            bool first=true;
+            const auto point=[&](float angle){
+                const auto trig=packed_sine_cosine(angle);
+                const float x=trig[0]*arc_radius+center_x;
+                const float y=center_y-trig[1]*arc_radius;
+                if(first){bounds={x,x,y,y};first=false;}
+                else{bounds[0]=std::min(bounds[0],x);bounds[1]=std::max(bounds[1],x);bounds[2]=std::min(bounds[2],y);bounds[3]=std::max(bounds[3],y);}
+            };
+            point(start);
+            const float step=value(0x3d4ccccdu);
+            if(end<=start){for(float angle=start-step;end<angle;angle=angle-step)point(angle);}
+            else{for(float angle=start+step;angle<end;angle=angle+step)point(angle);}
+            point(end);
+        }
+        const float x=bounds[0]-expansion,y=bounds[2]-expansion;
+        const float w=std::max((expansion+expansion)+(bounds[1]-bounds[0]),0.f);
+        const float h=std::max(((bounds[3]-bounds[2])+expansion)+expansion,0.f);
+        const auto left=static_cast<std::int32_t>(std::floor(x)),top=static_cast<std::int32_t>(std::floor(y));
+        const auto right=static_cast<std::int32_t>(std::ceil(x+w)),bottom=static_cast<std::int32_t>(std::ceil(y+h));
+        return std::array<std::int32_t,4>{left,top,right-left,bottom-top};
+    };
+    return {one(previous),one(current)};
+}
+
 std::array<float,4> outline_gradient_points(std::int32_t width,
     std::int32_t height,float right_angle,float left_angle,
     float gradient_angle,float center_radius) noexcept {

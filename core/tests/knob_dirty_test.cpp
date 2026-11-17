@@ -12,7 +12,6 @@ struct Component:GuiKnobDisplayBoundary {
  GuiKnobDisplayGeometry geometry()override{return style;}
  void invalidate(const std::array<std::int32_t,4>& bounds)override{dirty=bounds;++calls;}
  void invalidate()override{throw std::logic_error("Unexpected full invalidation");}
- void scalar_changed(float,float)override{throw std::logic_error("Unexpected scalar callback");}
  void set_component_state(bool)override{throw std::logic_error("Unexpected component state");}
 };
 int main(int argc,char** argv)try{
@@ -26,7 +25,7 @@ int main(int argc,char** argv)try{
   std::array<float,5> old,current;for(auto& v:old)v=reader.f32();for(auto& v:current)v=reader.f32();
   std::array<std::int32_t,4> native;for(auto& v:native)v=reader.i32();
   Rows rows;GuiControlParameters parameters(rows);
-  Component component({width,height,style[0],style[1],style[2],style[3]});
+  Component component({width,height,style[0],style[1],style[2],style[3],0.f});
   GuiKnobFeatureBinding binding(parameters,component);binding.range_changed(old,current);
   if(component.calls!=1)throw std::runtime_error("Dirty scheduler callback count");
   const auto actual=component.dirty;

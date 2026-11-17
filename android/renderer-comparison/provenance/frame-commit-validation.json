@@ -1,0 +1,17 @@
+{
+  "source_commit": "726ddce885a8797ffc604773e5d1ab8ac14d745c",
+  "source_tree": "0ba699bf7dee3397b52fb09b7039158159dc4f6f",
+  "workflow_run": 44029299216,
+  "job": 133857073057,
+  "artifact": 14303904594,
+  "artifact_zip_sha256": "3c98c8dc7c179ac61b47351946c3bab14f34a34e9db4b51cb4105bfbdb63e529",
+  "android_api": 35,
+  "built_abis": ["arm64-v8a", "x86_64"],
+  "runtime_abi": "x86_64",
+  "queue_cases": 6,
+  "focused_captures": 5,
+  "distinct_assignment_images": 4,
+  "factory_default_repeat_crop_sha256": "4bb14ef80aaa884fbf856eb996322ddbcda92916a0c2078e6d73aadfb9893143",
+  "frame_fence": "ViewTreeObserver registerFrameCommitCallback",
+  "scope": "Comparison app capture sequencing and existing touch/queue checks. Three controls with explicit assignments; no original pixel, full scene, audio or complete instrument parity."
+}
