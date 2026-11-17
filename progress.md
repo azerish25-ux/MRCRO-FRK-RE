@@ -1,5 +1,19 @@
 # Progress
 
+## 2026-11-17 Source slider view and modulation state
+
+- Reconstructed actual slider observer refresh/cache behavior and the full
+  control-feature history/statistics path, with shared controller rows and
+  borrowed data from actual preset-bank values. The live cutoff's monitor,
+  packet slice and averaging configuration are retained as configured-instance
+  metadata. No constructor-default or paint-parity claim is inferred from it.
+- All 928 original comparisons and 1,397 events match locally; Android CI now
+  includes the hash-bound fixture. Actual scene/controller factory, widget
+  invalidation/visibility hooks, timing and raster calibration remain open.
+- Android main-loop transport commit `405af64` passed renderer run43993308780:
+  six Handler/JNI queue cases and five focused comparison captures. Both native
+  ABIs built and lint passed; original pixel/audio parity remains unverified.
+
 ## 2026-11-17 Android UI scheduling
 
 - Added a real main-Handler/JNI transport for owned typed controller messages,

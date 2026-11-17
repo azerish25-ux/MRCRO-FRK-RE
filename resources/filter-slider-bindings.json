@@ -103,6 +103,35 @@
         "78": "0x18067aff0",
         "80": "0x18067b860",
         "90": "0x18067c9b0"
+      },
+      "view_observer": {
+        "stage": "live configured source instance; not a constructor-default claim",
+        "vtable": "0x181d220f8",
+        "changed": "0x180d4c300",
+        "scalar_changed": "0x180c450d0",
+        "observer_widget_offset": "0x1540",
+        "preferred_index": -1,
+        "selected_index": 0,
+        "controller_ids": [
+          13,
+          2147486042
+        ]
+      },
+      "control_feature": {
+        "stage": "read-only configuration; runtime history/cache contents excluded",
+        "value_index": 1,
+        "disabled_index": -1,
+        "reverse": false,
+        "flag09": false,
+        "mean_count": 32,
+        "format": 0,
+        "slice_offset_bytes": 352,
+        "slice_length_bytes": 32,
+        "history_capacity": 64,
+        "flag3c": false,
+        "active": true,
+        "disabled_data": false,
+        "disabled_offset_bytes": 0
       }
     },
     {

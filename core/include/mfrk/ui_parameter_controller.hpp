@@ -31,11 +31,12 @@ struct GuiParameterBackend {
  virtual void prepared(std::uint32_t id,std::uintptr_t context)=0;
  virtual void ended(std::uint32_t id,std::uintptr_t context)=0;
 };
+class GuiParameterController;
 struct GuiParameterObserver {
  // Source observer+40 points to a linked controller whose ID is at+8.
  // Link lifetime is owned by the application, not this callback interface.
  const std::uint32_t* linked_parameter=nullptr;
- struct AliasRow {bool enabled;std::uint32_t id;};
+ struct AliasRow {bool enabled;std::uint32_t id;GuiParameterController* controller=nullptr;};
  std::vector<AliasRow> aliases;
  virtual ~GuiParameterObserver()=default;
  virtual void changed(std::uint32_t id)=0;
@@ -51,6 +52,7 @@ struct GuiParameterDescriptor {
  std::uint32_t flags20=0;
  std::uint64_t count48=0;
  std::uint32_t flagsd0=0,flags204=0;
+ std::uint32_t typea8=1;
 };
 // Corresponds to root+50/+58/+5c/+60/+80. Registration allocates origin;
 // it is not a fixed MIDI/GUI token. Callbacks may update these live fields.
@@ -75,6 +77,18 @@ public:
  // separately clamped normalized cache is deliberately not consulted.
  float current(){
   return gui_parameter_scalar(state_.backend->parameter(state_.id).current());
+ }
+ // Source6627b0: borrow the actual stored bytes, including the four scalar
+ // bytes when metadata/caller explicitly requests them. No copied buffer.
+ std::span<const std::uint8_t> current_data(){
+  const auto* value=state_.backend->parameter(state_.id).current();
+  if(!value)throw std::logic_error("Stored parameter value required");
+  return value->bytes();
+ }
+ // Source662390; this is descriptor type, not the current value's tag.
+ bool is_data()const{
+  if(!state_.descriptor)throw std::logic_error("GUI descriptor required");
+  return (state_.descriptor->typea8&0xffu)!=1;
  }
  // Source662ce0. A live observer is required, as in the original method.
  bool edit(bool primary,bool secondary){

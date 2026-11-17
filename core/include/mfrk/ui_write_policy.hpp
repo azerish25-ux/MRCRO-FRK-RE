@@ -3,7 +3,7 @@
 #include "mfrk/parameter_receiver.hpp"
 namespace mfrk::ui {
 struct GuiWriteDescriptor:GuiParameterDescriptor {
- std::uint32_t typea8=1,scope50=0xffffffffu,group200=0;
+ std::uint32_t scope50=0xffffffffu,group200=0;
  std::uint64_t sizec0=4;
  bool flag250=false;
 };
@@ -111,7 +111,7 @@ inline bool gui_apply_write(GuiWritePolicyState& state,std::uint32_t origin,
  if(origin==10)boundary.begin(id);
  if(origin>8||((0x112u>>origin)&1u)==0)boundary.prewrite(origin,id,incoming);
  auto& descriptor=boundary.descriptor(id);
- if((descriptor.typea8==1)!=(incoming.tag()==1)||
+ if(((descriptor.typea8&0xffu)==1)!=(incoming.tag()==1)||
     (!(descriptor.flags204&(1u<<9))&&descriptor.sizec0<incoming.bytes().size()))return false;
  if(state.mode11c30==7&&(descriptor.flagsd0&0x8000u)&&origin==3){
   boundary.special(id,gui_parameter_scalar(&incoming),state.instrument11ab8);return true;
