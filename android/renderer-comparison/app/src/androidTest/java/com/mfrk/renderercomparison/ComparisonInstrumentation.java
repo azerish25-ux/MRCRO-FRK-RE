@@ -39,6 +39,10 @@ public final class ComparisonInstrumentation extends Instrumentation {
             try (FileOutputStream output=new FileOutputStream(new File(directory,"async-updates.json"))) {
                 output.write(asyncReport.toString(2).getBytes(StandardCharsets.UTF_8));
             }
+            JSONObject desktopFocusReport=DesktopFocusVerification.verify(this);
+            try (FileOutputStream output=new FileOutputStream(new File(directory,"desktop-focus.json"))) {
+                output.write(desktopFocusReport.toString(2).getBytes(StandardCharsets.UTF_8));
+            }
             String[] names={"minimum","center","factory-default","maximum","factory-repeat"};
             float[][] values={{0,0,0},{0.5f,0.5f,0.5f},{1,0,0.5f},{1,1,1},{1,0,0.5f}};
             JSONArray cases=new JSONArray(); HashSet<String> unique=new HashSet<>(); String factoryHash=null;

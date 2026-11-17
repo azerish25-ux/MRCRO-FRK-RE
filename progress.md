@@ -1,5 +1,16 @@
 # Progress
 
+## 2026-11-17 Concrete Desktop focus notifications
+
+- Added the actual Desktop focus callback with one weak component snapshot,
+  live reverse listener traversal, expiration and source list-mutation behavior.
+  The owned focus boundary now connects visibility/focus operations to retained
+  messages and real registered-listener dispatch. All112cases/200notifications
+  match original code locally. Added six real Android dispatch scenarios and
+  updated renderer header dependency triggers; remote validation is pending.
+- Peer/input/accessibility and registered application listeners still need
+  their actual scene implementations. Full instrument parity remains active.
+
 ## 2026-11-17 Async Android validation
 
 - Commit ebd46a378270dd09a22e1c8876ca308f30388355 passed Native44050389269,

@@ -18,7 +18,8 @@ an ineligible default component does not invent a second fallback attempt.
 The Desktop focus-update flag coalesces posts with the original atomic 0-to-1
 transition. A failed post resets it. The [owned asynchronous update channel](gui-async-updates.md)
 now supplies actual message retention, delivery/cancellation and Android posting.
-Desktop focus-listener dispatch remains an application responsibility.
+The [Desktop focus target](gui-desktop-focus.md) now implements registered-listener
+dispatch over that channel.
 Accessibility loss, gain requests and descendant
 focus checks use the same shared accessibility-focus identity as the source.
 

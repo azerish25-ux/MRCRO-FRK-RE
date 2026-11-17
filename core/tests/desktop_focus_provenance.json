@@ -1,0 +1,11 @@
+{
+  "wrapper_sha256": "354c26c58e4c8c671b50f88d070452b47c9cd6b6505b1ea18391724929b3d19e",
+  "producer_sha256": "bf832bfb8568fb7f033d3bd9f6cfaec43984516edf932fc5ce5db1f5bf0ad515",
+  "async_producer_sha256": "bb4a694b4021b9e7443a2058a272e7d7bda0fa92605b88945121fa07239cde76",
+  "scope": "OriginalDesktopffd3d0, weak guards, async trigger/post/callback and retained message refcounting execute. Focus listeners are observed endpoints with live-list/focus/lifetime mutations; driver models queue dequeue/ref release. Expired node storage retained. No complete component destructor, native Desktop/platform/scene proof.",
+  "cases": 112,
+  "notifications": 200,
+  "bytes": 21196,
+  "fixture_sha256": "697e3b08d7ff391ee3b305ba129799dacadb656bc9797e2f8a860e25f6d390fe",
+  "original_json_sha256": "eb50c6d5748aa7e417cba1bea50b3fb563296ee4ac1a2ddc9d72e18a9d2072db"
+}

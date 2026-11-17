@@ -39,5 +39,6 @@ checks passed in [renderer run44050389250](https://github.com/azerish25-ux/MRCRO
 together with the six existing queue cases and five focused comparison frames.
 Native run44050389269 also passed the original-code fixture on Android.
 Exact source/artifact identities are in `validation/async-android-20261117.json`.
-Actual Desktop focus-listener/mouse callbacks and the
-complete scene still need their application implementations.
+The [Desktop focus notification target](gui-desktop-focus.md) now supplies actual
+registered-listener dispatch. Actual mouse callbacks, peer/input services and
+the complete scene still need their application implementations.
