@@ -870,5 +870,7 @@ ordered events with nested/opaque controls, scoped aliases, post-build resize an
 include-driven parent changes. Six tag hashes match executed original factory
 instructions, including signed bytes. Actual class constructors, attachment and
 property/controller registration remain required services; the visible Android
-comparison slice is unchanged. Android CI is pending for this addition. See
+comparison slice is unchanged. Linux and Android run44076727823 passed the
+integration check; exact evidence is in
+`docs/validation/scene-factory-android-20261117.json`. See
 `docs/gui-scene-factory.md`.

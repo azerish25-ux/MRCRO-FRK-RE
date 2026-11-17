@@ -33,3 +33,7 @@ storage through construction, depth at most128, and representable signed32
 sibling endpoints. Original timing counters and optional kind collection are
 diagnostic and omitted. Allocation failures and exact exception text are outside
 this contract. Full original construction/scene/event/raster parity is unproven.
+
+Linux and Android run44076727823 passed the integration check. Exact revision,
+jobs, runtime scope and remaining limits are recorded in
+`validation/scene-factory-android-20261117.json`.

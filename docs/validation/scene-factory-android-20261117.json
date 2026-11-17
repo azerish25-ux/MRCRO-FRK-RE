@@ -1,0 +1,12 @@
+{
+  "commit": "934ab50c273ee755e55e147d8683c61db5c86c3d",
+  "tree": "8bdbc5d2714d42e3f9ea557d304145a05fdf7ff5",
+  "native_run": 44076727823,
+  "linux_job": 134016550039,
+  "android_job": 134017275212,
+  "result": "Both jobs succeeded; scene_factory_integration passed on Linux and the API35 x86_64 Android emulator. Both Android ABIs compiled.",
+  "integration": {"widgets": 6, "ordered_events": 19, "explicit_rejections": 3, "original_tag_hashes": 6},
+  "original_wrapper_sha256": "354c26c58e4c8c671b50f88d070452b47c9cd6b6505b1ea18391724929b3d19e",
+  "original_tag_hash_instructions": ["0x1809b2a30", "0x1809b2a73", "empty branch 0x1809b920c"],
+  "scope": "The orchestration integration uses supplied constructor/attachment/include/widget services and existing production XML/scope/geometry. Only the six tag hashes are whole-original-instruction comparisons here; full native construction/scene/platform/raster parity remains unproven. No visible renderer or standalone synth change is claimed. Complete Android log is retained on D: at local/evidence/android-scene-factory-20261117/native-job134017275212.log."
+}
