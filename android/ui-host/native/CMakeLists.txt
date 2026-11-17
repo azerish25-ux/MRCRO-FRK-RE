@@ -1,5 +1,8 @@
 cmake_minimum_required(VERSION 3.22)
 project(mfrk_ui_messages LANGUAGES CXX)
+if(ANDROID AND NOT ANDROID_STL STREQUAL "c++_shared")
+    message(FATAL_ERROR "The UI transport and its host must share the c++_shared runtime")
+endif()
 set(MFRK_UI_REPO_ROOT "${CMAKE_CURRENT_LIST_DIR}/../../..")
 add_library(mfrk_ui_messages SHARED ui_message_queue.cpp)
 target_compile_features(mfrk_ui_messages PUBLIC cxx_std_20)

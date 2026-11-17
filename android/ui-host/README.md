@@ -17,6 +17,9 @@ recovered weak-listener delivery behavior.
 An application includes the `ui` Gradle library and adds `native/CMakeLists.txt`
 to its native build. That CMake target builds `mfrk_ui_messages`; the Java module
 does not build a duplicate copy. Consumer rules retain the JNI queue entrypoints.
+The host selects `c++_shared` for its native libraries; Gradle packages the shared
+runtime. This keeps cross-library objects/exceptions on one C++ runtime, as
+specified in [Android C++ library support](https://developer.android.com/ndk/guides/cpp-support).
 The renderer comparison host now packages and initializes this actual transport.
 
 Debug-only instrumentation covers worker FIFO ordering, expired owner/listener,
