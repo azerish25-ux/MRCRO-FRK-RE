@@ -862,3 +862,13 @@ Button-event native run44073597170 and renderer run44073596748 passed. All three
 new native suites matched on Android; six queued pointer cases and all existing
 focus/async/queue/focused capture checks passed. Exact identities are in
 `docs/validation/component-mouse-android-20261117.json`.
+
+Added the source whole-node construction orchestrator over the existing XML and
+scope modules: class creation, attachment, child traversal, post-build callback,
+then live previous-sibling macros. Local integration passes six widgets and19
+ordered events with nested/opaque controls, scoped aliases, post-build resize and
+include-driven parent changes. Six tag hashes match executed original factory
+instructions, including signed bytes. Actual class constructors, attachment and
+property/controller registration remain required services; the visible Android
+comparison slice is unchanged. Android CI is pending for this addition. See
+`docs/gui-scene-factory.md`.

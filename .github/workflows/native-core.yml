@@ -274,6 +274,9 @@ jobs:
             adb shell chmod +x /data/local/tmp/component_mouse_buttons_test
             adb push core/tests/component_mouse_buttons_vectors.bin /data/local/tmp/component_mouse_buttons_vectors.bin
             adb shell /data/local/tmp/component_mouse_buttons_test /data/local/tmp/component_mouse_buttons_vectors.bin
+            adb push build-x86_64/ui_scene_factory_test /data/local/tmp/ui_scene_factory_test
+            adb shell chmod +x /data/local/tmp/ui_scene_factory_test
+            adb shell /data/local/tmp/ui_scene_factory_test
             adb push core/tests/fixtures/native_packed_trig_vectors.bin /data/local/tmp/native_packed_trig_vectors.bin
             adb shell /data/local/tmp/mfrk_ui_primitives_tests trig /data/local/tmp/native_packed_trig_vectors.bin
             adb push core/tests/fixtures/outline_gradient_vectors.bin /data/local/tmp/outline_gradient_vectors.bin
