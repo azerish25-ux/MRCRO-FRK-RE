@@ -1,5 +1,18 @@
 # Progress
 
+## 2026-11-17 Outer GUI write composition
+
+- Joined source `817fb0` ownership/hardware policy to the recovered router and,
+  through actual receiver services, the complete scalar write-policy actor.
+  Preserved the original typed copy across queued moves, live guard changes,
+  unlocked eligibility and nested callbacks. The composed original comparison
+  matches 474 cases, 1,627 outer events and 806 policy events locally.
+- Added the hash-bound fixture to Android CI. Hardware transport and queue
+  delivery/recipient lifetime still require concrete application integration.
+- Policy commit `13e9bbe` passed Linux and Android native run 43985089084
+  (Android 133711746346: 2,160 cases / 14,011 events / zero differences) and
+  analysis run 43985089078. Full app parity remains unfinished.
+
 ## 2026-11-16 GUI backend policy join
 
 - Added recovered `678190` policy control flow with actual owned internal and

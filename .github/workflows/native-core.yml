@@ -518,6 +518,10 @@ jobs:
             adb push core/tests/gui_write_policy_vectors.bin /data/local/tmp/gui_write_policy_vectors.bin
             adb shell chmod 755 /data/local/tmp/gui_write_policy_test
             adb shell /data/local/tmp/gui_write_policy_test /data/local/tmp/gui_write_policy_vectors.bin
+            adb push build-x86_64/gui_write_owner_test /data/local/tmp/gui_write_owner_test
+            adb push core/tests/gui_write_owner_vectors.bin /data/local/tmp/gui_write_owner_vectors.bin
+            adb shell chmod 755 /data/local/tmp/gui_write_owner_test
+            adb shell /data/local/tmp/gui_write_owner_test /data/local/tmp/gui_write_owner_vectors.bin
             adb push build-x86_64/listener_registry_test /data/local/tmp/listener_registry_test
             adb push core/tests/listener_registry_vectors.bin /data/local/tmp/listener_registry_vectors.bin
             adb shell chmod 755 /data/local/tmp/listener_registry_test
