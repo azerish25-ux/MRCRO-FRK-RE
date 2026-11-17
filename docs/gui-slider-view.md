@@ -62,14 +62,25 @@ component tree's `ff6020/ff6120` path. It clips in place to actual visible bound
 retains zero-area edge locations, observes enabled/gate checks, translates
 through parents, applies the source affine corner calculation, scales root-peer
 requests and schedules the actual peer. All 384 native component cases and 944
-service events match locally, including three-level trees, absent peers/parents,
+service events matched the initial clipping/propagation fixture, including three-level trees, absent peers/parents,
 gate denial, flags, reflection/shear and fractional peer dimensions. Visible
 bounds, gate implementations and the native/Android peer remain actual services
 required from the scene. The fixture uses static callbacks and finite bounded
 geometry; it does not prove a complete platform scene or rendered pixels.
 
+The expanded `COMPRP02` fixture also executes the knob's actual `b70010/5a0600`
+visible-bound methods and `ff5ee0` full repaint. `GuiKnobVisibleBounds` retains
+binary64 fractional-bound truncation and unions from registered bounds providers.
+The actual cutoff vtable's final override returns an empty rectangle; this
+specific method is source-confirmed, not a default for unrelated widget types.
+Full repaint subtracts the current component position and selects the immediate
+gate method without another clipping call. The knob component boundary now owns
+that full repaint as well as its range/scalar dirty requests. All 384 expanded
+cases and 1,847 events match locally. Actual provider bounds, gate bodies,
+component state, platform peer and scene construction remain supplied services.
+
 This is source view state, not a completed widget factory or paint oracle.
-Visible-bounds/visibility services, timers, scene
+Bounds-provider/visibility services, timers, scene
 construction, native scale/raster calibration and full synth bindings remain
 unfinished. Packet data must not alias the feature history; incoming sample
 count must fit capacity. Finite view/history values and bounded geometry are

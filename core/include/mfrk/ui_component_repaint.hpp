@@ -90,4 +90,11 @@ inline void gui_component_repaint(GuiRepaintComponent& component,GuiDirtyBounds&
  else request={x,y,right-x,bottom-y};
  if(request[2]>0&&request[3]>0)gui_component_propagate_repaint(component,request,false,boundary);
 }
+// Source ff5ee0: use the actual visible bounds, subtract current component
+// position and enter the immediate gate path without an extra clipping call.
+inline void gui_component_full_repaint(GuiRepaintComponent& component,GuiRepaintBoundary& boundary){
+ auto request=boundary.visible_bounds(component);
+ request[0]-=component.bounds[0];request[1]-=component.bounds[1];
+ gui_component_propagate_repaint(component,request,true,boundary);
+}
 }

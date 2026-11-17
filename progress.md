@@ -1,5 +1,17 @@
 # Progress
 
+## 2026-11-17 Knob visible bounds and full repaint
+
+- Added the actual knob visible-bound method, including fractional double
+  truncation and registered shape-provider unions. Added the source full-repaint
+  path and joined it to the knob component boundary. The expanded fixture runs
+  these original methods as well as component clipping/propagation; all 384
+  cases/1,847 service events match locally. Android execution is pending.
+- Scalar modulation commit `5bb748f8abb11abee23246e8ffc5852f5421c7d0`
+  passed Native engine core run 44030218763, Native renderer comparison run
+  44030218748 and Analysis tools run 44030218755. This includes the 384 scalar
+  dirty-region cases on Android; it does not prove a complete instrument.
+
 ## 2026-11-17 Component repaint propagation
 
 - Added source visible-bound clipping, repaint gates, parent propagation,

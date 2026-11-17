@@ -4,7 +4,7 @@
 namespace mfrk::ui {
 // Scene-owned display boundary: generated knob range/scalar dirty regions enter
 // the actual component tree's clipping/gates/transforms/peer repaint path.
-// The scene still supplies live style getters, full invalidation and component
+// The scene still supplies live style getters and component
 // state services. Their source bodies are not replaced by no-op defaults.
 class GuiKnobComponentDisplayBoundary:public GuiKnobDisplayBoundary {
  GuiRepaintComponent& component_;GuiRepaintBoundary& repaint_;
@@ -14,5 +14,6 @@ public:
  void invalidate(const GuiDirtyBounds& bounds)final{
   auto clipped=bounds;gui_component_repaint(component_,clipped,repaint_);
  }
+ void invalidate()final{gui_component_full_repaint(component_,repaint_);}
 };
 }
