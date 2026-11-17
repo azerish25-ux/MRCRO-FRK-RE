@@ -1,5 +1,20 @@
 # Progress
 
+## 2026-11-16 GUI backend policy join
+
+- Added recovered `678190` policy control flow with actual owned internal and
+  positive receiver adapters. It preserves typed receiver writes, positive cache
+  updates, origin-6 incoming broadcasts, association effects, automation state,
+  selector/part gates and host/processor delivery. Actual application services
+  are required; no scalar store or successful-policy fallback is installed.
+- The whole original routine plus real receiver code matches 2,160 finite scalar
+  cases and 14,011 events locally, including return bytes and cache/dirty state.
+  The hash-bound fixture is configured for Android CI. Typed data, nonempty
+  transformations and service-time mutations need broader comparison before
+  claiming full backend parity. Scene, outer wrapper and app assembly remain open.
+- Routing return-contract commit `49e5316` passed Linux/Android native run
+  43981574536 and analysis run 43981574548.
+
 ## 2026-11-16 GUI write return contract
 
 - Assembly resolved a decompiler ambiguity: `678190` returns a boolean. The
