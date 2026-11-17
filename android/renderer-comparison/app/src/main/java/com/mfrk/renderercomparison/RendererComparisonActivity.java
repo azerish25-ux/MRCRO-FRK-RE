@@ -12,6 +12,7 @@ public final class RendererComparisonActivity extends Activity {
     private RendererComparisonView comparison;
     @Override public void onCreate(Bundle state) {
         super.onCreate(state);
+        com.mfrk.uihost.UiMessageQueue.initialize();
         comparison = new RendererComparisonView(this);
         comparison.assignNormalized(getIntent().getFloatExtra("cutoff",1),
             getIntent().getFloatExtra("resonance",0),getIntent().getFloatExtra("envelope",0.5f));

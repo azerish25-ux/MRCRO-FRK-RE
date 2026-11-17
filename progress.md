@@ -1,5 +1,18 @@
 # Progress
 
+## 2026-11-17 Android UI scheduling
+
+- Added a real main-Handler/JNI transport for owned typed controller messages,
+  with native worker attachment, a cached process-class reference, opaque
+  pending IDs, cancellation and callback dispatch after registry removal.
+  The renderer host now packages and initializes it. Six runtime scenarios are
+  configured on the remote emulator, including a full heap-backed payload.
+- Local source consistency checks passed; Android build/runtime results are
+  pending. No local Android SDK/Gradle/emulator was used. Actual scene factory,
+  preset handlers and full standalone audio/MIDI integration remain unfinished.
+- Message-delivery commit `944fc9b` passed native run 43990306543 and analysis
+  run 43990306464. Full app parity remains unproven.
+
 ## 2026-11-17 Queued controller delivery
 
 - Added weak listener/owner delivery and an owned typed-message envelope.

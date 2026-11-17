@@ -31,6 +31,10 @@ public final class ComparisonInstrumentation extends Instrumentation {
             verifyAssets();
             verifyNativeGeometry();
             verifyNativeMagnetism();
+            JSONObject queueReport=UiQueueVerification.verify(this);
+            try (FileOutputStream output=new FileOutputStream(new File(directory,"ui-message-queue.json"))) {
+                output.write(queueReport.toString(2).getBytes(StandardCharsets.UTF_8));
+            }
             String[] names={"minimum","center","factory-default","maximum","factory-repeat"};
             float[][] values={{0,0,0},{0.5f,0.5f,0.5f},{1,0,0.5f},{1,1,1},{1,0,0.5f}};
             JSONArray cases=new JSONArray(); HashSet<String> unique=new HashSet<>(); String factoryHash=null;

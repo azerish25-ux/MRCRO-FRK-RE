@@ -1,5 +1,13 @@
 # Android filter renderer comparison foundation
 
+The host now also packages the reusable `android/ui-host` main-loop transport.
+Its native registry owns typed messages, uses opaque IDs and supports safe
+delivery/cancellation outside its lock. Debug instrumentation adds worker FIFO,
+expired owner/listener, cancellation, nested-post and heap-payload cases through
+the real Android Handler/JNI path. These are transport checks; the comparison
+view still needs its actual scene/controller factory. Pixel and sound parity
+are not established by a passing queue check.
+
 This is an actual Java/Android project for the source-defined lower three knobs of the mf37 HOME filter panel. It is a test harness and reusable Canvas widget foundation, not a complete instrument or a claim of native pixel parity. No local Android SDK, Gradle distribution, emulator, installer or vendor application was downloaded/executed for this work. The asset-free project is tracked here; generated vendor assets and build outputs remain ignored.
 
 ## What is concrete

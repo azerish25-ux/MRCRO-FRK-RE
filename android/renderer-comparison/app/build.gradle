@@ -1,4 +1,5 @@
 plugins { id 'com.android.application' }
+dependencies { implementation project(':ui_host') }
 
 android {
     namespace 'com.mfrk.renderercomparison'

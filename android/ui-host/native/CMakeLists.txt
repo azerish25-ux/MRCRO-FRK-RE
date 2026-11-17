@@ -1,0 +1,7 @@
+cmake_minimum_required(VERSION 3.22)
+project(mfrk_ui_messages LANGUAGES CXX)
+set(MFRK_UI_REPO_ROOT "${CMAKE_CURRENT_LIST_DIR}/../../..")
+add_library(mfrk_ui_messages SHARED ui_message_queue.cpp)
+target_compile_features(mfrk_ui_messages PUBLIC cxx_std_20)
+target_include_directories(mfrk_ui_messages PUBLIC "${CMAKE_CURRENT_LIST_DIR}" "${MFRK_UI_REPO_ROOT}/core/include")
+target_compile_options(mfrk_ui_messages PRIVATE -Wall -Wextra -Werror -fno-fast-math -ffp-contract=off)
